@@ -1,7 +1,7 @@
 class Menu {
 
   Bouton[] B = new Bouton[4];
-  Etoiles[] Et = new Etoiles[1000];
+  Etoiles[] Et = new Etoiles[100];
   //Jeux J;
   boolean Aff = true;
 
@@ -12,8 +12,16 @@ class Menu {
       B[i].Def_CReplisage(color(0, 150, 150));
     }
     for (int i = 0; i<Et.length; i++) {
-      Et[i] = new Etoiles(int(random(0, width)), int(random(0, height)), random(0, 5));
-      Et[i].DefAcc();
+      Et[i] = new Etoiles(int(random(0, width)), int(random(0, height)), 1);
+      if (Et[i].Pos.x>=width/2 && Et[i].Pos.y>=height/2) {
+        Et[i].DefAcc(1, 2);
+      } else if (Et[i].Pos.x<=width/2 && Et[i].Pos.y>=height/2) {
+        Et[i].DefAcc(-1, 2);
+      } else if (Et[i].Pos.x>=width/2 && Et[i].Pos.y<=height/2) {
+        Et[i].DefAcc(1, -2);
+      } else if (Et[i].Pos.x<=width/2 && Et[i].Pos.y<=height/2) {
+        Et[i].DefAcc(-1, -2);
+      }
       Et[i].Acc();
     }
     B[0].Def_Ch("Démarrer");
@@ -25,10 +33,13 @@ class Menu {
 
   void draw() {
     background(0);
-    for (Etoiles E : Et) {    
-      pushMatrix();    
-      E.draw();
-      popMatrix();
+
+    for (Etoiles E : Et) {
+      if (E.Vst.mag()>15) {
+        pushMatrix();    
+        E.draw();
+        popMatrix();
+      }
       E.Deplacement();
       E.Pos();
     }
@@ -37,7 +48,6 @@ class Menu {
       if (B.Aff) B.draw();
     }
   }
-
   void mousePressed() {
     for ( Bouton B : B) {
       B.mousePressed();
@@ -48,6 +58,15 @@ class Menu {
     } else if (B[0].Activ) {
     } else if (B[3].Activ) {
       exit();
+    }
+  }
+
+  void keyPressed() {
+    switch(key) {
+      case('D'):
+      case('d'):
+      Aff = false;
+      break;
     }
   }
 }

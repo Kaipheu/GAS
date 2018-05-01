@@ -1,11 +1,23 @@
-public class Salle {
-  PVector Pos;
-  int Larg = 100;
-  int Long = 100;
-  String Tex = "defaut", Nom;
+public class Salle extends Bouton {
   Boolean Texture =false;
   int Type;
   int PV = 2;
+  
+  void draw() {  
+    stroke(0, 120, 120);
+    strokeWeight(2);
+    fill(255);
+    rect(Pos.x, Pos.y, Long, Larg);
+    if(Texture) Tex.Texture(this);
+    fill(0);
+    textAlign(LEFT, CENTER);
+    if (AuDessu()) {
+      fill(0, 120, 120, 120);
+      rect(Pos.x, Pos.y, Long, Larg);
+      textAlign(CENTER, BOTTOM);
+      text(Nom, mouseX, mouseY);
+    }
+  }
   /*
  Type :
    0 = bouclier
@@ -17,19 +29,27 @@ public class Salle {
    6 = Reverve
    7 = Arme
    */
-  Salle(int X, int Y) {
-    Pos = new PVector(X, Y);
+  //Salle(int X, int Y) {
+  //  super(X,Y);
+  //  Nom = "";
+  //}
+  //Salle(float X, float Y) {
+  //  super(X,Y);
+  //  Nom = "";
+  //}
+  Salle(float X, float Y, int Long, int Larg) {
+    super(int(X),int(Y),Long,Larg,0);
+    this.Long = Long;
+    this.Larg = Larg;
     Nom = "";
+    Ar= 0;
   }
-  Salle(float X, float Y) {
-    Pos = new PVector(X, Y);
+  Salle(float X,float Y, int T){
+    super(int(X),int(Y),T,T,0);
+    this.Long = T;
+    this.Larg = T;
     Nom = "";
-  }
-  Salle(float X, float Y, int T) {
-    Pos = new PVector(X, Y);
-    Long = T;
-    Larg = T;
-    Nom = "";
+    Ar= 0;
   }
   void DefType(int Type) {
     this.Type = Type;
@@ -44,36 +64,13 @@ public class Salle {
   void Dommage(int N) {
     PV-=N;
   }
-  void draw() {  
-    stroke(0, 120, 120);
-    strokeWeight(2);
-    fill(255);
-    rect(Pos.x, Pos.y, Long, Larg);
-    fill(0);
-    textAlign(LEFT, CENTER);
-    text(Nom, Pos.x, Pos.y+Larg/2);
-    mouseMoved();
-  }
   void mousePressed() {
-    if (mouseX>Pos.x && mouseX<Pos.x+Long && mouseY >Pos.y && mouseY<Pos.y+Larg) {
-      println(1);
+    if (AuDessu()) {
       fill(0, 120, 120, 120);
       rect(Pos.x, Pos.y, Long, Larg);
     }
   }
   void mouseMoved() {
-    if (mouseX>Pos.x && mouseX<Pos.x+Long && mouseY >Pos.y && mouseY<Pos.y+Larg) {
-      fill(0, 120, 120, 120);
-      rect(Pos.x, Pos.y, Long, Larg);
-      textAlign(CENTER, BOTTOM);
-      text(Nom, mouseX, mouseY);
-    }
-  }
-  boolean Audessu() {
-    if (mouseX>Pos.x && mouseX<Pos.x+Long && mouseY >Pos.y && mouseY<Pos.y+Larg) {
-      return true;
-    } else {
-      return false;
-    }
+    
   }
 }

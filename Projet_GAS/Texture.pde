@@ -1,32 +1,27 @@
 class Texture {
-  PImage Tex;
+  PImage Salle;
+  PImage[] Ico = new PImage[13]; 
+  //PImage[] Texture = new PImage[5];
   Texture() {
-    
-    
-    
+    Salle = loadImage("Texture/PNG/Salle.png");
+  for (int i = 0; i<8;i++){
+    Ico[i] = loadImage("Texture/PNG/Ico"+i+".png");
   }
+ 
+    Ico[8] = loadImage("Texture/PNG/Couloir_.png");
+    Ico[9] = loadImage("Texture/PNG/CouloirSPF_.png");
+    Ico[10] = loadImage("Texture/PNG/CouloirSPO_.png");
+    Ico[11] = loadImage("Texture/PNG/Couloir_.png");
+    Ico[12] = loadImage("Texture/PNG/Sans air.png");
+}
 
-  void Texture(Salle Autre, int Type) {
-    switch(Type) {
-      case(0):
-      PImage Temp; 
-      //Temp = copy(Tex[0],0,0,0,0,0,0,0,0);
-       
-      break;
-      case(2):
-      break;
-      case(3):
-      break;
-      case(4):
-      break;
-      case(5):
-      break;
-      case(6):
-      break;
-      case(7):
-      break;
-    default:
-      break;
-    }
+  void Texture(Salle Autre) {
+    image(Salle, Autre.Pos.x, Autre.Pos.y,Autre.Long,Autre.Larg);
+    image(Ico[Autre.Type],Autre.Pos.x,Autre.Pos.y,Autre.Long,Autre.Larg);
+  }
+  void TexU(UniteT U){
+    Salle S = new Salle(U.Pos.x,U.Pos.y,U.Long,U.Larg);
+    S.Type = U.Type;
+    Texture(S);
   }
 }

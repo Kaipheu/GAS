@@ -1,32 +1,28 @@
-class Bouton {
-  PVector Pos = new PVector();
-  int Long, Larg, Id;
+class Bouton extends Unite {
   Boolean Activ = false, Aff = true;
-  color C_St= color(0, 0, 0), C_Rp=color(#B7B7B7), C_Tx=color(255);
-  String Ch;
+  String Nom;
+  color C_Tx = 255;
   Bouton(int x, int y, int Long, int Larg, int Id) {
-    this.Pos.set(x, y);
-    this.Long = Long;
-    this.Larg = Larg;
-    this.Id = Id;
-    Ch = str(Id);
-  }
-  void Position(int x, int y) {
-    Pos.set(x, y);
+    super(x,y,Long,Larg);
+    Nom = str(Id);
+    Ar=50;
   }
 
+
   void draw() {
-    
      fill(C_Rp);
-    stroke(C_St);
-    rect(Pos.x, Pos.y, Long, Larg,50);
+    stroke(C_Tr);
+    rect(Pos.x, Pos.y, Long, Larg,Ar);
     textAlign(CENTER, CENTER);
     fill(C_Tx);
-    text(Ch, Pos.x+Long/2, Pos.y+Larg/2);
+    text(Nom, Pos.x+Long/2, Pos.y+Larg/2);
     if(AuDessu()){
       fill(255,120);
       rect(Pos.x, Pos.y, Long, Larg,50);
     }
+  }
+    void Position(int x, int y) {
+    Pos.set(x, y);
   }
   PVector Av_Position() {
     return Pos;
@@ -36,10 +32,10 @@ class Bouton {
   //}
 
   void Def_Ch(String Ch) {
-    this.Ch = Ch;
+    this.Nom = Ch;
   }
   void Def_CStroke(color Ch) {
-    C_St = Ch;
+    C_Tr = Ch;
   }
   void Def_CReplisage(color Ch) {
     C_Rp = Ch;
@@ -47,6 +43,7 @@ class Bouton {
   void Def_CTexte(color Ch) {
     C_Tx = Ch;
   }
+  
   boolean AuDessu(){
     if (mouseX<=Pos.x+Long && mouseX>=Pos.x && mouseY<=Pos.y+Larg && mouseY>=Pos.y) {
   return true;
@@ -54,8 +51,9 @@ class Bouton {
     return false;
     }
   }
+  
   void mousePressed() {
-    if (mouseX<=Pos.x+Long && mouseX>=Pos.x && mouseY<=Pos.y+Larg && mouseY>=Pos.y) {
+    if (AuDessu()) {
       if (!Activ) {
         this.Activ = true;
         
