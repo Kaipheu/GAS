@@ -5,7 +5,6 @@ class Echange()
   int Lune=0;
   int[][] D = new int[4][8];
   int[][] E = new int[4][8];
-  int[] P = new int[8];
   int[][] C = new int[4][8];
   int[] Bouton = new int[13];
   //Homme
@@ -38,15 +37,6 @@ class Echange()
     E[3][5]= 2;
     E[3][6]= 2;
     E[3][7]= 10;
-
-    P[0] = 1;
-    P[1] = 0;        //priorité par salles (viser IA)
-    P[2] = 3;
-    P[3] = 1;
-    P[4] = 0;
-    P[5] = 3;
-    P[6] = 3;
-    P[7] = 2;
 
     C[0][0]= int(random(10))+42;    //coût
     C[1][0]= C[1][1]= 4;

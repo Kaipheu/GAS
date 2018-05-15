@@ -1,4 +1,4 @@
-Menu M; // Objet Menu  //<>// //<>// //<>// //<>//
+Menu M; // Objet Menu  //<>// //<>// //<>// //<>// //<>// //<>//
 Vaisseau V; // Objet vaisseaux Joueur et ennemi
 Texture Tex;
 Geste G;

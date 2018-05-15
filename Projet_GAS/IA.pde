@@ -6,9 +6,11 @@ IA IA = new IA (100, 100);
 class IA
 {
   int YposIa = height -100, XposiIa = width - 100;
+  PV = new Barr(x, y-(5*L)-5, Pv, L, l, "Point de vie");
   int PV, Boucliermax, NbMissile, MEequiper[0], MEequiper[1];
   Salle[] Salle = new Salle[8]; // Tableau des Salles de l'IA
   int[]MEequiper = new int[2];
+  int[] P = new int[8];
   boolean EnVie = true;
   int NumEnnemi=0, NbBouclier, N;
 
@@ -68,9 +70,16 @@ class IA
         Salle[i] = new Salle(height -100, width -100, 100);
       }
       break;
-    }
+    }  
   }
-  
+    P[0] = 1;
+    P[1] = 0;        //priorité par salles (viser IA)
+    P[2] = 3;
+    P[3] = 1;
+    P[4] = 0;
+    P[5] = 3;
+    P[6] = 3;
+    P[7] = 2;
   
   void action()
   {
@@ -98,10 +107,21 @@ class IA
       Tire2=true;
       Tirer1=s;
     }
-    if( Salle.PV <= 2)
+    
+    int Z=0;
+    for ( int i =-1; i<8)
+    {
+      if((Salle[i+1].PV >= Salle[i].PV) && (P[i+1] >= Z))
+      {
+        Z = P[i];
+      }
+    }
+    
+    if( Joueur.Salle[].PV <= 2)
     {
       //homme va à la salle
-    }
-    if (
+      if (P[] < P[]){
+        
+      }}
   }
 }
