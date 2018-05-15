@@ -2,9 +2,9 @@ class Vaisseau {
 
   Salle[] Salle = new Salle[8]; // Tableau des Salles du vaiseaux
   Barr PV;    // Point de vie du Vaiseaux
-  Barr Oxy;   // Niveau d'oxygéne du Vaiseaux
+  Barr Oxy;   // Niveau d'oxygène du Vaiseaux
   Barr Bouclier;// Niveau du Bouclier
-  Barr Carbu;// Carburant restan
+  Barr Carbu;// Carburant restant
   Barr[] Equi= new Barr[3];// Point de l'équipage 
 
   PImage Image;
@@ -23,16 +23,14 @@ class Vaisseau {
       Pv += S.PV;
       S.Texture = true;
     }
-    Image = loadImage("Texture/PNG/Vaisseau500.png");
-    
-    
+    Image = loadImage("Texture/PNG/Vaisseau500.png");  
     PV = new Barr(x, y-(5*L)-5, Pv, L, l, "Point de vie");
     Bouclier = new Barr(x, y-3*L, 3, L, l, "Bouclier");
     Oxy = new Barr(x, y+Image.width+l*0.5, 10, L, l, "O2");
     Carbu = new Barr(x+150, y+(l*0.5+Image.width), 10, L, l, "Caburant");
 
     Equi[0] = new Barr(x, y+Image.width+l*2, 3, L, l, "Pierre");
-    Equi[1] = new Barr(x+(l*3)^2, y+l*2+Image.width, 3, L, l, "Jaque");
+    Equi[1] = new Barr(x+(l*3)^2, y+l*2+Image.width, 3, L, l, "Jacques");
     Equi[2] = new Barr(x+(l*6), y+l*2+Image.width, 3, L, l, "Michel");
    
       Image = loadImage("Texture/PNG/Vaisseau500.png");

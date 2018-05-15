@@ -1,5 +1,5 @@
-Menu M; // Objet Menu  //<>// //<>// //<>//
-Vaisseau V; // Objet vaisseaux Joueur et énemie
+Menu M; // Objet Menu  //<>// //<>// //<>// //<>//
+Vaisseau V; // Objet vaisseaux Joueur et ennemi
 Texture Tex;
 Geste G;
 Fentre F1;
