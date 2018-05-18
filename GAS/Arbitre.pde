@@ -26,24 +26,28 @@ void combat()
       Vaisseau.Tire1=false;
       Vaisseau.MR1Ter=false;
       animMiss ();
+      recharger ();
     }
     if (Vaisseau.MR2Ter == true && Vaisseau.Tire2 == true && Vaisseau.NbMissile>=1)
     {
       Vaisseau.Tire2=false;
       Vaisseau.MR2Ter=false;
       animMiss ();
+      recharger ();
     }
     if (IA.MR1Ter == true && IA.Tire1 == true)
     {
       IA.Tire1=false;
       IA.MR1Ter=false;
       animMiss ();
+      recharger ();
     }
     if (IA.MR2Ter == true && IA.Tire2 == true)
     {
       IA.Tire2=false;
       IA.MR2Ter=false;
       animMiss ();
+      recharger ();
     }
   }
   if (IA.PV <=0)
@@ -157,7 +161,7 @@ void animMiss ()
   //}
 }
 
-void animBoom (probM=true)
+void animBoom ()
 {
   int p= millis() - ms;
   int ME1equipe=0, ME2equipe=0;
@@ -175,30 +179,37 @@ void animBoom (probM=true)
   }
 }
 
-void rechargeJoueur()
+void recharger()
 {
-  int q =second() - s;
+  int q = second() - s;
+  int r = second() - s;
   int JoNbBouclier = Joueur.Boucliermax;
-  int IANbBouclier = IA.Boucliermax;
-  int RBouclier = q;
-  while (JoNbBouclier <= Joueur.Boucliermax) //a enlever le while
+  int IANbBouclier = IA.Boucliermax, RBouclier = q;
+  if (JoNbBouclier <= Joueur.Boucliermax) //a enlever le while
   {
+    q=0;
     if (RBouclier == 6)
     {
       RBouclier=q-6;
     }
     JoNbBouclier++;
   }
-  while (IANbBouclier <= IA.Boucliermax) //a enlever le while
+  if (IANbBouclier <= IA.Boucliermax) //a enlever le while
   {
+    q=0;
     if (RBouclier == 6)
     {
       RBouclier=q-6;
     }
     IANbBouclier++;
   }
-  while (Joueur.MR1 <= Missile.[0][2])
+  if (Joueur.MR1 <= Missile.M[0][2] && Joueur.MEquiper1 = Missile.M[0][0])
   {
-    
-  }  
+    r=0;
+    if (MR1 == Missile.M[0][2])
+    {
+      MR1 = r - Missile.M[0][2];
+      Vaisseau.MR1Ter = true;
+    } 
+  }
 }
