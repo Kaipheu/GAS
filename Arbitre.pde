@@ -12,46 +12,41 @@
  Commentaire : R.A.S.
  *********************************************************************************************************/
 
-String NomVaisseau = "Utilisateur";
+String NomV = "Utilisateur";
 int ms = millis();
 int s = second();
 
 void combat()
 {
-  while (Vaisseau.PV <=0 || IA.EnVie <= 0)
+  while (V.PV >=0 || IA.PV >= 0)
   {
-    if (Vaisseau.MR1Ter == true && Vaisseau.Tire1 == true && Vaisseau.NbMissile>=1)
+    if (V.MR[0]Ter == true && V.Tire1 == true && V.NbMissile>=1)  //cahgner
     {
-      Vaisseau.Tire1=false;
-      Vaisseau.MR1Ter=false;
+      V.Tire1=false;
       animMiss ();
       recharger ();
     }
-    if (Vaisseau.MR2Ter == true && Vaisseau.Tire2 == true && Vaisseau.NbMissile>=1)
+    if (V.MR[1]Ter == true && V.Tire2 == true && V.NbMissile>=1)  //cahnger
     {
-      Vaisseau.Tire2=false;
-      Vaisseau.MR2Ter=false;
+      V.Tire2=false;
       animMiss ();
       recharger ();
     }
-    if (IA.MR1Ter == true && IA.Tire1 == true)
+    if (IA.MR[0]Ter == true && IA.Tire1 == true)
     {
       IA.Tire1=false;
-      IA.MR1Ter=false;
       animMiss ();
       recharger ();
     }
-    if (IA.MR2Ter == true && IA.Tire2 == true)
+    if (IA.MR[1]Ter == true && IA.Tire2 == true)
     {
       IA.Tire2=false;
-      IA.MR2Ter=false;
       animMiss ();
       recharger ();
     }
   }
   if (IA.PV <=0)
   {
-    IA.EnVie=false;
     text("Etes-vous prêt à continuer ?", 700, 500);
     if (mousePressed==true && mouseX>=630 && mouseX<=680 && mouseY>=400 && mouseY<=450)
     {
@@ -59,7 +54,7 @@ void combat()
       IA.NumEnnemi++;
     }
   }
-  if (Vaisseau.PV <=0)
+  if (V.PV <=0)
   {
     fill(#BE2292);
     textSize(28);
@@ -74,7 +69,7 @@ void animMiss ()
   int xposMissileinitiale, yposMissileinitiale, xposMissilefinale, yposMissilefinale;
   int ProbabM=int(random(100));
 
-  if ((IA.MEequiper[0] == Missile.M[0][0]) || (IA.MEequiper[0] == Missile.M[1][0]))
+  if ((IA.MEquiper[0] == Missile.M[0][0]) || (IA.MEquiper[0] == Missile.M[1][0]))
   {
     ProbabM= Missile.M[0][0]/ProbabM;
     if (ProbabM <1)
@@ -89,11 +84,11 @@ void animMiss ()
       ProbM=true;
     }
     V.Bouclier.N--;
-    Vaisseau.PV = Vaisseau.PV - M[0][1];
+    V.PV = V.PV - Missile.M[0][1];
   }
-  if ((IA.MEequiper[1] == Missile.M[1][0]) || (IA.MEequiper[1] == Missile.M[1][0]))
+  if ((IA.MEquiper[1] == Missile.M[1][0]) || (IA.MEquiper[1] == Missile.M[1][0]))
   {
-    ProbabM= M[1][0]/ProbabM;
+    ProbabM= Missile.M[1][0]/ProbabM;
     if (ProbabM <1)
     {
       ProbM=false;
@@ -101,16 +96,16 @@ void animMiss ()
     imgMissile = loadImage("Missile1.PNG");
     xposMissileinitiale=800;
     yposMissileinitiale=800;
-    if (ProbMissintercept >= Missile.M[1][0])
+    if (ProbabM >= Missile.M[1][0])
     {
       ProbM=true;
     }
     V.Bouclier.N--;
-    Vaisseau.PV = Vaisseau.PV - M[1][1];
+    V.PV = V.PV - Missile.M[1][1];
   }
-  if ((Vaisseau.MEequiper[0] == Missile.M[0][0]) || (Vaisseau.MEequiper[0] == Missile.M[1][0]))
+  if ((V.MEquiper[0] == Missile.M[0][0]) || (V.MEquiper[0] == Missile.M[1][0]))
   {
-    ProbabM= M[0][0]/ProbabM;
+    ProbabM= Missile.M[0][0]/ProbabM;
     if (ProbabM <1)
     {
       ProbM=false;
@@ -118,17 +113,17 @@ void animMiss ()
     imgMissile = loadImage("Missile0.PNG");
     xposMissileinitiale=800;
     yposMissileinitiale=800;
-    if (ProbMissintercept >= Missile.M[0][0])
+    if (ProbabM >= Missile.M[0][0])
     {
       ProbM=true;
     }
     IA.NbBouclier--;
-    Joueur.NbMissile--;
-    IA.PV = IA.PV - M[0][1];
+    V.NbMissile--;
+    IA.PV = IA.PV - Missile.M[0][1];
   }
-  if ((Vaisseau.MEequiper[1] == Missile.M[1][0]) || (Vaisseau.MEequiper[1] == Missile.M[1][0]))
+  if ((V.MEquiper[1] == Missile.M[1][0]) || (V.MEquiper[1] == Missile.M[1][0]))
   {
-    ProbabM= M[1][0]/ProbabM;
+    ProbabM= Missile.M[1][0]/ProbabM;
     if (ProbabM <1)
     {
       ProbM=false;
@@ -136,13 +131,13 @@ void animMiss ()
     imgMissile = loadImage("Missile1.PNG");
     xposMissileinitiale=800;
     yposMissileinitiale=800;
-    if (ProbMissintercept >= Missile.M[1][0])
+    if (ProbabM >= Missile.M[1][0])
     {
       ProbM=true;
     }
     IA.NbBouclier--;
-    Joueur.NbMissile--;
-    IA.PV = IA.PV - M[1][1];
+    V.NbMissile--;
+    IA.PV = IA.PV - Missile.M[1][1];
   }
   Missile = new Missile(xposMissileinitiale, yposMissileinitiale);
   PVector TrajMiss = new PVector(xposMissileinitiale, yposMissileinitiale);
@@ -153,7 +148,7 @@ void animMiss ()
   noFill();
   //int K= int(random(-50, 50))*s;
   //int V = 300*ms; // vitesse du missile
-  //while (Missile.xposMissile > Vaisseau.x && Missile.xposMissile<Joueur.xpos && Missile.yposMissile<Joueur.ypos && Missile.xposMissile<Joueur.ypos) {
+  //while (Missile.xposMissile > V.x && Missile.xposMissile<Joueur.xpos && Missile.yposMissile<Joueur.ypos && Missile.xposMissile<Joueur.ypos) {
   //  image(Missile.Missile0, s, s, 30, 30);
   //  stroke(255);
   //  noFill();
@@ -164,17 +159,33 @@ void animBoom ()
 {
   int p= millis() - ms;
   int ME1equipe=0, ME2equipe=0;
-  if (Vaisseau.MEequiper[0] == Missile.M[0][0] || Vaisseau.MEequiper[1] == Missile.M[0][0] || IA.MEequiper[0] == Missile.M[0][0] || IA.MEequiper[1] == Missile.M[0][0])
+  if (V.MEquiper[0] == Missile.M[0][0] || V.MEquiper[1] == Missile.M[0][0])
   {
-    copy(Missile.Missile0, 300*p/100, 0, 300, 300, 25, 50, 30, 30); //copy(image, sourceXdsImage, sourceYdsImage, dimSourceX, dimSourceY, posEcranX, posEcranY, tailleX, tailleY);
+    copy(Missile.A, 300*p/100, 0, 300, 300, 25, 50, 30, 30); //copy(image, sourceXdsImage, sourceYdsImage, dimSourceX, dimSourceY, posEcranX, posEcranY, tailleX, tailleY);
     stroke(255);
     noFill();
+    IA.Salle.PV = IA.Salle.PV - Missile.M[0][1];
   }
-  if (Vaisseau.MEequiper[0] == Missile.M[1][0] || Vaisseau.MEequiper[1] == Missile.M[1][0] || IA.MEequiper[0] == Missile.M[1][0] || IA.MEequiper[1] == Missile.M[1][0])
+  if (V.MEquiper[0] == Missile.M[1][0] || V.MEquiper[1] == Missile.M[1][0])
   {
-    copy(Missile.Missile1, 300*p/100, 300, 300, 300, 25, 50, 30, 30); //copy(image, sourceXdsImage, sourceYdsImage, dimSourceX, dimSourceY, posEcranX, posEcranY, tailleX, tailleY);
+    copy(Missile.A, 300*p/100, 300, 300, 300, 25, 50, 30, 30);
     stroke(255);
     noFill();
+    IA.Salle.PV = IA.Salle.PV - Missile.M[1][1];
+  }
+  if (IA.MEquiper[0] == Missile.M[0][0] || IA.MEquiper[1] == Missile.M[0][0])
+  {
+    copy(Missile.A, 300*p/100, 0, 300, 300, 25, 50, 30, 30); //copy(image, sourceXdsImage, sourceYdsImage, dimSourceX, dimSourceY, posEcranX, posEcranY, tailleX, tailleY);
+    stroke(255);
+    noFill();
+    V.Salle.PV = V.Salle.PV - Missile.M[0][1];
+  }
+  if (IA.MEquiper[0] == Missile.M[1][0] || IA.MEquiper[1] == Missile.M[1][0])
+  {
+    copy(Missile.A, 300*p/100, 300, 300, 300, 25, 50, 30, 30);
+    stroke(255);
+    noFill();
+    V.Salle.PV = V.Salle.PV - Missile.M[1][1];
   }
 }
 
@@ -182,8 +193,13 @@ void recharger()
 {
   int q = second() - s;
   int r = second() - s;
+  int l = second() - s;
   int VNbBouclier = V.Boucliermax;
-  int IANbBouclier = IA.Boucliermax, RBouclier = q;
+  int IANbBouclier = IA.Boucliermax;
+  int RBouclier = q;
+  int[] VMR = new int[2];
+  int[] IAMR = new int[2];
+  int VMR[0] = 0, VMR[1] = 0, IAMR[0] = 0, IAMR[1] = 0;
   if (VNbBouclier <= V.Boucliermax)
   {
     q=0;
@@ -202,45 +218,36 @@ void recharger()
     }
     IANbBouclier++;
   }
-  if (V.MR1 <= Missile.M[0][2] && V.MEquiper1 = Missile.M[0][0])
+  for (int j=0; j<=1; j++)
   {
-    r=0;
-    if (MR1 == Missile.M[0][2])
+    for (int i=0; i<=1; i++)
     {
-      MR1 = r - Missile.M[0][2];
-      V.MR1Ter = true;
-    } 
-  }
-  if (V.MR1 <= Missile.M[1][2] && V.MEquiper1 = Missile.M[1][0])
+      if (VMR[j] <= Missile.M[i][2] && V.MEquiper[i] == Missile.M[i][0])
+      {
+        l=0;
+        if (VMR[j] == Missile.M[i][2])
+        {
+          VMR[j] = l - Missile.M[i][2];
+        }
+      }
+    }
+  }  
+  for (int j=0; j<=1; j++)
   {
-    r=0;
-    if (MR1 == Missile.M[1][2])
+    for (int i=0; i<=1; i++)
     {
-      MR1 = r - Missile.M[1][2];
-      V.MR1Ter = true;
-    } 
-  }
-  if (IA.MR1 <= Missile.M[0][2] && IA.MEquiper1 = Missile.M[0][0])
-  {
-    r=0;
-    if (MR1 == Missile.M[0][2])
-    {
-      MR1 = r - Missile.M[0][2];
-      IA.MR1Ter = true;
-    } 
-  }
-  if (IA.MR1 <= Missile.M[1][2] && IA.MEquiper1 = Missile.M[1][0])
-  {
-    r=0;
-    if (IA.MR1 == Missile.M[1][2])
-    {
-      IA.MR1 = r - Missile.M[1][2];
-      IA.MR1Ter = true;
-    } 
+      if (IAMR[j] <= Missile.M[i][2] && IA.MEquiper[i] == Missile.M[i][0])
+      {
+        r=0;
+        if (IAMR[j] == Missile.M[i][2])
+        {
+          IAMR[j] = r - Missile.M[i][2];
+        }
+      }
+    }
   }
 }
 
 void dommage ()
 {
-  
 }

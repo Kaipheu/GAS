@@ -1,15 +1,21 @@
 class Vaisseau {
 
   Salle[] Salle = new Salle[8]; // Tableau des Salles du vaiseaux
-  Barr PV;    // Point de vie du Vaiseaux
+  Barr Pv;    // Point de vie du Vaiseaux
   Barr Oxy;   // Niveau d'oxygène du Vaiseaux
   Barr Bouclier;// Niveau du Bouclier
   Barr Carbu;// Carburant restant
   Barr[] Equi= new Barr[3];// Point de l'équipage 
 
+  int PV, Boucliermax, NbMissile;
+  int[]MEquiper = new int[2];  // de flo
+  int[] P = new int[8];
+  int MEquiper[0], MEquiper[1];
+  int MR[0]=0, MR[1] = 0;
+  
   PImage Image;
   PVector Pos; // Position du vaiseau
-  int Pv/*,Ox=10,Bc = 3, Car = 10, PvE=3*/;
+  int PV/*,Ox=10,Bc = 3, Car = 10, PvE=3*/;
   boolean Visible = true;
 
 

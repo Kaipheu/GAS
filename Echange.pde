@@ -13,20 +13,20 @@ class Echange {
   Echange() {
 
     D[0][0]= 6;                      //nb max de dispositfs
-    D[1][2]= 21;
+    D[1][2]= 30;
     D[2][0]= 5;
-    D[3][0]= 2;
-    D[3][1]= 2;
+    D[3][0]= 3;
+    D[3][1]= 3;
     D[3][2]= 3;
     D[3][3]= 3;
     D[3][4]= 3;
-    D[3][5]= 5;
-    D[3][6]= 6;
-    D[3][7]= 24;
+    D[3][5]= 4;
+    D[3][6]= 3;
+    D[3][7]= 22;
 
     E[0][0]= 2;
     E[1][0]= E[1][1]= 13;            //dispositifs au début du jeu
-    E[1][2]= 21;
+    E[1][2]= 20;
     E[2][0]= 1;
     E[3][0]= 1;
     E[3][1]= 1;
@@ -34,7 +34,7 @@ class Echange {
     E[3][3]= 1;
     E[3][4]= 1;
     E[3][5]= 2;
-    E[3][6]= 2;
+    E[3][6]= 1;
     E[3][7]= 10;
 
     C[0][0]= int(random(10))+42;    //coût
@@ -85,11 +85,11 @@ class Echange {
         text ("Ravitaillement :", width/12, height/8);
         PImage Carburant;
         Carburant = loadImage("laDefense.jpg");
-        if (Fen.B[0].Aff && Lune>= C[1][0] && E[1][0]<D[1][0] && (Joueur.NbMissile + Joueur.NbCarburant)<=E[1][2])
+        if (Fen.B[0].Aff && Lune>= C[1][0] && E[1][0]<D[1][0] && (Vaisseau.NbMissile + Vaisseau.NbCarburant)<=E[1][2])
         {
           Lune = Lune - C[1][0];
         }
-        if (Fen.B[1].Activ && Lune>= C[1][1] && E[1][1]<D[1][1] && (Joueur.NbMissile + Joueur.NbCarburant)<=E[1][2])
+        if (Fen.B[1].Activ && Lune>= C[1][1] && E[1][1]<D[1][1] && (Vaisseau.NbMissile + Vaisseau.NbCarburant)<=E[1][2])
         {
           Lune = Lune - C[1][1];
         }
@@ -100,7 +100,7 @@ class Echange {
 
         text ("Armes :", width/12, height/6);
         PImage Missile0;
-        if ((Fen.B[3].Activ && Lune>= Missile.M[0][4] && E[2][0]<D[2][0])
+        if ((Fen.B[3].Activ && Lune>= Missile.M[0][4] && E[2][0]<D[2][0]))
         {
           Lune = Lune - Missile.M[0][4];
         }

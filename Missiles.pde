@@ -3,6 +3,7 @@ Missile Missile = new Missile(100, 100);
 class Missile
 {
   int[][] M = new int[2][4];
+  PImage MissileA;
   PImage Missile0;
   PImage Missile1;
 
@@ -11,6 +12,7 @@ class Missile
     yposMissile = 0;
     xposMissile = 0;
 
+    MissileA = loadImage("Assemblage_missile.PNG");
     Missile0 = loadImage("Missile0.PNG");
     Missile1 = loadImage("Missile1.PNG");
 
