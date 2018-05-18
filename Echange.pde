@@ -85,11 +85,11 @@ class Echange {
         text ("Ravitaillement :", width/12, height/8);
         PImage Carburant;
         Carburant = loadImage("laDefense.jpg");
-        if (Fen.B[0].Aff && Lune>= C[1][0] && E[1][0]<D[1][0] && (Vaisseau.NbMissile + Vaisseau.NbCarburant)<=E[1][2])
+        if (Fen.B[0].Aff && Lune>= C[1][0] && E[1][0]<D[1][0] && (V.NbMissile + V.NbCarburant)<=E[1][2])
         {
           Lune = Lune - C[1][0];
         }
-        if (Fen.B[1].Activ && Lune>= C[1][1] && E[1][1]<D[1][1] && (Vaisseau.NbMissile + Vaisseau.NbCarburant)<=E[1][2])
+        if (Fen.B[1].Activ && Lune>= C[1][1] && E[1][1]<D[1][1] && (V.NbMissile + V.NbCarburant)<=E[1][2])
         {
           Lune = Lune - C[1][1];
         }

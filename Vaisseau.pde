@@ -7,11 +7,13 @@ class Vaisseau {
   Barr Carbu;// Carburant restant
   Barr[] Equi= new Barr[3];// Point de l'équipage 
 
-  int PV, Boucliermax, NbMissile;
-  int[]MEquiper = new int[2];  // de flo
+  int Boucliermax, NbMissile;  //de flo
+  int[]MEquiper = new int[2];
+  int[]MR = new int[2];
   int[] P = new int[8];
   int MEquiper[0], MEquiper[1];
   int MR[0]=0, MR[1] = 0;
+  int NbCarburant;                 //jusquà là de flo
   
   PImage Image;
   PVector Pos; // Position du vaiseau
