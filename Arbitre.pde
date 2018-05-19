@@ -1,17 +1,3 @@
-/*********************************************************************************************************
- Titre du Programme : Gestion d'Attaque Spatiale
- **********************************************************************************************************
- Date de création du programme : 23/01/2018
- **********************************************************************************************************
- Auteurs : Berenger Florian, Said Djambae
- 
- Lycée : Pierre Termier
- **********************************************************************************************************
- 
- **********************************************************************************************************
- Commentaire : R.A.S.
- *********************************************************************************************************/
-
 int ms = millis();
 int s = second();
 
@@ -19,18 +5,16 @@ void combat()
 {
   while (V.PV >=0 || IA.PV >= 0)
   {
-    //if (V.MRTer[0]== true && /* sélection de la salle */ && V.Missile.N>=1)
-    //{
-    //  /* selction de la salle */=false;
-    //  animMiss ();
-    //  recharger ();
-    //}
-    //if (V.MRTer[0]== true && /* sélection de la salle */ && V.Missile.N>=1) 
-    //{
-    //  /* selction de la salle */=false;
-    //  animMiss ();
-    //  recharger ();
-    //}
+    if (V.MRTer[0]== true && V.Viser()<=7 && V.Missile.N>=1)
+    {
+      animMiss ();
+      recharger ();
+    }
+    if (V.MRTer[0]== true && V.Viser<=7 && V.Missile.N>=1) 
+    {
+      animMiss ();
+      recharger ();
+    }
     if (IA.MRTer[0]== true && IA.Tire1 == true)
     {
       IA.Tire1=false;
@@ -66,7 +50,7 @@ void animMiss ()
   PImage imgMissile;
   boolean ProbM = false;
   int xposMissileinitiale =0, yposMissileinitiale=0; //xposMissilefinale=0, yposMissilefinale=0;
-  int ProbabM=int(random(100)), T=0;
+  int ProbabM=int(random(100)), T=0, Viser=10;
 
   if ((IA.MEquiper[0] == Missile.M[0][0]) || (IA.MEquiper[0] == Missile.M[1][0]))
   {
@@ -75,7 +59,7 @@ void animMiss ()
     {
       ProbM=false;
     }
-    imgMissile = Missile.Missile0;
+    imgMissile = Tex.Ico[15];
     xposMissileinitiale=800;
     yposMissileinitiale=800;
     if (ProbabM >= Missile.M[0][0])
@@ -92,7 +76,7 @@ void animMiss ()
     {
       ProbM=false;
     }
-    imgMissile = Missile.Missile1;
+    imgMissile = Tex.Ico[16];
     xposMissileinitiale=800;
     yposMissileinitiale=800;
     if (ProbabM >= Missile.M[1][0])
@@ -109,7 +93,7 @@ void animMiss ()
     {
       ProbM=false;
     }
-    imgMissile = Missile.Missile0;
+    imgMissile = Tex.Ico[15];
     xposMissileinitiale=800;
     yposMissileinitiale=800;
     if (ProbabM >= Missile.M[0][0])
@@ -127,7 +111,7 @@ void animMiss ()
     {
       ProbM=false;
     }
-    imgMissile = Missile.Missile1;
+    imgMissile = Tex.Ico[16];
     xposMissileinitiale=800;
     yposMissileinitiale=800;
     if (ProbabM >= Missile.M[1][0])
@@ -139,16 +123,16 @@ void animMiss ()
     IA.PV = IA.PV - Missile.M[1][1];
   }
   Missile = new Missile(xposMissileinitiale, yposMissileinitiale);
-  PVector TrajMiss = new PVector(xposMissileinitiale, yposMissileinitiale);
-  PVector vitesse = new PVector(1.5, 2.1);
+  PVector TrajMiss = new PVector(xposMissileinitiale, yposMissileinitiale, AvPos(V.Viser());
+  PVector vitesse = new PVector((xposMissileinitiale - xposMissilefinale, yposMissileinitiale - yposMissilefinale);
   TrajMiss.add(vitesse);
-  image(Missile.Missile0, TrajMiss.x, TrajMiss.y, 30, 30);
+  image(Tex.Ico[15], TrajMiss.x, TrajMiss.y, 30, 30);
   stroke(255);
   noFill();
   //int K= int(random(-50, 50))*s;
   //int V = 300*ms; // vitesse du missile
   //while (Missile.xposMissile > V.x && Missile.xposMissile<Joueur.xpos && Missile.yposMissile<Joueur.ypos && Missile.xposMissile<Joueur.ypos) {
-  //  image(Missile.Missile0, s, s, 30, 30);
+  //  image(Tex.Ico[15], s, s, 30, 30);
   //  stroke(255);
   //  noFill();
   //}
@@ -156,16 +140,15 @@ void animMiss ()
 
 void animBoom ()
 {
-  int Viser = 0;
   int p= frameCount;
   for (int i=0; i<=1; i++)
   {
     if (V.MEquiper[0] == Missile.M[i][0] || V.MEquiper[1] == Missile.M[i][0])
     {
-      copy(Missile.MissileA, 300*p/100, i*300, 300, 300, 25, 50, 30, 30); //copy(image, sourceXdsImage, sourceYdsImage, dimSourceX, dimSourceY, posEcranX, posEcranY, tailleX, tailleY);
+      copy(Tex.Ico[14], 300*p/100, i*300, 300, 300, 25, 50, 30, 30); //copy(image, sourceXdsImage, sourceYdsImage, dimSourceX, dimSourceY, posEcranX, posEcranY, tailleX, tailleY);
       stroke(255);
       noFill();
-      IA.Salle[Viser].PV = IA.Salle[Viser].PV - Missile.M[i][1];
+      IA.Salle[AvPos(V.Viser()].PV = IA.Salle[AvPos(V.Viser()].PV - Missile.M[i][1];
     }
   }
 
@@ -173,10 +156,10 @@ void animBoom ()
   {
     if (IA.MEquiper[0] == Missile.M[i][0] || IA.MEquiper[1] == Missile.M[i][0])
     {
-      copy(Missile.MissileA, 300*p/100, i*300, 300, 300, 25, 50, 30, 30); //copy(image, sourceXdsImage, sourceYdsImage, dimSourceX, dimSourceY, posEcranX, posEcranY, tailleX, tailleY);
+      copy(Tex.Ico[14], 300*p/100, i*300, 300, 300, 25, 50, 30, 30); //copy(image, sourceXdsImage, sourceYdsImage, dimSourceX, dimSourceY, posEcranX, posEcranY, tailleX, tailleY);
       stroke(255);
       noFill();
-      V.Salle[Viser].PV = V.Salle[Viser].PV - Missile.M[i][1];
+      V.Salle[AvPos(IA.Viser()].PV = V.Salle[AvPos(IA.Viser()].PV - Missile.M[i][1];
     }
   }
 }

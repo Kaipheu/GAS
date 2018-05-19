@@ -1,6 +1,6 @@
 class Texture {
   PImage Salle;
-  PImage[] Ico = new PImage[14]; 
+  PImage[] Ico = new PImage[17]; 
   //PImage[] Texture = new PImage[5];
   Texture() {
     Salle = loadImage("Texture/PNG/Salle.png");
@@ -14,6 +14,9 @@ class Texture {
     Ico[11] = loadImage("Texture/PNG/Couloir_.png");
     Ico[12] = loadImage("Texture/PNG/Sans air.png");
     Ico[13] = loadImage("Texture/PNG/Carburant.png");
+    Ico[14] = loadImage("Texture/PNG/Assemblage_missile.png");
+    Ico[15] = loadImage("Texture/PNG/Missile0.png");
+    Ico[16] = loadImage("Texture/PNG/Missile1.png");
 }
 
   void Texture(Salle Autre) {

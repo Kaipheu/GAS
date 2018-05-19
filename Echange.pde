@@ -5,7 +5,7 @@ class Echange {
   int[][] C = new int[4][8];
   Fenetre Fen;
   PImage Image;
-  //Bouton[] Bouton = new Bouton[13];
+  Bouton[] Bouton = new Bouton[14];
   //Homme
   //Ravitaillement : Missile, Carburant, PV
   //Arme
@@ -53,7 +53,6 @@ class Echange {
         }
       }
     }
-    Image = loadImage("Texture/PNG/IA.png");
     Fen.B[0].Def_Ch("Hommes  :" + str(C[0][0])); //afficher le prix
     Fen.B[1].Def_Ch("Missile  :" + str(C[1][0]));
     Fen.B[2].Def_Ch("Carburant  :" + str(C[1][1]));
@@ -73,48 +72,42 @@ class Echange {
         fill (#BE2292);
         rect (300, 300, width-600, height-600);
         fill (#A8491F);
-        text ("Que voulez-vous acheter, étrangers ?", width/12, height/12);
-
+        text (" LA BOUTIQUE : Que voulez-vous acheter, étrangers ?", width/6, height-250);
         text ("Equipage :", width/12, height/10);
         PImage Homme;
-        Homme = loadImage("laDefense.jpg");
-
         if (Fen.B[0].Activ && Lune >= C[0][0] && E[0][0]<D[0][0])
         {
           Lune = Lune - C[0][0];
         }
 
-        text ("Ravitaillement :", width/12, height/8);
-        image(Texture.Ico[13],);
-        if (Fen.B[0].Aff && Lune>= C[1][0] && E[1][0]<D[1][0] && (V.Missile.N + V.Carbu.N)<=E[1][2])
+        image(Tex.Ico[13],20,20,50,50);
+        if (Fen.B[1].Aff && Lune>= C[1][0] && E[1][0]<D[1][0] && (V.Missile.N + V.Carbu.N)<=E[1][2])
         {
           Lune = Lune - C[1][0];
         }
-        if (Fen.B[1].Activ && Lune>= C[1][1] && E[1][1]<D[1][1] && (V.Missile.N + V.Carbu.N)<=E[1][2])
+        if (Fen.B[2].Activ && Lune>= C[1][1] && E[1][1]<D[1][1] && (V.Missile.N + V.Carbu.N)<=E[1][2])
         {
           Lune = Lune - C[1][1];
         }
-        if (Fen.B[2].Activ && Lune>= C[1][2] && E[1][2]<D[1][2])
+        if (Fen.B[3].Activ && Lune>= C[1][2] && E[1][2]<D[1][2])
         {
           Lune = Lune - C[1][2];
         }
 
         text ("Armes :", width/12, height/6);
-        image(Missile.Missile0,);
-        if ((Fen.B[3].Activ && Lune>= Missile.M[0][4] && E[2][0]<D[2][0]))
+        image(Tex.Ico[15],);
+        if ((Fen.B[4].Activ && Lune>= Missile.M[0][4] && E[2][0]<D[2][0]))
         {
           Lune = Lune - Missile.M[0][4];
         }
-        if (Fen.B[4].Activ && Lune>= Missile.M[1][4] && E[2][1]<D[2][1])
+        if (Fen.B[5].Activ && Lune>= Missile.M[1][3] && E[2][1]<D[2][1])
         {
-          Lune = Lune - Missile.M[1][4];
+          Lune = Lune - Missile.M[1][3];
         }
 
-        text ("Amélioration :", width/12, height/4);
         image(Salle,);
-        Salle = loadImage("laDefense.jpg");
-        if (Lune>= C[3][0] && ((Fen.B[5].Activ &&  E[3][0]<D[3][0]) || (Fen.B[6].Activ && E[3][1]<D[3][1]) || (Fen.B[7].Activ && E[3][2]<D[3][2]) || (Fen.B[8].Activ && Lune>= C[3][0])
-          || (Fen.B[9].Activ && E[3][4]<D[3][4]) || (Fen.B[10].Activ && E[3][5]<D[3][5]) || (Fen.B[11].Activ && E[3][6]<D[3][6]) || (Fen.B[12].Activ && E[3][7]<D[3][7])))
+        if (Lune>= C[3][0] && ((Fen.B[6].Activ &&  E[3][0]<D[3][0]) || (Fen.B[7].Activ && E[3][1]<D[3][1]) || (Fen.B[8].Activ && E[3][2]<D[3][2]) || (Fen.B[9].Activ && Lune>= C[3][0])
+          || (Fen.B[10].Activ && E[3][4]<D[3][4]) || (Fen.B[11].Activ && E[3][5]<D[3][5]) || (Fen.B[12].Activ && E[3][6]<D[3][6]) || (Fen.B[13].Activ && E[3][7]<D[3][7])))
         {
           Lune = Lune - C[3][0];
           C[3][0]= C[3][0] +15;
