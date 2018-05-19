@@ -10,7 +10,7 @@ void combat()
       animMiss ();
       recharger ();
     }
-    if (V.MRTer[0]== true && V.ArrivMissile<=7 && V.Missile.N>=1) 
+    if (V.MRTer[0]== true && V.ArrivMissile()<=7 && V.Missile.N>=1) 
     {
       animMiss ();
       recharger ();
@@ -46,7 +46,10 @@ void combat()
 }
 
 void animMiss ()
-{  
+{ 
+  PVector Pos = new PVector(Vaisseau.AvPos(int ID));
+  float x = Pos.x;
+  float y = Pos.y;
   PImage imgMissile;
   boolean ProbM = false;
   int xposMissileinitiale =0, yposMissileinitiale=0; //xposMissilefinale=0, yposMissilefinale=0;
@@ -123,7 +126,7 @@ void animMiss ()
     IA.PV = IA.PV - Missile.M[1][1];
   }
   Missile = new Missile(xposMissileinitiale, yposMissileinitiale);
-  PVector TrajMiss = new PVector(xposMissileinitiale, yposMissileinitiale, AvPos(V.ArrivMissile());
+  PVector TrajMiss = new PVector(xposMissileinitiale, yposMissileinitiale);
   PVector vitesse = new PVector((xposMissileinitiale - xposMissilefinale, yposMissileinitiale - yposMissilefinale);
   TrajMiss.add(vitesse);
   image(Tex.Ico[15], TrajMiss.x, TrajMiss.y, 30, 30);
