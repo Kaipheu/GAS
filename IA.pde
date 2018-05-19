@@ -1,7 +1,6 @@
 class IA
 {
   Vaisseau VIA;
-  float YposIa = height -100, XposiIa = width - 100;
   Barr Bouclier;
   Barr Pv;
   int PV, Boucliermax, NbBouclier;
@@ -20,7 +19,7 @@ class IA
     YposIA = height - 100;
     MRTer[0]=false;
     MRTer[1]=false;
-    VIA =new Vaisseau(width - 600, height - 600, 104, 1); // l larg et taille salle
+    VIA =new Vaisseau(width - 600, height/4, 104, -1); // l larg et taille salle
     Pv = new Barr(150, 150-(5*150)-5, PV, 150, 150, "Point de vie");
     Bouclier = new Barr(150, 150-3*150, 3, 150, 150, "Bouclier");
 
@@ -100,11 +99,26 @@ class IA
     noStroke();
     VIA.draw();
   }
+  
+  PVector AvPos(int ID) {
+    return Salle[ID].Pos;
+  }
+  int AvPVSalle(int ID) {
+    return Salle[ID].PV;
+  }
+  int ArrivMissile() {
+    for (Salle S : Salle) {
+      if (S.AuDessu()) {
+        return S.Type;
+      }
+    }
+    return 9;
+  }
 
   void action()
   {
     int q = frameCount;
-    int Tirer1= q, Tirer2=q;
+    int Tirer1 = q, Tirer2=q;
     if (Tirer1==Missile.M[0][2])
     {
       Tire1=true;

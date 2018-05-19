@@ -3,14 +3,14 @@ int s = second();
 
 void combat()
 {
-  while (V.PV >=0 || IA.PV >= 0)
+  while (V.PV >0 || IA.PV > 0)
   {
-    if (V.MRTer[0]== true && V.ArrivMissile()<=7 && V.Missile.N>=1)
+    if (V.MRTer[0]== true && IA.ArrivMissile()<=7 && V.Missile.N>=1)
     {
       animMiss ();
       recharger ();
     }
-    if (V.MRTer[0]== true && V.ArrivMissile()<=7 && V.Missile.N>=1) 
+    if (V.MRTer[0]== true && IA.ArrivMissile()<=7 && V.Missile.N>=1) 
     {
       animMiss ();
       recharger ();
@@ -47,13 +47,15 @@ void combat()
 
 void animMiss ()
 { 
-  PVector Pos = new PVector(Vaisseau.AvPos(int ID));
-  float x = Pos.x;
-  float y = Pos.y;
+  PVector Pos = new PVector();
+  Pos.set(V.AvPos(0));
+  float xposMissilefinale = Pos.x;
+  float yposMissilefinale = Pos.y;
+
   PImage imgMissile;
   boolean ProbM = false;
-  int xposMissileinitiale =0, yposMissileinitiale=0; //xposMissilefinale=0, yposMissilefinale=0;
-  int ProbabM=int(random(100)), T=0, Viser=10;
+  float xposMissileinitiale =0, yposMissileinitiale=0; //xposMissilefinale=0, yposMissilefinale=0;
+  int ProbabM=int(random(100));
 
   if ((IA.MEquiper[0] == Missile.M[0][0]) || (IA.MEquiper[0] == Missile.M[1][0]))
   {
@@ -62,7 +64,6 @@ void animMiss ()
     {
       ProbM=false;
     }
-    imgMissile = Tex.Ico[15];
     xposMissileinitiale=800;
     yposMissileinitiale=800;
     if (ProbabM >= Missile.M[0][0])
@@ -79,7 +80,6 @@ void animMiss ()
     {
       ProbM=false;
     }
-    imgMissile = Tex.Ico[16];
     xposMissileinitiale=800;
     yposMissileinitiale=800;
     if (ProbabM >= Missile.M[1][0])
@@ -96,7 +96,6 @@ void animMiss ()
     {
       ProbM=false;
     }
-    imgMissile = Tex.Ico[15];
     xposMissileinitiale=800;
     yposMissileinitiale=800;
     if (ProbabM >= Missile.M[0][0])
@@ -114,7 +113,6 @@ void animMiss ()
     {
       ProbM=false;
     }
-    imgMissile = Tex.Ico[16];
     xposMissileinitiale=800;
     yposMissileinitiale=800;
     if (ProbabM >= Missile.M[1][0])
@@ -127,7 +125,7 @@ void animMiss ()
   }
   Missile = new Missile(xposMissileinitiale, yposMissileinitiale);
   PVector TrajMiss = new PVector(xposMissileinitiale, yposMissileinitiale);
-  PVector vitesse = new PVector((xposMissileinitiale - xposMissilefinale, yposMissileinitiale - yposMissilefinale);
+  PVector vitesse = new PVector(xposMissileinitiale - xposMissilefinale, yposMissileinitiale - yposMissilefinale);
   TrajMiss.add(vitesse);
   image(Tex.Ico[15], TrajMiss.x, TrajMiss.y, 30, 30);
   stroke(255);
@@ -151,7 +149,8 @@ void animBoom ()
       copy(Tex.Ico[14], 300*p/100, i*300, 300, 300, 25, 50, 30, 30); //copy(image, sourceXdsImage, sourceYdsImage, dimSourceX, dimSourceY, posEcranX, posEcranY, tailleX, tailleY);
       stroke(255);
       noFill();
-      IA.Salle[AvPos(V.ArrivMissile()].PV = IA.Salle[AvPos(V.ArrivMissile()].PV - Missile.M[i][1];
+      IA.Salle[IA.ArrivMissile()].PV = IA.Salle[IA.ArrivMissile()].PV - Missile.M[i][1];
+      IA.PV = IA.PV - Missile.M[i][1];
     }
   }
 
@@ -162,7 +161,8 @@ void animBoom ()
       copy(Tex.Ico[14], 300*p/100, i*300, 300, 300, 25, 50, 30, 30); //copy(image, sourceXdsImage, sourceYdsImage, dimSourceX, dimSourceY, posEcranX, posEcranY, tailleX, tailleY);
       stroke(255);
       noFill();
-      V.Salle[AvPos(IA.ArrivMissile()].PV = V.Salle[AvPos(IA.ArrivMissile()].PV - Missile.M[i][1];
+      V.Salle[V.ArrivMissile()].PV = V.Salle[V.ArrivMissile()].PV - Missile.M[i][1];
+      V.PV = V.PV - Missile.M[i][1];
     }
   }
 }

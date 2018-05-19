@@ -34,10 +34,7 @@ void setup() {
   smooth(9);
   textSize(20);
   M = new Menu();// Créeation d'une instance Menu.
-  
-  V = new Vaisseau(500-width, 100-height, 104,-1);// Instance Vaiseau Joueur
-  
-  //A = new Vaisseau(width-150,50,width/10,-1); // Instance Vaiseau Joueur
+  V = new Vaisseau(100, height/4, 104,-1);// Instance Vaiseau Joueur
   E = new Echange();
   Missile = new Missile(200, 200);
   IA = new IA (100, 100);
@@ -94,5 +91,5 @@ void Th_mousePressed() {
   if (M.Aff) {
     M.mousePressed();
   }
-  //G.m*ousePressed();
+  //G.mousePressed();
 }
