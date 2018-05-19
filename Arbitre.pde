@@ -12,9 +12,8 @@
  Commentaire : R.A.S.
  *********************************************************************************************************/
 
-//String NomV = "Utilisateur";
-//int ms = millis();
-//int s = second();
+int ms = millis();
+int s = second();
 
 void combat()
 {
@@ -158,7 +157,6 @@ void animMiss ()
 void animBoom ()
 {
   int p= frameCount;
-  int ME1equipe=0, ME2equipe=0;
   for (int i=0; i<=1; i++)
   {
     if (V.MEquiper[0] == Missile.M[i][0] || V.MEquiper[1] == Missile.M[i][0])
@@ -166,7 +164,7 @@ void animBoom ()
       copy(Missile.MissileA, 300*p/100, i*300, 300, 300, 25, 50, 30, 30); //copy(image, sourceXdsImage, sourceYdsImage, dimSourceX, dimSourceY, posEcranX, posEcranY, tailleX, tailleY);
       stroke(255);
       noFill();
-      IA.Salle.PV = IA.Salle.PV - Missile.M[i][1];
+      IA.Salle[0].PV = IA.Salle[0].PV - Missile.M[i][1];  //cahner
     }
   }
 
@@ -177,7 +175,7 @@ void animBoom ()
       copy(Missile.MissileA, 300*p/100, i*300, 300, 300, 25, 50, 30, 30); //copy(image, sourceXdsImage, sourceYdsImage, dimSourceX, dimSourceY, posEcranX, posEcranY, tailleX, tailleY);
       stroke(255);
       noFill();
-      V.Salle.PV = V.Salle.PV - Missile.M[i][1];
+      V.Salle[0].PV = V.Salle[0].PV - Missile.M[i][1];  //cahnger
     }
   }
 }

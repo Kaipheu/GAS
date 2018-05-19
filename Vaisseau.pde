@@ -21,6 +21,9 @@ class Vaisseau {
   short PosS = 0;
   Vaisseau(int x, int y, int T, int Ori) {
     Image = loadImage("Texture/PNG/Vaisseau500.png");
+  int[] MEquiper = new int[2];  //arme équiper
+  //int[] MR = new int[2];               
+  boolean[] MRTer = new boolean[2];
     int L=T/10, l=T/5;
     Pos = new PVector(x, y);
     //if (O<0)Pos.sub(100,0);
