@@ -24,14 +24,18 @@ class IA
     Pv = new Barr(150, 150-(5*150)-5, PV, 150, 150, "Point de vie");
     Bouclier = new Barr(150, 150-3*150, 3, 150, 150, "Bouclier");
 
-    //if (NumEnnemi<10)
-    //{
-    //  int N = int(random(2));
-    //}
-    //if ((NumEnnemi = 6) || (NumEnnemi = 10))
-    //{
-    //  N=3;
-    //}
+    if (NumEnnemi<10)
+    {
+      int N = int(random(2));
+    }
+    if ((NumEnnemi == 6) || (NumEnnemi == 10))
+    {
+      N=3;
+    }
+    if ((NumEnnemi == 6) || (NumEnnemi == 10))
+    {
+      N=3;
+    }
     switch(N) {
     case '0': 
       PV=15;
