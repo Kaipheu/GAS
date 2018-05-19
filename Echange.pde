@@ -45,10 +45,10 @@ class Echange {
     Fen = new Fenetre(width/4, height/8, 13, 13);
     for (int i=0; i<=4; i++)
     {
-      Fen.InitBouton(i, 200, 200+i*150, 50, 50);
+      Fen.InitBouton(i, 200, 200+i*100, 50, 50);
       if (i==3) { 
         for (int j=5; j<=12; j++) {
-          Fen.InitBouton(j, 200+50*j, 200+i*150, 50, 50);
+          Fen.InitBouton(j, 200+j*100, 200+i*100, 50, 50);
           //Fen.B[j].Def_Ch(V.Salle[j-5].Nom + str(C[0][0]));
         }
       }

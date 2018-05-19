@@ -66,7 +66,7 @@ void animMiss ()
   PImage imgMissile;
   boolean ProbM = false;
   int xposMissileinitiale =0, yposMissileinitiale=0; //xposMissilefinale=0, yposMissilefinale=0;
-  int ProbabM=int(random(100));
+  int ProbabM=int(random(100)), T=0;
 
   if ((IA.MEquiper[0] == Missile.M[0][0]) || (IA.MEquiper[0] == Missile.M[1][0]))
   {
@@ -156,6 +156,7 @@ void animMiss ()
 
 void animBoom ()
 {
+  int Viser = 0;
   int p= frameCount;
   for (int i=0; i<=1; i++)
   {
@@ -164,7 +165,7 @@ void animBoom ()
       copy(Missile.MissileA, 300*p/100, i*300, 300, 300, 25, 50, 30, 30); //copy(image, sourceXdsImage, sourceYdsImage, dimSourceX, dimSourceY, posEcranX, posEcranY, tailleX, tailleY);
       stroke(255);
       noFill();
-      IA.Salle[0].PV = IA.Salle[0].PV - Missile.M[i][1];  //cahner
+      IA.Salle[Viser].PV = IA.Salle[Viser].PV - Missile.M[i][1];
     }
   }
 
@@ -175,7 +176,7 @@ void animBoom ()
       copy(Missile.MissileA, 300*p/100, i*300, 300, 300, 25, 50, 30, 30); //copy(image, sourceXdsImage, sourceYdsImage, dimSourceX, dimSourceY, posEcranX, posEcranY, tailleX, tailleY);
       stroke(255);
       noFill();
-      V.Salle[0].PV = V.Salle[0].PV - Missile.M[i][1];  //cahnger
+      V.Salle[Viser].PV = V.Salle[Viser].PV - Missile.M[i][1];
     }
   }
 }
@@ -242,8 +243,4 @@ void recharger()
       }
     }
   }
-}
-
-void dommage ()
-{
 }

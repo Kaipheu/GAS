@@ -46,8 +46,7 @@ void draw() {
     //  }
     V.draw();
     IA.draw();
-    //E.draw();
-    //A.draw();
+    E.draw();
   }
   
   //G.draw();
