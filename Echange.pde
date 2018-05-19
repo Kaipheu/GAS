@@ -45,10 +45,10 @@ class Echange {
     //Bouton[0] = new Bouton(200, 400, 200, 150, 0); //coordonnées long larg id
     for (int i=0; i<4; i++)
     {
-      Fen.InitBouton(200, 400+i*150, 200, 150, 0);
+      Fen.InitBouton(i,200, 400+i*150, 200, 150);
       if (i==3) { 
         for (int j=3; j<12; j++) {
-          Fen.InitBouton(200+200*j, 400+i*150, 200, 150, 0);
+          Fen.InitBouton(j,200+200*j, 400+i*150, 200, 150);
           Fen.B[2].Def_Ch(str(C[3][0]));
         }
       }
@@ -89,7 +89,7 @@ class Echange {
         {
           Lune = Lune - C[1][0];
         }
-        if (Fen.B[1].Activ && Lune>= C[1][1] && E[1][1]<D[1][1] && (V.NbMissile.N + V.Carbu.N)<=E[1][2])
+        if (Fen.B[1].Activ && Lune>= C[1][1] && E[1][1]<D[1][1] && (V.Missile.N + V.Carbu.N)<=E[1][2])
         {
           Lune = Lune - C[1][1];
         }

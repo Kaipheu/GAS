@@ -52,6 +52,7 @@ class Vaisseau {
     Equi[0].draw();
     Equi[1].draw();
     Equi[2].draw();
+    Missile.draw();
     if ( Recharge) {
       Recharge();
     }

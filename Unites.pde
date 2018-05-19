@@ -4,6 +4,7 @@ class Unite {
   int Larg = 20;
   color C_Rp = 255;
   color C_Tr = 0;
+  
   Unite(float x, float y) {
     Pos.set(x, y);
   }

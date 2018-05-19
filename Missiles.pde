@@ -1,8 +1,8 @@
-Missile Missile = new Missile(100, 100);
+
 
 class Missile
 {
-  int[][] M = new int[2][4];
+  int[][] M = new int[2][5];
   PImage MissileA;
   PImage Missile0;
   PImage Missile1;
