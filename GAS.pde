@@ -4,7 +4,7 @@ Vaisseau V; // Objet vaisseaux Joueur et ennemi
 
 Texture Tex;
 //Geste G;
-Missile Missil;
+Missile Missile;
 Echange E;
 IA IA;
 char KEY ='0';
@@ -45,9 +45,11 @@ void draw() {
     //    popMatrix();
     //  }
     V.draw();
+    IA.draw();
     //E.draw();
     //A.draw();
   }
+  
   //G.draw();
   textAlign(TOP, LEFT);
   fill(0);

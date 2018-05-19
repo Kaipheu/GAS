@@ -19,11 +19,12 @@ class Vaisseau {
   int Boucliermax=1;             //de flo
   int O;
   short PosS = 0;
+  
   Vaisseau(int x, int y, int T, int Ori) {
-    Image = loadImage("Texture/PNG/Vaisseau500.png");
-  int[] MEquiper = new int[2];  //arme équiper
-  //int[] MR = new int[2];               
+  Image = loadImage("Texture/PNG/Vaisseau500.png");
+  int[] MEquiper = new int[2];  //arme équiper            
   boolean[] MRTer = new boolean[2];
+  
     int L=T/10, l=T/5;
     Pos = new PVector(x, y);
     //if (O<0)Pos.sub(100,0);
@@ -42,6 +43,10 @@ class Vaisseau {
     Equi[0] = new Barr(x, y+Image.width+l*2, 3, L, l, "Pierre");
     Equi[1] = new Barr(x+(l*3)^2, y+l*2+Image.width, 3, L, l, "Jacques");
     Equi[2] = new Barr(x+(l*6), y+l*2+Image.width, 3, L, l, "Michel");
+    
+    //MEquiper[0] = Missile.M[0][0];
+    MEquiper[1]=0;
+    MRTer[0] = MRTer[1] = false;
 
     
     //Image.resize(T*5,T*6);

@@ -39,16 +39,15 @@ class Echange {
 
     C[0][0]= int(random(10))+42;    //coût
     C[1][0]= 4;
-     //C[2][0] = voir classe missile
+    //C[2][0] = voir classe missile
     C[3][0]= 15;
 
     Fen = new Fenetre(width/4, height/8, 13, 13);
-    //Bouton[0] = new Bouton(200, 400, 200, 150, 0); //coordonnées long larg id
-    for (int i=0; i<=3; i++)
+    for (int i=0; i<=4; i++)
     {
       Fen.InitBouton(i, 200, 200+i*150, 50, 50);
       if (i==3) { 
-        for (int j=5; j<=13; j++) {
+        for (int j=5; j<=12; j++) {
           Fen.InitBouton(j, 200+50*j, 200+i*150, 50, 50);
           //Fen.B[j].Def_Ch(V.Salle[j-5].Nom + str(C[0][0]));
         }
