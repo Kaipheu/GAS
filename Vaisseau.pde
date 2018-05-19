@@ -14,6 +14,11 @@ class Vaisseau {
   boolean Visible = true, Recharge = false;
   long TempoBouclier;
   
+  int Boucliermax=1;             //de flo
+  int[] MEquiper = new int[2];  //arme équiper
+  int[] MR = new int[2];               //a
+  boolean[] MRTer = new boolean[2];
+  
   Vaisseau(int x, int y, int T) {
     thread("Load");
     int L=T/10, l=T/5;

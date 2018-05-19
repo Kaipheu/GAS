@@ -21,7 +21,7 @@ class Missile
     M[0][0]=60;                 //précision  
     M[0][1]=1;                  //dégats par missile
     M[0][2]=7;                  //recharge (en s)
-    //M[0][3]=2;                  //niveau d'énergie requis
+    //M[0][3]=2;                //niveau d'énergie requis
     M[0][4]=40;                 //prix
     M[1][0]=50;
     M[1][1]=1;

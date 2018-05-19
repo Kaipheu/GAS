@@ -1,4 +1,3 @@
-
 class Fenetre {
   Bouton[] B;
   Champ[] Chaine; 
