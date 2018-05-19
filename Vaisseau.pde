@@ -11,9 +11,8 @@ class Vaisseau {
   int[]MEquiper = new int[2];
   int[]MR = new int[2];
   int[] P = new int[8];
-  int MEquiper[0], MEquiper[1];
-  int MR[0]=0, MR[1] = 0;
-  int NbCarburant;                 //jusquà là de flo
+  boolean[] MRTer = new boolean[2];
+  int NbCarburant;                 //jusquà là de flo 
   
   PImage Image;
   PVector Pos; // Position du vaiseau
@@ -22,6 +21,11 @@ class Vaisseau {
 
 
   Vaisseau(int x, int y, int T) {
+    
+    MR[0]=0;   //de flo
+    MR[1] = 0;     
+    MRTer[0] =false;
+    MRTer[1]= false;   //jusqu'à de flo recharge missile de l'arme 0 et 1 
     thread("Load");
     int L=T/10, l=T/5;
     Pos = new PVector(x, y);

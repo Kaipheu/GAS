@@ -2,7 +2,7 @@ Menu M; // Objet Menu  //<>// //<>// //<>// //<>// //<>//
 Vaisseau V; // Objet vaisseaux Joueur et ennemi
 Texture Tex;
 Geste G;
-Fentre F1;
+Fenetre F1;
 char KEY ='0';
 void settings () {
   fullScreen();
@@ -17,7 +17,7 @@ void setup() {
   M = new Menu();// Créeation d'une instance Menu.
   V = new Vaisseau(100, 100, 104);// Instance Vaiseau Joueur
   //A = new Vaisseau(width-150,50,width/10,-1); // Instance Vaiseau Joueur
-  F1 = new Fentre(width*2/5,height/5,1,1);
+  F1 = new Fenetre(width*2/5,height/5,1,1);
 }
  public void Load() {
     V.Image = loadImage("Texture/PNG/Vaisseaux500.png");
