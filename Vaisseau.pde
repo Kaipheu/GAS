@@ -6,49 +6,42 @@ class Vaisseau {
   Barr Bouclier;// Niveau du Bouclier
   Barr Carbu;// Carburant restant
   Barr[] Equi= new Barr[3];// Point de l'équipage 
+  Barr Missile;
 
-  int Boucliermax, NbMissile;  //de flo
-  int[]MEquiper = new int[2];
-  int[]MR = new int[2];
-  int[] P = new int[8];
-  boolean[] MRTer = new boolean[2];
-  int NbCarburant;                 //jusquà là de flo 
-  
+
+
+
+
   PImage Image;
   PVector Pos; // Position du vaiseau
   int PV/*,Ox=10,Bc = 3, Car = 10, PvE=3*/;
-  boolean Visible = true;
-
-
+  boolean Visible = true, Recharge = false;
+  long TempoBouclier;
   Vaisseau(int x, int y, int T) {
-    
-    MR[0]=0;   //de flo
-    MR[1] = 0;     
-    MRTer[0] =false;
-    MRTer[1]= false;   //jusqu'à de flo recharge missile de l'arme 0 et 1 
     thread("Load");
     int L=T/10, l=T/5;
     Pos = new PVector(x, y);
     //if (O<0)Pos.sub(100,0);
     PlacementSalle(T);
     for (Salle S : Salle) {
-      Pv += S.PV;
+      PV += S.PV;
       S.Texture = true;
     }
     Image = loadImage("Texture/PNG/Vaisseau500.png");  
     Pv = new Barr(x, y-(5*L)-5, PV, L, l, "Point de vie");
     Bouclier = new Barr(x, y-3*L, 3, L, l, "Bouclier");
     Oxy = new Barr(x, y+Image.width+l*0.5, 10, L, l, "O2");
+    Missile = new Barr(x*3, y-3*l, 10, L, l, "Missiles");
     Carbu = new Barr(x+150, y+(l*0.5+Image.width), 10, L, l, "Caburant");
 
     Equi[0] = new Barr(x, y+Image.width+l*2, 3, L, l, "Pierre");
     Equi[1] = new Barr(x+(l*3)^2, y+l*2+Image.width, 3, L, l, "Jacques");
     Equi[2] = new Barr(x+(l*6), y+l*2+Image.width, 3, L, l, "Michel");
-   
-      Image = loadImage("Texture/PNG/Vaisseau500.png");
-      //Image.resize(T*5,T*6);
+
+    Image = loadImage("Texture/PNG/Vaisseau500.png");
+    //Image.resize(T*5,T*6);
   }
- 
+
 
   void draw() {
     image(Image, Pos.x, Pos.y);
@@ -62,9 +55,17 @@ class Vaisseau {
     Equi[0].draw();
     Equi[1].draw();
     Equi[2].draw();
+    if ( Recharge) {
+      Recharge();
+    }
   }
 
-
+  void Recharge() {
+    if (frameCount+(frameRate)*10 - TempoBouclier<=0) {
+         Bouclier.N = 2;
+         Recharge = false;
+    }
+  }
   void mousePressed() {
     //println(Salle[0].PV);
     for (Salle S : Salle) {
@@ -79,13 +80,19 @@ class Vaisseau {
   boolean Air (int ID) {
     return Salle[ID].AuDessu();
   }
-  void Dommage(int ID, int P) {
-    Salle[ID].Dommage(P);
-    Pv-=P;
+  void Dommage(int ID, int Pts) {
+    Salle[ID].Dommage(Pts);
+
+    PV-=Pts;
+    if (ID==0) {
+      Recharge = true;
+      TempoBouclier = frameCount;
+    }
   }
-  PVector AvPos(int ID){
+  PVector AvPos(int ID) {
     return Salle[ID].Pos;
   }
+  
   void PlacementSalle(int T) {
     Salle[0] =new Salle(Pos.x+364, Pos.y+209, T); 
     Salle[0].DefType(0);

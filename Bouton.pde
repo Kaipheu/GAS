@@ -2,7 +2,7 @@ class Bouton extends Unite {
   Boolean Activ = false, Aff = true;
   String Nom;
   color C_Tx = 255;
-  Bouton(int x, int y, int Long, int Larg, int Id) {
+  Bouton(float x, float y, int Long, int Larg, int Id) {
     super(x,y,Long,Larg);
     Nom = str(Id);
     Ar=50;
@@ -54,14 +54,10 @@ class Bouton extends Unite {
   
   void mousePressed() {
     if (AuDessu()) {
-      if (!Activ) {
-        this.Activ = true;
-        
-      } else {
-        Activ = false;
-      }
-    } else {
-      this.Activ= false;
+        Activ = true;
     }
+  }
+  void mouseReleased(){
+  Activ = false;
   }
 }
