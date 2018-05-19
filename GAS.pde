@@ -1,5 +1,7 @@
 Menu M; // Objet Menu  //<>// //<>// //<>// //<>// //<>//
+
 Vaisseau V; // Objet vaisseaux Joueur et ennemi
+
 Texture Tex;
 //Geste G;
 Missile Missile;
@@ -18,7 +20,9 @@ void setup() {
   smooth(9);
   textSize(20);
   M = new Menu();// Créeation d'une instance Menu.
-  V = new Vaisseau(100, 100, 104);// Instance Vaiseau Joueur
+  
+  V = new Vaisseau(500, 100, 104,-1);// Instance Vaiseau Joueur
+  
   //A = new Vaisseau(width-150,50,width/10,-1); // Instance Vaiseau Joueur
   E = new Echange();
   Missile = new Missile(200, 200);
@@ -34,15 +38,13 @@ void draw() {
   if (M.Aff) {
     M.draw();
   } else {
-    
-    for(Etoiles E:Et){
-        pushMatrix();    
-        E.draw();
-        popMatrix();
-      }
+    background(0);
+    //for(Etoiles E:Et){
+    //    pushMatrix();    
+    //    E.draw();
+    //    popMatrix();
+    //  }
     V.draw();
-    //E.draw();
-    //A.draw();
   }
   //G.draw();
   textAlign(TOP, LEFT);

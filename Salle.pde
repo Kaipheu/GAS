@@ -74,4 +74,5 @@ public class Salle extends Bouton {
   void mouseMoved() {
     
   }
+
 }
