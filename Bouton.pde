@@ -8,7 +8,6 @@ class Bouton extends Unite {
     Ar=50;
   }
 
-
   void draw() {
      fill(C_Rp);
     stroke(C_Tr);

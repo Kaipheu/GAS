@@ -49,16 +49,16 @@ class Echange {
       if (i==3) { 
         for (int j=5; j<=12; j++) {
           Fen.InitBouton(j, 200+j*100, 200+i*100, 50, 50);
-          //Fen.B[j].Def_Ch(V.Salle[j-5].Nom + str(C[0][0]));
+          Fen.B[j].Def_Ch(V.Salle[j-5].Nom + str(C[0][0]));
         }
       }
     }
     Image = loadImage("Texture/PNG/IA.png");
-    Fen.B[0].Def_Ch("Hommes" + str(C[0][0])); //afficher le prix
-    Fen.B[1].Def_Ch("Missile" + str(C[1][0]));
-    Fen.B[2].Def_Ch("Carburant" + str(C[1][1]));
-    Fen.B[3].Def_Ch("Arme coup par coup" + str(C[2][0]));
-    Fen.B[4].Def_Ch("Arme rafale" + str(C[2][0]));
+    Fen.B[0].Def_Ch("Hommes  :" + str(C[0][0])); //afficher le prix
+    Fen.B[1].Def_Ch("Missile  :" + str(C[1][0]));
+    Fen.B[2].Def_Ch("Carburant  :" + str(C[1][1]));
+    Fen.B[3].Def_Ch("Arme coup par coup  :" + str(C[2][0]));
+    Fen.B[4].Def_Ch("Arme rafale  :" + str(C[2][0]));
   }
 
   void draw() {
@@ -85,8 +85,7 @@ class Echange {
         }
 
         text ("Ravitaillement :", width/12, height/8);
-        PImage Carburant;
-        Carburant = loadImage("laDefense.jpg");
+        image(Texture.Ico[13],);
         if (Fen.B[0].Aff && Lune>= C[1][0] && E[1][0]<D[1][0] && (V.Missile.N + V.Carbu.N)<=E[1][2])
         {
           Lune = Lune - C[1][0];
@@ -101,7 +100,7 @@ class Echange {
         }
 
         text ("Armes :", width/12, height/6);
-        PImage Missile0;
+        image(Missile.Missile0,);
         if ((Fen.B[3].Activ && Lune>= Missile.M[0][4] && E[2][0]<D[2][0]))
         {
           Lune = Lune - Missile.M[0][4];
@@ -112,7 +111,7 @@ class Echange {
         }
 
         text ("Amélioration :", width/12, height/4);
-        PImage Salle;
+        image(Salle,);
         Salle = loadImage("laDefense.jpg");
         if (Lune>= C[3][0] && ((Fen.B[5].Activ &&  E[3][0]<D[3][0]) || (Fen.B[6].Activ && E[3][1]<D[3][1]) || (Fen.B[7].Activ && E[3][2]<D[3][2]) || (Fen.B[8].Activ && Lune>= C[3][0])
           || (Fen.B[9].Activ && E[3][4]<D[3][4]) || (Fen.B[10].Activ && E[3][5]<D[3][5]) || (Fen.B[11].Activ && E[3][6]<D[3][6]) || (Fen.B[12].Activ && E[3][7]<D[3][7])))
