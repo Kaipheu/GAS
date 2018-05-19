@@ -20,13 +20,13 @@ void combat()
 {
   while (V.PV >=0 || IA.PV >= 0)
   {
-    if (V.MRTer[0]== true && V.Tire1 == true && V.NbMissile>=1)  //cahgner
+    if (V.MRTer[0]== true && V.Tire1 == true && V.Missile.N>=1)  //cahgner
     {
       V.Tire1=false;
       animMiss ();
       recharger ();
     }
-    if (V.MRTer[0]== true && V.Tire2 == true && V.NbMissile>=1)  //cahnger
+    if (V.MRTer[0]== true && V.Tire2 == true && V.Missile.N>=1)  //cahnger
     {
       V.Tire2=false;
       animMiss ();
@@ -118,7 +118,7 @@ void animMiss ()
       ProbM=true;
     }
     IA.NbBouclier--;
-    V.NbMissile--;
+    V.Missile.N--;
     IA.PV = IA.PV - Missile.M[0][1];
   }
   if ((V.MEquiper[1] == Missile.M[0][0]) || (V.MEquiper[1] == Missile.M[1][0]))
@@ -136,7 +136,7 @@ void animMiss ()
       ProbM=true;
     }
     IA.NbBouclier--;
-    V.NbMissile--;
+    V.Missile.N--;
     IA.PV = IA.PV - Missile.M[1][1];
   }
   Missile = new Missile(xposMissileinitiale, yposMissileinitiale);

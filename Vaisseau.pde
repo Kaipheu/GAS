@@ -8,15 +8,12 @@ class Vaisseau {
   Barr[] Equi= new Barr[3];// Point de l'équipage 
   Barr Missile;
 
-
-
-
-
   PImage Image;
   PVector Pos; // Position du vaiseau
   int PV/*,Ox=10,Bc = 3, Car = 10, PvE=3*/;
   boolean Visible = true, Recharge = false;
   long TempoBouclier;
+  
   Vaisseau(int x, int y, int T) {
     thread("Load");
     int L=T/10, l=T/5;
