@@ -10,9 +10,9 @@ class IA
   int[] MEquiper = new int[2];
   int[] MR = new int[2];
   int[] P = new int[8];
-  int MEquiper[0], MEquiper[1], MR[0]=0, MR[1]=0;
   int NumEnnemi=0, N;
   boolean Tire1=false, Tire2=false;
+  boolean[] MRTer = new boolean[2];
 
   IA(float XposIA, float YposIA)
   { 
@@ -21,6 +21,10 @@ class IA
     PImage Image = loadImage("Texture/PNG/IA.png");  
     Pv = new Barr(x, y-(5*L)-5, PV, L, l, "Point de vie");
     Bouclier = new Barr(x, y-3*L, 3, L, l, "Bouclier");
+    MR[0]=0;
+    MR[1]=0;   
+    MRTer[0] =false;
+    MRTer[1]= false;
 
     if (NumEnnemi<10)
     {
@@ -79,7 +83,7 @@ class IA
     P[5] = 3;
     P[6] = 3;
     P[7] = 2;
-
+  }
     void draw() {
       image(Image, Pos.x, Pos.y);
       for (Salle S : Salle) {
@@ -103,7 +107,7 @@ class IA
         Tirer1=q;
       }
 
-      for (int i =-1; i<8)  //salle de préférence à viser
+      for (int i=-1; i<8; i++)  //salle de préférence à viser
       {
         if ((V.Salle[i+1].PV >= V.Salle[i].PV) && (P[i+1] >= P[i]))
         {

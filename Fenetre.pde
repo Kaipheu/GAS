@@ -3,7 +3,7 @@ class Fenetre {
   String[] Chaine; 
   PVector Pos;
   Boolean Aff = false;
-  Fentre(float x, float y, int Nbouton, int Nchamp) {
+  Fenetre(float x, float y, int Nbouton, int Nchamp) {
     B = new Bouton[Nbouton];
     Chaine = new String[Nchamp];
     Pos = new PVector(x, y);
