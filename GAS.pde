@@ -4,7 +4,7 @@ Vaisseau V; // Objet vaisseaux Joueur et ennemi
 
 Texture Tex;
 //Geste G;
-Missile Missile;
+Missile Missil;
 Echange E;
 IA IA;
 char KEY ='0';
