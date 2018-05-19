@@ -45,6 +45,8 @@ void draw() {
     //    popMatrix();
     //  }
     V.draw();
+    //E.draw();
+    //A.draw();
   }
   //G.draw();
   textAlign(TOP, LEFT);

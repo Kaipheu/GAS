@@ -38,25 +38,32 @@ class Echange {
     E[3][7]= 10;
 
     C[0][0]= int(random(10))+42;    //coût
-    C[1][0]= C[1][1]= 4;
-    //C[1][2]= 3;
-    C[3][0]=C[3][1]=C[3][2]=C[3][3]=C[3][4]=C[3][5]=C[3][6]=C[3][7]=15;
+    C[1][0]= 4;
+     //C[2][0] = voir classe missile
+    C[3][0]= 15;
+
     Fen = new Fenetre(width/4, height/8, 13, 13);
     //Bouton[0] = new Bouton(200, 400, 200, 150, 0); //coordonnées long larg id
     for (int i=0; i<4; i++)
     {
-      Fen.InitBouton(i,200, 400+i*150, 200, 150);
+      Fen.InitBouton(i, 200, 400+i*150, 200, 150);
       if (i==3) { 
         for (int j=3; j<12; j++) {
-          Fen.InitBouton(j,200+200*j, 400+i*150, 200, 150);
+          Fen.InitBouton(j, 200+200*j, 400+i*150, 200, 150);
           Fen.B[2].Def_Ch(str(C[3][0]));
         }
       }
     }
-    Fen.B[0].Def_Ch(str(C[0][0])); //aficher le prix
-    Fen.B[1].Def_Ch(str(C[1][0]));
-    Fen.B[2].Def_Ch(str(C[1][1]));
     Image = loadImage("Texture/PNG/IA.png");
+    Fen.B[0].Def_Ch("Hommes" + str(C[0][0])); //afficher le prix
+    Fen.B[1].Def_Ch("Missile" + str(C[1][0]));
+    Fen.B[2].Def_Ch("Carburant" + str(C[1][1]));
+    Fen.B[3].Def_Ch("Arme coup par coup" + str(C[2][0]));
+    Fen.B[4].Def_Ch("Arme rafale" + str(C[2][0]));
+    for (int i=5; i<=13; i++)
+    {
+      Fen.B[i].Def_Ch(V.Salle[i-5].Nom + str(C[0][0]));
+    }
   }
 
   void draw() {
@@ -129,9 +136,5 @@ class Echange {
   void mouseReleased()
   {
     Fen.mouseReleased();
-  }
-
-  void mouseMoved() {
-    //text(mouseX, mouseY, "Dispositif actuelle et maximale : " D[0][0]);
   }
 }

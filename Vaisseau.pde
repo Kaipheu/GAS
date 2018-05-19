@@ -13,6 +13,10 @@ class Vaisseau {
   int PV/*,Ox=10,Bc = 3, Car = 10, PvE=3*/;
   boolean Visible = true, Recharge = false;
   long TempoBouclier;
+  boolean[] MRTer = new boolean[2];
+  int[] MR = new int[2];               //a
+  int[] MEquiper = new int[2];  //arme équiper
+  int Boucliermax=1;             //de flo
   int O;
   short PosS = 0;
   Vaisseau(int x, int y, int T, int Ori) {
