@@ -1,5 +1,3 @@
-
-
 class Missile
 {
   int[][] M = new int[2][5];
@@ -12,9 +10,9 @@ class Missile
     yposMissile = 0;
     xposMissile = 0;
 
-    MissileA = loadImage("Assemblage_missile.PNG");
-    Missile0 = loadImage("Missile0.PNG");
-    Missile1 = loadImage("Missile1.PNG");
+    MissileA = loadImage("Assemblage_missile.png");
+    Missile0 = loadImage("Missile0.png");
+    Missile1 = loadImage("Missile1.png");
 
     //missile coup/coup
     //missile rafale 3 tirs

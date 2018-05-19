@@ -2,8 +2,9 @@ Menu M; // Objet Menu  //<>// //<>// //<>// //<>// //<>//
 Vaisseau V; // Objet vaisseaux Joueur et ennemi
 Texture Tex;
 //Geste G;
-Missile  Missile;
+Missile Missile;
 Echange E;
+IA IA;
 char KEY ='0';
 
 void settings () {
@@ -19,7 +20,9 @@ void setup() {
   V = new Vaisseau(100, 100, 104);// Instance Vaiseau Joueur
   //A = new Vaisseau(width-150,50,width/10,-1); // Instance Vaiseau Joueur
   E = new Echange();
-  Missile = new Missile(100, 100);
+  Missile = new Missile(200, 200);
+  IA = new IA (100, 100);
+  
 }
 public void Load() {
   V.Image = loadImage("Texture/PNG/Vaisseaux500.png");
