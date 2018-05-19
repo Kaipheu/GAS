@@ -6,6 +6,7 @@ Missile Missile;
 Echange E;
 IA IA;
 char KEY ='0';
+Etoiles[] Et = new Etoiles[100];
 
 void settings () {
   fullScreen();
@@ -33,8 +34,14 @@ void draw() {
   if (M.Aff) {
     M.draw();
   } else {
+    
+    for(Etoiles E:Et){
+        pushMatrix();    
+        E.draw();
+        popMatrix();
+      }
     V.draw();
-    E.draw();
+    //E.draw();
     //A.draw();
   }
   //G.draw();

@@ -1,7 +1,7 @@
 class Menu {
 
   Bouton[] B = new Bouton[4];
-  Etoiles[] Et = new Etoiles[100];
+  
   //Jeux J;
   boolean Aff = true;
 
@@ -12,7 +12,7 @@ class Menu {
       B[i].Def_CReplisage(color(0, 150, 150));
     }
     for (int i = 0; i<Et.length; i++) {
-      Et[i] = new Etoiles(int(random(0, width)), int(random(0, height)), 1);
+      Et[i] = new Etoiles(int(random(0, width)), int(random(0, height)), 1, false);
       if (Et[i].Pos.x>=width/2 && Et[i].Pos.y>=height/2) {
         Et[i].DefAcc(1, 2);
       } else if (Et[i].Pos.x<=width/2 && Et[i].Pos.y>=height/2) {
@@ -54,6 +54,9 @@ class Menu {
     }
     if (B[0].Activ) {
       Aff = false;
+      for(Etoiles E:Et){
+        E.E = true;
+      }
     } else if (B[0].Activ) {
     } else if (B[0].Activ) {
     } else if (B[3].Activ) {

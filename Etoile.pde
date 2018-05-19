@@ -4,20 +4,24 @@ class Etoiles {
   PVector Acc = new PVector();
   int R=255, G=255, B=255, A=255;
   float Taille = 5;
-  Etoiles(int x, int y, float T) {
+  boolean E  = false;
+  Etoiles(int x, int y, float T,Boolean Et) {
     Pos.set(x, y);
     Taille = T;
+    E = Et;
   }
   void draw() {
     stroke(R, G, B, A);
     strokeWeight(1);
-    line(Pos.x,Pos.y,Post.x,Post.y);
+    if(!E)line(Pos.x,Pos.y,Post.x,Post.y);
     translate(Pos.x, Pos.y);
     strokeWeight(1);
-    //for (int i = 0; i<5; i++) {
-    //  rotate((PI/4)*i);
-    //  line(-Taille, 0, Taille, 0);
-    //}
+    if(E){
+    for (int i = 0; i<5; i++) {
+      rotate((PI/4)*i);
+      line(-Taille, 0, Taille, 0);
+    }
+    }
   }
   void DefAcc(float x, float y) {
     Acc.set(x, y);
