@@ -17,9 +17,9 @@ void settings () {
 void setup() {
   smooth(9);
   textSize(20);
-  M = new Menu();// Créeation d'une instance Menu.
-  V = new Vaisseau(100, 100, 104);// Instance Vaiseau Joueur
-  //A = new Vaisseau(width-150,50,width/10,-1); // Instance Vaiseau Joueur
+  M = new Menu();// Création d'une instance Menu.
+  V = new Vaisseau(100, 100, 104);// Instance Vaisseau Joueur
+  //A = new Vaisseau(width-150,50,width/10,-1); // Instance Vaisseau Joueur
   E = new Echange();
   Missile = new Missile(200, 200);
   IA = new IA (100, 100);
@@ -41,6 +41,11 @@ void draw() {
         popMatrix();
       }
     V.draw();
+    pushMatrix();
+    translate(width -600, height -600);
+    rotate(PI);
+    IA.draw();
+    popMatrix();
     //E.draw();
     //A.draw();
   }

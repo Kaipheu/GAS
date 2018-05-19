@@ -1,5 +1,6 @@
 class IA
 {
+  Vaisseau VIA;
   float YposIa = height -100, XposiIa = width - 100;
   Barr Bouclier;
   Barr Pv;
@@ -14,10 +15,11 @@ class IA
 
   IA(float XposIA, float YposIA)
   { 
-    XposIA = 100;
-    YposIA = 100;
+    XposIA = width -100;
+    YposIA = height - 100;
     MR[0]=0;
     MR[1]=0;
+    VIA =new Vaisseau(0,0 , 104); // l larg et taille salle
     Pv = new Barr(150, 150-(5*150)-5, PV, 150, 150, "Point de vie");
     Bouclier = new Barr(150, 150-3*150, 3, 150, 150, "Bouclier");
 
@@ -80,11 +82,7 @@ class IA
     P[7] = 2;
   }
     void draw() {
-      image(Image, 850, 450);
-      for (Salle S : Salle) {
-        S.draw();
-      }
-      Pv.draw();
+      VIA.draw();
     }
 
     void action()
