@@ -11,17 +11,15 @@ class Vaisseau {
   PImage Image;
   PVector Pos; // Position du vaiseau
   int PV/*,Ox=10,Bc = 3, Car = 10, PvE=3*/;
-  boolean Visible = true, Recharge = false;
+  boolean Visible = true, Recharge = false,O;
   long TempoBouclier;
   boolean[] MRTer = new boolean[2];
   int[] MR = new int[2];               //a
   int[] MEquiper = new int[2];  //arme équiper
   int Boucliermax=1;             //de flo
-  int O;
-  short PosS = 0;
   //text("Lunes  :  " + Echange.Lune, 100, height -100);
 
-  Vaisseau(int x, int y, int T, int Ori) {
+  Vaisseau(int x, int y, int T, Boolean Ori) {
     Image = loadImage("Texture/PNG/Vaisseau500.png");
     int[] MEquiper = new int[2];  //arme équiper            
     boolean[] MRTer = new boolean[2];
@@ -29,6 +27,61 @@ class Vaisseau {
     int L=T/10, l=T/5;
     Pos = new PVector(x, y);
     //if (O<0)Pos.sub(100,0);
+    short[][] PosS = new short[8][2];
+     if (Ori) {
+      Image = loadImage("Texture/PNG/Vaisseau500.png");
+      PosS[0][0] =364 ;
+      PosS[0][1] = 209 ;
+      PosS[1][0] = 32 ;
+      PosS[1][1] = 27 ;
+      PosS[2][0] =  32;
+      PosS[2][1] =  141;
+      PosS[3][0] =  32;
+      PosS[3][1] =  256;
+      PosS[4][0] =  32;
+      PosS[4][1] = 370;
+      PosS[5][0] =  198;
+      PosS[5][1] = 95;
+      PosS[6][0] = 198;
+      PosS[6][1] = 209;
+      PosS[7][0] = 198;
+      PosS[7][1] = 232;
+      Pv = new Barr(x, y-(5*L)-5, PV, L, l, "Point de vie");
+      Bouclier = new Barr(x, y-3*L, 3, L, l, "Bouclier");
+      Oxy = new Barr(x, y+Image.width+l*0.5, 10, L, l, "O2");
+      Missile = new Barr(x*3, y-3*l, 10, L, l, "Missiles");
+      Carbu = new Barr(x+150, y+(l*0.5+Image.width), 10, L, l, "Caburant");
+
+      Equi[0] = new Barr(x, y+Image.width+l*2, 3, L, l, "Pierre");
+      Equi[1] = new Barr(x+(l*3)^2, y+l*2+Image.width, 3, L, l, "Jacques");
+      Equi[2] = new Barr(x+(l*6), y+l*2+Image.width, 3, L, l, "Michel");
+    } else {
+      Image = loadImage("Texture/PNG/IA.png");
+      PosS[0][0] =-364 ;
+      PosS[0][1] = 209 ;
+      PosS[1][0] = -32 ;
+      PosS[1][1] = 27 ;
+      PosS[2][0] = - 32;
+      PosS[2][1] =  141;
+      PosS[3][0] =  -32;
+      PosS[3][1] =  256;
+      PosS[4][0] = - 32;
+      PosS[4][1] = 370;
+      PosS[5][0] = - 198;
+      PosS[5][1] = 95;
+      PosS[6][0] =- 198;
+      PosS[6][1] = 209;
+      PosS[7][0] =- 198;
+      PosS[7][1] = 232;
+      Pv = new Barr(x, y-(5*L)-5, PV, L, l, "Point de vie");
+      Bouclier = new Barr(x, y-3*L, 3, L, l, "Bouclier");
+      Oxy = null;
+      Missile = null;
+      Carbu = null;
+      Equi[0] = null;
+      Equi[1] = null;
+      Equi[2] = null;
+    }
     PlacementSalle(T);
     for (Salle S : Salle) {
       PV += S.PV;
@@ -59,14 +112,17 @@ class Vaisseau {
     for (Salle S : Salle) {
       S.draw();
     }
-    Pv.draw();
-    Oxy.draw();
-    Bouclier.draw();
-    Carbu.draw();
-    Equi[0].draw();
-    Equi[1].draw();
-    Equi[2].draw();
-    Missile.draw();
+   if (!O) {
+      Pv.draw();
+      Bouclier.draw();
+    } else {
+      Oxy.draw();
+      Carbu.draw();
+      Equi[0].draw();
+      Equi[1].draw();
+      Equi[2].draw();
+      Missile.draw();
+    }
     if ( Recharge) {
       Recharge();
     }
