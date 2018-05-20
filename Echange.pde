@@ -5,7 +5,7 @@ class Echange {
   int[][] C = new int[4][8];
   Fenetre Fen;
   PImage Image;
-
+  boolean Affiche;
   //Homme
   //Ravitaillement : Missile, Carburant, PV
   //Arme : Coup par coup, rafale

@@ -1,4 +1,4 @@
-/********************************************************************************************************* //<>// //<>//
+/********************************************************************************************************* //<>// //<>// //<>//
  Titre du Programme : Gestion d'Attaque Spatiale
  **********************************************************************************************************
  Date de création du programme : 23/01/2018
@@ -12,7 +12,7 @@
  Commentaire : R.A.S.
  *********************************************************************************************************/
 
-Menu M; // Objet Menu  //<>// //<>// //<>// //<>// //<>//
+Menu M; // Objet Menu  //<>// //<>// //<>// //<>// //<>// //<>//
 
  // Objet vaisseaux Joueur et ennemi
 
@@ -57,7 +57,7 @@ void draw() {
     //  }
     V.draw();
     IA.draw();
-    E.draw();
+    if(E.Affiche)E.draw();
   }
   
   //G.draw();
@@ -74,22 +74,15 @@ void keyPressed() {
 void keyReleased() {
   KEY = '0';
 }
-void mouseMoved() {
-  //if (G.Choix && !G.Trace) {
-  //  V.Salle[G.Index].DefPos(mouseX, mouseY);
-  //}
-  //if (G.Choix && G.Trace) {
-  //  G.Redef(G.Index, mouseX, mouseY);
-  //}
-}
+void mouseMoved() {}
 
 void mousePressed() {
-  thread("Th_mousePressed");
-}
-void Th_mousePressed() {
-
   if (M.Aff) {
     M.mousePressed();
   }
+}
+void Th_mousePressed() {
+
+  
   //G.mousePressed();
 }
