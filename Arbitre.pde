@@ -53,8 +53,9 @@ void animMiss ()
   float yposMissilefinale = Pos.y;
 
   PImage imgMissile;
+  imgMissile = Tex.Ico[15];
   boolean ProbM = false;
-  float xposMissileinitiale =0, yposMissileinitiale=0; //xposMissilefinale=0, yposMissilefinale=0;
+  float xposMissileinitiale =0, yposMissileinitiale=0;
   int ProbabM=int(random(100));
 
   if ((IA.MEquiper[0] == Missile.M[0][0]) || (IA.MEquiper[0] == Missile.M[1][0]))
@@ -64,8 +65,8 @@ void animMiss ()
     {
       ProbM=false;
     }
-    xposMissileinitiale=800;
-    yposMissileinitiale=800;
+    xposMissileinitiale=600;
+    yposMissileinitiale=height/4+100;
     if (ProbabM >= Missile.M[0][0])
     {
       ProbM=true;
@@ -80,14 +81,15 @@ void animMiss ()
     {
       ProbM=false;
     }
-    xposMissileinitiale=800;
-    yposMissileinitiale=800;
+    xposMissileinitiale=width - 600;
+    yposMissileinitiale=height/4-100;
     if (ProbabM >= Missile.M[1][0])
     {
       ProbM=true;
     }
     V.Bouclier.N--;
     V.PV = V.PV - Missile.M[1][1];
+    imgMissile = Tex.Ico[16];
   }
   if ((V.MEquiper[0] == Missile.M[0][0]) || (V.MEquiper[0] == Missile.M[1][0]))
   {
@@ -96,8 +98,8 @@ void animMiss ()
     {
       ProbM=false;
     }
-    xposMissileinitiale=800;
-    yposMissileinitiale=800;
+    xposMissileinitiale=600;
+    yposMissileinitiale=height/4+100;
     if (ProbabM >= Missile.M[0][0])
     {
       ProbM=true;
@@ -113,8 +115,8 @@ void animMiss ()
     {
       ProbM=false;
     }
-    xposMissileinitiale=800;
-    yposMissileinitiale=800;
+    xposMissileinitiale=600;
+    yposMissileinitiale=height/4-100;
     if (ProbabM >= Missile.M[1][0])
     {
       ProbM=true;
@@ -122,14 +124,20 @@ void animMiss ()
     IA.NbBouclier--;
     V.Missile.N--;
     IA.PV = IA.PV - Missile.M[1][1];
+    imgMissile = Tex.Ico[16];
   }
   Missile = new Missile(xposMissileinitiale, yposMissileinitiale);
   PVector TrajMiss = new PVector(xposMissileinitiale, yposMissileinitiale);
   PVector vitesse = new PVector(xposMissileinitiale - xposMissilefinale, yposMissileinitiale - yposMissilefinale);
   TrajMiss.add(vitesse);
-  image(Tex.Ico[15], TrajMiss.x, TrajMiss.y, 30, 30);
+  image(imgMissile, TrajMiss.x, TrajMiss.y, 30, 30);
   stroke(255);
   noFill();
+  
+  if(ProbM == false)
+  {
+    animBoom();
+  }
   //int K= int(random(-50, 50))*s;
   //int V = 300*ms; // vitesse du missile
   //while (Missile.xposMissile > V.x && Missile.xposMissile<Joueur.xpos && Missile.yposMissile<Joueur.ypos && Missile.xposMissile<Joueur.ypos) {
@@ -144,9 +152,9 @@ void animBoom ()
   int p= frameCount;
   for (int i=0; i<=1; i++)
   {
-    if (V.MEquiper[0] == Missile.M[i][0] || V.MEquiper[1] == Missile.M[i][0])
+    if (V.MEquiper[0] == Missile.M[i][0])
     {
-      copy(Tex.Ico[14], 300*p/100, i*300, 300, 300, 25, 50, 30, 30); //copy(image, sourceXdsImage, sourceYdsImage, dimSourceX, dimSourceY, posEcranX, posEcranY, tailleX, tailleY);
+      copy(Tex.Ico[15+i], 300*p/100, i*300, 300, 300, 25, 50, 30, 30); //copy(image, sourceXdsImage, sourceYdsImage, dimSourceX, dimSourceY, posEcranX, posEcranY, tailleX, tailleY);
       stroke(255);
       noFill();
       IA.Salle[IA.ArrivMissile()].PV = IA.Salle[IA.ArrivMissile()].PV - Missile.M[i][1];
@@ -156,9 +164,9 @@ void animBoom ()
 
   for (int i=0; i<=1; i++)
   {
-    if (IA.MEquiper[0] == Missile.M[i][0] || IA.MEquiper[1] == Missile.M[i][0])
+    if (IA.MEquiper[1] == Missile.M[i][0])
     {
-      copy(Tex.Ico[14], 300*p/100, i*300, 300, 300, 25, 50, 30, 30); //copy(image, sourceXdsImage, sourceYdsImage, dimSourceX, dimSourceY, posEcranX, posEcranY, tailleX, tailleY);
+      copy(Tex.Ico[15+i], 300*p/100, i*300, 300, 300, 25, 50, 30, 30); //copy(image, sourceXdsImage, sourceYdsImage, dimSourceX, dimSourceY, posEcranX, posEcranY, tailleX, tailleY);
       stroke(255);
       noFill();
       V.Salle[V.ArrivMissile()].PV = V.Salle[V.ArrivMissile()].PV - Missile.M[i][1];
@@ -181,7 +189,7 @@ void recharger()
     IAMRe[i] = 0;
   }
 
-  if (V.Bouclier.N <= V.Boucliermax)
+  if (V.Bouclier.N <= V.Boucliermax && V.Salle[6].PV>0)
   {
     q=0;
     if (RBouclier == 6)
@@ -190,7 +198,7 @@ void recharger()
     }
     V.Bouclier.N++;
   }
-  if (IA.Bouclier.N <= IA.Boucliermax)
+  if (IA.Bouclier.N <= IA.Boucliermax && IA.Salle[6].PV>0)
   {
     q=0;
     if (RBouclier == 6)

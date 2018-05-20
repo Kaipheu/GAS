@@ -1,2 +1,2 @@
-// mettre de la transparence aux boutons et 1 couleur
-//régler fenêtre échange"
+// mettre de la transparence aux boutons et de la couleur
+//régler fenêtre échange

@@ -38,7 +38,6 @@ void setup() {
   E = new Echange();
   Missile = new Missile(200, 200);
   IA = new IA (100, 100);
-  
 }
 public void Load() {
   V.Image = loadImage("Texture/PNG/Vaisseaux500.png");

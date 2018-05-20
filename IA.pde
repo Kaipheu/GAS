@@ -86,12 +86,12 @@ class IA
 
     P[0] = 1;
     P[1] = 0;        //priorité par salles (viser IA)
-    P[2] = 3;
+    P[2] = 2;
     P[3] = 1;
     P[4] = 0;
-    P[5] = 3;
-    P[6] = 3;
-    P[7] = 2;
+    P[5] = 2;
+    P[6] = 2;
+    P[7] = 0;
   }
   void draw() {
     fill(120, 255);
@@ -130,20 +130,22 @@ class IA
       Tirer1=q;
     }
 
-    //for (int i =-1; i<8; i++)  //salle de préférence à viser
-    //{
-    //  if ((V.Salle[i+1].PV >= V.Salle[i].PV) && (P[i+1] >= P[i]))
-    //  {
-    //    P[i] = P[i+1];
-    //    int Viser = V.Salle[i];
-    //  }
-    //}
+    for (int i =-1; i<8; i++)  //salle de préférence à viser
+    {
+      if ((V.Salle[i+1].PV >= V.Salle[i].PV) && (P[i+1] >= P[i]))
+      {
+        P[i] = P[i+1];
+        ArrivMissile(); //cahnger
+      }
+    }
 
     //if (Salle[2].PV <= Salle[2].PVmax || Salle[5].PV <= Salle[5].PVmax || Salle[6].PV <= Salle[6].PVmax)  //salle qui nécessite des réparations
     //{
     //  //Homme va en direction de la salle
-    //} else {
-    //  //Homme retourne à la case initiale
+    //} else if (Salle[0].PV <= Salle[0].PVmax || Salle[3].PV <= Salle[3].PVmax){
+    //  //Homme va en direction de la salle
+    //}else if (Salle[1].PV <= Salle[1].PVmax || Salle[4].PV <= Salle[4].PVmax || Salle[7].PV <= Salle[7].PVmax){
+    //  //Homme va en direction de la salle
     //}
   }
 }
