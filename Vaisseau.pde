@@ -32,7 +32,7 @@ class Vaisseau extends Enemie {
     Oxy = new Barr(x, y+Image.width+l*0.5, 10, L, l, "O2");// Création de l'instance de Barr pour le niveau d'Oxgène
     Missile = new Barr(x*3, y-3*l, 10, L, l, "Missiles");// Création d'une instance de Barr pour les missile restant
     Carbu = new Barr(x+150, y+(l*0.5+Image.width), 10, L, l, "Caburant");// Création d'une instance de Barr pour le caburant restant
-    Equi = new Barr(x, y+Image.width+l*2, 3, L, l, "Pierre");// Création d'une instance de Barr pour les point de vie de Pierre 
+    Equi = new Barr(x, y+Image.width+l*2, 3, L, l, "Michel");// Création d'une instance de Barr pour les point de vie de Michel
     Michel = new Homme(32, 27, l);
 
     Missile.N = Carbu.N = 13;            //dispositifs au début du jeu
