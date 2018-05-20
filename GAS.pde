@@ -14,13 +14,14 @@
 
 Menu M; // Objet Menu  //<>// //<>// //<>// //<>//
 
-Vaisseau V; // Objet vaisseaux Joueur et ennemi
+ // Objet vaisseaux Joueur et ennemi
 
 Texture Tex;
 //Geste G;
 Missile Miss;
 Echange E;
 IA IA;
+Vaisseau V;
 char KEY ='0';
 Etoiles[] Et = new Etoiles[100];
 
@@ -34,9 +35,9 @@ void setup() {
   smooth(9);
   textSize(20);
   M = new Menu();// Créeation d'une instance Menu.
-  Miss = new Missile(200, 200);
-  V = new Vaisseau(100, height/4, 104, true);// Instance Vaiseau Joueur
-  E = new Echange(); 
+  V = new Vaisseau(100, height/4, 104,true);// Instance Vaiseau Joueur
+  E = new Echange();
+  Missile = new Missile(200, 200);
   IA = new IA (100, 100);
 }
 public void Load() {
@@ -57,9 +58,6 @@ void draw() {
     V.draw();
     IA.draw();
     E.draw();
-    println(mouseX);
-    println(mouseY);
-    animMiss();
   }
   
   //G.draw();

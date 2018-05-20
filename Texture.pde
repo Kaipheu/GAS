@@ -31,4 +31,7 @@ class Texture {
     S.Type = U.Type;
     Texture(S);
   }
+  void Texture(Homme Autre){
+    Texture(new Salle(Autre.Pos.x,Autre.Pos.y,Autre.Taille,Autre.Taille));
+  }
 }
