@@ -38,9 +38,9 @@ class Echange {
       Fen.InitBouton(i, 200, i*100, 50, 50);
       if (i==5) { 
         for (int j=6; j<=13; j++) {
-          Fen.InitBouton(j, j*150-500, i*100, 50, 50);
+          Fen.InitBouton(j, j*165-500, i*100, 50, 50);
           Fen.B[j].Def_Ch(V.Salle[j-6].Nom + " "+ str(C[3][0]) + " Lunes");
-          image(Tex.Ico[j-6], j*150-500, i*100, 50, 50);
+          image(Tex.Ico[j-6], j*165-500, i*100, 50, 50);
         }
       }
     }

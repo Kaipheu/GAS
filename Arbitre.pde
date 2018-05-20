@@ -42,12 +42,14 @@ void combat()
     fill(#BE2292);
     textSize(35);
     text("Vous avez perdu ...", width/2, height/2);
+    //exit
   }
   if (IA.NumEnnemi ==10 )
   {
     fill(#BE2292);
     textSize(35);
     text("Vous avez réussi le jeu", width/2, height/2);
+    exit();
   }
 }
 
@@ -230,6 +232,7 @@ void dommage()
       fill(#BE2292);
       textSize(35);
       text("Vous avez perdu", width/2, height/2);
+      //exit
     }
   }
 
@@ -248,6 +251,7 @@ if (V.Equi[0].N >= 0)
       textSize(35);
       text("Vous avez perdu ... ", width/2, height/2-150);
       text("Vous n'avez plus d'homme!", width/2, height/2+150);
+      //exit
     }
 }
 
