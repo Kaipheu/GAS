@@ -65,8 +65,8 @@ void animMiss ()
     {
       ProbM=false;
     }
-    xposMissileinitiale=600;
-    yposMissileinitiale=height/4+100;
+    xposMissileinitiale=540;
+    yposMissileinitiale =height/4 +120;
     if (ProbabM >= Missile.M[0][0])
     {
       ProbM=true;
@@ -81,8 +81,8 @@ void animMiss ()
     {
       ProbM=false;
     }
-    xposMissileinitiale=width - 600;
-    yposMissileinitiale=height/4-100;
+    xposMissileinitiale=width - 540;
+    yposMissileinitiale=height/4+380;
     if (ProbabM >= Missile.M[1][0])
     {
       ProbM=true;
@@ -98,8 +98,8 @@ void animMiss ()
     {
       ProbM=false;
     }
-    xposMissileinitiale=600;
-    yposMissileinitiale=height/4+100;
+    xposMissileinitiale=400;
+    yposMissileinitiale=height/4+120;
     if (ProbabM >= Missile.M[0][0])
     {
       ProbM=true;
@@ -115,8 +115,8 @@ void animMiss ()
     {
       ProbM=false;
     }
-    xposMissileinitiale=600;
-    yposMissileinitiale=height/4-100;
+    xposMissileinitiale=400;
+    yposMissileinitiale=height/4+380;
     if (ProbabM >= Missile.M[1][0])
     {
       ProbM=true;
@@ -133,8 +133,8 @@ void animMiss ()
   image(imgMissile, TrajMiss.x, TrajMiss.y, 30, 30);
   stroke(255);
   noFill();
-  
-  if(ProbM == false)
+
+  if (ProbM == false)
   {
     animBoom();
   }

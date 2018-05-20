@@ -17,7 +17,7 @@ class Texture {
     Ico[14] = loadImage("Texture/PNG/Assemblage_missile.png");
     Ico[15] = loadImage("Texture/PNG/Missile0.png");
     Ico[16] = loadImage("Texture/PNG/Missile1.png");
-    Ico[17] = loadImage("Texture/PNG/Homme.png");
+    Ico[17] = loadImage("Texture/PNG/Homme_1000x1000.png");
 }
   void Texture(Bouton B){
     image(Ico[B.ID],B.Pos.x,B.Pos.y,B.Long,B.Larg);
