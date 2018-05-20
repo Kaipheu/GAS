@@ -7,7 +7,7 @@ class Bouton extends Unite {
     super(x,y,Long,Larg);
     Nom = str(Id);
     ID=Id;
-    Ar=50;
+    //Ar=50;
   }
 
   void draw() {
