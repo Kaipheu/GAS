@@ -60,6 +60,7 @@ void draw() {
     E.draw();
     println(mouseX);
     println(mouseY);
+    combat();
   }
   
   //G.draw();

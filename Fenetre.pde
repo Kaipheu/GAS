@@ -12,7 +12,7 @@ class Fenetre {
   }
 
   void draw() {
-    textAlign(CENTER,TOP);
+    textAlign(CENTER, TOP);
     stroke(0);
     
     fill(0, 0, 0, 200);

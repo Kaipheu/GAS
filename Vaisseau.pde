@@ -166,10 +166,12 @@ class Vaisseau {
 
   void PlacementSalle(int T, short[][] PosS) {
 
-    Salle[0] =new Salle(Pos.x+PosS[0][0], Pos.y+PosS[0][1], T); 
+    Salle[0] =new Salle(Pos.x+PosS[0][0], Pos.y+PosS[0][1], T);
+    
     Salle[0].DefType(0);
     Salle[0].DefNom("Bouclier");
     Salle[0].Texture = true;
+    
     Salle[1] =new Salle(Pos.x+PosS[1][0], Pos.y+PosS[1][1], T);
     Salle[1].DefType(1);
     Salle[1].DefNom("Réacteur");

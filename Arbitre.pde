@@ -60,7 +60,7 @@ void animMiss ()
 
   if ((IA.MEquiper[0] == Missile.M[0][0]) || (IA.MEquiper[0] == Missile.M[1][0]))
   {
-    ProbabM= Missile.M[0][0]/ProbabM;
+    ProbabM= Missile.M[0][0]/(ProbabM+1);
     if (ProbabM <1)
     {
       ProbM=false;
@@ -76,7 +76,7 @@ void animMiss ()
   }
   if ((IA.MEquiper[1] == Missile.M[0][0]) || (IA.MEquiper[1] == Missile.M[1][0]))
   {
-    ProbabM= Missile.M[1][0]/ProbabM;
+    ProbabM = Missile.M[1][0]/(ProbabM+1);
     if (ProbabM <1)
     {
       ProbM=false;
@@ -93,7 +93,7 @@ void animMiss ()
   }
   if ((V.MEquiper[0] == Missile.M[0][0]) || (V.MEquiper[0] == Missile.M[1][0]))
   {
-    ProbabM= Missile.M[0][0]/ProbabM;
+    ProbabM= Missile.M[0][0]/(ProbabM+1);
     if (ProbabM <1)
     {
       ProbM=false;
@@ -110,7 +110,7 @@ void animMiss ()
   }
   if ((V.MEquiper[1] == Missile.M[0][0]) || (V.MEquiper[1] == Missile.M[1][0]))
   {
-    ProbabM= Missile.M[1][0]/ProbabM;
+    ProbabM= Missile.M[1][0]/(ProbabM+1);
     if (ProbabM <1)
     {
       ProbM=false;
@@ -159,6 +159,10 @@ void animBoom ()
       noFill();
       IA.Salle[IA.ArrivMissile()].PV = IA.Salle[IA.ArrivMissile()].PV - Missile.M[i][1];
       IA.PV = IA.PV - Missile.M[i][1];
+      //if (/*Homme est dans la salle*/)
+      //{
+      //  V.Homme.PV = V.Homme.PV - Missile.M[i][1];
+      //}
     }
   }
 
@@ -171,6 +175,10 @@ void animBoom ()
       noFill();
       V.Salle[V.ArrivMissile()].PV = V.Salle[V.ArrivMissile()].PV - Missile.M[i][1];
       V.PV = V.PV - Missile.M[i][1];
+      //if (/*Homme est dans la salle*/)
+      //{
+      //  IA.Homme.PV = IA.Homme.PV - Missile.M[i][1];
+      //}
     }
   }
 }

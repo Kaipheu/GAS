@@ -5,21 +5,20 @@ class Echange {
   int[][] C = new int[4][8];
   Fenetre Fen;
   PImage Image;
-  
+
   //Homme
   //Ravitaillement : Missile, Carburant, PV
   //Arme :
   //Salle : Oxygene, Surveillance, Reserve, Hopital, Pilotage, Arme, Bouclier, Reacteur
-  
+
   Echange() {
-    D[0][0]= 6;                      //nb max de dispositfs
-    D[1][2]= 30;
+    D[1][2]= 30;        //nb max de dispositfs
     D[2][0]= 5;
     for (int i=0; i<=7; i++)
     {
       D[3][i]= 3;
     }
-    
+
     E[0][0]= 2;
     E[1][0]= E[1][1]= 13;            //dispositifs au début du jeu
     E[1][2]= 20;
@@ -36,6 +35,8 @@ class Echange {
     C[3][0]= 15;
 
     Fen = new Fenetre(width/4, height/8, 14, 14);
+    Fen.Long= width -100;
+    Fen.Larg = height -100;
     for (int i=0; i<=5; i++)
     {
       Fen.InitBouton(i, 200, i*100, 50, 50);
@@ -53,6 +54,10 @@ class Echange {
     Fen.B[3].Def_Ch("Points de Vie  :  " + str(C[1][0]) + "  Lunes");
     Fen.B[4].Def_Ch("Arme tir coup par coup  :  " + str(C[2][0]) + "  Lunes");
     Fen.B[5].Def_Ch("Arme tir en rafale  :  " + str(C[2][1]) + "  Lunes");
+    for (int i=0; i<=13; i++)
+    {
+      Fen.B[i].C_Tx = color(122, 122, 50);
+    }
   }
 
   void draw() {
