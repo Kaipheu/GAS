@@ -40,15 +40,17 @@ void combat()
   if (V.Pv.N <=0)
   {
     fill(#BE2292);
-    textSize(28);
-    text("Vous avez perdu", 700, 500);
+    textSize(35);
+    text("Vous avez perdu ...", width/2, height/2);
   }
   if (IA.NumEnnemi ==10 )
   {
+    fill(#BE2292);
     textSize(35);
     text("Vous avez réussi le jeu", width/2, height/2);
   }
 }
+
 
 void animMiss ()
 { 
@@ -137,14 +139,14 @@ void animMiss ()
   }
   if (ProbM == false)
   {
-  Missile = new Missile(xposMissileinitiale, yposMissileinitiale);
-  PVector TrajMiss = new PVector(xposMissileinitiale, yposMissileinitiale);
-  PVector vitesse = new PVector(xposMissileinitiale - xposMissilefinale, yposMissileinitiale - yposMissilefinale);
-  TrajMiss.add(vitesse);
-  image(imgMissile, TrajMiss.x, TrajMiss.y, 30, 30);
-  stroke(255);
-  noFill();
-  animBoom();
+    Missile = new Missile(xposMissileinitiale, yposMissileinitiale);
+    PVector TrajMiss = new PVector(xposMissileinitiale, yposMissileinitiale);
+    PVector vitesse = new PVector(xposMissileinitiale - xposMissilefinale, yposMissileinitiale - yposMissilefinale);
+    TrajMiss.add(vitesse);
+    image(imgMissile, TrajMiss.x, TrajMiss.y, 30, 30);
+    stroke(255);
+    noFill();
+    animBoom();
   }
   //int K= int(random(-50, 50))*s;
   //int V = 300*ms; // vitesse du missile
@@ -155,9 +157,10 @@ void animMiss ()
   //}
 }
 
+
 void animBoom ()
 {
-  int p= frameCount;
+  int p = frameCount;
   for (int i=0; i<=1; i++)
   {
     if (V.MEquiper[0] == Missile.M[i][0] && IA.VIA.ArrivMissile()<=7)
@@ -191,64 +194,131 @@ void animBoom ()
   }
 }
 
+
+void dommage()
+{
+  int o = p = frameCount;
+  if (V.Salle[0].PV<=0)
+  {
+    V.Salle[0].PV=0;
+    V.Oxy.N = V.Oxy.N - (p/1000);
+    if (V.Oxy.N==0)
+    {
+      p=0;
+      V.Homme.PV = V.Homme.PV - (o/600))
+    }
+  }
+
+  if (V.Salle[2].PV<=0)
+  {
+    V.Salle[2].PV=0;
+    V.Missile.N = int(random((V.Missile.N + V.Carbu.N)/2));
+    V.Carbu.N = int(random((V.Missile.N + V.Carbu.N)/2));
+  }
+
+  if (V.Salle[3].PV<=0)
+  {
+    V.Salle[3].PV=0;
+    //V.Homme.PV = V.Homme.PV + (o/600)) sui sont dans la salle
+  }
+
+  if (V.Salle[4].PV<=0)
+  {
+    V.Salle[4].PV=0;
+    if (V.Equi[0].PV <= 0)
+    {
+      fill(#BE2292);
+      textSize(35);
+      text("Vous avez perdu", width/2, height/2);
+    }
+  }
+
+  if (V.Salle[5].PV<=0)
+  {
+    V.Salle[5].PV=0;
+  }
+
+  if (V.Salle[6].PV<=0)
+  {
+    V.Salle[6].PV=0;
+  }
+
+  if (V.Salle[7].PV<=0)
+  {
+    V.Salle[7].PV=0;
+    if (V.Equi[0].PV >= 0)
+    {
+      fill(#BE2292);
+      textSize(35);
+      text("Vous avez perdu", width/2, height/2);
+    }
+  }
+}
+
+
 void recharger()
 {
-  int q = frameCount;
-  int r = frameCount;
-  int l = frameCount;
+  int  q = r = l = frameCount;
   int RBouclier = q;
   int[] VMRe = new int[2];
   int[] IAMRe = new int[2];
+
   for (int i=0; i<=1; i++)
   {
     VMRe[i] = 0;
     IAMRe[i] = 0;
   }
-
-  if (V.Bouclier.N <= V.Boucliermax && V.Salle[6].PV>0)
+  if (Salle[6].PV>0)
   {
-    q=0;
-    if (RBouclier == 6)
+    if (V.Bouclier.N <= V.Boucliermax && V.Salle[6].PV>0)
     {
-      RBouclier=q-6;
-    }
-    V.Bouclier.N++;
-  }
-  if (IA.Bouclier.N <= IA.Boucliermax && IA.Salle[6].PV>0)
-  {
-    q=0;
-    if (RBouclier == 6)
-    {
-      RBouclier=q-6;
-    }
-    IA.Bouclier.N++;
-  }
-  for (int j=0; j<=1; j++)
-  {
-    for (int i=0; i<=1; i++)
-    {
-      if (VMRe[j] <= Missile.M[i][2] && V.MEquiper[i] == Missile.M[i][0])
+      q=0;
+      if (RBouclier == 6)
       {
-        l=0;
-        if (VMRe[j] == Missile.M[i][2])
+        RBouclier=q-6;
+      }
+      V.Bouclier.N++;
+    }
+    if (IA.Bouclier.N <= IA.Boucliermax && IA.Salle[6].PV>0)
+    {
+      q=0;
+      if (RBouclier == 6)
+      {
+        RBouclier=q-6;
+      }
+      IA.Bouclier.N++;
+    }
+  }
+
+  if (Salle[5].PV>0)
+  {
+    for (int j=0; j<=1; j++)
+    {
+      for (int i=0; i<=1; i++)
+      {
+        if (VMRe[j] <= Missile.M[i][2] && V.MEquiper[i] == Missile.M[i][0])
         {
-          VMRe[j] = l - Missile.M[i][2];
-          V.MRTer[j] = true;
+          l=0;
+          if (VMRe[j] == Missile.M[i][2])
+          {
+            VMRe[j] = l - Missile.M[i][2];
+            V.MRTer[j] = true;
+          }
         }
       }
-    }
-  }  
-  for (int j=0; j<=1; j++)
-  {
-    for (int i=0; i<=1; i++)
+    }  
+    for (int j=0; j<=1; j++)
     {
-      if (IAMRe[j] <= Missile.M[i][2] && IA.MEquiper[i] == Missile.M[i][0])
+      for (int i=0; i<=1; i++)
       {
-        r=0;
-        if (IAMRe[j] == Missile.M[i][2])
+        if (IAMRe[j] <= Missile.M[i][2] && IA.MEquiper[i] == Missile.M[i][0])
         {
-          IAMRe[j] = r - Missile.M[i][2];
-          IA.MRTer[j] = true;
+          r=0;
+          if (IAMRe[j] == Missile.M[i][2])
+          {
+            IAMRe[j] = r - Missile.M[i][2];
+            IA.MRTer[j] = true;
+          }
         }
       }
     }

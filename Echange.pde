@@ -75,12 +75,12 @@ class Echange {
         {
           Lune = Lune - C[0][0];
         }
-        if (Fen.B[1].Aff && Lune>= C[1][0] && V.Missile.N<D[1][0] && (V.Missile.N + V.Carbu.N)<=D[2][2])
+        if (Fen.B[1].Aff && Lune>= C[1][0] && V.Missile.N<D[1][0] && (V.Missile.N + V.Carbu.N)<=30)
         {
           Lune = Lune - C[1][0];
           V.Missile.N++;
         }
-        if (Fen.B[2].Activ && Lune>= C[1][1] && V.Carbu.N<D[1][1] && (V.Missile.N + V.Carbu.N)<=D[2][2])
+        if (Fen.B[2].Activ && Lune>= C[1][1] && V.Carbu.N<D[1][1] && (V.Missile.N + V.Carbu.N)<=30)
         {
           Lune = Lune - C[1][1];
           V.Carbu.N++;
@@ -93,22 +93,22 @@ class Echange {
         if ((Fen.B[4].Activ && Lune>= C[2][0] && E[2][0]<D[2][0]))
         {
           Lune = Lune - C[2][0];
-          V.MEquiper[1] = Missile.M[0][0];
+          V.MEquiper[1] = Miss.M[0][0];
         }
         if (Fen.B[5].Activ && Lune>= C[2][1] && E[2][1]<D[2][1])
         {
           Lune = Lune - C[2][1];
-          V.MEquiper[1] = Missile.M[1][0];
+          V.MEquiper[1] = Miss.M[1][0];
         }
-        if (Lune>= C[3][0] && ((Fen.B[6].Activ &&  E[3][0]<D[3][0]) || (Fen.B[7].Activ && E[3][1]<D[3][1]) || (Fen.B[8].Activ && E[3][2]<D[3][2]) || (Fen.B[9].Activ && Lune>= C[3][0])
-          || (Fen.B[10].Activ && E[3][4]<D[3][4]) || (Fen.B[11].Activ && E[3][5]<D[3][5]) || (Fen.B[12].Activ && E[3][6]<D[3][6]) || (Fen.B[13].Activ && E[3][7]<D[3][7])))
+        if (for(int i=6; i<=13; i++) {(Fen.B[i].Activ &&  E[3][i-6]<D[3][i-6])})
         {
           Lune = Lune - C[3][0];
-          C[3][0]= C[3][0] +15;
+          C[3][0] = C[3][0] + 15;
           if (C[3][0] <= 15)
           {
-            C[3][0]= C[3][0] - 15;
+            C[3][0] = C[3][0] - 15;
           }
+          Salle[i-6]++;
         }
       }
     }

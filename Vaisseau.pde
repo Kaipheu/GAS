@@ -83,25 +83,21 @@ class Vaisseau {
       Equi[2] = null; 
     }
     
-    MEquiper[0] = Missile.M[0][0];
+    MEquiper[0] = Miss.M[0][0];
     MEquiper[1] = 0;
     MRTer[0] = MRTer[1] = false;
-    V.Missile.N = V.Carbu.N= 13;            //dispositifs au début du jeu
-    V.Pv.N = 4;
-    
+    Missile.N = Carbu.N= 13;            //dispositifs au début du jeu
+    PV=20;
 
     PlacementSalle(T, PosS);
     for (Salle S : Salle) {
       PV += S.PV;
       S.Texture = true;
     }
-
-   
-
-
     //Image.resize(T*5,T*6);
   }
-
+    
+    
 
   void draw() {
     image(Image, Pos.x, Pos.y);

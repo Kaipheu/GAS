@@ -39,47 +39,47 @@ class IA
     case '0': 
       PV=15;
       Boucliermax = NbBouclier = 1;
-      MEquiper[0] = Missile.M[0][0];
+      MEquiper[0] = Miss.M[0][0];
       MEquiper[1] = 0;
-      MR[0] = Missile.M[0][2];
+      MR[0] = Miss.M[0][2];
       MR[0] = 0;
       break;
     case '1': 
       PV=25;
       Boucliermax=2;
-      MEquiper[0] = Missile.M[0][0];
-      MEquiper[1] = Missile.M[0][0];
-      MR[0] = Missile.M[0][2];
+      MEquiper[0] = Miss.M[0][0];
+      MEquiper[1] = Miss.M[0][0];
+      MR[0] = Miss.M[0][2];
       MR[0] = 0;
     case '2': 
       PV=15;
       Boucliermax=3;
-      MEquiper[0] = Missile.M[0][0];
-      MEquiper[1] = Missile.M[1][0];
-      MR[0] = Missile.M[0][2];
-      MR[0] = Missile.M[1][2];
+      MEquiper[0] = Miss.M[0][0];
+      MEquiper[1] = Miss.M[1][0];
+      MR[0] = Miss.M[0][2];
+      MR[0] = Miss.M[1][2];
     case '3': 
       PV=20+int(random(5));
       Boucliermax=2;
-      MEquiper[0] = Missile.M[int(random(1))][0];
-      MEquiper[1] = Missile.M[int(random(1))][0];
+      MEquiper[0] = Miss.M[int(random(1))][0];
+      MEquiper[1] = Miss.M[int(random(1))][0];
       for (int i=0; i<=1; i++) { 
         for (int j=0; j<=1; j++) {
-          if (MEquiper[i] == Missile.M[j][0])
+          if (MEquiper[i] == Miss.M[j][0])
           {
-            MR[i]= Missile.M[j][2];
+            MR[i]= Miss.M[j][2];
           }
         }
       }
-      MR[0] = Missile.M[0][2];
+      MR[0] = Miss.M[0][2];
       MR[0] = 0;
       break;
     default :
       PV=25;
       Boucliermax=2;
-      MEquiper[0] = Missile.M[0][0];
-      MEquiper[1] = Missile.M[0][0];
-      MR[0] = Missile.M[0][2];
+      MEquiper[0] = Miss.M[0][0];
+      MEquiper[1] = Miss.M[0][0];
+      MR[0] = Miss.M[0][2];
       MR[0] = 0;
       break;
     }
@@ -106,12 +106,12 @@ class IA
   {
     int q = frameCount;
     int Tirer1 = q, Tirer2=q;
-    if (Tirer1==Missile.M[0][2])
+    if (Tirer1==Miss.M[0][2])
     {
       Tire1=true;
       Tirer1=q;
     }
-    if (Tirer2==Missile.M[1][2])
+    if (Tirer2==Miss.M[1][2])
     {
       Tire2=true;
       Tirer1=q;
@@ -122,7 +122,7 @@ class IA
       if ((V.Salle[i+1].PV >= V.Salle[i].PV) && (P[i+1] >= P[i]))
       {
         P[i] = P[i+1];
-        VIA.ArrivMissile(); //cahnger
+        VIA.ArrivMissile(); //changer
       }
     }
 

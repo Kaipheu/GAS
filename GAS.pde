@@ -18,7 +18,7 @@ Vaisseau V; // Objet vaisseaux Joueur et ennemi
 
 Texture Tex;
 //Geste G;
-Missile Missile;
+Missile Miss;
 Echange E;
 IA IA;
 char KEY ='0';
@@ -34,7 +34,7 @@ void setup() {
   smooth(9);
   textSize(20);
   M = new Menu();// Créeation d'une instance Menu.
-  Missile = new Missile(200, 200);
+  Miss = new Missile(200, 200);
   V = new Vaisseau(100, height/4, 104, true);// Instance Vaiseau Joueur
   E = new Echange(); 
   IA = new IA (100, 100);
