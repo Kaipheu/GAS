@@ -227,12 +227,12 @@ void dommage()
   if (V.Salle[4].PV<=0)
   {
     V.Salle[4].PV=0;
-    if (V.Equi.N <= 0)
+    if (V.Equi[0].N <= 0)
     {
       fill(#BE2292);
       textSize(35);
       text("Vous avez perdu", width/2, height/2);
-      //exit
+      exit();
     }
   }
 
@@ -245,13 +245,13 @@ void dommage()
   {
     V.Salle[6].PV=0;
   }
-if (V.Equi.N >= 0)
+if (V.Equi[0].N >= 0)
     {
       fill(#BE2292);
       textSize(35);
       text("Vous avez perdu ... ", width/2, height/2-150);
       text("Vous n'avez plus d'homme!", width/2, height/2+150);
-      //exit
+      exit();
     }
 }
 

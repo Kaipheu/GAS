@@ -6,6 +6,7 @@ class Echange {
   Fenetre Fen;
   PImage Image;
   boolean Affiche;
+
   //Homme
   //Ravitaillement : Missile, Carburant, PV
   //Arme : Coup par coup, rafale
@@ -18,24 +19,22 @@ class Echange {
     {
       D[3][i]= 3;
     }
-    E[2][0] = 1;
     for (int i=0; i<=7; i++)
     {
-      E[3][i]= 3;
+      E[3][i] = 1;
     }
 
-    C[0][0]= int(random(5))+42;    //coût
-    C[1][0]=  4;
+    C[1][0]=  4;         //coût de l'achat
     C[2][0] = 40;
-    C[2][1] = 60;//voir classe missile
-    C[3][0]= 15;
+    C[2][1] = 60;
+    C[3][0] = 15;
 
-    Fen = new Fenetre(100, 100, 14, 14);
+    Fen = new Fenetre(100, 100, 14, 14);                              //afficher la fenêtre bouton
     Fen.Long= width -100;
     Fen.Larg = height -100;
-    for (int i=0; i<=5; i++)
+    for (int i=1; i<=5; i++)
     {
-      Fen.InitBouton(i, 200, i*100, 50, 50);
+      Fen.InitBouton(i, 200, i*100, 50, 50);                          //initialisation des boutons, du prix et nom de l'achat
       if (i==5) { 
         for (int j=6; j<=13; j++) {
           Fen.InitBouton(j, j*165-500, i*100, 50, 50);
@@ -44,8 +43,9 @@ class Echange {
         }
       }
     }
-    Fen.B[0].Def_Ch("Hommes  : " + str(C[0][0]) + "  Lunes");                  //afficher le prix
-    Fen.B[1].Def_Ch("Missile  : " + str(C[1][0]) + "  Lunes");
+    Fen.InitBouton(0, width -100, height - 70, 100, 70);               // bouton pour accéder à l'échange
+    Fen.B[0].Def_Ch(" Echange " );                  
+    Fen.B[1].Def_Ch("Missile  : " + str(C[1][0]) + "  Lunes");         
     Fen.B[2].Def_Ch("Carburant  : " + str(C[1][0]) + "  Lunes");
     Fen.B[3].Def_Ch("Points de Vie  : " + str(C[1][0]) + "  Lunes");
     Fen.B[4].Def_Ch("Arme tir coup par coup  : " + str(C[2][0]) + "  Lunes");
