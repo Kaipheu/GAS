@@ -80,9 +80,15 @@ class Vaisseau {
       Carbu = null;
       Equi[0] = null;
       Equi[1] = null;
-      Equi[2] = null;
+      Equi[2] = null; 
     }
-
+    
+    MEquiper[0] = Missile.M[0][0];
+    MEquiper[1] = 0;
+    MRTer[0] = MRTer[1] = false;
+    V.Missile.N = V.Carbu.N= 13;            //dispositifs au début du jeu
+    V.Pv.N = 4;
+    
 
     PlacementSalle(T, PosS);
     for (Salle S : Salle) {
@@ -90,10 +96,7 @@ class Vaisseau {
       S.Texture = true;
     }
 
-
-    //MEquiper[0] = Missile.M[0][0];
-    MEquiper[1]=0;
-    MRTer[0] = MRTer[1] = false;
+   
 
 
     //Image.resize(T*5,T*6);

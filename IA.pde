@@ -100,20 +100,7 @@ class IA
     VIA.draw();
   }
   
-  PVector AvPos(int ID) {
-    return Salle[ID].Pos;
-  }
-  int AvPVSalle(int ID) {
-    return Salle[ID].PV;
-  }
-  int ArrivMissile() {
-    for (Salle S : Salle) {
-      if (S.AuDessu()) {
-        return S.Type;
-      }
-    }
-    return 9;
-  }
+   
 
   void action()
   {
@@ -135,7 +122,7 @@ class IA
       if ((V.Salle[i+1].PV >= V.Salle[i].PV) && (P[i+1] >= P[i]))
       {
         P[i] = P[i+1];
-        ArrivMissile(); //cahnger
+        VIA.ArrivMissile(); //cahnger
       }
     }
 
