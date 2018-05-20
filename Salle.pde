@@ -43,14 +43,14 @@ public class Salle extends Bouton {
     this.Long = Long;
     this.Larg = Larg;
     Nom = "";
-    Ar= 0;
+    Arrondi = 0;
   }
   Salle(float X,float Y, int T){
     super(int(X),int(Y),T,T,0);
     this.Long = T;
     this.Larg = T;
     Nom = "";
-    Ar= 0;
+    Arrondie= 0;
   }
   void DefType(int Type) {
     this.Type = Type;

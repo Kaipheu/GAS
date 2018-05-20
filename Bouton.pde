@@ -2,19 +2,18 @@ class Bouton extends Unite {
   Boolean Activ = false, Aff = true,Texture=false;
   String Nom;
   color C_Tx = 255;
-  int ID;
+  int ID,Arrondi=50 ;
   Bouton(float x, float y, int Long, int Larg, int Id) {
     super(x,y,Long,Larg);
     Nom = str(Id);
     ID=Id;
-    Ar=50;
   }
 
   void draw() {
     if(!Texture){
      fill(C_Rp);
     stroke(C_Tr);
-    rect(Pos.x, Pos.y, Long, Larg,Ar);
+    rect(Pos.x, Pos.y, Long, Larg,Arrondie);
     textAlign(CENTER, CENTER);
     fill(C_Tx);
     text(Nom, Pos.x+Long/2, Pos.y+Larg/2);
