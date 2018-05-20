@@ -1,7 +1,6 @@
 class Missile
 {
-  int[][] M = new int[2][3];
-
+   public int[][] M = new int[2][3];
   Missile(float xposMissile, float yposMissile)
   { 
     yposMissile = 0;
