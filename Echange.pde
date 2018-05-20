@@ -49,7 +49,7 @@ class Echange {
     Fen.B[2].Def_Ch("Carburant  : " + str(C[1][0]) + "  Lunes");
     Fen.B[3].Def_Ch("Points de Vie  : " + str(C[1][0]) + "  Lunes");
     Fen.B[4].Def_Ch("Arme tir coup par coup  : " + str(C[2][0]) + "  Lunes");
-    Fen.B[5].Def_Ch("Arme tir en rafale  : " + str(C[2][1]) + "  Lunes");
+    Fen.B[5].Def_Ch("Arme tir en rafale  : " + str(C[2][1]) + " :  Lunes");
     for (int i=0; i<=13; i++)
     {
       Fen.B[i].C_Tx = color(255, 0, 0);
@@ -100,15 +100,17 @@ class Echange {
           Lune = Lune - C[2][1];
           V.MEquiper[1] = Miss.M[1][0];
         }
-        if (for(int i=6; i<=13; i++) {(Fen.B[i].Activ &&  E[3][i-6]<D[3][i-6])})
-        {
-          Lune = Lune - C[3][0];
-          C[3][0] = C[3][0] + 15;
-          if (C[3][0] <= 15)
+        for(int i=6; i<=13; i++) {
+          if (Fen.B[i].Activ && E[3][i-6]<D[3][i-6])
           {
-            C[3][0] = C[3][0] - 15;
+            Lune = Lune - C[3][0];
+            C[3][0] = C[3][0] + 15;
+            if (C[3][0] <= 15)
+            {
+              C[3][0] = C[3][0] - 15;
+            }
+            V.Salle[i-6].PV++;
           }
-          Salle[i-6]++;
         }
       }
     }

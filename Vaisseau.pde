@@ -55,6 +55,13 @@ class Vaisseau {
       Equi[0] = new Barr(x, y+Image.width+l*2, 3, L, l, "Pierre");
       Equi[1] = new Barr(x+(l*3)^2, y+l*2+Image.width, 3, L, l, "Jacques");
       Equi[2] = new Barr(x+(l*6), y+l*2+Image.width, 3, L, l, "Michel");
+      
+      MEquiper[0] = Miss.M[0][0];
+      MEquiper[1] = 0;
+      MRTer[0] = MRTer[1] = false;
+      Missile.N = Carbu.N = 13;            //dispositifs au début du jeu
+      
+      PV=20;
     } else {
       Image = loadImage("Texture/PNG/IA.png");
       PosS[0][0] =-364 ;
@@ -80,14 +87,8 @@ class Vaisseau {
       Carbu = null;
       Equi[0] = null;
       Equi[1] = null;
-      Equi[2] = null; 
+      Equi[2] = null;
     }
-    
-    MEquiper[0] = Miss.M[0][0];
-    MEquiper[1] = 0;
-    MRTer[0] = MRTer[1] = false;
-    Missile.N = Carbu.N= 13;            //dispositifs au début du jeu
-    PV=20;
 
     PlacementSalle(T, PosS);
     for (Salle S : Salle) {
@@ -96,8 +97,8 @@ class Vaisseau {
     }
     //Image.resize(T*5,T*6);
   }
-    
-    
+
+
 
   void draw() {
     image(Image, Pos.x, Pos.y);
@@ -166,11 +167,11 @@ class Vaisseau {
   void PlacementSalle(int T, short[][] PosS) {
 
     Salle[0] =new Salle(Pos.x+PosS[0][0], Pos.y+PosS[0][1], T);
-    
+
     Salle[0].DefType(0);
     Salle[0].DefNom("Bouclier");
     Salle[0].Texture = true;
-    
+
     Salle[1] =new Salle(Pos.x+PosS[1][0], Pos.y+PosS[1][1], T);
     Salle[1].DefType(1);
     Salle[1].DefNom("Réacteur");
