@@ -19,7 +19,7 @@ class IA
     YposIA = height - 100;
     MRTer[0]=false;
     MRTer[1]=false;
-    VIA =new Vaisseau(width - 600, height/4, 104, -1); // l larg et taille salle
+    VIA =new Vaisseau(width - 600, height/4, 104, false); // l larg et taille salle
     Pv = new Barr(150, 150-(5*150)-5, PV, 150, 150, "Point de vie");
     Bouclier = new Barr(150, 150-3*150, 3, 150, 150, "Bouclier");
 
