@@ -227,7 +227,7 @@ void dommage()
   if (V.Salle[4].PV<=0)
   {
     V.Salle[4].PV=0;
-    if (V.Equi[0].N <= 0)
+    if (V.Equi.N <= 0)
     {
       fill(#BE2292);
       textSize(35);
@@ -245,7 +245,7 @@ void dommage()
   {
     V.Salle[6].PV=0;
   }
-if (V.Equi[0].N >= 0)
+if (V.Equi.N >= 0)
     {
       fill(#BE2292);
       textSize(35);

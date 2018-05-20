@@ -1,6 +1,6 @@
 class Vaisseau extends Enemie {
   Barr Carbu;// Carburant restant
-  Barr[] Equi= new Barr[3];// Point de l'équipage 
+  Barr Equi;// Point de l'équipage 
   Barr Missile; // Missile restants
   Barr Oxy;   // Niveau d'oxygène du Vaiseaux
   Homme Michel;
@@ -45,7 +45,7 @@ class Vaisseau extends Enemie {
   Missile.N = 13;
   Carbu.N = 13;            //dispositifs au début du jeu
   MEquiper[0] = Miss.M[0][0];
-  Equiper[1] = 0;
+  MEquiper[1] = 0;
   MRTer[0] = MRTer[1] = false;
 
   PV=20;

@@ -32,6 +32,6 @@ class Texture {
     Texture(S);
   }
   void Texture(Homme Autre){
-    Texture(new Salle(Autre.Pos.x,Autre.Pos.y,Autre.Taille,Autre.Taille));
+    image(Ico[17],Autre.Pos.x,Autre.Pos.y,Autre.Taille,Autre.Taille);
   }
 }

@@ -24,7 +24,6 @@ IA IA;
 Vaisseau V;
 char KEY ='0';
 Etoiles[] Et = new Etoiles[100];
-
 void settings () {
   fullScreen();
   Tex = new Texture();
@@ -35,7 +34,7 @@ void setup() {
   smooth(9);
   textSize(20);
   M = new Menu();// Créeation d'une instance Menu.
-  V = new Vaisseau(100, height/4, 104);// Instance Vaisseau Joueur
+  V = new Vaisseau(100, height/4, 104);// Instance Vaiseau Joueur
   E = new Echange();
   Miss = new Missile(200, 200);
   IA = new IA (100, 100);
@@ -59,11 +58,8 @@ void draw() {
     IA.draw();
     if(E.Affiche)E.draw();
   }
-  
-  //G.draw();
   textAlign(TOP, LEFT);
   fill(0);
-  //text("FPS  : "+int(frameRate)+" Mode T: "+str(G.Trace)+" Choix : "+str(G.Choix)+" Clique : "+G.CptClque+" F1 aff : "+str(F1.Aff), 15, 15);
 }
 
 void keyPressed() {
@@ -80,9 +76,4 @@ void mousePressed() {
   if (M.Aff) {
     M.mousePressed();
   }
-}
-void Th_mousePressed() {
-
-  
-  //G.mousePressed();
 }
