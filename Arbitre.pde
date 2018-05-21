@@ -278,7 +278,7 @@ void reparer()
 {
   int q = frameCount;
   for (int i=6; i<=13; i++) {
-    if (V.Equi.N >=0 /*&& V.Michel.Salle*/)
+    if (V.Equi.N >=0 && V.Michel.Salle == i)
     {
       if (q == 8)
       {
@@ -287,6 +287,7 @@ void reparer()
     }
   }
 }
+
 
 void recharger()
 {

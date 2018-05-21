@@ -29,40 +29,39 @@ class IA
 
     if (NumEnnemi<10)
     {
-      int N = int(random(2));
+      N = int(random(2));
     }
-    if ((NumEnnemi == 6) || (NumEnnemi == 10))
-    {
-      N=3;
-    }
-    if ((NumEnnemi == 6) || (NumEnnemi == 10))
+    if (NumEnnemi == 10)
     {
       N=3;
     }
     switch(N) {
     case '0': 
+      text("Vaisseau de reconnaisance", XposIA, YposIA);
       PV=15;
       Boucliermax = NbBouclier = 1;
       MEquiper[0] = Miss.M[0][0];
       MEquiper[1] = 0;
       MR[0] = Miss.M[0][2];
       MR[0] = 0;
+      for (int i=0; i<=7; i++)
+      {
+        Salle[i].PV = 1;
+      }
       break;
     case '1': 
+      text("Vaisseau de combat", XposIA, YposIA);
       PV=25;
       Boucliermax=2;
       MEquiper[0] = Miss.M[0][0];
       MEquiper[1] = Miss.M[0][0];
       MR[0] = Miss.M[0][2];
       MR[0] = 0;
-    case '2': 
-      PV=15;
-      Boucliermax=3;
-      MEquiper[0] = Miss.M[0][0];
-      MEquiper[1] = Miss.M[1][0];
-      MR[0] = Miss.M[0][2];
-      MR[0] = Miss.M[1][2];
-    case '3': 
+      for (int i=0; i<=7; i++)
+      {
+        Salle[i].PV = 1;
+      }
+    case '2':
       PV=20+int(random(5));
       Boucliermax=2;
       MEquiper[0] = Miss.M[int(random(1))][0];
@@ -75,14 +74,32 @@ class IA
           }
         }
       }
+      for (int i=0; i<=7; i++)
+      {
+        Salle[i].PV = 2;
+      }
+    case '3': 
       MR[0] = Miss.M[0][2];
       MR[0] = 0;
+      PV=15;
+      Boucliermax=3;
+      MEquiper[0] = Miss.M[0][0];
+      MEquiper[1] = Miss.M[1][0];
+      MR[0] = Miss.M[0][2];
+      MR[0] = Miss.M[1][2];
+      for (int i=0; i<=7; i++)
+      {
+        Salle[i].PV = 3;
+      }
       break;
     default :
       PV=25;
       Boucliermax=2;
+     text("Vaisseau de reconnaisance", XposIA, YposIA);
+      PV=15;
+      Boucliermax = NbBouclier = 1;
       MEquiper[0] = Miss.M[0][0];
-      MEquiper[1] = Miss.M[0][0];
+      MEquiper[1] = 0;
       MR[0] = Miss.M[0][2];
       MR[0] = 0;
       break;
@@ -139,3 +156,8 @@ class IA
     }
   }
 }
+
+  //Homme
+  //Ravitaillement : Missile, Carburant, PV
+  //Arme : Coup par coup, rafale
+  //Salle : Oxygene, Surveillance, Reserve, Hopital, Pilotage, Arme, Bouclier, Reacteur

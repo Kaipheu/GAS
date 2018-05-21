@@ -6,11 +6,6 @@ class Echange {
   PImage Image;
   boolean Affiche;
 
-  //Homme
-  //Ravitaillement : Missile, Carburant, PV
-  //Arme : Coup par coup, rafale
-  //Salle : Oxygene, Surveillance, Reserve, Hopital, Pilotage, Arme, Bouclier, Reacteur
-
   Echange() {
     D[1][2]= 30;        //nb max de dispositfs
     D[2][0]= 2;
