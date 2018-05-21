@@ -8,7 +8,7 @@ class Enemie {
   int PV;
 
   Enemie(int x, int y, int T) {
-    Pos = new PVector(x,y);  
+    Pos = new PVector(x, y);  
     short[][] PosS = new short[8][2];
     Image = loadImage("Texture/PNG/IA_500x500.png");
     int L=T/10, l=T/5;
@@ -30,7 +30,7 @@ class Enemie {
     PosS[7][0] =- 303;
     PosS[7][1] = 299;
 
-Pv = new Barr(x, y-(5*L)-5, PV, L, l, "Point de vie");
+    Pv = new Barr(x, y-(5*L)-5, PV, L, l, "Point de vie");
     Bouclier = new Barr(x, y-3*L, 3, L, l, "Bouclier");
     PlacementSalle(T, PosS);
 
@@ -40,10 +40,10 @@ Pv = new Barr(x, y-(5*L)-5, PV, L, l, "Point de vie");
     }
   }
 
-  
 
 
-    void draw() {
+
+  void draw() {
     image(Image, Pos.x-Image.width, Pos.y);
     for (Salle S : Salle) {
       S.draw();
@@ -72,7 +72,7 @@ Pv = new Barr(x, y-(5*L)-5, PV, L, l, "Point de vie");
   int AvPVSalle(int ID) {
     return Salle[ID].PV;
   }
-  
+
   int ArrivMissile() { 
     for (Salle S : Salle) { 
       if (S.AuDessu()) { 
@@ -88,7 +88,7 @@ Pv = new Barr(x, y-(5*L)-5, PV, L, l, "Point de vie");
     Salle[0].DefType(0);
     Salle[0].DefNom("Bouclier");
     Salle[0].Texture = true;
-    
+
     Salle[1] =new Salle(Pos.x+PosS[1][0], Pos.y+PosS[1][1], T);
     Salle[1].DefType(1);
     Salle[1].DefNom("Réacteur");

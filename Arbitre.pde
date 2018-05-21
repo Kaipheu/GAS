@@ -30,26 +30,28 @@ void combat()
   }
   if (IA.PV <=0)
   {
-    text("Etes-vous prêt à continuer ?", 700, 500);
-    if (mousePressed==true && mouseX>=630 && mouseX<=680 && mouseY>=400 && mouseY<=450)
-    {
-      IA = new IA(9/10, 4/5);
-      IA.NumEnnemi++;
-    }
+    fill(#BE2292);
+    textSize(35);
+    text("Vous avez réussi le niveau n°" + str(IA.NumEnnemi), width/2, height/8);
+    
+    Fen.InitBouton(0, width -200, height - 70, 180, 70);               // bouton pour accéder à l'échange
+    Fen.InitBouton(14, width -200, height - 140, 180, 70);             // bouton pour continuer le jeu
+    Fen.B[0].Def_Ch(" La cosmo boutique " );
+    Fen.B[14].Def_Ch(" Passer au niveau suivant ");
   }
   if (V.Pv.N <=0)
   {
     fill(#BE2292);
     textSize(35);
     text("Vous avez perdu ...", width/2, height/2);
-    //exit
+    exit();
   }
-  if (IA.NumEnnemi ==10 )
+  if (IA.NumEnnemi == 10 )
   {
     fill(#BE2292);
     textSize(35);
     text("Vous avez réussi le jeu", width/2, height/2);
-    exit();
+    //exit();
   }
 }
 

@@ -22,6 +22,8 @@ Missile Miss;
 Echange E;
 IA IA;
 Vaisseau V;
+Fenetre Fen;
+
 char KEY ='0';
 Etoiles[] Et = new Etoiles[100];
 void settings () {
@@ -56,7 +58,7 @@ void draw() {
     //  }
     V.draw();
     IA.draw();
-    E.draw();    //enlerver
+    //E.draw();    //enlerver
     if (E.Fen.B[0].Activ)
     {
       E.draw();

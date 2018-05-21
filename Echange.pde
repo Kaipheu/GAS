@@ -28,16 +28,16 @@ class Echange {
     Fen.Larg = height - 200;
     for (int i=1; i<=5; i++)
     {
-      Fen.InitBouton(i, 200, i*100, 265, 50);                          //initialisation des boutons, du prix et nom de l'achat
+      Fen.InitBouton(i, 200, i*100+200, 265, 50);                          //initialisation des boutons, du prix et nom de l'achat
       if (i==5) { 
         for (int j=6; j<=13; j++) {
-          Fen.InitBouton(j, j*165-(width/4), (i+1)*100, 160, 50);
+          Fen.InitBouton(j, j*165-(width/4), (i+1)*100+200, 160, 50);
           Fen.B[j].Def_Ch(V.Salle[j-6].Nom + " "+ str(C[3][0]) + " Lunes");
         }
       }
     }
-    Fen.InitBouton(0, width -200, height - 70, 180, 70);               // bouton pour accéder à l'échange
-    Fen.InitBouton(14, width -200, height - 140, 180, 70);               // bouton pour continuer le jeu
+    Fen.InitBouton(0, (width/2)-90, 70, 180, 70);               // bouton pour accéder à l'échange
+    Fen.InitBouton(14, width -200, height - 70, 180, 70);             // bouton pour continuer le jeu
     Fen.B[0].Def_Ch(" La cosmo boutique " );
     Fen.B[14].Def_Ch(" Passer au niveau suivant ");
     Fen.B[1].Def_Ch("Missile  : " + str(C[1][0]) + "  Lunes");         
@@ -45,11 +45,13 @@ class Echange {
     Fen.B[3].Def_Ch("Points de Vie  : " + str(C[1][0]) + "  Lunes");
     Fen.B[4].Def_Ch("Arme tir coup par coup  : " + str(C[2][0]) + "  Lunes");
     Fen.B[5].Def_Ch("Arme tir en rafale  : " + str(C[2][1]) + "  Lunes");
-    for (int i=0; i<=14; i++)
+    for (int i=1; i<=13; i++)
     {
       Fen.B[i].C_Tx = color(255, 0, 0);                                    //couleur du texte dans les boutons
       Fen.B[i].C_Rp = color(122, 255, 50);                                 //couleur des boutons
     }
+    Fen.B[0].C_Rp = color(#F09D9D);
+    Fen.B[14].C_Rp = color(#BFB3B3);
   }
 
   void draw() {
@@ -95,6 +97,10 @@ class Echange {
           }
           V.Salle[i-6].PV++;
         }
+      }
+      if (Fen.B[14].Activ)
+      {
+        // un nouvel ennemi apparaît
       }
     }
   }
