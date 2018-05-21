@@ -210,15 +210,13 @@ void animBoom ()
 
 void dommage()
 {
-  int p = frameCount;
-  int q = frameCount;
   if (V.Salle[0].PV<=0)
   {
     V.Salle[0].PV=0;
-    V.Oxy.N = V.Oxy.N - (p/1000);
+    V.Oxy.N = V.Oxy.N - int((frameCount-F[0])/(frameRate*10));
     if (V.Oxy.N==0)
     {
-      p=0;
+      F[0]=frameCount;
       V.Equi.N = 0;
     }
   }
@@ -268,10 +266,10 @@ for (int i=5; i<=7; i++)
   if (IA.VIA.Salle[0].PV<=0)
   {
     IA.VIA.Salle[0].PV=0;
-    IA.Oxy.N = IA.Oxy.N - (q/1000);
+    IA.Oxy.N = IA.Oxy.N - int((frameCount-F[1])/(frameRate*10));
     if (IA.Oxy.N==0)
     {
-      q=0;
+      F[1]=frameCount;
       IA.Equi.N = 0;
     }
   }
@@ -287,13 +285,12 @@ for (int i=5; i<=7; i++)
 
 void reparer()
 {
-  int q = frameCount;
-  int p = frameCount;
   for (int i=6; i<=13; i++) {
     if (V.Equi.N >=0 && V.Michel.Salle == i)
     {
-      if (q == 8)
+      if (F[2] == 8)
       {
+        F[2]=frameCount;
         V.Salle[i-6].PV++;
       }
     }
@@ -312,10 +309,7 @@ void reparer()
 
 void recharger()
 {
-  int q = frameCount;
-  int r = frameCount;
-  int l = frameCount;
-  int RBouclier = q;
+  int RBouclier = 6*int((frameCount-F[6])/(frameRate*10));
   int[] VMRe = new int[2];
   int[] IAMRe = new int[2];
 
@@ -328,19 +322,21 @@ void recharger()
   {
     if (V.Bouclier.N <= V.Boucliermax && V.Salle[6].PV>0)
     {
-      q=0;
+      F[3]=0;
       if (RBouclier == 6)
       {
-        RBouclier=q-6;
+        RBouclier=F[3]-6;
+        F[3]=frameCount;
       }
       V.Bouclier.N++;
     }
     if (IA.VIA.Bouclier.N <= IA.Boucliermax && IA.VIA.Salle[6].PV>0)
     {
-      q=0;
+      F[4]=0;
       if (RBouclier == 6)
       {
-        RBouclier=q-6;
+        RBouclier=F[3]-6;
+        F[3] = frameCount;
       }
       IA.VIA.Bouclier.N++;
     }
@@ -354,10 +350,10 @@ void recharger()
       {
         if (VMRe[j] <= Miss.M[i][2] && V.MEquiper[i] == Miss.M[i][0])
         {
-          l=0;
+          F[4]=0;
           if (VMRe[j] == Miss.M[i][2])
           {
-            VMRe[j] = l - Miss.M[i][2];
+            VMRe[j] = F[4] - Miss.M[i][2];
             V.MRTer[j] = true;
           }
         }
@@ -369,10 +365,10 @@ void recharger()
       {
         if (IAMRe[j] <= Miss.M[i][2] && IA.MEquiper[i] == Miss.M[i][0])
         {
-          r=0;
+          F[5]=0;
           if (IAMRe[j] == Miss.M[i][2])
           {
-            IAMRe[j] = r - Miss.M[i][2];
+            IAMRe[j] = F[5] - Miss.M[i][2];
             IA.MRTer[j] = true;
           }
         }

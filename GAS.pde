@@ -26,7 +26,16 @@ Fenetre Fen;
 
 char KEY ='0';
 Etoiles[] Et = new Etoiles[100];
-int F = frameCount;
+
+int[] F = new int[50];
+void frameCount()
+{
+  for (int i=0; i<=50; i++)
+  {
+    F[i]=frameCount;
+  }
+} // >=F[10] non utilisé
+
 
 void settings () {
   fullScreen();

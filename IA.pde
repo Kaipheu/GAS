@@ -124,17 +124,17 @@ class IA
 
   void action()
   {
-    int q = frameCount;
-    int Tirer1 = q, Tirer2=q;
+    int Tirer1 = int((frameCount-F[7])/(frameRate*10));
+    int Tirer2 = int((frameCount-F[8])/(frameRate*10));
     if (Tirer1==Miss.M[0][2])
     {
       Tire1=true;
-      Tirer1=q;
+      F[7]=0;
     }
     if (Tirer2==Miss.M[1][2])
     {
-      Tire2=true;
-      Tirer1=q;
+      Tire1=true;
+      F[8]=0;
     }
 
     for (int i =-1; i<8; i++)  //salle de préférence à viser

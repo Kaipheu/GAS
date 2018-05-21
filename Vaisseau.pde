@@ -5,12 +5,10 @@ class Vaisseau extends Enemie {
   Barr Oxy;   // Niveau d'oxygène du Vaiseaux
   Homme Michel;
 
-  boolean Recharge = false; //Vraie quand le bouclier en charge
-  long TempoBouclier; // Variable permetant compter le "temps" de chargement du bouclier
   boolean[] MRTer = new boolean[2];// Variable pour l'Arbitre
   int[] MR = new int[2];        //Variable pour l'Arbitre
   int[] MEquiper = new int[2];  //Variable pour l'Arbitre
-  int Boucliermax=1;            //Variable pour l'Arbitre
+  int Boucliermax=2;            //Variable pour l'Arbitre
 
   Vaisseau(int x, int y, int T) {
     super(x, y, T);
@@ -35,12 +33,11 @@ class Vaisseau extends Enemie {
     Carbu = new Barr(x+150, y+(l*0.5+Image.width), 13, L, l, "Carburant");// Création d'une instance de Barr pour le caburant restant
     Equi = new Barr(x, y+Image.width+l*2, 3, L, l, "Michel");// Création d'une instance de Barr pour les point de vie de Michel
     Michel = new Homme(Pos.x+32, Pos.y+27, T);
-    
+
 
     MEquiper[1] = 0;
     MRTer[0] = MRTer[1] = false;
     MEquiper[0] = Miss.M[0][0];
-    
   }
 
 
@@ -59,31 +56,19 @@ class Vaisseau extends Enemie {
     Carbu.draw();// Affichage du carburant restant 
     Equi.draw();// affichage des Points de vie de pierre 
     Missile.draw();//Affichage des Missile restant 
-    Michel.draw(); 
-    if ( Recharge) { 
-      Recharge();// methode de recharge du bouclier
-    }
-  } 
- void Recharge() {
-    if (frameCount+(frameRate)*10 - TempoBouclier<=0) { // Vérification du temps pour recharge de le bouclier
-      Bouclier.N = 2;
-      Recharge = false;
-    }
+    Michel.draw();
   }
+
 
   void Dommage(int ID, int Pts) { // Methode retirant de point de vie au Salle 
     Salle[ID].Dommage(Pts); 
-    PV-=Pts; 
-    if (ID==0) { 
-      Recharge = true; 
-      TempoBouclier = frameCount;
+    PV-=Pts;
+  }
+  void mousePressed() {
+    super.mousePressed();
+    int Id = ArrivMissile();
+    if (Id<9) {
+      Michel.Tp(Salle[Id]);
     }
-  }
-  void mousePressed(){
-  super.mousePressed();
-  int Id = ArrivMissile();
-  if(Id<9){
-    Michel.Tp(Salle[Id]);
-  }
   }
 }
