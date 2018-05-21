@@ -3,25 +3,25 @@ int s = second();
 
 void combat()
 {
-  if (V.Pv.N >0 || IA.PV > 0)
+  if ((V.Pv.N >0) || (IA.PV > 0))
   {
-    if (V.MRTer[0]== true && IA.VIA.ArrivMissile()<=7 && V.Missile.N>=1)
+    if ((V.MRTer[0]== true) && (IA.VIA.ArrivMissile()<=7) && (V.Missile.N>=1))
     {
       animMiss ();
       recharger ();
     }
-    if (V.MRTer[0]== true && IA.VIA.ArrivMissile()<=7 && V.Missile.N>=1) 
+    if ((V.MRTer[0]== true) && (IA.VIA.ArrivMissile()<=7) && (V.Missile.N>=1))
     {
       animMiss ();
       recharger ();
     }
-    if (IA.MRTer[0]== true && IA.Tire1 == true)
+    if ((IA.MRTer[0]== true) && (IA.Tire1 == true))
     {
       IA.Tire1=false;
       animMiss ();
       recharger ();
     }
-    if (IA.MRTer[0]== true && IA.Tire2 == true)
+    if ((IA.MRTer[0]== true) && (IA.Tire2 == true))
     {
       IA.Tire2=false;
       animMiss ();
@@ -118,7 +118,7 @@ void animMiss ()
     {
       ProbM=true;
     }
-    IA.NbBouclier--;
+    IA.VIA.Bouclier.N--;
     V.Missile.N--;
     IA.PV = IA.PV - Miss.M[0][1];
   }
@@ -135,7 +135,7 @@ void animMiss ()
     {
       ProbM=true;
     }
-    IA.NbBouclier--;
+    IA.VIA.Bouclier.N--;
     V.Missile.N--;
     IA.PV = IA.PV - Miss.M[1][1];
     imgMissile = Tex.Ico[16];
@@ -148,7 +148,7 @@ void animMiss ()
   {
 
     int V = 300*ms; // vitesse du missile
-    image(Tex.Ico[15], V+xposMissilefinale, yposMissileinitiale, 30, 30);
+    image(imgMissile, V+xposMissilefinale, yposMissileinitiale, 30, 30);
     stroke(255);
     noFill();
     animBoom();
@@ -176,10 +176,10 @@ void animBoom ()
       noFill();
       IA.Salle[IA.VIA.ArrivMissile()].PV = IA.Salle[IA.VIA.ArrivMissile()].PV - Miss.M[i][1];
       IA.PV = IA.PV - Miss.M[i][1];
-      //if (/*Homme est dans la salle*/)
-      //{
-      //  V.Homme.PV = V.Homme.PV - Missile.M[i][1];
-      //}
+      if (IA.VIA.ArrivMissile()== i)  //changer
+      {
+        //V.Equi.N = V.Equi.N - Missile.M[i][1];
+      }
     }
   }
 
@@ -212,8 +212,8 @@ void animBoom ()
 
 void dommage()
 {
-  int o = frameCount;
   int p = frameCount;
+  int q = frameCount;
   if (V.Salle[0].PV<=0)
   {
     V.Salle[0].PV=0;
@@ -221,7 +221,7 @@ void dommage()
     if (V.Oxy.N==0)
     {
       p=0;
-      V.Equi.N = V.Equi.N  - (o/600);
+      V.Equi.N = 0;
     }
   }
 
@@ -242,10 +242,10 @@ void dommage()
     V.Salle[4].PV=0;
     if (V.Equi.N <= 0)
     {
-      fill(#BE2292);
-      textSize(35);
-      text("Vous avez perdu", width/2, height/2);
-      exit();
+      //fill(#BE2292);
+      //textSize(35);
+      //text("Vous avez perdu", width/2, height/2);
+      //exit();
     }
   }
 
@@ -267,9 +267,6 @@ void dommage()
   // // exit();
   //}
 
-
-  int q = frameCount;
-  int r = frameCount;
   if (IA.VIA.Salle[0].PV<=0)
   {
     IA.VIA.Salle[0].PV=0;
@@ -277,13 +274,15 @@ void dommage()
     if (IA.Oxy.N==0)
     {
       q=0;
-      IA.Equi.N = IA.Equi.N  - (r/600);
-      r=0;
+      IA.Equi.N = 0;
     }
   }
   for (int i=2; i<=7; i++)
   {
-    IA.VIA.Salle[i].PV=0;
+    if (IA.VIA.Salle[i].PV<=0)
+    {
+      IA.VIA.Salle[i].PV=0;
+    }
   }
 }
 
@@ -291,6 +290,7 @@ void dommage()
 void reparer()
 {
   int q = frameCount;
+  int p = frameCount;
   for (int i=6; i<=13; i++) {
     if (V.Equi.N >=0 && V.Michel.Salle == i)
     {
@@ -300,15 +300,15 @@ void reparer()
       }
     }
   }
-  
+
   if (IA.VIA.Salle[2].PV <= IA.VIA.Salle[2].PVMax || IA.VIA.Salle[5].PV <= IA.VIA.Salle[5].PVMax || IA.VIA.Salle[6].PV <= IA.VIA.Salle[6].PVMax)  //salle qui nécessite des réparations
-    {
-      //Homme va en direction de la salle
-    } else if (IA.VIA.Salle[0].PV <= IA.VIA.Salle[0].PVMax || IA.VIA.Salle[3].PV <= IA.VIA.Salle[3].PVMax) {
-      //Homme va en direction de la salle
-    } else if (IA.VIA.Salle[1].PV <= IA.VIA.Salle[1].PVMax || IA.VIA.Salle[4].PV <= IA.VIA.Salle[4].PVMax || IA.VIA.Salle[7].PV <= IA.VIA.Salle[7].PVMax) {
-      //Homme va en direction de la salle
-    }
+  {
+    //Homme va en direction de la salle
+  } else if (IA.VIA.Salle[0].PV <= IA.VIA.Salle[0].PVMax || IA.VIA.Salle[3].PV <= IA.VIA.Salle[3].PVMax) {
+    //Homme va en direction de la salle
+  } else if (IA.VIA.Salle[1].PV <= IA.VIA.Salle[1].PVMax || IA.VIA.Salle[4].PV <= IA.VIA.Salle[4].PVMax || IA.VIA.Salle[7].PV <= IA.VIA.Salle[7].PVMax) {
+    //Homme va en direction de la salle
+  }
 }
 
 
@@ -337,14 +337,14 @@ void recharger()
       }
       V.Bouclier.N++;
     }
-    if (IA.Bouclier.N <= IA.Boucliermax && IA.VIA.Salle[6].PV>0)
+    if (IA.VIA.Bouclier.N <= IA.Boucliermax && IA.VIA.Salle[6].PV>0)
     {
       q=0;
       if (RBouclier == 6)
       {
         RBouclier=q-6;
       }
-      IA.Bouclier.N++;
+      IA.VIA.Bouclier.N++;
     }
   }
 

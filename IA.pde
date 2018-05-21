@@ -1,7 +1,7 @@
 class IA
 {
   Enemie VIA;
-  int PV, Boucliermax, NbBouclier;
+  int PV, Boucliermax;
   Salle[] Salle = new Salle[8]; // Tableau des Salles de l'IA
   int[] MEquiper = new int[2];
   int[] MR = new int[2];
@@ -22,8 +22,6 @@ class IA
     MRTer[0]=false;
     MRTer[1]=false;
     VIA =new Enemie(width - 100, height/10, 104); // l larg et taille salle
-    Pv = new Barr(150, 150-(5*150)-5, PV, 150, 150, "Point de vie");
-    Bouclier = new Barr(150, 150-3*150, 3, 150, 150, "Bouclier");
     Oxy = new Barr(XposIA, YposIA +Image.width + V.Salle[1].Larg*0.5, 10, V.Salle[1].Long, V.Salle[1].Larg, "");// Création de l'instance de Barr pour le niveau d'Oxgène
     Equi = new Barr(XposIA, YposIA+Image.width+V.Salle[1].Larg*2, 3, V.Salle[1].Long, V.Salle[1].Larg, "Michel");// Création d'une instance de Barr pour les point de vie de Michel
 
@@ -39,7 +37,7 @@ class IA
     case 0: 
       text("Vaisseau de reconnaisance", XposIA, YposIA);
       PV=15;
-      Boucliermax = NbBouclier = 1;
+      Boucliermax = VIA.Bouclier.N = 1;
       MEquiper[0] = Miss.M[0][0];
       MEquiper[1] = 0;
       MR[0] = Miss.M[0][2];
@@ -52,7 +50,7 @@ class IA
     case 1: 
       text("Vaisseau de combat", XposIA, YposIA);
       PV=25;
-      Boucliermax=2;
+      Boucliermax = VIA.Bouclier.N = 2;
       MEquiper[0] = Miss.M[0][0];
       MEquiper[1] = Miss.M[0][0];
       MR[0] = Miss.M[0][2];
@@ -62,8 +60,9 @@ class IA
         VIA.Salle[i].PV = 1;
       }
     case 2:
+      text(" Vaisseau inconnu", XposIA, YposIA);
       PV=20+int(random(5));
-      Boucliermax=2;
+      Boucliermax= VIA.Bouclier.N = 2;
       MEquiper[0] = Miss.M[int(random(1))][0];
       MEquiper[1] = Miss.M[int(random(1))][0];
       for (int i=0; i<=1; i++) { 
@@ -79,10 +78,11 @@ class IA
         VIA.Salle[i].PV = 2;
       }
     case 3 : 
+      text(" Vaisseau de commandement", XposIA, YposIA);
       MR[0] = Miss.M[0][2];
       MR[0] = 0;
-      PV=15;
-      Boucliermax=3;
+      VIA.PV=15;
+      Boucliermax = VIA.Bouclier.N = 3;
       MEquiper[0] = Miss.M[0][0];
       MEquiper[1] = Miss.M[1][0];
       MR[0] = Miss.M[0][2];
@@ -93,11 +93,9 @@ class IA
       }
       break;
     default :
-      PV=25;
-      Boucliermax=2;
       text("Vaisseau de reconnaisance", XposIA, YposIA);
       PV=15;
-      Boucliermax = NbBouclier = 1;
+      Boucliermax = VIA.Bouclier.N = 1;
       MEquiper[0] = Miss.M[0][0];
       MEquiper[1] = 0;
       MR[0] = Miss.M[0][2];
@@ -121,8 +119,6 @@ class IA
   void draw()
   {
     VIA.draw();
-    Pv.draw();
-    Bouclier.draw();
   }
 
 

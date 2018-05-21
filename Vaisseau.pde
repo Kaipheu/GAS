@@ -28,7 +28,7 @@ class Vaisseau extends Enemie {
     Salle[5].Pos.set(198, 95).add(Pos);  //-
     Salle[6].Pos.set(32, 370).add(Pos);//-
     Salle[7].Pos.set(198, 325).add(Pos); //--------------------
-    Pv = new Barr(x, y-(5*L)-5, PV, L, l, "Point de vie");// Création de l'instance de Barr pour les points de Vie
+    Pv = new Barr(x, y-(5*L)-5, PV, L, l, "Vaisseau Point de Vie");// Création de l'instance de Barr pour les points de Vie
     Bouclier = new Barr(x, y-3*L, 3, L, l, "Bouclier");// Création de l'instance de Barr pour les Point de bouclier 
     Oxy = new Barr(x, y+Image.width+l*0.5, 10, L, l, "O2");// Création de l'instance de Barr pour le niveau d'Oxgène
     Missile = new Barr(x*3, y-1.5*l, 13, L, l, "Missiles");// Création d'une instance de Barr pour les missile restant

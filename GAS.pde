@@ -58,7 +58,6 @@ void draw() {
     //  }
     V.draw();
     IA.draw();
-    //E.draw();    //enlerver
     combat();
     dommage();
     reparer();

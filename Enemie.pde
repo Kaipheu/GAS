@@ -11,6 +11,8 @@ class Enemie {
     Pos = new PVector(x, y);  
     short[][] PosS = new short[8][2];
     Image = loadImage("Texture/PNG/IA_500x500.png");
+    Pv = new Barr(150, 150-(5*150)-5, PV, 150, 150, "Point de vie");
+    Bouclier = new Barr(150, 150-3*150, 3, 150, 150, "Bouclier");
     int L=T/10, l=T/5;
 
     PosS[0][0] = -469 ;
@@ -29,23 +31,22 @@ class Enemie {
     PosS[6][1] = 187;
     PosS[7][0] =- 303;
     PosS[7][1] = 299;
-    
+
     PlacementSalle(T, PosS);
     for (Salle S : Salle) {
       PV += S.PV;
       S.Texture = true;
     }
-    Pv = new Barr(x, y-(5*L)-5, PV, L, l, "Point de vie");// Création de l'instance de Barr pour les points de Vie
-    Bouclier = new Barr(x, y-3*L, 3, L, l, "Bouclier");// Création de l'instance de Barr pour les Point de bouclier 
   }
 
   void draw() {
     image(Image, Pos.x-Image.width, Pos.y);
     for (Salle S : Salle) {
       S.draw();
+
+      Pv.draw();
+      Bouclier.draw();
     }
-    Pv.draw();
-    Bouclier.draw();
   }
 
   void mousePressed() {

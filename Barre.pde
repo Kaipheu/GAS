@@ -6,7 +6,10 @@ class Barr extends Unite {
   short TPolice= 15;
   
   void draw() {
-    for (int i = 0; i<Unite.length-N; i++) {
+    if(N>=Unite.length){
+    N =Unite.length-1;
+    }
+    for (int i = 0; i<N; i++) {
       Unite[i].draw();
     }
     fill(0);
