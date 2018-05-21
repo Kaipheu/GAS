@@ -1,4 +1,3 @@
-
 class Homme{
   PVector Pos;
   int Taille, Salle,PVMax; 

@@ -103,8 +103,7 @@ class IA
     noStroke();
     VIA.draw();
   }
-  
-   
+ 
 
   void action()
   {
