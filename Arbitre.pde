@@ -3,7 +3,7 @@ int s = second();
 
 void combat()
 {
-  while (V.Pv.N >0 || IA.PV > 0)
+  if (V.Pv.N >0 || IA.PV > 0)
   {
     if (V.MRTer[0]== true && IA.VIA.ArrivMissile()<=7 && V.Missile.N>=1)
     {
@@ -39,7 +39,7 @@ void combat()
     Fen.B[0].Def_Ch(" La cosmo boutique " );
     Fen.B[14].Def_Ch(" Passer au niveau suivant ");
   }
-  if (V.Pv.N <=0)
+  if (V.PV <=0)
   {
     fill(#BE2292);
     textSize(35);
@@ -246,21 +246,21 @@ void dommage()
   {
     V.Salle[6].PV=0;
   }
-  if (V.Equi.N >= 0)
-  {
-    fill(#BE2292);
-    textSize(35);
-    text("Vous avez perdu ... ", width/2, height/2-150);
-    text("Vous n'avez plus d'homme!", width/2, height/2+150);
-    exit();
-  }
+  //if (V.Equi.N <= 0)
+  //{
+  //  fill(#BE2292);
+  //  textSize(35);
+  //  text("Vous avez perdu ... ", width/2, height/2-150);          //problème
+  //  text("Vous n'avez plus d'homme!", width/2, height/2+150);
+  // // exit();
+  //}
 
 
 int q = frameCount;
 int r = frameCount;
-if (IA.Salle[0].PV<=0)
+if (IA.VIA.Salle[0].PV<=0)
 {
-  IA.Salle[0].PV=0;
+  IA.VIA.Salle[0].PV=0;
   IA.Oxy.N = IA.Oxy.N - (q/1000);
   if (IA.Oxy.N==0)
   {
@@ -271,7 +271,7 @@ if (IA.Salle[0].PV<=0)
 }
 for (int i=2; i<=7; i++)
 {
-  IA.Salle[i].PV=0;
+  IA.VIA.Salle[i].PV=0;
 }
 }
 
@@ -316,7 +316,7 @@ void recharger()
       }
       V.Bouclier.N++;
     }
-    if (IA.Bouclier.N <= IA.Boucliermax && IA.Salle[6].PV>0)
+    if (IA.Bouclier.N <= IA.Boucliermax && IA.VIA.Salle[6].PV>0)
     {
       q=0;
       if (RBouclier == 6)

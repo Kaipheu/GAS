@@ -59,6 +59,10 @@ void draw() {
     V.draw();
     IA.draw();
     //E.draw();    //enlerver
+    combat();
+    dommage();
+    reparer();
+    recharger();
     if (E.Fen.B[0].Activ)
     {
       E.draw();
@@ -68,7 +72,6 @@ void draw() {
       textSize(32);
       text (" LA BOUTIQUE : Que voulez-vous acheter, étrangers ?", width/6, height-250);
     }
-    //if(E.Affiche)E.draw();
   }
   textAlign(TOP, LEFT);
   fill(0);
