@@ -40,7 +40,8 @@ void combat()
     Fen.B[0].Def_Ch(" La cosmo boutique " );
     Fen.B[14].Def_Ch(" Passer au niveau suivant ");    
     Fen.B[0].C_Rp = color(#BFB3B3);
-    Fen.B[14].C_Rp = color(#BFB3B3);
+    Fen.B[14].C_Rp = color(#BFB3B3)
+    mousePressed();
   }
   if (V.PV <=0)
   {

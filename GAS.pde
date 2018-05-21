@@ -58,20 +58,12 @@ void draw() {
     //  }
     V.draw();
     IA.draw();
+    E.draw();
     combat();
     dommage();
     reparer();
     recharger();
     animBoom();
-    if (E.Fen.B[0].Activ)
-    {
-      E.draw();
-      fill (#BE2292);
-      rect (300, 300, width-600, height-600);
-      fill (#A8491F);
-      textSize(32);
-      text (" LA BOUTIQUE : Que voulez-vous acheter, étrangers ?", width/6, height-250);
-    }
   }
   textAlign(TOP, LEFT);
   fill(0);
@@ -94,5 +86,14 @@ void mousePressed() {
     M.mousePressed();
   } else {
     V.mousePressed();
+  }
+  if(E.Fen.B[0].Activ)
+  {
+    E.draw();
+    fill (#BE2292);
+    rect (300, 300, width-600, height-600);
+    fill (#A8491F);
+    textSize(32);
+    text (" LA BOUTIQUE : Que voulez-vous acheter, étrangers ?", width/6, height-250);
   }
 }
