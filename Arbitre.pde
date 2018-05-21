@@ -207,7 +207,7 @@ void dommage()
     if (V.Oxy.N==0)
     {
       p=0;
-      //V.Homme.PV = V.Homme.PV - (o/600);
+      V.Michel.PV = V.Michel.PV  - (o/600);
     }
   }
 
@@ -221,7 +221,6 @@ void dommage()
   if (V.Salle[3].PV<=0)
   {
     V.Salle[3].PV=0;
-    //V.Homme.PV = V.Homme.PV + (o/600)) sui sont dans la salle
   }
 
   if (V.Salle[4].PV<=0)
@@ -245,16 +244,49 @@ void dommage()
   {
     V.Salle[6].PV=0;
   }
-if (V.Equi.N >= 0)
-    {
-      fill(#BE2292);
-      textSize(35);
-      text("Vous avez perdu ... ", width/2, height/2-150);
-      text("Vous n'avez plus d'homme!", width/2, height/2+150);
-      exit();
-    }
+  if (V.Equi.N >= 0)
+  {
+    fill(#BE2292);
+    textSize(35);
+    text("Vous avez perdu ... ", width/2, height/2-150);
+    text("Vous n'avez plus d'homme!", width/2, height/2+150);
+    exit();
+  }
+
+
+int q = frameCount;
+int r = frameCount;
+if (IA.Salle[0].PV<=0)
+{
+  IA.Salle[0].PV=0;
+  IA.Oxy.N = IA.Oxy.N - (q/1000);
+  if (IA.Oxy.N==0)
+  {
+    q=0;
+    IA.Equi.N = IA.Equi.N  - (r/600);
+    r=0;
+  }
+}
+for (int i=2; i<=7; i++)
+{
+  IA.Salle[i].PV=0;
+}
 }
 
+
+void reparer()
+{
+  int q = frameCount;
+  for (int i=6; i<=13; i++) {
+    if (V.Equi.N >=0 && V.Michel.Salle)
+    {
+      if (q == 8)
+      {
+        V.Salle[i-6].PV++;
+      }
+    }
+  }
+}
 
 void recharger()
 {

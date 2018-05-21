@@ -1,17 +1,19 @@
 class IA
 {
   Enemie VIA;
-  Barr Bouclier;
-  Barr Pv;
   int PV, Boucliermax, NbBouclier;
   Salle[] Salle = new Salle[8]; // Tableau des Salles de l'IA
   int[] MEquiper = new int[2];
   int[] MR = new int[2];
   int[] P = new int[8];
-  int NumEnnemi=0, N;
+  int NumEnnemi=0, N=0;
   boolean Tire1=false, Tire2=false;
   boolean[] MRTer = new boolean[2];
   PImage Image = loadImage("Texture/PNG/IA.png");  
+  Barr Bouclier;
+  Barr Pv;
+  Barr Oxy;   // Niveau d'oxygène du Vaiseaux
+  Barr Equi;// Point de l'équipage 
 
   IA(float XposIA, float YposIA)
   { 
@@ -22,6 +24,8 @@ class IA
     VIA =new Enemie(width - 600, height/4, 104); // l larg et taille salle
     Pv = new Barr(150, 150-(5*150)-5, PV, 150, 150, "Point de vie");
     Bouclier = new Barr(150, 150-3*150, 3, 150, 150, "Bouclier");
+    Oxy = new Barr(XposIA, YposIA +Image.width + V.Salle[1].Larg*0.5, 10, V.Salle[1].Long, V.Salle[1].Larg, "");// Création de l'instance de Barr pour le niveau d'Oxgène
+    Equi = new Barr(XposIA, YposIA+Image.width+V.Salle[1].Larg*2, 3, V.Salle[1].Long, V.Salle[1].Larg, "Michel");// Création d'une instance de Barr pour les point de vie de Michel
 
     if (NumEnnemi<10)
     {

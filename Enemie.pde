@@ -81,7 +81,7 @@ class Enemie {
 
   void PlacementSalle(int T, short[][] PosS) {
 
-    Salle[0] =new Salle(Pos.x+PosS[0][0], Pos.y+PosS[0][1], T); 
+    Salle[0] =new Salle(Pos.x+PosS[2][0], Pos.y+PosS[2][1], T); 
     Salle[0].DefType(0);
     Salle[0].DefNom("Bouclier");
     Salle[0].Texture = true;
@@ -90,7 +90,7 @@ class Enemie {
     Salle[1].DefType(1);
     Salle[1].DefNom("Réacteur");
 
-    Salle[2] =new Salle(Pos.x+PosS[2][0], Pos.y+PosS[2][1], T);
+    Salle[2] =new Salle(Pos.x+PosS[0][0], Pos.y+PosS[0][1], T);
     Salle[2].DefType(2);
     Salle[2].DefNom("Pilotage");
 
