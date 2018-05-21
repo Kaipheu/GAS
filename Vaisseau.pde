@@ -33,68 +33,73 @@ class Vaisseau extends Enemie {
     Missile = new Barr(x*3, y-3*l, 10, L, l, "Missiles");// Création d'une instance de Barr pour les missile restant
     Carbu = new Barr(x+150, y+(l*0.5+Image.width), 10, L, l, "Caburant");// Création d'une instance de Barr pour le caburant restant
     Equi = new Barr(x, y+Image.width+l*2, 3, L, l, "Michel");// Création d'une instance de Barr pour les point de vie de Michel
-    Michel = new Homme(32, 27, l);
+    Michel = new Homme(Pos.x+32, Pos.y+27, T);
 
     Missile.N = Carbu.N = 13;            //dispositifs au début du jeu
     MEquiper[1] = 0;
     MRTer[0] = MRTer[1] = false;
     //MEquiper[0] = Miss.M[0][0];
     PV=20;
-  
-
-  Missile.N = 13;
-  Carbu.N = 13;            //dispositifs au début du jeu
-  MEquiper[0] = Miss.M[0][0];
-  MEquiper[1] = 0;
-  MRTer[0] = MRTer[1] = false;
-
-  PV=20;
-  for (int i=0; i<=7; i++)
-  {
-    Salle[i].PV = 1;
-  }
-}
 
 
-void draw()
-{
-  super.draw();// Execution de la methode draw de la classe mère
-  Oxy.draw();//Affichage du niveau d'Oxygène
-  Carbu.draw();// Affichage du carburant restant
-  Equi.draw();// affichage des Points de vie de pierre
-  Missile.draw();//Affichage des Missile restant
-  Michel.draw();
-  if ( Recharge) {
-    Recharge();// methode de recharge du bouclier
-  }
-}
-void Recharge() {
-  if (frameCount+(frameRate)*10 - TempoBouclier<=0) { // Vérification du temps pour recharge de le bouclier
-    Bouclier.N = 2;
-    Recharge = false;
-  }
-}
+    Missile.N = 13;
+    Carbu.N = 13;            //dispositifs au début du jeu
+    MEquiper[0] = Miss.M[0][0];
+    MEquiper[1] = 0;
+    MRTer[0] = MRTer[1] = false;
 
-void Dommage(int ID, int Pts) { // Methode retirant de point de vie au Salle
-  Salle[ID].Dommage(Pts);
-  PV-=Pts;
-  if (ID==0) {
-    Recharge = true;
-    TempoBouclier = frameCount;
-  }
-}
-PVector AvPos(int ID) {
-  return Salle[ID].Pos;
-}
-int AvPVSalle(int ID) {
-  return Salle[ID].PV;
-}
-int ArrivMissile() { 
-  for (Salle S : Salle) { 
-    if (S.AuDessu()) { 
-      return S.Type;
+    PV=20;
+    for (int i=0; i<=7; i++)
+    {
+      Salle[i].PV = 1;
     }
-  } 
-  return 9;
-} 
+  }
+
+
+  void draw()
+  {
+    super.draw();// Execution de la methode draw de la classe mère
+    for (Salle S : Salle) {
+      if (S.PV <1) {
+        Michel.Pos.set(S.Pos);
+      }
+    }
+    Oxy.draw();//Affichage du niveau d'Oxygène
+    Carbu.draw();// Affichage du carburant restant
+    Equi.draw();// affichage des Points de vie de pierre
+    Missile.draw();//Affichage des Missile restant
+    Michel.draw();
+    if ( Recharge) {
+      Recharge();// methode de recharge du bouclier
+    }
+  }
+  void Recharge() {
+    if (frameCount+(frameRate)*10 - TempoBouclier<=0) { // Vérification du temps pour recharge de le bouclier
+      Bouclier.N = 2;
+      Recharge = false;
+    }
+  }
+
+  void Dommage(int ID, int Pts) { // Methode retirant de point de vie au Salle
+    Salle[ID].Dommage(Pts);
+    PV-=Pts;
+    if (ID==0) {
+      Recharge = true;
+      TempoBouclier = frameCount;
+    }
+  }
+  PVector AvPos(int ID) {
+    return Salle[ID].Pos;
+  }
+  int AvPVSalle(int ID) {
+    return Salle[ID].PV;
+  }
+  int ArrivMissile() { 
+    for (Salle S : Salle) { 
+      if (S.AuDessu()) { 
+        return S.Type;
+      }
+    } 
+    return 9;
+  }
 }

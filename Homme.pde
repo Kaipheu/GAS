@@ -1,12 +1,15 @@
 class Homme{
   PVector Pos;
-  int PV, PVMax,Taille;
+  int Taille;
+  int Salle;
   Homme(float x, float  y ,int T ){
   Pos = new PVector(x,y);
   Taille = T;
-  PV = 3;
   }
   void draw(){
   Tex.Texture(this);
+  }
+  void Tp(Salle Autre){
+    Pos.set(Autre.Pos);
   }
 }
