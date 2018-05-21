@@ -37,7 +37,7 @@ void setup() {
   textSize(20);
   M = new Menu();// Créeation d'une instance Menu.
   Miss = new Missile(200, 200);
-  V = new Vaisseau(100, height/4, 104);// Instance Vaiseau Joueur
+  V = new Vaisseau(width/10, height/10, 104);// Instance Vaiseau Joueur
   E = new Echange();
   IA = new IA (100, 100);
 }

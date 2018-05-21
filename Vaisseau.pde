@@ -14,6 +14,7 @@ class Vaisseau extends Enemie {
 
   Vaisseau(int x, int y, int T) {
     super(x, y, T);
+    PV=20;
     Image = loadImage("Texture/PNG/Vaisseau500.png");// Chargement de l'image du vaiseaux
     int[] MEquiper = new int[2];  //arme équiper            
     boolean[] MRTer = new boolean[2];//arme équiper
@@ -30,16 +31,15 @@ class Vaisseau extends Enemie {
     Pv = new Barr(x, y-(5*L)-5, PV, L, l, "Point de vie");// Création de l'instance de Barr pour les points de Vie
     Bouclier = new Barr(x, y-3*L, 3, L, l, "Bouclier");// Création de l'instance de Barr pour les Point de bouclier 
     Oxy = new Barr(x, y+Image.width+l*0.5, 10, L, l, "O2");// Création de l'instance de Barr pour le niveau d'Oxgène
-    Missile = new Barr(x*3, y-3*l, 10, L, l, "Missiles");// Création d'une instance de Barr pour les missile restant
-    Carbu = new Barr(x+150, y+(l*0.5+Image.width), 10, L, l, "Carburant");// Création d'une instance de Barr pour le caburant restant
+    Missile = new Barr(x*3, y-1.5*l, 13, L, l, "Missiles");// Création d'une instance de Barr pour les missile restant
+    Carbu = new Barr(x+150, y+(l*0.5+Image.width), 13, L, l, "Carburant");// Création d'une instance de Barr pour le caburant restant
     Equi = new Barr(x, y+Image.width+l*2, 3, L, l, "Michel");// Création d'une instance de Barr pour les point de vie de Michel
     Michel = new Homme(Pos.x+32, Pos.y+27, T); 
 
-    Missile.N = Carbu.N = 13;            //dispositifs au début du jeu
     MEquiper[1] = 0;
     MRTer[0] = MRTer[1] = false;
     MEquiper[0] = Miss.M[0][0];
-    PV=20;
+    
   }
 
 
@@ -51,7 +51,9 @@ class Vaisseau extends Enemie {
       if (S.PV <1) { 
         Michel.Pos.set(S.Pos);
       }
-    } 
+    }
+    Pv.draw();
+    Bouclier.draw();
     Oxy.draw();//Affichage du niveau d'Oxygène 
     Carbu.draw();// Affichage du carburant restant 
     Equi.draw();// affichage des Points de vie de pierre 
