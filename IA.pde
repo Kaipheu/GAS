@@ -44,9 +44,10 @@ class IA
       MEquiper[1] = 0;
       MR[0] = Miss.M[0][2];
       MR[0] = 0;
-      for (int i=0; i<=7; i++)
+      for (Salle S : Salle)
       {
-        Salle[i].PV = 1;
+        S.PV=1;
+        S.Texture = true;
       }
       break;
     case '1': 
@@ -59,7 +60,7 @@ class IA
       MR[0] = 0;
       for (int i=0; i<=7; i++)
       {
-        Salle[i].PV = 1;
+        VIA.Salle[i].PV = 1;
       }
     case '2':
       PV=20+int(random(5));
@@ -76,7 +77,7 @@ class IA
       }
       for (int i=0; i<=7; i++)
       {
-        Salle[i].PV = 2;
+        VIA.Salle[i].PV = 2;
       }
     case '3': 
       MR[0] = Miss.M[0][2];
@@ -89,7 +90,7 @@ class IA
       MR[0] = Miss.M[1][2];
       for (int i=0; i<=7; i++)
       {
-        Salle[i].PV = 3;
+        VIA.Salle[i].PV = 3;
       }
       break;
     default :
@@ -102,6 +103,10 @@ class IA
       MEquiper[1] = 0;
       MR[0] = Miss.M[0][2];
       MR[0] = 0;
+      for (int i=0; i<=7; i++)
+      {
+        VIA.Salle[i].PV = 1;
+      }
       break;
     }
 
@@ -114,11 +119,11 @@ class IA
     P[6] = 2;
     P[7] = 0;
   }
-  void draw() {
-    fill(120, 255);
-    rect(width/2, height/2, 0, 0);
-    noStroke();
+  void draw()
+  {
     VIA.draw();
+    Pv.draw();
+    Bouclier.draw();
   }
  
 

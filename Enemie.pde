@@ -29,27 +29,19 @@ class Enemie {
     PosS[6][1] = 187;
     PosS[7][0] =- 303;
     PosS[7][1] = 299;
-
-    Pv = new Barr(x, y-(5*L)-5, PV, L, l, "Point de vie");
-    Bouclier = new Barr(x, y-3*L, 3, L, l, "Bouclier");
+    
     PlacementSalle(T, PosS);
-
     for (Salle S : Salle) {
       PV += S.PV;
       S.Texture = true;
     }
   }
 
-
-
-
   void draw() {
     image(Image, Pos.x-Image.width, Pos.y);
     for (Salle S : Salle) {
       S.draw();
     }
-    Pv.draw();
-    Bouclier.draw();
   }
 
   void mousePressed() {
