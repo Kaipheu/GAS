@@ -33,7 +33,8 @@ void combat()
     fill(#BE2292);
     textSize(35);
     text("Vous avez réussi le niveau n°" + str(IA.NumEnnemi), width/2, height/8);
-    
+
+    IA = null;
     Fen.InitBouton(0, width -200, height - 70, 180, 70);               // bouton pour accéder à l'échange
     Fen.InitBouton(14, width -200, height - 140, 180, 70);             // bouton pour continuer le jeu
     Fen.B[0].Def_Ch(" La cosmo boutique " );
@@ -145,21 +146,21 @@ void animMiss ()
   }
   if (ProbM == false)
   {
-    PVector TrajMiss = new PVector(xposMissileinitiale, yposMissileinitiale);
-    PVector vitesse = new PVector(xposMissileinitiale - xposMissilefinale, yposMissileinitiale - yposMissilefinale);
-    TrajMiss.add(vitesse);
-    image(imgMissile, TrajMiss.x, TrajMiss.y, 30, 30);
+
+    int V = 300*ms; // vitesse du missile
+    image(Tex.Ico[15], V+xposMissilefinale, yposMissileinitiale, 30, 30);
     stroke(255);
     noFill();
     animBoom();
+    //  PVector TrajMiss = new PVector(xposMissileinitiale, yposMissileinitiale);
+    //  PVector vitesse = new PVector(abs(xposMissileinitiale - xposMissilefinale), abs(yposMissileinitiale - yposMissilefinale));
+    //  TrajMiss.add(vitesse);
+    //  image(imgMissile, TrajMiss.x, TrajMiss.y, 30, 30);
+    //  stroke(255);
+    //  noFill();
+    //  animBoom();
+    //}
   }
-  //int K= int(random(-50, 50))*s;
-  //int V = 300*ms; // vitesse du missile
-  //while (Missile.xposMissile > V.x && Missile.xposMissile<Joueur.xpos && Missile.yposMissile<Joueur.ypos && Missile.xposMissile<Joueur.ypos) {
-  //  image(Tex.Ico[15], s, s, 30, 30);
-  //  stroke(255);
-  //  noFill();
-  //}
 }
 
 
@@ -193,7 +194,16 @@ void animBoom ()
       V.Pv.N = V.Pv.N - Miss.M[i][1];
       //if (/*Homme est dans la salle*/)
       //{
-      //  IA.Homme.PV = IA.Homme.PV - Missile.M[i][1];
+      int q = frameCount;
+      for (int j=6; j<=13; j++) {
+        if (V.Equi.N >=0 && V.Michel.Salle == j)
+        {
+          if (q == 8)
+          {
+            V.Salle[-6].PV++;
+          }
+        }
+      }
       //}
     }
   }
@@ -258,23 +268,23 @@ void dommage()
   //}
 
 
-int q = frameCount;
-int r = frameCount;
-if (IA.VIA.Salle[0].PV<=0)
-{
-  IA.VIA.Salle[0].PV=0;
-  IA.Oxy.N = IA.Oxy.N - (q/1000);
-  if (IA.Oxy.N==0)
+  int q = frameCount;
+  int r = frameCount;
+  if (IA.VIA.Salle[0].PV<=0)
   {
-    q=0;
-    IA.Equi.N = IA.Equi.N  - (r/600);
-    r=0;
+    IA.VIA.Salle[0].PV=0;
+    IA.Oxy.N = IA.Oxy.N - (q/1000);
+    if (IA.Oxy.N==0)
+    {
+      q=0;
+      IA.Equi.N = IA.Equi.N  - (r/600);
+      r=0;
+    }
   }
-}
-for (int i=2; i<=7; i++)
-{
-  IA.VIA.Salle[i].PV=0;
-}
+  for (int i=2; i<=7; i++)
+  {
+    IA.VIA.Salle[i].PV=0;
+  }
 }
 
 
@@ -290,6 +300,15 @@ void reparer()
       }
     }
   }
+  
+  if (IA.VIA.Salle[2].PV <= IA.VIA.Salle[2].PVMax || IA.VIA.Salle[5].PV <= IA.VIA.Salle[5].PVMax || IA.VIA.Salle[6].PV <= IA.VIA.Salle[6].PVMax)  //salle qui nécessite des réparations
+    {
+      //Homme va en direction de la salle
+    } else if (IA.VIA.Salle[0].PV <= IA.VIA.Salle[0].PVMax || IA.VIA.Salle[3].PV <= IA.VIA.Salle[3].PVMax) {
+      //Homme va en direction de la salle
+    } else if (IA.VIA.Salle[1].PV <= IA.VIA.Salle[1].PVMax || IA.VIA.Salle[4].PV <= IA.VIA.Salle[4].PVMax || IA.VIA.Salle[7].PV <= IA.VIA.Salle[7].PVMax) {
+      //Homme va en direction de la salle
+    }
 }
 
 

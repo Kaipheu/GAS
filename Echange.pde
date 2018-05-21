@@ -100,7 +100,8 @@ class Echange {
       }
       if (Fen.B[14].Activ)
       {
-        // un nouvel ennemi apparaît
+        // un nouvel ennemi apparaît;
+        IA = new IA(100, 100);
       }
     }
   }
