@@ -126,17 +126,17 @@ class IA
       if ((V.Salle[i+1].PV >= V.Salle[i].PV) && (P[i+1] >= P[i]))
       {
         P[i] = P[i+1];
-        VIA.ArrivMissile(); //changer
+        VIA.ArrivMissile(); 
       }
     }
 
-    //if (Salle[2].PV <= Salle[2].PVmax || Salle[5].PV <= Salle[5].PVmax || Salle[6].PV <= Salle[6].PVmax)  //salle qui nécessite des réparations
-    //{
-    //  //Homme va en direction de la salle
-    //} else if (Salle[0].PV <= Salle[0].PVmax || Salle[3].PV <= Salle[3].PVmax){
-    //  //Homme va en direction de la salle
-    //}else if (Salle[1].PV <= Salle[1].PVmax || Salle[4].PV <= Salle[4].PVmax || Salle[7].PV <= Salle[7].PVmax){
-    //  //Homme va en direction de la salle
-    //}
+    if (Salle[2].PV <= Salle[2].PVMax || Salle[5].PV <= Salle[5].PVMax || Salle[6].PV <= Salle[6].PVMax)  //salle qui nécessite des réparations
+    {
+      //Homme va en direction de la salle
+    } else if (Salle[0].PV <= Salle[0].PVMax || Salle[3].PV <= Salle[3].PVMax){
+      //Homme va en direction de la salle
+    }else if (Salle[1].PV <= Salle[1].PVMax || Salle[4].PV <= Salle[4].PVMax || Salle[7].PV <= Salle[7].PVMax){
+      //Homme va en direction de la salle
+    }
   }
 }

@@ -1,7 +1,6 @@
 class Echange {
   int Lune=0;
   int[][] D = new int[4][8];
-  int[][] E = new int[4][8];
   int[][] C = new int[4][8];
   Fenetre Fen;
   PImage Image;
@@ -21,7 +20,7 @@ class Echange {
     }
     for (int i=0; i<=7; i++)
     {
-      E[3][i] = 1;
+      V.Salle[i].PV = 1;
     }
 
     C[1][0]=  4;         //coût de l'achat
@@ -29,7 +28,7 @@ class Echange {
     C[2][1] = 60;
     C[3][0] = 15;
 
-    Fen = new Fenetre(100, 100, 14, 14);                              //afficher la fenêtre bouton
+    Fen = new Fenetre(100, 100, 15, 15);                              //afficher la fenêtre bouton
     Fen.Long= width -100;
     Fen.Larg = height -100;
     for (int i=1; i<=5; i++)
@@ -44,13 +43,15 @@ class Echange {
       }
     }
     Fen.InitBouton(0, width -100, height - 70, 100, 70);               // bouton pour accéder à l'échange
-    Fen.B[0].Def_Ch(" Echange " );                  
+    Fen.InitBouton(14, width -100, height - 140, 100, 70);               // bouton pour continuer le jeu
+    Fen.B[0].Def_Ch(" La cosmo boutique " );
+    Fen.B[14].Def_Ch(" Passer au niveau suivant ");
     Fen.B[1].Def_Ch("Missile  : " + str(C[1][0]) + "  Lunes");         
     Fen.B[2].Def_Ch("Carburant  : " + str(C[1][0]) + "  Lunes");
     Fen.B[3].Def_Ch("Points de Vie  : " + str(C[1][0]) + "  Lunes");
     Fen.B[4].Def_Ch("Arme tir coup par coup  : " + str(C[2][0]) + "  Lunes");
     Fen.B[5].Def_Ch("Arme tir en rafale  : " + str(C[2][1]) + " :  Lunes");
-    for (int i=0; i<=13; i++)
+    for (int i=0; i<=14; i++)
     {
       Fen.B[i].C_Tx = color(255, 0, 0);
       Fen.B[i].C_Rp = color(122, 255, 50);
@@ -71,9 +72,9 @@ class Echange {
         fill (#A8491F);
         text (" LA BOUTIQUE : Que voulez-vous acheter, étrangers ?", width/6, height-250);
         text ("Equipage :", width/12, height/10);
-        if (Fen.B[0].Activ && Lune >= C[0][0] && E[0][0]<D[0][0])
+        if (Fen.B[0].Activ)
         {
-          Lune = Lune - C[0][0];
+          //appuie bouton
         }
         if (Fen.B[1].Aff && Lune>= C[1][0] && V.Missile.N<D[1][0] && (V.Missile.N + V.Carbu.N)<=30)
         {
@@ -90,18 +91,18 @@ class Echange {
           Lune = Lune - C[1][2];
           V.Pv.N++;
         }
-        if ((Fen.B[4].Activ && Lune>= C[2][0] && E[2][0]<D[2][0]))
+        if (Fen.B[4].Activ && Lune>= C[2][0])
         {
           Lune = Lune - C[2][0];
           V.MEquiper[1] = Miss.M[0][0];
         }
-        if (Fen.B[5].Activ && Lune>= C[2][1] && E[2][1]<D[2][1])
+        if (Fen.B[5].Activ && Lune>= C[2][1])
         {
           Lune = Lune - C[2][1];
           V.MEquiper[1] = Miss.M[1][0];
         }
         for(int i=6; i<=13; i++) {
-          if (Fen.B[i].Activ && E[3][i-6]<D[3][i-6])
+          if (Fen.B[i].Activ && V.Salle[i-6].PV<D[3][i-6])
           {
             Lune = Lune - C[3][0];
             C[3][0] = C[3][0] + 15;
