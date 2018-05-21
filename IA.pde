@@ -21,7 +21,7 @@ class IA
     YposIA = height - 100;
     MRTer[0]=false;
     MRTer[1]=false;
-    VIA =new Enemie(width - 100, height/4, 104); // l larg et taille salle
+    VIA =new Enemie(width - 100, height/10, 104); // l larg et taille salle
     Pv = new Barr(150, 150-(5*150)-5, PV, 150, 150, "Point de vie");
     Bouclier = new Barr(150, 150-3*150, 3, 150, 150, "Bouclier");
     Oxy = new Barr(XposIA, YposIA +Image.width + V.Salle[1].Larg*0.5, 10, V.Salle[1].Long, V.Salle[1].Larg, "");// Création de l'instance de Barr pour le niveau d'Oxgène
@@ -36,7 +36,7 @@ class IA
       N=3;
     }
     switch(N) {
-    case '0': 
+    case 0: 
       text("Vaisseau de reconnaisance", XposIA, YposIA);
       PV=15;
       Boucliermax = NbBouclier = 1;
@@ -44,13 +44,13 @@ class IA
       MEquiper[1] = 0;
       MR[0] = Miss.M[0][2];
       MR[0] = 0;
-      for (Salle S : Salle)
+      for (Salle S : VIA.Salle)
       {
         S.PV=1;
         S.Texture = true;
       }
       break;
-    case '1': 
+    case 1: 
       text("Vaisseau de combat", XposIA, YposIA);
       PV=25;
       Boucliermax=2;
@@ -62,7 +62,7 @@ class IA
       {
         VIA.Salle[i].PV = 1;
       }
-    case '2':
+    case 2:
       PV=20+int(random(5));
       Boucliermax=2;
       MEquiper[0] = Miss.M[int(random(1))][0];
@@ -79,7 +79,7 @@ class IA
       {
         VIA.Salle[i].PV = 2;
       }
-    case '3': 
+    case 3: 
       MR[0] = Miss.M[0][2];
       MR[0] = 0;
       PV=15;

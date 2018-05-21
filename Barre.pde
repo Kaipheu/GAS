@@ -19,6 +19,7 @@ class Barr extends Unite {
     super(x, y);
     Unite = new Unite[N];
     Esp= Log/2;
+    //this.N = N;
     for (int i = 0; i<Unite.length; i++) {
       Unite[i]= new Unite((10*(i))+x, y);
       Unite[i].Larg = Lar;

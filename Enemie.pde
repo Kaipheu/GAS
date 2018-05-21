@@ -35,6 +35,8 @@ class Enemie {
       PV += S.PV;
       S.Texture = true;
     }
+    Pv = new Barr(x, y-(5*L)-5, PV, L, l, "Point de vie");// Création de l'instance de Barr pour les points de Vie
+    Bouclier = new Barr(x, y-3*L, 3, L, l, "Bouclier");// Création de l'instance de Barr pour les Point de bouclier 
   }
 
   void draw() {
@@ -42,6 +44,8 @@ class Enemie {
     for (Salle S : Salle) {
       S.draw();
     }
+    Pv.draw();
+    Bouclier.draw();
   }
 
   void mousePressed() {

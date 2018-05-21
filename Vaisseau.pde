@@ -34,7 +34,8 @@ class Vaisseau extends Enemie {
     Missile = new Barr(x*3, y-1.5*l, 13, L, l, "Missiles");// Création d'une instance de Barr pour les missile restant
     Carbu = new Barr(x+150, y+(l*0.5+Image.width), 13, L, l, "Carburant");// Création d'une instance de Barr pour le caburant restant
     Equi = new Barr(x, y+Image.width+l*2, 3, L, l, "Michel");// Création d'une instance de Barr pour les point de vie de Michel
-    Michel = new Homme(Pos.x+32, Pos.y+27, T); 
+    Michel = new Homme(Pos.x+32, Pos.y+27, T);
+    
 
     MEquiper[1] = 0;
     MRTer[0] = MRTer[1] = false;
