@@ -51,11 +51,11 @@ void draw() {
     M.draw();
   } else {
     background(120);
-    //for(Etoiles E:Et){
-    //    pushMatrix();    
-    //    E.draw();
-    //    popMatrix();
-    //  }
+    for(Etoiles E:Et){
+        pushMatrix();    
+        E.draw();
+        popMatrix();
+      }
     V.draw();
     IA.draw();
     E.draw();
