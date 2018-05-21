@@ -16,7 +16,7 @@ class Fenetre {
     stroke(0);
     
     fill(0, 0, 0, 200);
-    rect(Pos.x, Pos.y,Long ,Larg );
+    rect(Pos.x, Pos.y, width - Pos.x , height - Pos.y );
     fill(255);
     
     text(Titre,Pos.x+Long/2,Pos.y);
