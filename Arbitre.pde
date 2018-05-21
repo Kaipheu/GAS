@@ -207,7 +207,7 @@ void dommage()
     if (V.Oxy.N==0)
     {
       p=0;
-      V.Michel.PV = V.Michel.PV  - (o/600);
+      V.Equi.N = V.Equi.N  - (o/600);
     }
   }
 
@@ -278,7 +278,7 @@ void reparer()
 {
   int q = frameCount;
   for (int i=6; i<=13; i++) {
-    if (V.Equi.N >=0 && V.Michel.Salle)
+    if (V.Equi.N >=0 /*&& V.Michel.Salle*/)
     {
       if (q == 8)
       {
