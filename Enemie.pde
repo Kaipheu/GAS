@@ -10,7 +10,7 @@ class Enemie {
   Enemie(int x, int y, int T) {
     Pos = new PVector(x,y);  
     short[][] PosS = new short[8][2];
-    Image = loadImage("Texture/PNG/IA.png");
+    Image = loadImage("Texture/PNG/IA_500x500.png");
     int L=T/10, l=T/5;
 
     PosS[0][0] =-364 ;
@@ -42,7 +42,7 @@ class Enemie {
 
 
   void draw() {
-    image(Image, Pos.x, Pos.y);
+    image(Image, Pos.x-Image.width, Pos.y);
     for (Salle S : Salle) {
       S.draw();
     }

@@ -1,7 +1,7 @@
 
 class Homme{
   PVector Pos;
-  int Taille, Salle; 
+  int Taille, Salle,PVMax; 
   Homme(float x, float  y ,int T ){
   Pos = new PVector(x,y);
   Taille = T;

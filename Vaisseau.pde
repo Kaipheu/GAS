@@ -45,8 +45,9 @@ class Vaisseau extends Enemie {
 
   void draw() 
   { 
-    super.draw();// Execution de la methode draw de la classe mère 
-    for (Salle S : Salle) { 
+    image(Image, Pos.x, Pos.y);
+    for (Salle S : Salle) {
+      S.draw();
       if (S.PV <1) { 
         Michel.Pos.set(S.Pos);
       }
