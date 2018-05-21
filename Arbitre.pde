@@ -40,8 +40,7 @@ void combat()
     Fen.B[0].Def_Ch(" La cosmo boutique " );
     Fen.B[14].Def_Ch(" Passer au niveau suivant ");    
     Fen.B[0].C_Rp = color(#BFB3B3);
-    Fen.B[14].C_Rp = color(#BFB3B3)
-    mousePressed();
+    Fen.B[14].C_Rp = color(#BFB3B3);
   }
   if (V.PV <=0)
   {
@@ -55,7 +54,7 @@ void combat()
     fill(#BE2292);
     textSize(35);
     text("Vous avez réussi le jeu", width/2, height/2);
-    //exit();
+    exit();
   }
 }
 
@@ -64,8 +63,7 @@ void animMiss ()
 { 
   PVector Pos = new PVector();
   Pos.set(V.AvPos(0));
-  float xposMissilefinale = Pos.x;
-  float yposMissilefinale = Pos.y;
+  float xposMissilefinale = Pos.x, yposMissilefinale = Pos.y;
 
   PImage imgMissile;
   imgMissile = Tex.Ico[15];
@@ -149,7 +147,7 @@ void animMiss ()
   {
 
     int V = 300*ms; // vitesse du missile
-    image(imgMissile, V+xposMissilefinale, yposMissileinitiale, 30, 30);
+    image(imgMissile, abs(xposMissilefinale - yposMissilefinale)*V, abs(xposMissileinitiale - yposMissileinitiale), 30, 30);
     stroke(255);
     noFill();
     animBoom();
@@ -205,7 +203,6 @@ void animBoom ()
           }
         }
       }
-      //}
     }
   }
 }
@@ -224,6 +221,10 @@ void dommage()
       p=0;
       V.Equi.N = 0;
     }
+  }
+  if (V.Salle[1].PV<=0)
+  {
+    V.Salle[1].PV=0;
   }
 
   if (V.Salle[2].PV<=0)
@@ -249,15 +250,11 @@ void dommage()
       //exit();
     }
   }
-
-  if (V.Salle[5].PV<=0)
+for (int i=5; i<=7; i++)
+  {if (V.Salle[i].PV<=0)
   {
-    V.Salle[5].PV=0;
+    V.Salle[i].PV=0;
   }
-
-  if (V.Salle[6].PV<=0)
-  {
-    V.Salle[6].PV=0;
   }
   //if (V.Equi.N <= 0)
   //{

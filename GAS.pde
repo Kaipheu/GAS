@@ -1,4 +1,4 @@
-/********************************************************************************************************* //<>// //<>// //<>// //<>// //<>// //<>// //<>//
+/********************************************************************************************************* //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>//
  Titre du Programme : Gestion d'Attaque Spatiale
  **********************************************************************************************************
  Date de création du programme : 23/01/2018
@@ -12,7 +12,7 @@
  Commentaire : R.A.S.
  *********************************************************************************************************/
 
-Menu M; // Objet Menu  //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>//
+Menu M; // Objet Menu  //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>//
 
 // Objet vaisseaux Joueur et ennemi
 
@@ -26,6 +26,8 @@ Fenetre Fen;
 
 char KEY ='0';
 Etoiles[] Et = new Etoiles[100];
+int F = frameCount;
+
 void settings () {
   fullScreen();
   Tex = new Texture();
@@ -51,23 +53,32 @@ void draw() {
     M.draw();
   } else {
     background(120);
-    for(Etoiles E:Et){
-        pushMatrix();    
-        E.draw();
-        popMatrix();
-      }
+    //for(Etoiles E:Et){
+    //    pushMatrix();    
+    //    E.draw();
+    //    popMatrix();
+    //  }
     V.draw();
     IA.draw();
-    E.draw();
     combat();
     dommage();
     reparer();
     recharger();
-    animBoom();
   }
+  
   textAlign(TOP, LEFT);
   fill(0);
   println(V.Equi.N);
+  
+  if(E.Fen.B[0].Activ)
+  {
+    E.draw();
+    fill (#BE2292);
+    rect (300, 300, width-600, height-600);
+    fill (#A8491F);
+    textSize(32);
+    text ("Que voulez-vous acheter, étrangers ?", width/6, height-250);
+  }
 }
 
 void keyPressed() {
@@ -86,14 +97,5 @@ void mousePressed() {
     M.mousePressed();
   } else {
     V.mousePressed();
-  }
-  if(E.Fen.B[0].Activ)
-  {
-    E.draw();
-    fill (#BE2292);
-    rect (300, 300, width-600, height-600);
-    fill (#A8491F);
-    textSize(32);
-    text (" LA BOUTIQUE : Que voulez-vous acheter, étrangers ?", width/6, height-250);
   }
 }

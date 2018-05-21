@@ -1,4 +1,26 @@
-class Echange {
+  /*
+  Missile Carburant, PV
+  M0; M1;
+ Type :
+   0 = bouclier
+   1 = reacteur
+   2 = Poste de Pilotage
+   3 = Surveillance 
+   4 = Oxygene
+   5 = Soin
+   6 = Reverve
+   7 = Arme
+   */
+  //Salle(int X, int Y) {
+  //  super(X,Y);
+  //  Nom = "";
+  //}
+  //Salle(float X, float Y) {
+  //  super(X,Y);
+  //  Nom = "";
+  //}
+  
+  class Echange {
   int Lune=0;
   int[][] D = new int[4][8];
   int[][] C = new int[4][8];

@@ -4,9 +4,9 @@ class Barr extends Unite {
   int Esp = 10;
   String Nom ="Vide";
   short TPolice= 15;
-  
+
   void draw() {
-    if(N>=Unite.length){
+   if(N>=Unite.length){
     N =Unite.length-1;
     }
     for (int i = 0; i<N; i++) {
@@ -17,12 +17,12 @@ class Barr extends Unite {
     textSize(TPolice);
     text(Nom, Pos.x, Pos.y+TPolice);
   }
-  
-    Barr(float x, float y, int N,int Log,int Lar,String Nom) {
+
+  Barr(float x, float y, int N, int Log, int Lar, String Nom) {
     super(x, y);
     Unite = new Unite[N];
     Esp= Log/2;
-    //this.N = N;
+    this.N = N;
     for (int i = 0; i<Unite.length; i++) {
       Unite[i]= new Unite((10*(i))+x, y);
       Unite[i].Larg = Lar;
