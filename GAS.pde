@@ -75,5 +75,7 @@ void mouseMoved() {}
 void mousePressed() {
   if (M.Aff) {
     M.mousePressed();
+  }else{
+  V.mousePressed();
   }
 }

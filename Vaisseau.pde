@@ -75,19 +75,12 @@ class Vaisseau extends Enemie {
       Recharge = true; 
       TempoBouclier = frameCount;
     }
-  } 
-  PVector AvPos(int ID) { 
-    return Salle[ID].Pos;
-  } 
-  int AvPVSalle(int ID) { 
-    return Salle[ID].PV;
-  } 
-  int ArrivMissile() {  
-    for (Salle S : Salle) {  
-      if (S.AuDessu()) {  
-        return S.Type;
-      }
-    }  
-    return 9;
+  }
+  void mousePressed(){
+  super.mousePressed();
+  int Id = ArrivMissile();
+  if(Id<9){
+    Michel.Tp(Salle[Id]);
+  }
   }
 }
