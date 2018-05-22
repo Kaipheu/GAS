@@ -50,8 +50,8 @@ class Vaisseau extends Enemie {
         Michel.Pos.set(S.Pos);
       }
     }
-    Pv.draw();
-    Bouclier.draw();
+    Pv.draw(); //Affichage du niveau des point de vie  
+    Bouclier.draw();//Affichage du niveau d'Oxygène 
     Oxy.draw();//Affichage du niveau d'Oxygène 
     Carbu.draw();// Affichage du carburant restant 
     Equi.draw();// affichage des Points de vie de pierre 
