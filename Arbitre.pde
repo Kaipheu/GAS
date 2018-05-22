@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 int ms = millis();
 int s = second();
 
@@ -32,12 +31,6 @@ void combat()
     text("Vous avez réussi le niveau n°" + str(IA.NumEnnemi), width/2, height/8);
 
     IA = null;
-    //Fen.InitBouton(0, width -200, height - 70, 180, 70);               // bouton pour accéder à l'échange
-    //Fen.InitBouton(14, width -200, height - 140, 180, 70);             // bouton pour continuer le jeu
-    //Fen.B[0].Def_Ch(" La cosmo boutique " );
-    //Fen.B[14].Def_Ch(" Passer au niveau suivant ");    
-    //Fen.B[0].C_Rp = color(#BFB3B3);
-    //Fen.B[14].C_Rp = color(#BFB3B3);
   }
   if (V.PV <=0)
   {
