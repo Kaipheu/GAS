@@ -9,7 +9,6 @@ class Geste {
   Geste() {
     Fichier = loadXML("data/Fichier.xml");
     ID = Fichier.getInt("Cpt");
-    println(Fichier.getChildCount());
     Texture[13] = loadImage("Texture/PNG/Salle.png");
     for (int i = 0; i<7; i++) {
       Texture[i] = loadImage("Texture/PNG/Ico"+i+".png");
@@ -29,7 +28,7 @@ class Geste {
   }
   void mousePressed() {
     boolean Modif = false;
-    println(KEY +" "+CptClque);
+    //println(KEY +" "+CptClque);
     if (Trace) {
       if (verif() && key != 'e') {
         Choix= !Choix;

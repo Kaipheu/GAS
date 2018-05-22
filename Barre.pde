@@ -44,7 +44,7 @@ class Barr extends Unite {
   void DefPos(int x, int y) {
     for (int i = 0; i<Unite.length; i++) {
       Unite[i].DefPos(i*Esp+x, y);
-      println(Pos.x+"  "+Pos.y);
+      //println(Pos.x+"  "+Pos.y);
     }
   }
 }

@@ -43,7 +43,6 @@ class Enemie {
     image(Image, Pos.x-Image.width, Pos.y);
     for (Salle S : Salle) {
       S.draw();
-
       Pv.draw();
       Bouclier.draw();
     }

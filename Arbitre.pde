@@ -8,39 +8,35 @@ void combat()
     if ((V.MRTer[0]== true) && (IA.VIA.ArrivMissile()<=7) && (V.Missile.N>=1))
     {
       animMiss ();
-      recharger ();
     }
-    if ((V.MRTer[0]== true) && (IA.VIA.ArrivMissile()<=7) && (V.Missile.N>=1))
+    if ((V.MRTer[1]== true) && (IA.VIA.ArrivMissile()<=7) && (V.Missile.N>=1))
     {
       animMiss ();
-      recharger ();
     }
     if ((IA.MRTer[0]== true) && (IA.Tire1 == true))
     {
       IA.Tire1=false;
       animMiss ();
-      recharger ();
     }
-    if ((IA.MRTer[0]== true) && (IA.Tire2 == true))
+    if ((IA.MRTer[1]== true) && (IA.Tire2 == true))
     {
       IA.Tire2=false;
       animMiss ();
-      recharger ();
     }
   }
-  if (IA.PV <=0)
+  if (IA.VIA.PV <=0)
   {
     fill(#BE2292);
     textSize(35);
     text("Vous avez réussi le niveau n°" + str(IA.NumEnnemi), width/2, height/8);
 
     IA = null;
-    Fen.InitBouton(0, width -200, height - 70, 180, 70);               // bouton pour accéder à l'échange
-    Fen.InitBouton(14, width -200, height - 140, 180, 70);             // bouton pour continuer le jeu
-    Fen.B[0].Def_Ch(" La cosmo boutique " );
-    Fen.B[14].Def_Ch(" Passer au niveau suivant ");    
-    Fen.B[0].C_Rp = color(#BFB3B3);
-    Fen.B[14].C_Rp = color(#BFB3B3);
+    //Fen.InitBouton(0, width -200, height - 70, 180, 70);               // bouton pour accéder à l'échange
+    //Fen.InitBouton(14, width -200, height - 140, 180, 70);             // bouton pour continuer le jeu
+    //Fen.B[0].Def_Ch(" La cosmo boutique " );
+    //Fen.B[14].Def_Ch(" Passer au niveau suivant ");    
+    //Fen.B[0].C_Rp = color(#BFB3B3);
+    //Fen.B[14].C_Rp = color(#BFB3B3);
   }
   if (V.PV <=0)
   {
@@ -59,11 +55,9 @@ void combat()
 }
 
 
-void animMiss ()
-{ 
+void animMiss () { 
   PVector Pos = new PVector();
   Pos.set(V.AvPos(0));
-  float xposMissilefinale = Pos.x, yposMissilefinale = Pos.y;
 
   PImage imgMissile;
   imgMissile = Tex.Ico[15];
@@ -71,94 +65,59 @@ void animMiss ()
   float xposMissileinitiale =0, yposMissileinitiale=0;
   int ProbabM=int(random(100));
 
-  if ((IA.MEquiper[0] == Miss.M[0][0]) || (IA.MEquiper[0] == Miss.M[1][0]))
+  for (int i=0; i<=1; i++)
   {
-    ProbabM= Miss.M[0][0]/(ProbabM+1);
-    if (ProbabM <1)
+    if (IA.MEquiper[0] == Miss.M[i][0])
     {
-      ProbM=false;
+      ProbabM = Miss.M[i][0]/(ProbabM+1);
+      if (ProbabM <1)
+      {
+        ProbM=false;
+      }
+      xposMissileinitiale=540;
+      yposMissileinitiale =height/4 +120;
+      if (ProbabM >= Miss.M[i][0])
+      {
+        ProbM=true;
+      }
     }
-    xposMissileinitiale=540;
-    yposMissileinitiale =height/4 +120;
-    if (ProbabM >= Miss.M[0][0])
+    if (i ==1)
     {
-      ProbM=true;
+
+      imgMissile = Tex.Ico[16];
     }
-    V.Bouclier.N--;
-    V.Pv.N = V.Pv.N - Miss.M[0][1];
   }
-  if ((IA.MEquiper[1] == Miss.M[0][0]) || (IA.MEquiper[1] == Miss.M[1][0]))
+  for (int j=0; j<=1; j++)
   {
-    ProbabM = Miss.M[1][0]/(ProbabM+1);
-    if (ProbabM <1)
+    if (V.MEquiper[0] == Miss.M[j][0])
     {
-      ProbM=false;
+      ProbabM= Miss.M[j][0]/(ProbabM+1);
+      if (ProbabM <1)
+      {
+        ProbM=false;
+      }
+      xposMissileinitiale=400;
+      yposMissileinitiale=height/4+120;
+      if (ProbabM >= Miss.M[j][0])
+      {
+        ProbM=true;
+      }
     }
-    xposMissileinitiale=width - 540;
-    yposMissileinitiale=height/4+380;
-    if (ProbabM >= Miss.M[1][0])
+    if (j ==1)
     {
-      ProbM=true;
+
+      imgMissile = Tex.Ico[16];
     }
-    V.Bouclier.N--;
-    V.Pv.N = V.Pv.N - Miss.M[1][1];
-    imgMissile = Tex.Ico[16];
-  }
-  if ((V.MEquiper[0] == Miss.M[0][0]) || (V.MEquiper[0] == Miss.M[1][0]))
-  {
-    ProbabM= Miss.M[0][0]/(ProbabM+1);
-    if (ProbabM <1)
-    {
-      ProbM=false;
-    }
-    xposMissileinitiale=400;
-    yposMissileinitiale=height/4+120;
-    if (ProbabM >= Miss.M[0][0])
-    {
-      ProbM=true;
-    }
-    IA.VIA.Bouclier.N--;
-    V.Missile.N--;
-    IA.PV = IA.PV - Miss.M[0][1];
-  }
-  if ((V.MEquiper[1] == Miss.M[0][0]) || (V.MEquiper[1] == Miss.M[1][0]))
-  {
-    ProbabM= Miss.M[1][0]/(ProbabM+1);
-    if (ProbabM <1)
-    {
-      ProbM=false;
-    }
-    xposMissileinitiale=400;
-    yposMissileinitiale=height/4+380;
-    if (ProbabM >= Miss.M[1][0])
-    {
-      ProbM=true;
-    }
-    IA.VIA.Bouclier.N--;
-    V.Missile.N--;
-    IA.PV = IA.PV - Miss.M[1][1];
-    imgMissile = Tex.Ico[16];
-  }
-  if ((V.MEquiper[0] == 0) || (V.MEquiper[1] == 0) || (IA.MEquiper[0] == 0) || (IA.MEquiper[1] == 0))
-  {
-    ProbM=true;
   }
   if (ProbM == false)
   {
-
-    int V = 300*ms; // vitesse du missile
-    image(imgMissile, abs(xposMissilefinale - yposMissilefinale)*V, abs(xposMissileinitiale - yposMissileinitiale), 30, 30);
+    LO++; // vitesse du missile
+    PVector TrajMiss = new PVector(abs(xposMissileinitiale - Pos.x), abs(yposMissileinitiale - Pos.y));  //vecteur Missile
+    TrajMiss.setMag (LO);
+    image(imgMissile, TrajMiss.x, TrajMiss.y, 50, 50);
     stroke(255);
     noFill();
     animBoom();
-    //  PVector TrajMiss = new PVector(xposMissileinitiale, yposMissileinitiale);
-    //  PVector vitesse = new PVector(abs(xposMissileinitiale - xposMissilefinale), abs(yposMissileinitiale - yposMissilefinale));
-    //  TrajMiss.add(vitesse);
-    //  image(imgMissile, TrajMiss.x, TrajMiss.y, 30, 30);
-    //  stroke(255);
-    //  noFill();
-    //  animBoom();
-    //}
   }
 }
 
@@ -174,6 +133,9 @@ void animBoom ()
       stroke(255);
       noFill();
       IA.Salle[IA.VIA.ArrivMissile()].PV = IA.Salle[IA.VIA.ArrivMissile()].PV - Miss.M[i][1];
+      IA.PV = IA.PV - Miss.M[i][1];
+      IA.VIA.Bouclier.N--;
+      V.Missile.N--;
       IA.PV = IA.PV - Miss.M[i][1];
       if (IA.VIA.ArrivMissile()== i)  //changer
       {
@@ -204,7 +166,9 @@ void animBoom ()
         }
       }
     }
-  }
+      V.Bouclier.N--;
+      V.Pv.N = V.Pv.N - Miss.M[i][1];
+    }
 }
 
 
@@ -248,11 +212,12 @@ void dommage()
       //exit();
     }
   }
-for (int i=5; i<=7; i++)
-  {if (V.Salle[i].PV<=0)
+  for (int i=5; i<=7; i++)
   {
-    V.Salle[i].PV=0;
-  }
+    if (V.Salle[i].PV<=0)
+    {
+      V.Salle[i].PV=0;
+    }
   }
   //if (V.Equi.N <= 0)
   //{
@@ -298,7 +263,10 @@ void reparer()
 
   if (IA.VIA.Salle[2].PV <= IA.VIA.Salle[2].PVMax || IA.VIA.Salle[5].PV <= IA.VIA.Salle[5].PVMax || IA.VIA.Salle[6].PV <= IA.VIA.Salle[6].PVMax)  //salle qui nécessite des réparations
   {
-    //Homme va en direction de la salle
+      //if (IA.VIA.Salle[2] = 8*int((frameCount-F[6])/( frameRate)))
+      //{
+        
+      //}
   } else if (IA.VIA.Salle[0].PV <= IA.VIA.Salle[0].PVMax || IA.VIA.Salle[3].PV <= IA.VIA.Salle[3].PVMax) {
     //Homme va en direction de la salle
   } else if (IA.VIA.Salle[1].PV <= IA.VIA.Salle[1].PVMax || IA.VIA.Salle[4].PV <= IA.VIA.Salle[4].PVMax || IA.VIA.Salle[7].PV <= IA.VIA.Salle[7].PVMax) {
@@ -309,7 +277,7 @@ void reparer()
 
 void recharger()
 {
-  int RBouclier = 6*int((frameCount-F[6])/(frameRate*10));
+  int RBouclier = 6*int((frameCount-F[6])/( frameRate));
   int[] VMRe = new int[2];
   int[] IAMRe = new int[2];
 

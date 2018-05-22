@@ -36,7 +36,7 @@ class IA
     switch(N) {
     case 0: 
       text("Vaisseau de reconnaisance", XposIA, YposIA);
-      PV=15;
+      VIA.PV=15;
       Boucliermax = VIA.Bouclier.N = 1;
       MEquiper[0] = Miss.M[0][0];
       MEquiper[1] = 0;

@@ -1,4 +1,4 @@
-/********************************************************************************************************* //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>//
+/********************************************************************************************************* //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>//
  Titre du Programme : Gestion d'Attaque Spatiale
  **********************************************************************************************************
  Date de création du programme : 23/01/2018
@@ -12,7 +12,7 @@
  Commentaire : R.A.S.
  *********************************************************************************************************/
 
-Menu M; // Objet Menu  //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>//
+Menu M; // Objet Menu  //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>//
 
 // Objet vaisseaux Joueur et ennemi
 
@@ -27,7 +27,7 @@ Fenetre Fen;
 char KEY ='0';
 Etoiles[] Et = new Etoiles[100];
 
-int[] F = new int[50];
+int[] F = new int[51];
 void frameCount()
 {
   for (int i=0; i<=50; i++)
@@ -36,6 +36,7 @@ void frameCount()
   }
 } // >=F[10] non utilisé
 
+    int LO=0;
 
 void settings () {
   fullScreen();
@@ -46,6 +47,7 @@ void settings () {
 void setup() {
   smooth(9);
   textSize(20);
+  frameCount();
   M = new Menu();// Créeation d'une instance Menu.
   Miss = new Missile(200, 200);
   V = new Vaisseau(width/10, height/10, 104);// Instance Vaiseau Joueur
@@ -60,18 +62,20 @@ void draw() {
   background(120);
   if (M.Aff) {
     M.draw();
-  } else {
+  } else { //<>//
     background(0);
     for(Etoiles E:Et){
-        pushMatrix();    
+        pushMatrix();
         E.draw();
         popMatrix();
         E.Deplacement();
         E.Pos();
       }
+    frameCount();
     V.draw();
     IA.draw();
     combat(); //<>//
+    animMiss();
     dommage();
     reparer();
     recharger();
@@ -79,7 +83,7 @@ void draw() {
   
   textAlign(TOP, LEFT);
   fill(0);
-  println(V.Equi.N);
+  //println(V.Equi.N);
   
   if(E.Fen.B[0].Activ)
   {
