@@ -7,7 +7,7 @@ class IA
   int[] MR = new int[2];
   int[] P = new int[8];
   int NumEnnemi=0, N=0;
-  boolean Tire1=false, Tire2=false;
+  boolean[] Tir= new boolean [2];
   boolean[] MRTer = new boolean[2];
   PImage Image = loadImage("Texture/PNG/IA.png");  
   Barr Bouclier;
@@ -121,16 +121,16 @@ class IA
 
   void action()
   {
-    int Tirer1 = int((frameCount-F[7])/(frameRate*10));
-    int Tirer2 = int((frameCount-F[8])/(frameRate*10));
-    if (Tirer1==Miss.M[0][2])
+    int Tirer0 = int((frameCount-F[7])/(frameRate*10));
+    int Tirer1 = int((frameCount-F[8])/(frameRate*10));
+    if (Tirer0==Miss.M[0][2])
     {
-      Tire1=true;
+      Tir[0]=true;
       F[7]=0;
     }
-    if (Tirer2==Miss.M[1][2])
+    if (Tirer1==Miss.M[1][2])
     {
-      Tire1=true;
+      Tir[1]=true;
       F[8]=0;
     }
 

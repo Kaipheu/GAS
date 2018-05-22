@@ -2,12 +2,6 @@ void combat()
 {                                                                                               // && IA.VIA.PV<=0
   if ((V.Pv.N >0) || (IA.PV > 0))
   {
-    //  if ((V.MRTer[0]== true) && (IA.VIA.ArrivMissile()<=7) && (V.Missile.N>=1))
-    //  if ((V.MRTer[1]== true) && (IA.VIA.ArrivMissile()<=7) && (V.Missile.N>=1))
-    //  if ((IA.MRTer[0]== true) && (IA.Tire1 == true))
-    //    IA.Tire1=false;
-    //  if ((IA.MRTer[1]== true) && (IA.Tire2 == true))
-    //    IA.Tire2=false;
     PVector Pos = new PVector();
     Pos.set(V.AvPos(0));
     PImage imgMissile;
@@ -15,47 +9,53 @@ void combat()
     boolean ProbM = false;
     int ProbabM=int(random(100));
     PVector PosMissEn1 = new PVector();
-
-    for (int i=0; i<=1; i++)
+    for (int j=0; j<=1; j++)
     {
-      if (IA.MEquiper[0] == Miss.M[i][0])
+      for (int i=0; i<=1; i++)
       {
-        ProbabM = Miss.M[i][0]/(ProbabM+1);
-        if (ProbabM <1)
+        if ((IA.MEquiper[j] == Miss.M[i][0]) && (IA.MRTer[i]== true) && (IA.Tir[i] == true))
         {
-          ProbM=false;
+          ProbabM = Miss.M[i][0]/(ProbabM+1);
+          if (ProbabM <1)
+          {
+            ProbM=false;
+          }
+          PosMissEn1.set(-409, 147*2.62*(i+1)).add(IA.VIA.Pos);
+          if (ProbabM >= Miss.M[i][0])
+          {
+            ProbM=true;
+            IA.Tir[i] =false;
+          }
         }
-        PosMissEn1.set(-409, 147*2.62*(i+1)).add(IA.VIA.Pos);
-        if (ProbabM >= Miss.M[i][0])
+        if (i ==1)
         {
-          ProbM=true;
-        }
-      }
-      if (i ==1)
-      {
 
-        imgMissile = Tex.Ico[16];
+          imgMissile = Tex.Ico[16];
+        }
       }
     }
     for (int j=0; j<=1; j++)
     {
-      if (V.MEquiper[0] == Miss.M[j][0])
+      for (int i=0; i<=1; i++)
       {
-        ProbabM= Miss.M[j][0]/(ProbabM+1);
-        if (ProbabM <1)
+        if (V.MEquiper[j] == Miss.M[i][0])
         {
-          ProbM=false;
+          ProbabM= Miss.M[i][0]/(ProbabM+1);
+          if (ProbabM <1)
+          {
+            ProbM=false;
+          }
+          PosMissEn1.set(-409, 147*2.62*(i+1)).add(V.Pos);
+          if (ProbabM >= Miss.M[i][0])
+          {
+            ProbM=true;
+          }
         }
-        PosMissEn1.set(-409, 147*2.62*(j+1)).add(V.Pos);
-        if (ProbabM >= Miss.M[j][0])
+        if (i ==1)
         {
-          ProbM=true;
-        }
-      }
-      if (j ==1)
-      {
 
-        imgMissile = Tex.Ico[16];
+          imgMissile = Tex.Ico[16];
+        }
       }
     }
     if (ProbM == false)
@@ -92,30 +92,14 @@ void combat()
     text("Vous avez perdu ...", width/2, height/2);
     exit();
   }
-  //if (IA.NumEnnemi == 10 )
-  //{
-  //  fill(#BE2292);
-  //  textSize(35);
-  //  text("Vous avez réussi le jeu", width/2, height/2);
-  //  exit();
-  //}
+  if (IA.NumEnnemi == 11 )
+  {
+    fill(#BE2292);
+    textSize(35);
+    text("Vous avez réussi le jeu", width/2, height/2);
+    exit();
+  }
 }
-
-
-void animMiss ()
-{ 
-
-  //  PVector TrajMiss = new PVector(xposMissileinitiale, yposMissileinitiale);
-  //  PVector vitesse = new PVector(abs(xposMissileinitiale - xposMissilefinale), abs(yposMissileinitiale - yposMissilefinale));
-  //  TrajMiss.add(vitesse);
-  //  image(imgMissile, TrajMiss.x, TrajMiss.y, 30, 30);
-  //  stroke(255);
-  //  noFill();
-  //  animBoom();
-  //}
-}
-
-
 
 void animBoom ()
 {
