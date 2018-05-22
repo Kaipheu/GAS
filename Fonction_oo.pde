@@ -73,9 +73,13 @@ void reparer()
 
   if (IA.VIA.Salle[2].PV <= IA.VIA.Salle[2].PVMax || IA.VIA.Salle[5].PV <= IA.VIA.Salle[5].PVMax || IA.VIA.Salle[6].PV <= IA.VIA.Salle[6].PVMax)  //salle qui nécessite des réparations
   {
-    //if (IA.VIA.Salle[2] = 8*int((frameCount-F[6])/( frameRate)))
+    //if (IA.Equi.N >=0)
     //{
-
+    //  if (((frameCount - F[2]) / (frameRate)) == 8)
+    //  {
+    //    F[2]=frameCount;
+    //    V.Salle[i].PV++;
+    //  }
     //}
   } else if (IA.VIA.Salle[0].PV <= IA.VIA.Salle[0].PVMax || IA.VIA.Salle[3].PV <= IA.VIA.Salle[3].PVMax) {
     //Homme va en direction de la salle

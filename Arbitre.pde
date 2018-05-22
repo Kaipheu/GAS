@@ -1,24 +1,13 @@
 void combat()
-{
+{                                                                                               // && IA.VIA.PV<=0
   if ((V.Pv.N >0) || (IA.PV > 0))
   {
     //  if ((V.MRTer[0]== true) && (IA.VIA.ArrivMissile()<=7) && (V.Missile.N>=1))
-    //  {
-    //    animMiss ();
-    //  }
     //  if ((V.MRTer[1]== true) && (IA.VIA.ArrivMissile()<=7) && (V.Missile.N>=1))
-    //  {
-    //    animMiss ();
-    //  }
     //  if ((IA.MRTer[0]== true) && (IA.Tire1 == true))
-    //  {
     //    IA.Tire1=false;
-    //    animMiss ();
-    //  }
     //  if ((IA.MRTer[1]== true) && (IA.Tire2 == true))
-    //  {
     //    IA.Tire2=false;
-    //    animMiss ();
     PVector Pos = new PVector();
     Pos.set(V.AvPos(0));
     PImage imgMissile;
@@ -145,7 +134,7 @@ void animBoom ()
       IA.PV = IA.PV - Miss.M[i][1];
       if (IA.VIA.ArrivMissile()== i)  //changer
       {
-        //V.Equi.N = V.Equi.N - Missile.M[i][1];
+        V.Equi.N = V.Equi.N - Miss.M[i][1];
       }
     }
   }

@@ -1,10 +1,10 @@
 class Missile
 {
    public int[][] M = new int[2][3];
-  Missile(float xposMissile, float yposMissile)
+  Missile(float xposMiss, float yposMiss)
   { 
-    yposMissile = 0;
-    xposMissile = 0;
+    yposMiss = 0;
+    xposMiss = 0;
     
     //missile coup/coup
     //missile rafale 3 tirs
