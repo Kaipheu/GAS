@@ -36,7 +36,7 @@ void combat()
         {
           ProbM=false;
         }
-        //PosMissEn1.set(-409, 147*2.62*(i+1)*.add(IA.VIA.Pos);
+        PosMissEn1.set(-409, 147*2.62*(i+1)).add(IA.VIA.Pos);
         if (ProbabM >= Miss.M[i][0])
         {
           ProbM=true;
@@ -57,7 +57,7 @@ void combat()
         {
           ProbM=false;
         }
-        //PosMissEn1.set(-409, 147*2.62*(j+1).add(V.Pos);
+        PosMissEn1.set(-409, 147*2.62*(j+1)).add(V.Pos);
         if (ProbabM >= Miss.M[j][0])
         {
           ProbM=true;

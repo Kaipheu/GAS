@@ -13,7 +13,7 @@
    */
 
   class Echange {
-  int Lune=0;
+  int Lune=50;
   int[][] D = new int[4][8];
   int[][] C = new int[4][8];
   Fenetre Fen;
