@@ -60,7 +60,7 @@ class Menu {
       }
     } else if (B[0].Activ) {
     } else if (B[0].Activ) {
-      
+      C.Affiche = true;
     } else if (B[3].Activ) {
       exit();
     }

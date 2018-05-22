@@ -1,4 +1,4 @@
-/********************************************************************************************************* //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>//
+/********************************************************************************************************* //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>//
  Titre du Programme : Gestion d'Attaque Spatiale
  **********************************************************************************************************
  Date de création du programme : 23/01/2018
@@ -12,7 +12,7 @@
  Commentaire : R.A.S.
  *********************************************************************************************************/
 
-Menu M; // Objet Menu  //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>//
+Menu M; // Objet Menu  //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>//
 
 // Objet vaisseaux Joueur et ennemi
 
@@ -24,6 +24,7 @@ IA IA;
 Vaisseau V;
 Fenetre Fen;
 Bouton[] B = new Bouton[2];
+Credit C;
 char KEY ='0';
 Etoiles[] Et = new Etoiles[100];
 
@@ -45,6 +46,7 @@ void setup() {
   V = new Vaisseau(width/10, height/10, 104);// Instance Vaiseau Joueur
   E = new Echange();
   IA = new IA (100, 100);
+  C = new Credit();
   B[0] = new Bouton(width -200, height - 70, 180, 70, 0);
   B[1] = new Bouton(width -200, height - 140, 180, 70, 1);
   // bouton pour continuer le jeu
@@ -57,7 +59,12 @@ void setup() {
 void draw() {
   background(120);
   if (M.Aff) {
-    M.draw();
+    if (C.Affiche) {
+      C.draw();
+      print("Dr");
+    } else { //<>//
+      M.draw();
+    }
   } else {
     background(0);
     for (Etoiles E : Et) {
@@ -67,7 +74,7 @@ void draw() {
       E.Deplacement();
       E.Pos();
     }
-    V.draw();
+    V.draw(); //<>//
     IA.draw();
     //combat();
     //dommage();
@@ -76,7 +83,7 @@ void draw() {
     if (B[0].Activ)
     {
       E.draw();
-    }else{
+    } else {
       B[0].draw();
       B[1].draw();
     }
@@ -105,7 +112,7 @@ void mousePressed() {
     E.mousePressed();
   }
   B[0].mousePressed();
-      B[1].mousePressed();
+  B[1].mousePressed();
 }
 void frameCount()
 {
