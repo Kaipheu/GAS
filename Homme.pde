@@ -10,5 +10,6 @@ class Homme{
   }
   void Tp(Salle Autre){ 
     Pos.set(Autre.Pos); 
+    Salle = Autre.Type;
   } 
 }
