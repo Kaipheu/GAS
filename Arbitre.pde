@@ -3,28 +3,28 @@ int s = second();
 
 void combat()
 {
-  if ((V.Pv.N >0) || (IA.PV > 0))
+  if ((V.Pv.N >0) || (IA.VIA.PV > 0))          // si un des vaisseaux n'est pas détruit  :
   {
-    if ((V.MRTer[0]== true) && (IA.VIA.ArrivMissile()<=7) && (V.Missile.N>=1))
+    if ((V.MRTer[0]== true) && (IA.VIA.ArrivMissile()<=7) && (V.Missile.N>=1))     //si la recharge du missile est terminé et que le Joueur a tiré un missile de l'emplacement 0
     {
       animMiss ();
     }
-    if ((V.MRTer[1]== true) && (IA.VIA.ArrivMissile()<=7) && (V.Missile.N>=1))
+    if ((V.MRTer[1]== true) && (IA.VIA.ArrivMissile()<=7) && (V.Missile.N>=1))     //si la recharge du missile est terminé et que le Joueur a tiré un missile de l'emplacement 1
     {
       animMiss ();
     }
-    if ((IA.MRTer[0]== true) && (IA.Tire1 == true))
+    if ((IA.MRTer[0]== true) && (IA.Tire1 == true))       //si la recharge du missile est terminé et que l'IA a tiré un missile de l'emplacement 0
     {
       IA.Tire1=false;
       animMiss ();
     }
-    if ((IA.MRTer[1]== true) && (IA.Tire2 == true))
+    if ((IA.MRTer[1]== true) && (IA.Tire2 == true))       //si la recharge du missile est terminé et que l'IA a tiré un missile de l'emplacement 1
     {
       IA.Tire2=false;
       animMiss ();
     }
   }
-  if (IA.VIA.PV <=0)
+  if (IA.VIA.PV <=0)      //si l'IA est détruit alors afficher que le niveau est réussi
   {
     fill(#BE2292);
     textSize(35);
@@ -38,14 +38,14 @@ void combat()
     //Fen.B[0].C_Rp = color(#BFB3B3);
     //Fen.B[14].C_Rp = color(#BFB3B3);
   }
-  if (V.PV <=0)
+  if (V.PV <=0)         //si le Joueur est détruit alors afficher qu'il a perdu
   {
     fill(#BE2292);
     textSize(35);
     text("Vous avez perdu ...", width/2, height/2);
     exit();
   }
-  if (IA.NumEnnemi == 10 )
+  if (IA.NumEnnemi == 11 )       //si le numéro de l'ennemi dépasse les 10 (soit le boss de fin) alors afficher réussi
   {
     fill(#BE2292);
     textSize(35);
