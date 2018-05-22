@@ -23,12 +23,12 @@ Echange E;
 IA IA;
 Vaisseau V;
 Fenetre Fen;
-Bouton[] B = new Bouton[2];
+Bouton[] Boutique = new Bouton[1];
 char KEY ='0';
 Etoiles[] Et = new Etoiles[100];
 
-int[] F = new int[50];
-int T, LO=0
+int[] F = new int[51];
+int T, LO=0;
 
 
 void settings () {
@@ -45,13 +45,9 @@ void setup() {
   V = new Vaisseau(width/10, height/10, 104);// Instance Vaiseau Joueur
   E = new Echange();
   IA = new IA (100, 100);
-  B[0] = new Bouton(width -200, height - 70, 180, 70, 0);
-  B[1] = new Bouton(width -200, height - 140, 180, 70, 1);
-  // bouton pour continuer le jeu
-  B[0].Def_Ch(" La cosmo boutique " );
-  B[1].Def_Ch(" Passer au niveau suivant ");    
-  B[1].C_Rp = color(#BFB3B3);
-  B[0].C_Rp = color(#BFB3B3);
+  Boutique[0] = new Bouton(width -200, height - 70, 180, 70, 0);
+  Boutique[0].Def_Ch(" La cosmo boutique " ); 
+  Boutique[0].C_Rp = color(#BFB3B3);
 }
 
 void draw() {
@@ -70,17 +66,16 @@ void draw() {
     frameCount();
     V.draw();
     IA.draw();
-    combat();
-    animMiss();
-    dommage();
-    reparer();
-    recharger();
-    if (B[0].Activ)
+    //combat();
+    //animMiss();
+    //dommage();
+    //reparer();
+    //recharger();
+    if (Boutique[0].Activ)
     {
       E.draw();
     }else{
-      B[0].draw();
-      B[1].draw();
+      Boutique[0].draw();
     }
   }
 }
@@ -106,8 +101,7 @@ void mousePressed() {
     V.mousePressed();
     E.mousePressed();
   }
-  B[0].mousePressed();
-      B[1].mousePressed();
+  Boutique[0].mousePressed();
 }
 void frameCount()
 {
