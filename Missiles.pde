@@ -1,8 +1,7 @@
 class Missile
 {
    public int[][] M = new int[2][3];
-  Missile(float xposMiss, float yposMiss)
-  { 
+  Missile(float xposMiss, float yposMiss) { 
     yposMiss = 0;
     xposMiss = 0;
     

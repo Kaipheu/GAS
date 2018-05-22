@@ -1,7 +1,9 @@
-class Enemie {
+class Enemie
+{
   Salle[] Salle = new Salle[8]; // Tableau des Salles du vaiseaux
   Barr Pv;    // Point de vie du Vaiseaux
   Barr Bouclier;// Niveau du Bouclier
+  Homme Michel;
 
   PImage Image;
   PVector Pos; // Position du vaiseau
@@ -13,6 +15,7 @@ class Enemie {
     Image = loadImage("Texture/PNG/IA_500x500.png");
     Pv = new Barr(150, 150-(5*150)-5, PV, 150, 150, "Point de vie");
     Bouclier = new Barr(150, 150-3*150, 3, 150, 150, "Bouclier");
+    Michel = new Homme(Pos.x+32, Pos.y+27, T);
     int L=T/10, l=T/5;
 
     PosS[0][0] = -469 ;
@@ -39,7 +42,8 @@ class Enemie {
     }
   }
 
-  void draw() {
+  void draw()
+  {
     image(Image, Pos.x-Image.width, Pos.y);
     for (Salle S : Salle) {
       S.draw();
@@ -48,14 +52,11 @@ class Enemie {
     Bouclier.draw();
   }
 
-  void mousePressed() {
+  void mousePressed()
+  {
     for (Salle S : Salle) {
       S.mousePressed();
     }
-  }
-
-
-  void mouseMoved() {
   }
 
   boolean Air (int ID) {

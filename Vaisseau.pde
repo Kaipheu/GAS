@@ -35,9 +35,10 @@ class Vaisseau extends Enemie {
     Michel = new Homme(Pos.x+32, Pos.y+27, T);
 
 
-    MEquiper[1] = 0;
-    MRTer[0] = MRTer[1] = false;
+    MRTer[0] = false;
+    MRTer[1] = false;
     MEquiper[0] = Miss.M[0][0];
+    MEquiper[1] = 1;
   }
 
 

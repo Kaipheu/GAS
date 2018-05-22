@@ -26,11 +26,11 @@ class IA
     Equi = new Barr(XposIA, YposIA+Image.width+V.Salle[1].Larg*2, 3, V.Salle[1].Long, V.Salle[1].Larg, "Michel");// Création d'une instance de Barr pour les point de vie de Michel
 
     N = int(random(2));
-    if (NumEnnemi == 10)
-    {
+    if (NumEnnemi == 10) {
       N=3;
     }
-    switch(N) {
+    switch(N)
+    {
     case 0: 
       text("Vaisseau de reconnaisance", XposIA, YposIA);
       VIA.PV=15;
@@ -39,8 +39,7 @@ class IA
       MEquiper[1] = 0;
       MR[0] = Miss.M[0][2];
       MR[0] = 0;
-      for (int i=0; i<=7; i++)
-      {
+      for (int i=0; i<=7; i++) {
         VIA.Salle[i].PV = 1;
       }
       break;
@@ -52,8 +51,7 @@ class IA
       MEquiper[1] = Miss.M[0][0];
       MR[0] = Miss.M[0][2];
       MR[0] = 0;
-      for (int i=0; i<=7; i++)
-      {
+      for (int i=0; i<=7; i++) {
         VIA.Salle[i].PV = 1;
       }
     case 2:
@@ -64,14 +62,12 @@ class IA
       MEquiper[1] = Miss.M[int(random(1))][0];
       for (int i=0; i<=1; i++) { 
         for (int j=0; j<=1; j++) {
-          if (MEquiper[i] == Miss.M[j][0])
-          {
+          if (MEquiper[i] == Miss.M[j][0]) {
             MR[i]= Miss.M[j][2];
           }
         }
       }
-      for (int i=0; i<=7; i++)
-      {
+      for (int i=0; i<=7; i++) {
         VIA.Salle[i].PV = 2;
       }
     case 3 : 
@@ -84,8 +80,7 @@ class IA
       MEquiper[1] = Miss.M[1][0];
       MR[0] = Miss.M[0][2];
       MR[0] = Miss.M[1][2];
-      for (int i=0; i<=7; i++)
-      {
+      for (int i=0; i<=7; i++) {
         VIA.Salle[i].PV = 3;
       }
       break;
@@ -97,8 +92,7 @@ class IA
       MEquiper[1] = 0;
       MR[0] = Miss.M[0][2];
       MR[0] = 0;
-      for (int i=0; i<=7; i++)
-      {
+      for (int i=0; i<=7; i++) {
         VIA.Salle[i].PV = 1;
       }
       break;
@@ -118,26 +112,21 @@ class IA
     VIA.draw();
   }
 
-
   void action()
   {
-    int Tirer0 = int((frameCount-F[7])/(frameRate*10));
-    int Tirer1 = int((frameCount-F[8])/(frameRate*10));
-    if (Tirer0==Miss.M[0][2])
-    {
+    int Tirer0 = int((frameCount-F[7])/( frameRate));
+    int Tirer1 = int((frameCount-F[8])/( frameRate));
+    if (Tirer0==Miss.M[0][2]) {
       Tir[0]=true;
       F[7]=0;
     }
-    if (Tirer1==Miss.M[1][2])
-    {
+    if (Tirer1==Miss.M[1][2]) {
       Tir[1]=true;
       F[8]=0;
     }
 
-    for (int i =-1; i<8; i++)  //salle de préférence à viser
-    {
-      if ((V.Salle[i+1].PV >= V.Salle[i].PV) && (P[i+1] >= P[i]))
-      {
+    for (int i =-1; i<8; i++) {     //salle de préférence à viser
+      if ((V.Salle[i+1].PV >= V.Salle[i].PV) && (P[i+1] >= P[i])) {
         P[i] = P[i+1];
         VIA.ArrivMissile();
       }
