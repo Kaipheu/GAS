@@ -25,10 +25,7 @@ class IA
     Oxy = new Barr(XposIA, YposIA +Image.width + V.Salle[1].Larg*0.5, 10, V.Salle[1].Long, V.Salle[1].Larg, "");// Création de l'instance de Barr pour le niveau d'Oxgène
     Equi = new Barr(XposIA, YposIA+Image.width+V.Salle[1].Larg*2, 3, V.Salle[1].Long, V.Salle[1].Larg, "Michel");// Création d'une instance de Barr pour les point de vie de Michel
 
-    if (NumEnnemi<10)
-    {
-      N = int(random(2));
-    }
+    N = int(random(2));
     if (NumEnnemi == 10)
     {
       N=3;

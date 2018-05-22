@@ -2,12 +2,18 @@ class Bouton extends Unite {
   Boolean Activ = false, Aff = true,Texture=false;
   String Nom;
   color C_Tx = 255;
-  int ID,Arrondi=50 ;
+  int ID;
   Bouton(float x, float y, int Long, int Larg, int Id) {
     super(x,y,Long,Larg);
     Nom = str(Id);
     ID=Id;
-    //Ar=50;
+    Arrondie = 50;
+  }
+   Bouton(int x, int y, int Long, int Larg, int Id) {
+    super(x,y,Long,Larg);
+    Nom = str(Id);
+    ID=Id;
+    Arrondie = 50;
   }
 
   void draw() {
