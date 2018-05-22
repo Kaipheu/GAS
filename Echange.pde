@@ -11,15 +11,7 @@
    6 = Reverve
    7 = Arme
    */
-  //Salle(int X, int Y) {
-  //  super(X,Y);
-  //  Nom = "";
-  //}
-  //Salle(float X, float Y) {
-  //  super(X,Y);
-  //  Nom = "";
-  //}
-  
+
   class Echange {
   int Lune=0;
   int[][] D = new int[4][8];

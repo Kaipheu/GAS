@@ -56,6 +56,7 @@ class Menu {
       Aff = false;
       for(Etoiles E:Et){
         E.E = true;
+        E.AleAcc();
       }
     } else if (B[0].Activ) {
     } else if (B[0].Activ) {
