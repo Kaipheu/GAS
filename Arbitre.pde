@@ -1,6 +1,6 @@
 void combat()
 {                                                                                               // && IA.VIA.PV<=0
-  if ((V.Pv.N >0) || (IA.PV > 0)) {
+  if ((V.Pv.N >0) || (IA.VIA.PV > 0)) {
     PVector Pos = new PVector();
     Pos.set(V.AvPos(0));
     PImage imgMissile;
@@ -46,12 +46,11 @@ void combat()
       }
     }
 
-    T++;
-    // vitesse du missile
+    T++;                    // vitesse du missile
     PVector Traj = new PVector();
     Traj = PosMissEn1.sub(Pos).setMag(T);
     image(imgMissile, Traj.x, Traj.y, 50, 50);
-    stroke(255);
+    stroke(255);   
     noFill();
 
     if (ProbM == false) {
@@ -59,7 +58,7 @@ void combat()
     }
   }
   
-  if (IA.PV <=0) {
+  if (IA.VIA.PV <=0) {
     fill(#BE2292);
     textSize(35);
     text("Vous avez réussi le niveau n°" + str(IA.NumEnnemi), width/2, height/8);
@@ -89,14 +88,14 @@ void animBoom ()
       stroke(255);
       noFill();
       IA.Salle[IA.VIA.ArrivMissile()].PV = IA.Salle[IA.VIA.ArrivMissile()].PV - Miss.M[i][1];
-      IA.PV = IA.PV - Miss.M[i][1];
+      IA.VIA.PV = IA.VIA.PV - Miss.M[i][1];
       IA.VIA.Bouclier.N--;
       V.Missile.N--;
-      IA.PV = IA.PV - Miss.M[i][1];
+      IA.VIA.PV = IA.VIA.PV - Miss.M[i][1];
       if (IA.VIA.ArrivMissile()== i) {   //changer
         V.Equi.N = V.Equi.N - Miss.M[i][1];
         for (int j=0; j<=7; j++) {
-          if (IA.Equi.N >=0 && IA.VIA.Michel.Salle == j) {
+          if (IA.VIA.Equi.N >=0 && IA.VIA.Michel.Salle == j) {
             if (int((frameCount - F[11]) / (frameRate)) == 8) {
               IA.Salle[j].PV++;
               F[11] = frameCount;

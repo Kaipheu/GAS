@@ -34,10 +34,10 @@ void dommage()
   if (IA.VIA.Salle[0].PV<=0)
   {
     IA.VIA.Salle[0].PV=0;
-    IA.Oxy.N = IA.Oxy.N - int((frameCount-F[1])/(frameRate*10));
-    if (IA.Oxy.N==0) {
+    IA.VIA.Oxy.N = IA.VIA.Oxy.N - int((frameCount-F[1])/(frameRate*10));
+    if (IA.VIA.Oxy.N==0) {
       F[1]=frameCount;
-      IA.Equi.N = 0;
+      IA.VIA.Equi.N = 0;
     }
   }
   for (int i=2; i<=7; i++) {

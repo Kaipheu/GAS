@@ -4,6 +4,8 @@ class Enemie
   Barr Pv;    // Point de vie du Vaiseaux
   Barr Bouclier;// Niveau du Bouclier
   Homme Michel;
+  Barr Oxy;   // Niveau d'oxygène du Vaiseaux
+  Barr Equi;// Point de l'équipage 
 
   PImage Image;
   PVector Pos; // Position du vaiseau
@@ -11,13 +13,16 @@ class Enemie
 
   Enemie(int x, int y, int T) {
     Pos = new PVector(x, y);  
+    
+    int L=T/10, l=T/5;
     short[][] PosS = new short[8][2];
     Image = loadImage("Texture/PNG/IA_500x500.png");
     Pv = new Barr(150, 150-(5*150)-5, PV, 150, 150, "Point de vie");
     Bouclier = new Barr(150, 150-3*150, 3, 150, 150, "Bouclier");
     Michel = new Homme(Pos.x+32, Pos.y+27, T);
-    int L=T/10, l=T/5;
-
+    Equi = new Barr(x, y + Image.width + l*2, 3, L, l, "");// Création d'une instance de Barr pour les point de vie de Michel
+    Oxy = new Barr(x, y + Image.width + Salle[1].Larg*0.5, 10, Salle[1].Long, Salle[1].Larg, "");      //NULL POINTER EXCEPTION
+ 
     PosS[0][0] = -469 ;
     PosS[0][1] = 186 ;
     PosS[1][0] = -137 ;

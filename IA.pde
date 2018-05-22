@@ -1,34 +1,29 @@
 class IA
 {
   Enemie VIA;
-  int PV, Boucliermax;
+  int PVmax, Boucliermax;
   Salle[] Salle = new Salle[8]; // Tableau des Salles de l'IA
   int[] MEquiper = new int[2];
   int[] MR = new int[2];
   int[] P = new int[8];
-  int NumEnnemi=0, N=0;
+  int NumEnnemi=1, N=0;
   boolean[] Tir= new boolean [2];
   boolean[] MRTer = new boolean[2];
-  PImage Image = loadImage("Texture/PNG/IA.png");  
-  Barr Bouclier;
-  Barr Pv;
-  Barr Oxy;   // Niveau d'oxygène du Vaiseaux
-  Barr Equi;// Point de l'équipage 
+  PImage Image = loadImage("Texture/PNG/IA.png"); 
 
   IA(float XposIA, float YposIA)
   { 
+    VIA =new Enemie(width - 100, height/10, 104); // l larg et taille salle
     XposIA = width -100;
     YposIA = height - 100;
     MRTer[0]=false;
     MRTer[1]=false;
-    VIA =new Enemie(width - 100, height/10, 104); // l larg et taille salle
-    Oxy = new Barr(XposIA, YposIA +Image.width + V.Salle[1].Larg*0.5, 10, V.Salle[1].Long, V.Salle[1].Larg, "");// Création de l'instance de Barr pour le niveau d'Oxgène
-    Equi = new Barr(XposIA, YposIA+Image.width+V.Salle[1].Larg*2, 3, V.Salle[1].Long, V.Salle[1].Larg, "Michel");// Création d'une instance de Barr pour les point de vie de Michel
 
     N = int(random(2));
     if (NumEnnemi == 10) {
       N=3;
     }
+    
     switch(N)
     {
     case 0: 
@@ -45,7 +40,7 @@ class IA
       break;
     case 1: 
       text("Vaisseau de combat", XposIA, YposIA);
-      PV=25;
+      VIA.PV=25;
       Boucliermax = VIA.Bouclier.N = 2;
       MEquiper[0] = Miss.M[0][0];
       MEquiper[1] = Miss.M[0][0];
@@ -56,7 +51,7 @@ class IA
       }
     case 2:
       text(" Vaisseau inconnu", XposIA, YposIA);
-      PV=20+int(random(5));
+      VIA.PV=20+int(random(5));
       Boucliermax= VIA.Bouclier.N = 2;
       MEquiper[0] = Miss.M[int(random(1))][0];
       MEquiper[1] = Miss.M[int(random(1))][0];
@@ -86,7 +81,7 @@ class IA
       break;
     default :
       text("Vaisseau de reconnaisance", XposIA, YposIA);
-      PV=15;
+      VIA.PV=15;
       Boucliermax = VIA.Bouclier.N = 1;
       MEquiper[0] = Miss.M[0][0];
       MEquiper[1] = 0;
