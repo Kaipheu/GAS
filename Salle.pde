@@ -49,7 +49,7 @@ public class Salle extends Bouton {
     this.Long = Long;
     this.Larg = Larg;
     Nom = "";
-    Arrondi = 0;
+    Arrondie = 0;
   }
   Salle(float X,float Y, int T){
     super(int(X),int(Y),T,T,0);

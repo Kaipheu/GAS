@@ -8,23 +8,27 @@ void combat()
     if ((V.MRTer[0]== true) && (IA.VIA.ArrivMissile()<=7) && (V.Missile.N>=1))
     {
       animMiss ();
+      recharger ();
     }
-    if ((V.MRTer[1]== true) && (IA.VIA.ArrivMissile()<=7) && (V.Missile.N>=1))
+    if ((V.MRTer[0]== true) && (IA.VIA.ArrivMissile()<=7) && (V.Missile.N>=1))
     {
       animMiss ();
+      recharger ();
     }
     if ((IA.MRTer[0]== true) && (IA.Tire1 == true))
     {
       IA.Tire1=false;
       animMiss ();
+      recharger ();
     }
-    if ((IA.MRTer[1]== true) && (IA.Tire2 == true))
+    if ((IA.MRTer[0]== true) && (IA.Tire2 == true))
     {
       IA.Tire2=false;
       animMiss ();
+      recharger ();
     }
   }
-  if (IA.VIA.PV <=0)
+  if (IA.PV <=0)
   {
     fill(#BE2292);
     textSize(35);
@@ -45,79 +49,121 @@ void combat()
     text("Vous avez perdu ...", width/2, height/2);
     exit();
   }
-  if (IA.NumEnnemi == 10 )
-  {
-    fill(#BE2292);
-    textSize(35);
-    text("Vous avez réussi le jeu", width/2, height/2);
-    exit();
-  }
+  //if (IA.NumEnnemi == 10 )
+  //{
+  //  fill(#BE2292);
+  //  textSize(35);
+  //  text("Vous avez réussi le jeu", width/2, height/2);
+  //  exit();
+  //}
 }
 
 
-void animMiss () { 
+void animMiss ()
+{ 
   PVector Pos = new PVector();
   Pos.set(V.AvPos(0));
+  
 
   PImage imgMissile;
   imgMissile = Tex.Ico[15];
   boolean ProbM = false;
-  float xposMissileinitiale =0, yposMissileinitiale=0;
+  //float xposMissileinitiale =0, yposMissileinitiale=0;
   int ProbabM=int(random(100));
-
-  for (int i=0; i<=1; i++)
+  PVector PosMissEn1 = new PVector();
+  
+  if ((IA.MEquiper[0] == Miss.M[0][0]) || (IA.MEquiper[0] == Miss.M[1][0]))
   {
-    if (IA.MEquiper[0] == Miss.M[i][0])
+    ProbabM= Miss.M[0][0]/(ProbabM+1);
+    if (ProbabM <1)
     {
-      ProbabM = Miss.M[i][0]/(ProbabM+1);
-      if (ProbabM <1)
-      {
-        ProbM=false;
-      }
-      xposMissileinitiale=540;
-      yposMissileinitiale =height/4 +120;
-      if (ProbabM >= Miss.M[i][0])
-      {
-        ProbM=true;
-      }
+      ProbM=false;
     }
-    if (i ==1)
+    PosMissEn1.set(-412,124).add(IA.VIA.Pos);
+    
+    if (ProbabM >= Miss.M[0][0])
     {
-
-      imgMissile = Tex.Ico[16];
+      ProbM=true;
     }
+    V.Bouclier.N--;
+    V.Pv.N = V.Pv.N - Miss.M[0][1];
   }
-  for (int j=0; j<=1; j++)
+  
+  if ((IA.MEquiper[1] == Miss.M[0][0]) || (IA.MEquiper[1] == Miss.M[1][0]))
   {
-    if (V.MEquiper[0] == Miss.M[j][0])
+    ProbabM = Miss.M[1][0]/(ProbabM+1);
+    if (ProbabM <1)
     {
-      ProbabM= Miss.M[j][0]/(ProbabM+1);
-      if (ProbabM <1)
-      {
-        ProbM=false;
-      }
-      xposMissileinitiale=400;
-      yposMissileinitiale=height/4+120;
-      if (ProbabM >= Miss.M[j][0])
-      {
-        ProbM=true;
-      }
+      ProbM=false;
     }
-    if (j ==1)
+     PosMissEn1.set(-415,353).add(IA.VIA.Pos);
+    if (ProbabM >= Miss.M[1][0])
     {
-
-      imgMissile = Tex.Ico[16];
+      ProbM=true;
     }
+    V.Bouclier.N--;
+    V.Pv.N = V.Pv.N - Miss.M[1][1];
+    imgMissile = Tex.Ico[16];
+  }
+  if ((V.MEquiper[0] == Miss.M[0][0]) || (V.MEquiper[0] == Miss.M[1][0]))
+  {
+    ProbabM= Miss.M[0][0]/(ProbabM+1);
+    if (ProbabM <1)
+    {
+      ProbM=false;
+    }
+    PosMissEn1.set(-409,147).add(V.Pos);
+    //xposMissileinitiale=400;
+    //yposMissileinitiale=height/4+120;
+    if (ProbabM >= Miss.M[0][0])
+    {
+      ProbM=true;
+    }
+    IA.VIA.Bouclier.N--;
+    V.Missile.N--;
+    IA.PV = IA.PV - Miss.M[0][1];
+  }
+  if ((V.MEquiper[1] == Miss.M[0][0]) || (V.MEquiper[1] == Miss.M[1][0]))
+  {
+    ProbabM= Miss.M[1][0]/(ProbabM+1);
+    if (ProbabM <1)
+    {
+      ProbM=false;
+    }
+    PosMissEn1.set(-408,385).add(V.Pos);
+    //xposMissileinitiale=400;
+    //yposMissileinitiale=height/4+380;
+    if (ProbabM >= Miss.M[1][0])
+    {
+      ProbM=true;
+    }
+    IA.VIA.Bouclier.N--;
+    V.Missile.N--;
+    IA.PV = IA.PV - Miss.M[1][1];
+    imgMissile = Tex.Ico[16];
+  }
+  if ((V.MEquiper[0] == 0) || (V.MEquiper[1] == 0) || (IA.MEquiper[0] == 0) || (IA.MEquiper[1] == 0))
+  {
+    ProbM=true;
   }
   if (ProbM == false)
   {
-    LO++; // vitesse du missile
-    PVector TrajMiss = new PVector(abs(xposMissileinitiale - Pos.x), abs(yposMissileinitiale - Pos.y));  //vecteur Missile
-    TrajMiss.setMag (LO);
-    image(imgMissile, TrajMiss.x, TrajMiss.y, 50, 50);
+     T++;
+     // vitesse du missile
+     PVector Traj = new PVector();
+     Traj = PosMissEn1.sub(Pos).setMag(T);;
+    image(imgMissile, Traj.x,Traj.y,30, 30);
     stroke(255);
     noFill();
     animBoom();
+    //  PVector TrajMiss = new PVector(xposMissileinitiale, yposMissileinitiale);
+    //  PVector vitesse = new PVector(abs(xposMissileinitiale - xposMissilefinale), abs(yposMissileinitiale - yposMissilefinale));
+    //  TrajMiss.add(vitesse);
+    //  image(imgMissile, TrajMiss.x, TrajMiss.y, 30, 30);
+    //  stroke(255);
+    //  noFill();
+    //  animBoom();
+    //}
   }
 }
 
@@ -133,9 +179,6 @@ void animBoom ()
       stroke(255);
       noFill();
       IA.Salle[IA.VIA.ArrivMissile()].PV = IA.Salle[IA.VIA.ArrivMissile()].PV - Miss.M[i][1];
-      IA.PV = IA.PV - Miss.M[i][1];
-      IA.VIA.Bouclier.N--;
-      V.Missile.N--;
       IA.PV = IA.PV - Miss.M[i][1];
       if (IA.VIA.ArrivMissile()== i)  //changer
       {
@@ -166,9 +209,7 @@ void animBoom ()
         }
       }
     }
-      V.Bouclier.N--;
-      V.Pv.N = V.Pv.N - Miss.M[i][1];
-    }
+  }
 }
 
 
@@ -212,12 +253,11 @@ void dommage()
       //exit();
     }
   }
-  for (int i=5; i<=7; i++)
+for (int i=5; i<=7; i++)
+  {if (V.Salle[i].PV<=0)
   {
-    if (V.Salle[i].PV<=0)
-    {
-      V.Salle[i].PV=0;
-    }
+    V.Salle[i].PV=0;
+  }
   }
   //if (V.Equi.N <= 0)
   //{
@@ -228,22 +268,22 @@ void dommage()
   // // exit();
   //}
 
-  if (IA.VIA.Salle[0].PV<=0)
-  {
-    IA.VIA.Salle[0].PV=0;
-    IA.Oxy.N = IA.Oxy.N - int((frameCount-F[1])/(frameRate*10));
-    if (IA.Oxy.N==0)
-    {
-      F[1]=frameCount;
-      IA.Equi.N = 0;
-    }
-  }
+  //if (IA.VIA.Salle[0].PV<=0)
+  //{
+  //  IA.VIA.Salle[0].PV=0;
+  //  IA.Oxy.N = IA.Oxy.N - int((frameCount-F[1])/(frameRate*10));
+  //  if (IA.Oxy.N==0)
+  //  {
+  //    F[1]=frameCount;
+  //    IA.Equi.N = 0;
+  //  }
+  //}
   for (int i=2; i<=7; i++)
   {
-    if (IA.VIA.Salle[i].PV<=0)
-    {
-      IA.VIA.Salle[i].PV=0;
-    }
+    //if (IA.VIA.Salle[i].PV<=0)
+    //{
+    //  IA.VIA.Salle[i].PV=0;
+    //}
   }
 }
 
@@ -263,10 +303,7 @@ void reparer()
 
   if (IA.VIA.Salle[2].PV <= IA.VIA.Salle[2].PVMax || IA.VIA.Salle[5].PV <= IA.VIA.Salle[5].PVMax || IA.VIA.Salle[6].PV <= IA.VIA.Salle[6].PVMax)  //salle qui nécessite des réparations
   {
-      //if (IA.VIA.Salle[2] = 8*int((frameCount-F[6])/( frameRate)))
-      //{
-        
-      //}
+    //Homme va en direction de la salle
   } else if (IA.VIA.Salle[0].PV <= IA.VIA.Salle[0].PVMax || IA.VIA.Salle[3].PV <= IA.VIA.Salle[3].PVMax) {
     //Homme va en direction de la salle
   } else if (IA.VIA.Salle[1].PV <= IA.VIA.Salle[1].PVMax || IA.VIA.Salle[4].PV <= IA.VIA.Salle[4].PVMax || IA.VIA.Salle[7].PV <= IA.VIA.Salle[7].PVMax) {
@@ -277,7 +314,7 @@ void reparer()
 
 void recharger()
 {
-  int RBouclier = 6*int((frameCount-F[6])/( frameRate));
+  int RBouclier = 6*int((frameCount-F[6])/(frameRate*10));
   int[] VMRe = new int[2];
   int[] IAMRe = new int[2];
 

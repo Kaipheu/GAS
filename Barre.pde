@@ -4,7 +4,7 @@ class Barr extends Unite {
   int Esp = 10;
   String Nom ="Vide";
   short TPolice= 15;
-
+  color C_Txt = 0;
   void draw() {
    if(N>=Unite.length){
     N =Unite.length-1;
@@ -12,7 +12,7 @@ class Barr extends Unite {
     for (int i = 0; i<N; i++) {
       Unite[i].draw();
     }
-    fill(0);
+    fill(C_Txt);
     textAlign(TOP, LEFT);
     textSize(TPolice);
     text(Nom, Pos.x, Pos.y+TPolice);
@@ -44,7 +44,7 @@ class Barr extends Unite {
   void DefPos(int x, int y) {
     for (int i = 0; i<Unite.length; i++) {
       Unite[i].DefPos(i*Esp+x, y);
-      //println(Pos.x+"  "+Pos.y);
+      println(Pos.x+"  "+Pos.y);
     }
   }
 }

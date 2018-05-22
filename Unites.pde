@@ -31,7 +31,7 @@ class Unite { // Classe de Base
   }
   void DefPos(int x, int y) { // Methode de changement de position
     Pos.set(x, y);
-    //println(Pos.x+"  "+Pos.y);
+    println(Pos.x+"  "+Pos.y);
   }
 }
 

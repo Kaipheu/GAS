@@ -31,7 +31,7 @@ class Enemie {
     PosS[6][1] = 187;
     PosS[7][0] =- 303;
     PosS[7][1] = 299;
-
+    Pv.C_Txt = color(#72A8C9);
     PlacementSalle(T, PosS);
     for (Salle S : Salle) {
       PV += S.PV;
@@ -43,9 +43,9 @@ class Enemie {
     image(Image, Pos.x-Image.width, Pos.y);
     for (Salle S : Salle) {
       S.draw();
-      Pv.draw();
-      Bouclier.draw();
     }
+    Pv.draw();
+    Bouclier.draw();
   }
 
   void mousePressed() {
