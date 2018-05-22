@@ -46,7 +46,6 @@ void setup() {
   V = new Vaisseau(width/10, height/10, 104);// Instance Vaiseau Joueur
   E = new Echange();
   IA = new IA (100, 100);
-  C = new Credit();
   B[0] = new Bouton(width -200, height - 70, 180, 70, 0);
   B[1] = new Bouton(width -200, height - 140, 180, 70, 1);
   // bouton pour continuer le jeu
@@ -59,12 +58,11 @@ void setup() {
 void draw() {
   background(120);
   if (M.Aff) {
-    if (C.Affiche) {
+    if (C != null && C.Affiche) {
       C.draw();
-      print("Dr");
-    } else { //<>//
+    } else {
       M.draw();
-    }
+    } //<>//
   } else {
     background(0);
     for (Etoiles E : Et) {
@@ -74,9 +72,9 @@ void draw() {
       E.Deplacement();
       E.Pos();
     }
-    V.draw(); //<>//
+    V.draw();
     IA.draw();
-    //combat();
+    //combat(); //<>//
     //dommage();
     //reparer();
     //recharger();
@@ -102,9 +100,6 @@ void mouseMoved() {
 }
 
 void mousePressed() {
-  float tempx = mouseX-V.Pos.x;
-  float tempy = mouseY-V.Pos.y;
-  println(tempx+" "+tempy); 
   if (M.Aff) {
     M.mousePressed();
   } else {
@@ -121,3 +116,7 @@ void frameCount()
     F[i]=frameCount;
   }
 } // >=F[10] non utilisé
+
+void Suppr(Object autre){
+  autre = null;
+}
