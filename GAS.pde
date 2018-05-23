@@ -70,7 +70,7 @@ void draw() {
     reparer();
     recharger();
     combat();
-    if (Boutique[0].Activ) {
+    if (Boutique[0].Activ && IA==null) {
       E.draw();
     } else {
       Boutique[0].draw();
