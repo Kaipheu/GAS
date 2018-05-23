@@ -4,69 +4,48 @@ void combat()
   Pos.set(V.AvPos(0));
   PImage imgMissile;
   imgMissile = Tex.Ico[15];
-  boolean ProbM = false;
-  int ProbabM=int(random(100));
-  PVector PosMissEn1 = new PVector();
-  //float xMissinit=0, yMissinit=0;
+  PVector PME = new PVector();
+  float xMissinit=0, yMissinit=0;
 
   if ((V.Pv.N >0) || (IA.VIA.PV > 0))     //si un des vaisseaux n'est pas encore détruit
   {
-    for (int j=0; j<=1; j++) {              //pour les différents emplacements d'armes du vaisseau
+    for (int j=0; j<=1; j++) {              //pour les différents emplacements d'armes de l'IA
       for (int i=0; i<=1; i++) {                //pour les différents missiles appartenant aux armes
-        if ((IA.MEquiper[j] == Miss.M[i][0]) && (IA.MRTer[i]== true) && (IA.Tir[i] == true)) {           //et si un missil est équipé, que sa recharge est terminé, et qu'il est prêt à être tiré 
-          ProbabM = Miss.M[i][0]/(ProbabM+1);                   //vérification de la probabilité de toucher
-          if (ProbabM <1) {                    
-            ProbM=false;                                        //échec    
-            IA.Tir[i] =false;                                   //le tir est maintenant non prêt
-          } else if (ProbabM >= Miss.M[i][0]) { 
-            ProbM=true;                                         //succés
-            IA.Tir[i] =false;                                   //le tir est maintenant non prêt
-            PosMissEn1.set(-409, 147*2.62*(i+1)).add(IA.VIA.Pos);
-            xMissinit =-409;
-            yMissinit=147*2.62*(i+1);
-          }
+        if ((IA.MEquiper[j] == Miss.M[i][0]) && (IA.MRTer[i]== true) && (IA.Tir[i] == true)) {           //et si un missile est équipé, que sa recharge est terminée, et qu'il est prêt à être tiré
+          IA.Tir[i] =false;                                   //le tir est maintenant non prêt
+          PME.set(409, 147).add(IA.VIA.Pos);
         }
+
         if (i ==1) {                 //l'image rendu change si le missile équipé est le M[1][0]
+          PME.set(-409, 385.14).add(IA.VIA.Pos);
           imgMissile = Tex.Ico[16];
-        }
+        }  //width/10
       }
     }
-    for (int j=0; j<=1; j++) {       //pareil pour l'IA      
+    for (int j=0; j<=1; j++) {       //pareil pour le Joueur    
       for (int i=0; i<=1; i++) {
         if ((V.MEquiper[j] == Miss.M[i][0]) && (V.MRTer[i]== true) && (IA.VIA.ArrivMissile()<=7)) {
-          ProbabM= Miss.M[i][0]/(ProbabM+1);
-          if (ProbabM <= Miss.M[i][0]) {
-            ProbM=false;
-          } else if (ProbabM >= Miss.M[i][0]) {
-            ProbM=true;
-            PosMissEn1.set(-409, 147*2.62*(i+1)).add(V.Pos);
-            xMissinit =-409;
-            yMissinit=147*2.62*(i+1);
+          PME.set(409, 147).add(V.Pos);
+
+          if (i==1) {
+            PME.set(409, 385.14).add(IA.VIA.Pos);
+            imgMissile = Tex.Ico[16];
           }
-        }
-        if (i ==1) {
-          imgMissile = Tex.Ico[16];
         }
       }
     }
+
+    T++;                    // vitesse du missile
+    image(imgMissile,xMissinit-V.Pos.x, yMissinit-V.Pos.y, 50, 50);         //affichage de l'image 
+    stroke(255);   
+    noFill();
 
     //T++;                    // vitesse du missile
     //PVector Traj = new PVector();
-    //Traj = PosMissEn1.sub(Pos).setMag(T);                //calcul de la trajectoire EmplacementArme à Salleviser
-    //image(imgMissile,xMissinit-V.Pos.x, yMissinit-V.Pos.y, 50, 50);         //affichage de l'image 
+    //Traj = PME.sub(Pos).setMag(T);                //calcul de la trajectoire EmplacementArme à Salleviser
+    //image(imgMissile, -Traj.x, -Traj.y, 50, 50);         //affichage de l'image 
     //stroke(255);   
     //noFill();
-
-    T++;                    // vitesse du missile
-    PVector Traj = new PVector();
-    Traj = PosMissEn1.sub(Pos).setMag(T);                //calcul de la trajectoire EmplacementArme à Salleviser
-    image(imgMissile, -Traj.x, -Traj.y, 50, 50);         //affichage de l'image 
-    stroke(255);   
-    noFill();
-    
-    if (ProbM == true) {    //si la probabilité est un succès
-      //animBoom();         //déclencher alors l'animation de l'explosion
-    }
   }
 
 
