@@ -90,9 +90,9 @@ void mouseMoved() {
 }
 
 void mousePressed() {
-  float tempx = mouseX-V.Pos.x;
-  float tempy = mouseY-V.Pos.y;
-  println(tempx+" "+tempy); 
+  //float tempx = mouseX-V.Pos.x;
+  //float tempy = mouseY-V.Pos.y;
+  //println(tempx+" "+tempy); 
   if (M.Aff) {
     M.mousePressed();
   } else {
@@ -109,4 +109,4 @@ void frameCount()
   {
     F[i]=frameCount;
   }
-} // >=F[10] non utilisé
+} // >=F[12] non utilisé
