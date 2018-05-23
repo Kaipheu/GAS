@@ -1,8 +1,7 @@
 public class Salle extends Bouton {
   Boolean Texture =false;
   int Type;
-  int PV = 1;
-  int PVMax = 1;
+  int PV = 1, PVMax = 1;
   
   void draw() {  
     stroke(0, 120, 120);

@@ -1,7 +1,7 @@
 class IA
 {
   Enemie VIA;
-  int PVmax, Boucliermax;
+  int Boucliermax;
   Salle[] Salle = new Salle[8]; // Tableau des Salles de l'IA
   int[] MEquiper = new int[2];
   int[] MR = new int[2];

@@ -1,13 +1,14 @@
 void combat()
-{                                                                                               // && IA.VIA.PV<=0
+{
+  PVector Pos = new PVector();
+  Pos.set(V.AvPos(0));
+  PImage imgMissile;
+  imgMissile = Tex.Ico[15];
+  boolean ProbM = false;
+  int ProbabM=int(random(100));
+  PVector PosMissEn1 = new PVector();
   if ((V.Pv.N >0) || (IA.VIA.PV > 0)) {
-    PVector Pos = new PVector();
-    Pos.set(V.AvPos(0));
-    PImage imgMissile;
-    imgMissile = Tex.Ico[15];
-    boolean ProbM = false;
-    int ProbabM=int(random(100));
-    PVector PosMissEn1 = new PVector();
+
     for (int j=0; j<=1; j++) {
       for (int i=0; i<=1; i++) {
         if ((IA.MEquiper[j] == Miss.M[i][0]) && (IA.MRTer[i]== true) && (IA.Tir[i] == true)) {
@@ -22,7 +23,6 @@ void combat()
           }
         }
         if (i ==1) {
-
           imgMissile = Tex.Ico[16];
         }
       }
@@ -40,7 +40,6 @@ void combat()
           }
         }
         if (i ==1) {
-
           imgMissile = Tex.Ico[16];
         }
       }
@@ -57,21 +56,21 @@ void combat()
       animBoom();
     }
   }
-  
+
   if (IA.VIA.PV <=0) {
     fill(#BE2292);
     textSize(35);
     text("Vous avez réussi le niveau n°" + str(IA.NumEnnemi), width/2, height/8);
     IA = null;
   }
-  
+
   if (V.PV <=0) {
     fill(#BE2292);
     textSize(35);
     text("Vous avez perdu ...", width/2, height/2);
     exit();
   }
-  
+
   //if (IA.NumEnnemi == 11) {
   //  fill(#BE2292);
   //  textSize(35);

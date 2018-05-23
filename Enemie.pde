@@ -21,7 +21,7 @@ class Enemie
     Bouclier = new Barr(150, 150-3*150, 3, 150, 150, "Bouclier");
     Michel = new Homme(Pos.x+32, Pos.y+27, T);
     Equi = new Barr(x, y + Image.width + l*2, 3, L, l, "");// Création d'une instance de Barr pour les point de vie de Michel
-    Oxy = new Barr(x, y + Image.width + Salle[1].Larg*0.5, 10, Salle[1].Long, Salle[1].Larg, "");      //NULL POINTER EXCEPTION
+    //Oxy = new Barr(x, y + Image.width + Salle[1].Larg*0.5, 10, Salle[1].Long, Salle[1].Larg, "");      //NULL POINTER EXCEPTION
  
     PosS[0][0] = -469 ;
     PosS[0][1] = 186 ;
