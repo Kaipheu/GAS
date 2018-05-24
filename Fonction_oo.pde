@@ -80,13 +80,7 @@ void reparer()
 void recharger()
 {
   int RBouclier = int((frameCount-F[6])/( frameRate));
-  int[] VMRe = new int[2];
-  int[] IAMRe = new int[2];
-
-  for (int i=0; i<=1; i++) {
-    VMRe[i] = 0;
-    IAMRe[i] = 0;
-  }
+  int VMRe=0, IAMRe=0;
 
   if (V.Salle[6].PV>0) {
     if (V.Bouclier.N <= V.Boucliermax && V.Salle[6].PV>0) {
@@ -105,26 +99,23 @@ void recharger()
   }
 
   if (V.Salle[5].PV>0) {
-    for (int j=0; j<=1; j++) {
-      for (int i=0; i<=1; i++) {
-        if (VMRe[j] <= Miss.M[i][2] && V.MEquiper[i] == Miss.M[i][0]) {
-          if (VMRe[j] == Miss.M[i][2]) {
-            VMRe[j] = int((frameCount - F[4]) / (frameRate)) - Miss.M[i][2];
-            F[4]=frameCount;
-            V.MRTer[j] = true;
-          }
+
+    for (int i=0; i<=1; i++) {
+      if (VMRe <= Miss.M[i][2] && V.MEquiper == Miss.M[i][0]) {
+        if (VMRe == Miss.M[i][2]) {
+          VMRe = int((frameCount - F[4]) / (frameRate)) - Miss.M[i][2];
+          F[4]=frameCount;
+          V.MRTer = true;
         }
       }
     }  
-    for (int j=0; j<=1; j++) {
-      for (int i=0; i<=1; i++) {
-        if (IAMRe[j] <= Miss.M[i][2] && IA.MEquiper[i] == Miss.M[i][0]) {
-          if (IAMRe[j] == Miss.M[i][2]) {
-            IAMRe[j] = int((frameCount - F[5]) / (frameRate)) - Miss.M[i][2];
-            F[5]=frameCount;
-            IA.MRTer[j] = true;
-          }
-        }
+
+    for (int i=0; i<=1; i++) {
+      if (IAMRe >= Miss.M[i][2] && IA.MEquiper == Miss.M[i][0]) {
+          IAMRe = int((frameCount - F[5]) / (frameRate)) - Miss.M[i][2];
+          F[5]=frameCount;
+          IA.MRTer = true;
+        
       }
     }
   }

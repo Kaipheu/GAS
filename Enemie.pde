@@ -69,7 +69,7 @@ class Enemie
   }
 
   PVector AvPos(int ID) {
-    return Salle[ID].Pos;
+    return Salle[ID].Pos; //array... exception : 9
   }
   int AvPVSalle(int ID) {
     return Salle[ID].PV;

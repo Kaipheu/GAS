@@ -9,7 +9,7 @@ class Barr extends Unite {
    if(N>=Unite.length){
     N =Unite.length-1;
     }
-    for (int i = 0; i<N; i++) {
+    for (int i = 0; i<=N; i++) {
       Unite[i].draw();
     }
     fill(C_Txt);

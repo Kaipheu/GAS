@@ -88,11 +88,13 @@ class Echange
       }
       if (Fen.B[4].Activ && Lune>= C[2][0]) {
         Lune = Lune - C[2][0];
-        V.MEquiper[1] = Miss.M[0][0];
+        V.MEquiper = Miss.M[0][0];
+        V.MR = Miss.M[0][2];
       }
       if (Fen.B[5].Activ && Lune>= C[2][1]) {
         Lune = Lune - C[2][1];
-        V.MEquiper[1] = Miss.M[1][0];
+        V.MEquiper = Miss.M[1][0];
+        V.MR = Miss.M[1][2];
       }
       for (int i=6; i<=13; i++) {
         if (Fen.B[i].Activ && V.Salle[i-6].PV<D[3][i-6]) {
@@ -102,6 +104,7 @@ class Echange
             C[3][0] = C[3][0] - 15;
           }
           V.Salle[i-6].PV++;
+          V.Salle[i-6].PVMax++;
         }
       }
       if (Fen.B[14].Activ) {

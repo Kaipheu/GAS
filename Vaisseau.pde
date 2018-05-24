@@ -5,18 +5,18 @@ class Vaisseau extends Enemie {
   Barr Oxy;   // Niveau d'oxygène du Vaiseaux
   Homme Michel;
 
-  boolean[] MRTer = new boolean[2];// Variable pour l'Arbitre
-  int[] MR = new int[2];        //Variable pour l'Arbitre
-  int[] MEquiper = new int[2];  //Variable pour l'Arbitre
+  boolean MRTer = false;
+  int MR = 0;        //Variable pour l'Arbitre
+  int MEquiper = Miss.M[0][0];  //Variable pour l'Arbitre
   int Boucliermax=2;            //Variable pour l'Arbitre
-  int PVMax;
+  int PVmax;
+  //float[][] Viser = new float[1][2];
 
   Vaisseau(int x, int y, int T) {
     super(x, y, T);
-    PVMax = PV = 20;
+    PVmax = 20;
+    PV = 20;
     Image = loadImage("Texture/PNG/Vaisseau500.png");// Chargement de l'image du vaiseaux
-    int[] MEquiper = new int[2];  //arme équiper            
-    boolean[] MRTer = new boolean[2];//arme équiper
     int L=T/10, l=T/5;//Variable de Taille pour les salle
     Pos = new PVector(x, y);// Création  du vecteur position 
     Salle[0].Pos.set(32, 141).add(Pos); //Position de la Salle
@@ -34,10 +34,8 @@ class Vaisseau extends Enemie {
     Carbu = new Barr(x+150, y+(l*0.5+Image.width), 13, L, l, "Carburant");// Création d'une instance de Barr pour le caburant restant
     Equi = new Barr(x, y+Image.width+l*2, 3, L, l, "Michel");// Création d'une instance de Barr pour les point de vie de Michel
     Michel = new Homme(Pos.x+32, Pos.y+27, T);
-    MRTer[0] = false;
-    MRTer[1] = false;
-    MEquiper[0] = Miss.M[0][0];
-    MEquiper[1] = 1;
+    //Viser[0][0]=Pos.x+T/2;
+    //Viser[0][1]=Pos.y+T/2;
   }
 
 

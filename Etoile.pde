@@ -5,7 +5,7 @@ class Etoiles {
   int R=255, G=255, B=255, A=255;
   float Taille = 5;
   boolean E  = false;
-  Etoiles(int x, int y, float T, Boolean Et) {
+  Etoiles(float x, float y, float T, Boolean Et) {
     Pos.set(x, y);
     Taille = T;
     E = Et;

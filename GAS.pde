@@ -24,18 +24,21 @@ IA IA;
 Vaisseau V;
 Fenetre Fen;
 Bouton[] Boutique = new Bouton[1];
-char KEY ='0';
 Etoiles[] Et = new Etoiles[100];
+Etoiles[] Missile = new Etoiles[2];
 
+char KEY ='0';
 int[] F = new int[51];
-int T, LO=0;
+int Viser;
+int  LO=0;
+boolean Foi = false;
 
 
 void settings () {
   fullScreen();
   Tex = new Texture();
   //size(630, 380);
-  //G = new Geste();
+
 }
 void setup() {
   smooth(9);
@@ -48,6 +51,8 @@ void setup() {
   Boutique[0] = new Bouton(width -200, height - 70, 180, 70, 0);
   Boutique[0].Def_Ch(" La cosmo boutique " ); 
   Boutique[0].C_Rp = color(#BFB3B3);
+  Missile[0] = new Etoiles(V.Pos.x+500,V.Pos.y +250,1,true);
+  Missile[1] = new Etoiles(IA.VIA.Pos.x-500,IA.VIA.Pos.y+250,1,true);
 }
 
 void draw() {
@@ -65,7 +70,10 @@ void draw() {
     }
     frameCount();
     V.draw();
-    IA.draw();
+    if (IA != null)
+    {
+      IA.draw();
+    }
     dommage();
     reparer();
     recharger();
@@ -81,6 +89,10 @@ void draw() {
 void keyPressed() {
   KEY = key;
   M.keyPressed();
+  if(key=='e'){
+  Missile[0].Pos.set(V.Pos.x+500,V.Pos.y +250);
+  Missile[0].Vst.set(0,0);
+  }
 }
 
 void keyReleased() {
@@ -90,13 +102,19 @@ void mouseMoved() {
 }
 
 void mousePressed() {
-  //float tempx = mouseX-V.Pos.x;
-  //float tempy = mouseY-V.Pos.y;
-  //println(tempx+" "+tempy); 
+  float tempx = mouseX-V.Pos.x;
+  float tempy = mouseY-V.Pos.y;
+  println(tempx+" "+tempy); 
   if (M.Aff) {
     M.mousePressed();
   } else {
     V.mousePressed();
+    IA.VIA.mousePressed();
+    Viser = IA.VIA.ArrivMissile();
+    if(Viser<=7 && Missile[0].Pos.x == V.Pos.x+500){
+       Missile[0].Vst.set(PVector.sub(IA.VIA.AvPos(Viser),Missile[0].Pos).add(IA.VIA.Salle[Viser].Long/2,IA.VIA.Salle[Viser].Larg/2).setMag(5));
+     //Missile[0].Vst.x = Missile[0].Vst.x);
+    }
     if (IA.VIA.PV<=0) {
       E.mousePressed();
     }
