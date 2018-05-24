@@ -45,6 +45,7 @@ void setup() {
   V = new Vaisseau(width/10, height/10, 104);// Instance Vaiseau Joueur
   E = new Echange();
   IA = new IA (100, 100);
+  C = new Credit(); 
   Boutique[0] = new Bouton(width -200, height - 70, 180, 70, 0);
   Boutique[0].Def_Ch(" La cosmo boutique " ); 
   Boutique[0].C_Rp = color(#BFB3B3);
@@ -54,9 +55,12 @@ void setup() {
 
 void draw() {
   background(120);
-  if (M.Aff) {
-    M.draw();
-  } else {
+   if (C.Affiche) { 
+    if (C != null && C.Affiche) { 
+      C.draw(); 
+      print("Dr"); 
+    } else { //<>// 
+    } else { 
     background(0);
     for (Etoiles E : Et) {
       pushMatrix();    
@@ -143,3 +147,7 @@ void frameCount()
     F[i]=frameCount;
   }
 } // >=F[15] non utilisé
+
+void Suppr(Object autre){ 
+  autre = null; 
+}
