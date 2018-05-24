@@ -59,8 +59,10 @@ class Menu {
         E.AleAcc();
       }
     } else if (B[0].Activ) {
-    } else if (B[0].Activ) {
-      
+    } else if (B[2].Activ) { 
+      C = new Credit(); 
+      C.Affiche = true; 
+      B[2].Activ =false; 
     } else if (B[3].Activ) {
       exit();
     }

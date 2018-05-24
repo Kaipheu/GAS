@@ -1,4 +1,4 @@
-/********************************************************************************************************* //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>//
+/********************************************************************************************************* //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>//
  Titre du Programme : Gestion d'Attaque Spatiale (GAS)
  **********************************************************************************************************
  Date de création du programme : 23/01/2018
@@ -12,7 +12,7 @@
 
 Menu M; // Objet Menu  //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>//
 
-// Objet vaisseaux Joueur et ennemi
+// Objet vaisseaux Joueur et ennemi //<>//
 
 Texture Tex;
 //Geste G;
@@ -24,7 +24,7 @@ Fenetre Fen;
 Bouton[] Boutique = new Bouton[1];
 Etoiles[] Et = new Etoiles[100];
 Etoiles[] Missile = new Etoiles[2];
-
+Credit C;
 char KEY ='0';
 int[] F = new int[51];
 int Viser;
@@ -45,6 +45,7 @@ void setup() {
   V = new Vaisseau(width/10, height/10, 104);// Instance Vaiseau Joueur
   E = new Echange();
   IA = new IA (100, 100);
+  C = new Credit();
   Boutique[0] = new Bouton(width -200, height - 70, 180, 70, 0);
   Boutique[0].Def_Ch(" La cosmo boutique " ); 
   Boutique[0].C_Rp = color(#BFB3B3);
@@ -56,6 +57,9 @@ void draw() {
   background(120);
   if (M.Aff) {
     M.draw();
+    if(C.Affiche){
+      C.draw();
+    }
   } else {
     background(0);
     for (Etoiles E : Et) {

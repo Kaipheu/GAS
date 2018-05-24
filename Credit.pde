@@ -48,7 +48,6 @@ class Credit {
     if (Pos.y+650<0)
     {
       Pos.set(width/2, height);
-      Suppr(this);
     }
   }
 }
