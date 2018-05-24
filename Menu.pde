@@ -1,7 +1,7 @@
 class Menu {
 
   Bouton[] B = new Bouton[4];
-
+  
   //Jeux J;
   boolean Aff = true;
 
@@ -54,18 +54,14 @@ class Menu {
     }
     if (B[0].Activ) {
       Aff = false;
-      for (Etoiles E : Et) {
+      for(Etoiles E:Et){
         E.E = true;
         E.AleAcc();
       }
     } else if (B[0].Activ) {
     } else if (B[0].Activ) {
-    } else if (B[1].Activ) {
-    } else if (B[2].Activ) { 
-      C = new Credit(); 
-      C.Affiche = true; 
-      B[2].Activ =false;
-    } else if (B[3].Activ) { 
+      
+    } else if (B[3].Activ) {
       exit();
     }
   }

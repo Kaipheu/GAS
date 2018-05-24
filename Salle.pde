@@ -1,6 +1,7 @@
 public class Salle extends Bouton {
   Boolean Texture =false;
   int Type;
+
   int PV = 1, PVMax = 1;
   
   void draw() {  
@@ -18,6 +19,7 @@ public class Salle extends Bouton {
       rect(mouseX,mouseY,-textWidth(Nom)-width/100,-50); 
       fill(255); 
       text(Nom, mouseX-textWidth(Nom)-width/200, mouseY-40); 
+
       if(PV<=0){ 
       fill(255,0,0); 
       } 
