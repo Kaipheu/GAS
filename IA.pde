@@ -6,7 +6,7 @@ class IA
   int MR = 0;
   int[] P = new int[8];
   int NE=1, N=0;
-  boolean[] Tir= new boolean [2];
+  boolean Tir = false;
   boolean MRTer = false;
   PImage Image = loadImage("Texture/PNG/IA.png"); 
 
@@ -103,7 +103,7 @@ class IA
   {
     int Tirer0 = int((frameCount-F[7])/( frameRate));
     if (Tirer0==Miss.M[0][2]) {
-      Tir[0]=true;
+      Tir=true;
       F[7]=0;
     }
 

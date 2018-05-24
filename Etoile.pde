@@ -3,6 +3,7 @@ class Etoiles {
   PVector Vst = new PVector();
   PVector Acc = new PVector();
   int R=255, G=255, B=255, A=255;
+  boolean LO = false;
   float Taille = 5;
   boolean E  = false;
   Etoiles(float x, float y, float T, Boolean Et) {
