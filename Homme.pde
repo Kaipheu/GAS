@@ -10,6 +10,9 @@ class Homme{
   }
   void Tp(Salle Autre){ 
     Pos.set(Autre.Pos); 
-    Salle = Autre.Type;
   } 
+   boolean Salle(int ID ){
+     if(Salle == ID) return true;
+     return false;
+   }
 }

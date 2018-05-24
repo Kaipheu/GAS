@@ -9,7 +9,7 @@ class Barr extends Unite {
    if(N>=Unite.length){
     N =Unite.length-1;
     }
-    for (int i = 0; i<N; i++) {
+    for (int i = 0; i<=N; i++) {
       Unite[i].draw();
     }
     fill(C_Txt);
@@ -44,7 +44,7 @@ class Barr extends Unite {
   void DefPos(int x, int y) {
     for (int i = 0; i<Unite.length; i++) {
       Unite[i].DefPos(i*Esp+x, y);
-      println(Pos.x+"  "+Pos.y);
+      //println(Pos.x+"  "+Pos.y);
     }
   }
 }

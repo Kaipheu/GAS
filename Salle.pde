@@ -1,8 +1,8 @@
 public class Salle extends Bouton {
   Boolean Texture =false;
   int Type;
-  int PV = 1;
-  int PVMax = 1;
+
+  int PV = 1, PVMax = 1;
   
   void draw() {  
     stroke(0, 120, 120);
@@ -19,7 +19,8 @@ public class Salle extends Bouton {
       rect(mouseX,mouseY,-textWidth(Nom)-width/100,-50); 
       fill(255); 
       text(Nom, mouseX-textWidth(Nom)-width/200, mouseY-40); 
-      if(PV<1){ 
+
+      if(PV<=0){ 
       fill(255,0,0); 
       } 
       text("PV :" +PV,mouseX-textWidth(Nom)+textWidth("PV :" +PV)/2-width/200,mouseY-10); 
