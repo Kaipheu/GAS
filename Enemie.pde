@@ -69,8 +69,13 @@ class Enemie
   }
 
   PVector AvPos(int ID) {
+    try{
     return Salle[ID].Pos; //array... exception : 9
-  }
+    }catch(ArrayIndexOutOfBoundsException e){
+    println("Salle inéxestante");
+    return new PVector(0,0);
+    }  
+}
   int AvPVSalle(int ID) {
     return Salle[ID].PV;
   }

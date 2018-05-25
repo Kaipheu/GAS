@@ -101,7 +101,7 @@ class IA
 
   void action()
   {
-    int Tirer0 = int((frameCount-F[7])/( frameRate));
+    int Tirer0 = int((F[7] - frameCount)/( frameRate));
     if (Tirer0==Miss.M[0][2]) {
       Tir=true;
       F[7]=0;

@@ -2,7 +2,7 @@ void dommage()
 {
   if (V.Salle[0].PV<=0) {
     V.Salle[0].PV=0;
-    V.Oxy.N = V.Oxy.N - int((frameCount-F[0])/(frameRate*10));
+    V.Oxy.N = V.Oxy.N - int((F[0] - frameCount)/(frameRate*10));
     if (V.Oxy.N==0) {
       F[0]=frameCount;
       V.Equi.N = 0;
@@ -34,7 +34,7 @@ void dommage()
   if (IA.VIA.Salle[0].PV<=0)
   {
     IA.VIA.Salle[0].PV=0;
-    IA.VIA.Oxy.N = IA.VIA.Oxy.N - int((frameCount-F[1])/(frameRate*10));
+    IA.VIA.Oxy.N = IA.VIA.Oxy.N - int((F[1] - frameCount)/(frameRate*10));
     if (IA.VIA.Oxy.N==0) {
       F[1]=frameCount;
       IA.VIA.Equi.N = 0;
@@ -52,7 +52,7 @@ void reparer()
 {
   for (int i=0; i<=7; i++) {
     if (V.Equi.N >=0 && V.Michel.Salle == i) {
-      if (((frameCount - F[2]) / (frameRate)) == 8) {
+      if (((F[2] - frameCount) / (frameRate)) == 8) {
         F[2]=frameCount;
         V.Salle[i].PV++;
       }
@@ -79,7 +79,7 @@ void reparer()
 
 void recharger()
 {
-  int RBouclier = int((frameCount-F[6])/( frameRate));
+  int RBouclier = int((F[6] - frameCount)/( frameRate));
   int VMRe=0, IAMRe=0;
 
   if (V.Salle[6].PV>0) {
@@ -102,19 +102,26 @@ void recharger()
 
     for (int i=0; i<=1; i++) {
       if (VMRe <= Miss.M[i][2] && V.MEquiper == Miss.M[i][0]) {
-        if (VMRe == Miss.M[i][2]) {
-          VMRe = int((frameCount - F[4]) / (frameRate)) - Miss.M[i][2];
-          F[4]=frameCount;
+        //if (VMRe == Miss.M[i][2]) {
+          VMRe = int((F[4] - frameCount) / (frameRate)) - Miss.M[i][2];
+          if(F[4] == Miss.M[i][2]){
+            F[4]=0;
+          }
+          else{
+        F[4]++;
+      }
           V.MRTer = true;
-        }
+          //println(int((F[4] - frameCount) / (frameRate)));
+        //}
       }
     }  
 
     for (int i=0; i<=1; i++) {
       if (IAMRe >= Miss.M[i][2] && IA.MEquiper == Miss.M[i][0]) {
-          IAMRe = int((frameCount - F[5]) / (frameRate)) - Miss.M[i][2];
+          IAMRe = int((F[5] - frameCount) / (frameRate)) - Miss.M[i][2];
           F[5]=frameCount;
           IA.MRTer = true;
+          //println(IAMRe);
         
       }
     }

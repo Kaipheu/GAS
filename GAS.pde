@@ -1,4 +1,4 @@
-/********************************************************************************************************* //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>//
+/********************************************************************************************************* //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>//
  Titre du Programme : Gestion d'Attaque Spatiale (GAS)
  **********************************************************************************************************
  Date de création du programme : 23/01/2018
@@ -10,9 +10,9 @@
  Commentaire : R.A.S.
  *********************************************************************************************************/
 
-Menu M; // Objet Menu  //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>//
+Menu M; // Objet Menu  //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>//
 
-// Objet vaisseaux Joueur et ennemi //<>//
+// Objet vaisseaux Joueur et ennemi
 
 Texture Tex;
 //Geste G;
@@ -57,7 +57,7 @@ void draw() {
   background(120);
   if (M.Aff) {
     M.draw();
-    if(C.Affiche){
+    if (C.Affiche) {
       C.draw();
     }
   } else {
@@ -75,6 +75,7 @@ void draw() {
     {
       IA.draw();
     }
+     imageMode(CENTER);
     dommage();
     reparer();
     recharger();
@@ -87,22 +88,25 @@ void draw() {
     if (Missile[0].LO == true)
     {
       animBoomV();
-      if (int((frameCount - F[13]) / (frameRate *10000)) >= 3)
-      {
-        Missile[0] = null;
-        F[13]=frameCount;
-      }
+      println(int((frameCount - F[11]) / (frameRate)));
+      //if (int((frameCount - F[13]) / (frameRate *10000)) >= 3)
+      //{
+      //  Missile[0].LO = false;
+      //  Missile[0] = null;
+      //  F[13]=frameCount;
+      //}
     }
-    if (Missile[1].LO == true)
+    if (Missile[1].LO)
     {
       animBoomIA();
-      if (int((frameCount - F[13]) / (frameRate *10000)) >= 3)
-      {
-        Missile[1] = null;
-        F[14]=frameCount;
-      }
+      //if (int((frameCount - F[13]) / (frameRate *10000)) >= 3)
+      //{
+      //  Missile[1] = null;
+      //  F[14]=frameCount;
+      //}
     }
   }
+  imageMode(CORNER);
 }
 
 void keyPressed() {
@@ -123,7 +127,7 @@ void mouseMoved() {
 void mousePressed() {
   float tempx = mouseX-V.Pos.x;
   float tempy = mouseY-V.Pos.y;
-  println(tempx+" "+tempy); 
+  //println(tempx+" "+tempy); 
   if (M.Aff) {
     M.mousePressed();
   } else {
@@ -131,7 +135,7 @@ void mousePressed() {
     IA.VIA.mousePressed();
     Viser = IA.VIA.ArrivMissile();
     if (Viser<=7 && Missile[0].Pos.x == V.Pos.x+500) {
-      Missile[0].Vst.set(PVector.sub(IA.VIA.AvPos(Viser), Missile[0].Pos).add(IA.VIA.Salle[Viser].Long/2, IA.VIA.Salle[Viser].Larg/2).setMag(5));
+      Missile[0].Vst.set(PVector.sub(IA.VIA.AvPos(Viser), Missile[0].Pos).add(IA.VIA.Salle[Viser].Long/2, IA.VIA.Salle[Viser].Larg/2).setMag(15));
       //Missile[0].Vst.x = Missile[0].Vst.x);
     }
     if (IA.VIA.PV<=0) {
@@ -142,9 +146,10 @@ void mousePressed() {
 }
 
 void frameCount()
-{
+{/*
   for (int i=0; i<=50; i++)
-  {
-    F[i]=frameCount;
-  }
+ {
+ F[i]=frameCount;
+ }*/
+//if(Missile[0].LO) F[11]++;
 } // >=F[15] non utilisé
