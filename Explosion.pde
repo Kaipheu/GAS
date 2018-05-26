@@ -1,10 +1,12 @@
 void animBoomV ()
 {
   imageMode(CENTER);
+  println("F11 "+F[11]+" FramC "+frameCount);
+  println(int(((frameCount - F[11]) / (frameRate))));
     copy(Tex.Ico[14], 24*int(15*((frameCount - F[11]) / (frameRate))), IExplo*300, 300, 300, int(IA.VIA.AvPos(Viser).x), int(IA.VIA.AvPos(Viser).y), 100, 100);   
     stroke(255);
     noFill();
-    Missile[0].AnimVisible =false;              //la visibilité de l'animation est maintenant terminé
+    //Missile[0].AnimVisible =false;              //la visibilité de l'animation est maintenant terminé
     if (IA.VIA.Bouclier.N>0) {
       IA.VIA.Bouclier.N--;
     } else if (IA.VIA.Bouclier.N<=0) {

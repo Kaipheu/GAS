@@ -64,7 +64,7 @@ void setup() {
 
 void draw() {
   //println(EExplosion);
-  println(F[7]);
+  //println(F[7]);
   background(120);
   if (M.Aff) {
     M.draw();
