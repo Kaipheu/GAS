@@ -2,11 +2,10 @@ class Enemie
 {
   Salle[] Salle = new Salle[8]; // Tableau des Salles du vaiseaux
   Barr Pv;    // Point de vie du Vaiseaux
-  Barr Bouclier;// Niveau du Bouclier
   Homme Michel;
-  Barr Oxy;   // Niveau d'oxygène du Vaiseaux
-  Barr Equi;// Point de l'équipage 
-
+  Barr Bouclier;
+  Barr Equi;
+  
   PImage Image;
   PVector Pos; // Position du vaiseau
   int PV;
@@ -17,7 +16,7 @@ class Enemie
     int L=T/10, l=T/5;
     short[][] PosS = new short[8][2];
     Image = loadImage("Texture/PNG/IA_500x500.png");
-    Pv = new Barr(150, 150-(5*150)-5, PV, 150, 150, "Point de vie");
+    Pv = new Barr(Pos.x-150, Pos.y-l, PV, 150, 150, "Point de vie");
     Bouclier = new Barr(150, 150-3*150, 3, 150, 150, "Bouclier");
     Michel = new Homme(Pos.x+32, Pos.y+27, T);
     Equi = new Barr(x, y + Image.width + l*2, 3, L, l, "");// Création d'une instance de Barr pour les point de vie de Michel
@@ -52,8 +51,8 @@ class Enemie
     for (Salle S : Salle) {
       S.draw();
     }
+    Pv.N = PV;
     Pv.draw();
-    Bouclier.draw();
   }
 
   void mousePressed()
@@ -78,7 +77,14 @@ class Enemie
   int AvPVSalle(int ID) {
     return Salle[ID].PV;
   }
-
+  int DefPv(int PV){
+    Pv = null;
+    this.PV = PV;
+    int l=Salle[0].Larg/5;
+    Pv = new Barr(Pos.x-150, Pos.y-l, PV, 150, 150, "Point de vie");
+    return PV;
+  }
+  
   int ArrivMissile() { 
     for (Salle S : Salle) { 
       if (S.AuDessu()) { 

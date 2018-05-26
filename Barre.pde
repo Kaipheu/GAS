@@ -31,6 +31,7 @@ class Barr extends Unite {
     }
     this.Nom=Nom;
   }
+  
   void DefCouleur(color Couleur) {
     for (Unite U : Unite) {
       U.DefCouleur(Couleur);

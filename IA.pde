@@ -20,13 +20,12 @@ class IA
     if (NE == 10) {
       N=3;
     }
-
     switch(N)
     {
     case 0: 
       fill(#E31919);
       text("Vaisseau de reconnaisance", XposIA, YposIA);
-      VIA.PV=15;
+      VIA.DefPv(15);
       Boucliermax = VIA.Bouclier.N = 1;
       MEquiper = Miss.M[0][0];
       MR = Miss.M[0][2];
@@ -38,7 +37,7 @@ class IA
     case 1: 
       fill(#E31919);
       text("Vaisseau de combat", XposIA, YposIA);
-      VIA.PV=25;
+      VIA.DefPv(25);
       Boucliermax = VIA.Bouclier.N = 2;
       MEquiper = Miss.M[0][0];
       MR = Miss.M[0][2];
@@ -48,7 +47,7 @@ class IA
     case 2:
       fill(#E31919);
       text(" Vaisseau inconnu", XposIA, YposIA);
-      VIA.PV=20+int(random(5));
+      VIA.DefPv(20+int(random(5)));
       Boucliermax= VIA.Bouclier.N = 2;
       MEquiper = Miss.M[int(random(1))][0];
       for (int i=0; i<=1; i++) { 
@@ -64,7 +63,7 @@ class IA
     case 3 : 
       fill(#E31919);
       text(" Vaisseau de commandement", XposIA, YposIA);
-      VIA.PV=15;
+      VIA.DefPv(15);
       Boucliermax = VIA.Bouclier.N = 3;
       MEquiper = Miss.M[1][0];
       MR = Miss.M[1][2];
@@ -75,7 +74,7 @@ class IA
     default :
       fill(#E31919);
       text("Vaisseau de reconnaisance", XposIA, YposIA);
-      VIA.PV=15;
+      VIA.DefPv(15);
       Boucliermax = VIA.Bouclier.N = 1;
       MEquiper = Miss.M[0][0];
       MR = Miss.M[0][2];
