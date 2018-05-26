@@ -98,20 +98,4 @@ class IA
   {
     VIA.draw();
   }
-
-  void action()
-  {
-    int Tirer0 = int((frameCount-F[7])/( frameRate));
-    if (Tirer0==Miss.M[0][2]) {
-      Tir=true;
-      F[7]=0;
-    }
-
-    for (int i =-1; i<8; i++) {     //salle de préférence à viser
-      if ((V.Salle[i+1].PV <= V.Salle[i].PVMax) && (P[i+1] >= P[i])) {
-        P[i] = P[i+1];
-        
-      }
-    }
-  }
 }

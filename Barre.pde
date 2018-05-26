@@ -4,7 +4,7 @@ class Barr extends Unite {
   int Esp = 10;
   String Nom ="Vide";
   short TPolice= 15;
-  color C_Txt = 0;
+  color C_Txt = color(255,0,0);
   void draw() {
    if(N>=Unite.length){
     N =Unite.length-1;

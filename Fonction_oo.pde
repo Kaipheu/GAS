@@ -2,7 +2,7 @@ void dommage()
 {
   if (V.Salle[0].PV<=0) {
     V.Salle[0].PV=0;
-    V.Oxy.N = V.Oxy.N - int((frameCount-F[0])/(frameRate*10));
+    V.Oxy.N = V.Oxy.N - int((frameCount - F[0])/(frameRate*10));
     if (V.Oxy.N==0) {
       F[0]=frameCount;
       V.Equi.N = 0;
@@ -34,7 +34,7 @@ void dommage()
   if (IA.VIA.Salle[0].PV<=0)
   {
     IA.VIA.Salle[0].PV=0;
-    IA.VIA.Oxy.N = IA.VIA.Oxy.N - int((frameCount-F[1])/(frameRate*10));
+    IA.VIA.Oxy.N = IA.VIA.Oxy.N - int((frameCount - F[1])/(frameRate*10));
     if (IA.VIA.Oxy.N==0) {
       F[1]=frameCount;
       IA.VIA.Equi.N = 0;
@@ -61,16 +61,14 @@ void reparer()
 
   if (IA.VIA.Salle[2].PV <= IA.VIA.Salle[2].PVMax || IA.VIA.Salle[5].PV <= IA.VIA.Salle[5].PVMax || IA.VIA.Salle[6].PV <= IA.VIA.Salle[6].PVMax)  //salle qui nécessite des réparations
   {
-    //if (IA.Equi.N >=0)
-    //{
-    //  if (((frameCount - F[2]) / (frameRate)) == 8)
+    //if (((frameCount - F[2]) / (frameRate)) == 8)
     //  {
     //    F[2]=frameCount;
-    //    V.Salle[i].PV++;
+    //    V.Salle[2].PV++;
     //  }
-    //}
   } else if (IA.VIA.Salle[0].PV <= IA.VIA.Salle[0].PVMax || IA.VIA.Salle[3].PV <= IA.VIA.Salle[3].PVMax) {
     //Homme va en direction de la salle
+
   } else if (IA.VIA.Salle[1].PV <= IA.VIA.Salle[1].PVMax || IA.VIA.Salle[4].PV <= IA.VIA.Salle[4].PVMax || IA.VIA.Salle[7].PV <= IA.VIA.Salle[7].PVMax) {
     //Homme va en direction de la salle
   }
@@ -79,19 +77,17 @@ void reparer()
 
 void recharger()
 {
-  int RBouclier = int((frameCount-F[6])/( frameRate));
   int VMRe=0, IAMRe=0;
-
   if (V.Salle[6].PV>0) {
     if (V.Bouclier.N <= V.Boucliermax && V.Salle[6].PV>0) {
       F[3]=0;
-      if (RBouclier == 6) {
+      if ((frameCount - F[3])/( frameRate) == 6) {
         F[3]=frameCount;
       }
       V.Bouclier.N++;
     }
     if (IA.VIA.Bouclier.N <= IA.Boucliermax && IA.VIA.Salle[6].PV>0) {
-      if (RBouclier == 6) {
+      if ((frameCount - F[4])/( frameRate) == 6) {
         F[4] = frameCount;
       }
       IA.VIA.Bouclier.N++;
@@ -102,21 +98,35 @@ void recharger()
 
     for (int i=0; i<=1; i++) {
       if (VMRe <= Miss.M[i][2] && V.MEquiper == Miss.M[i][0]) {
-        if (VMRe == Miss.M[i][2]) {
-          VMRe = int((frameCount - F[4]) / (frameRate)) - Miss.M[i][2];
+        VMRe = int((frameCount - F[4]) / (frameRate)) - Miss.M[i][2];
+        if (F[4] == Miss.M[i][2]) {
           F[4]=frameCount;
-          V.MRTer = true;
         }
+        V.MRTer = true;
       }
     }  
 
     for (int i=0; i<=1; i++) {
       if (IAMRe >= Miss.M[i][2] && IA.MEquiper == Miss.M[i][0]) {
-          IAMRe = int((frameCount - F[5]) / (frameRate)) - Miss.M[i][2];
-          F[5]=frameCount;
-          IA.MRTer = true;
-        
+        IAMRe = int((frameCount - F[11]) / (frameRate)) - Miss.M[i][2];
+        F[11]=frameCount;
+        IA.MRTer = true;
       }
+    }
+  }
+}
+
+
+void actionIA()
+{
+  if (((frameCount - F[7])/( frameRate))>=Miss.M[0][2]) {
+    IA.Tir=true;
+    F[7]=frameCount;
+  }
+
+  for (int i =0; i<7; i++) {     //salle de préférence à viser
+    if ((V.Salle[i+1].PV <= V.Salle[i].PVMax) && (IA.P[i+1] >= IA.P[i])) {
+      IA.P[i] = IA.P[i+1];
     }
   }
 }

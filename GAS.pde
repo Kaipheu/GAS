@@ -1,4 +1,4 @@
-/********************************************************************************************************* //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>//
+/********************************************************************************************************* //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>//
  Titre du Programme : Gestion d'Attaque Spatiale (GAS)
  **********************************************************************************************************
  Date de création du programme : 23/01/2018
@@ -10,9 +10,9 @@
  Commentaire : R.A.S.
  *********************************************************************************************************/
 
-Menu M; // Objet Menu  //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>//
+Menu M; // Objet Menu  //<>// //<>// //<>// //<>// //<>// //<>//
 
-// Objet vaisseaux Joueur et ennemi //<>//
+// Objet vaisseaux Joueur et ennemi
 
 Texture Tex;
 //Geste G;
@@ -27,10 +27,10 @@ Etoiles[] Missile = new Etoiles[2];
 Credit C;
 char KEY ='0';
 int[] F = new int[51];
-int Viser;
-int  LO =0;
+int Viser;     //identifiant de la salle viser
+int  L0 =0, IExplo=0;
 boolean Foi = false;
-
+int []EExplosion = new int[2];   //frame of explosion
 
 void settings () {
   fullScreen();
@@ -51,13 +51,24 @@ void setup() {
   Boutique[0].C_Rp = color(#BFB3B3);
   Missile[0] = new Etoiles(V.Pos.x+500, V.Pos.y +250, 1, true);
   Missile[1] = new Etoiles(IA.VIA.Pos.x-500, IA.VIA.Pos.y+250, 1, true);
+
+  for (int i =0; i<=1; i++)
+  {
+    EExplosion[i] = -1;
+  }
+  for (int l =0; l<=50; l++)
+  {
+    F[l] = 0;
+  }
 }
 
 void draw() {
+  //println(EExplosion);
+  println(F[7]);
   background(120);
   if (M.Aff) {
     M.draw();
-    if(C.Affiche){
+    if (C.Affiche) {
       C.draw();
     }
   } else {
@@ -69,39 +80,35 @@ void draw() {
       E.Deplacement();
       E.Pos();
     }
-    frameCount();
     V.draw();
     if (IA != null)
     {
       IA.draw();
     }
+    imageMode(CENTER);
     dommage();
     reparer();
     recharger();
+    actionIA();
     combat();
     if (Boutique[0].Activ && IA==null) {
       E.draw();
     } else {
       Boutique[0].draw();
     }
-    if (Missile[0].LO == true)
-    {
+    if (Missile[0].AnimVisible == true) {
       animBoomV();
-      if (int((frameCount - F[13]) / (frameRate *10000)) >= 3)
-      {
-        Missile[0] = null;
-        F[13]=frameCount;
-      }
-    }
-    if (Missile[1].LO == true)
-    {
+    } /*else if (Missile[0].LO == false) {
+      Missile[0] = null;
+      Missile[0] = new Etoiles(V.Pos.x+500, V.Pos.y +250, 1, true);
+    }*/
+    if (Missile[1].AnimVisible == true) {
       animBoomIA();
-      if (int((frameCount - F[13]) / (frameRate *10000)) >= 3)
-      {
-        Missile[1] = null;
-        F[14]=frameCount;
-      }
-    }
+    } /*else if (Missile[1].LO == false) {
+      Missile[1] = null;
+      Missile[1] = new Etoiles(IA.VIA.Pos.x-500, IA.VIA.Pos.y +250, 1, true);
+    }*/
+    imageMode(CORNER);
   }
 }
 
@@ -121,9 +128,6 @@ void mouseMoved() {
 }
 
 void mousePressed() {
-  float tempx = mouseX-V.Pos.x;
-  float tempy = mouseY-V.Pos.y;
-  println(tempx+" "+tempy); 
   if (M.Aff) {
     M.mousePressed();
   } else {
@@ -131,7 +135,7 @@ void mousePressed() {
     IA.VIA.mousePressed();
     Viser = IA.VIA.ArrivMissile();
     if (Viser<=7 && Missile[0].Pos.x == V.Pos.x+500) {
-      Missile[0].Vst.set(PVector.sub(IA.VIA.AvPos(Viser), Missile[0].Pos).add(IA.VIA.Salle[Viser].Long/2, IA.VIA.Salle[Viser].Larg/2).setMag(5));
+      Missile[0].Vst.set(PVector.sub(IA.VIA.AvPos(Viser), Missile[0].Pos).add(IA.VIA.Salle[Viser].Long/2, IA.VIA.Salle[Viser].Larg/2).setMag(15));
       //Missile[0].Vst.x = Missile[0].Vst.x);
     }
     if (IA.VIA.PV<=0) {
@@ -140,11 +144,3 @@ void mousePressed() {
   }
   Boutique[0].mousePressed();
 }
-
-void frameCount()
-{
-  for (int i=0; i<=50; i++)
-  {
-    F[i]=frameCount;
-  }
-} // >=F[15] non utilisé
