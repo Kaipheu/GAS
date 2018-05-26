@@ -1,6 +1,5 @@
 void animBoomV ()
 {
-  imageMode(CENTER);
     copy(Tex.Ico[14], 300*int(15*((frameCount - F[11]) / (frameRate))), IExplo*300, 300, 300, int(Missile[0].Pos.x), int(Missile[0].Pos.y), 30, 30);   
     stroke(255);
     noFill();
@@ -9,6 +8,7 @@ void animBoomV ()
     } else if (IA.VIA.Bouclier.N<=0) {
       IA.VIA.Salle[Viser].PV = IA.VIA.Salle[Viser].PV - Miss.M[0][1];     //ArrayIndexOutOFBoundsException : 9
       IA.VIA.PV = IA.VIA.PV - Miss.M[0][1];
+      V.Missile.N--;
     }
     if (V.Michel.Salle(Viser)) {
       V.Equi.N = V.Equi.N - Miss.M[1][1];
@@ -26,8 +26,7 @@ void animBoomV ()
 
 void animBoomIA ()
 {
-  imageMode(CENTER);
-    copy(Tex.Ico[14], 300*int(15*((frameCount - F[12]) / (frameRate))), IExplo*300, 300, 300, int(Missile[0].Pos.x), int(Missile[0].Pos.y), 30, 30); 
+    copy(Tex.Ico[14], 300*int(15*((frameCount - F[12]) / (frameRate))), IExplo*300, 300, 300, int(Missile[0].Pos.x), int(Missile[0].Pos.y), 50, 50); 
     stroke(255);
     noFill();       
     Missile[1].AnimVisible =false;

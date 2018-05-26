@@ -91,7 +91,7 @@ void draw() {
     recharger();
     actionIA();
     combat();
-    if (Boutique[0].Activ && IA==null) {
+    if (Boutique[0].Activ && IA.Visible==false) {
       E.draw();
     } else {
       Boutique[0].draw();

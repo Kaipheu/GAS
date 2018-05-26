@@ -34,11 +34,6 @@ void dommage()
   if (IA.VIA.Salle[0].PV<=0)
   {
     IA.VIA.Salle[0].PV=0;
-    IA.VIA.Oxy -= int((frameCount - F[1])/(frameRate*10));
-    if (IA.VIA.Oxy==0) {
-      F[1]=frameCount;
-      IA.VIA.Equi.N = 0;
-    }
   }
   for (int i=2; i<=7; i++) {
     if (IA.VIA.Salle[i].PV<=0) {
@@ -104,12 +99,6 @@ void recharger()
         F[3]=frameCount;
       }
       V.Bouclier.N++;
-    }
-    if (IA.VIA.Bouclier.N <= IA.Boucliermax && IA.VIA.Salle[6].PV>0) {
-      if ((frameCount - F[4])/( frameRate) == 6) {
-        F[4] = frameCount;
-      }
-      IA.VIA.Bouclier.N++;
     }
   }
 

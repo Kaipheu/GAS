@@ -105,7 +105,7 @@ class Echange
         }
       }
       if (Fen.B[14].Activ) {
-        IA = new IA(100, 100);      // un nouvel ennemi apparaît;
+        IA.Visible = true;
       }
     }
   }

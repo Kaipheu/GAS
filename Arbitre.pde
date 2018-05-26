@@ -8,7 +8,6 @@ void combat()
     for (int m=0; m<=1; m++) {      //pareil pour le Joueur  //////////////////////////////////////////////////////////////////////////////////////////////////
       if ((V.MEquiper == Miss.M[m][0]) && (V.MRTer== true)/* && (IA.VIA.Salle[0].Pos.x==7)*/) {
         V.MRTer = false;
-        V.Missile.N--;
         imgMissile = Tex.Ico[15+m];
         Missile[0].Deplacement();
         image(imgMissile, Missile[0].Pos.x, Missile[0].Pos.y, 50, 50); //affichage de l'image 
@@ -43,7 +42,7 @@ void combat()
       fill(#BE2292);
       textSize(35);
       text("Vous avez réussi le niveau n°" + str(IA.NE), width/2, height/8);     //le joueur réussi le niveau
-      IA = null;       //l'IA disparaît
+      IA.Visible = false;
     }
 
     if (V.PV <=0) {            //si les PV du Joueur sont inférieur à0
@@ -53,11 +52,11 @@ void combat()
       M.Aff=true;          //il revient donc au menu
     }
 
-    //if (IA.NE == 101) {        //si le joueur atteint le niveau 11 (soit après le boss de fin)
-    //  fill(#BE2292);
-    //  textSize(35);
-    //  text("Vous avez réussi le jeu", width/2, height/2);           //il réussi le jeu
-    //  M.Aff=true;        //il revient donc au menu
-    //}
+    if (IA.NE == 11) {        //si le joueur atteint le niveau 11 (soit après le boss de fin)
+      fill(#BE2292);
+      textSize(35);
+      text("Vous avez réussi le jeu", width/2, height/2);           //il réussi le jeu
+      M.Aff=true;        //il revient donc au menu
+    }
   }
 }
