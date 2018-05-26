@@ -1,4 +1,4 @@
-class Vaisseau extends Enemie {
+class Vaisseau extends Ennemie {
   Barr Carbu;// Carburant restant
   Barr Equi;// Point de l'équipage 
   Barr Missile; // Missile restants

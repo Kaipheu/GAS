@@ -1,6 +1,6 @@
 class IA
 {
-  Enemie VIA;
+  Ennemie VIA;
   int Boucliermax;
   int MEquiper = 0;
   int MR = 0;
@@ -12,7 +12,7 @@ class IA
 
   IA(float XposIA, float YposIA)
   { 
-    VIA =new Enemie(width - 100, height/10, 104); // l larg et taille salle
+    VIA =new Ennemie(width - 100, height/10, 104); // l larg et taille salle
     XposIA = width -100;
     YposIA = height - 100;
 

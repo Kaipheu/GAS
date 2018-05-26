@@ -1,4 +1,4 @@
-class Enemie
+class Ennemie
 {
   Salle[] Salle = new Salle[8]; // Tableau des Salles du vaiseaux
   Barr Pv;    // Point de vie du Vaiseaux
@@ -11,7 +11,7 @@ class Enemie
   PVector Pos; // Position du vaiseau
   int PV;
 
-  Enemie(int x, int y, int T) {
+  Ennemie(int x, int y, int T) {
     Pos = new PVector(x, y);  
     
     int L=T/10, l=T/5;
