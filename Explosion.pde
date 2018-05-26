@@ -1,7 +1,7 @@
 void animBoomV ()
 {
-  
-    copy(Tex.Ico[14], 300*int(15*((frameCount - F[11]) / (frameRate))), IExplo*300, 300, 300, int(Missile[0].Pos.x), int(Missile[0].Pos.y), 30, 30); 
+  imageMode(CENTER);
+    copy(Tex.Ico[14], 24*int(15*((frameCount - F[11]) / (frameRate))), IExplo*300, 300, 300, int(IA.VIA.AvPos(Viser).x), int(IA.VIA.AvPos(Viser).y), 100, 100);   
     stroke(255);
     noFill();
     Missile[0].AnimVisible =false;              //la visibilité de l'animation est maintenant terminé
@@ -11,7 +11,6 @@ void animBoomV ()
       IA.VIA.Salle[Viser].PV = IA.VIA.Salle[Viser].PV - Miss.M[0][1];     //ArrayIndexOutOFBoundsException : 9
       IA.VIA.PV = IA.VIA.PV - Miss.M[0][1];
     }
-
     if (V.Michel.Salle(Viser)) {
       V.Equi.N = V.Equi.N - Miss.M[1][1];
       for (int j=0; j<=7; j++) {
@@ -24,7 +23,8 @@ void animBoomV ()
 
 void animBoomIA ()
 {
-    copy(Tex.Ico[4], 300*int((frameCount - F[12]) / (frameRate *10000)), IExplo*300, 300, 300, int( Missile[0].Pos.x), int( Missile[0].Pos.y), 30, 30); //copy(image, sourceXdsImage, sourceYdsImage, dimSourceX, dimSourceY, posEcranX, posEcranY, tailleX, tailleY);
+  imageMode(CENTER);
+    copy(Tex.Ico[14], 300*int((frameCount - F[12]) / (frameRate *10000)), IExplo*300, 300, 300, int( Missile[0].Pos.x), int( Missile[0].Pos.y), 30, 30); //copy(image, sourceXdsImage, sourceYdsImage, dimSourceX, dimSourceY, posEcranX, posEcranY, tailleX, tailleY);
     stroke(255);
     noFill();       
     Missile[1].AnimVisible =false;
@@ -34,13 +34,11 @@ void animBoomIA ()
     V.Salle[Viser].PV = V.Salle[Viser].PV - Miss.M[IExplo][1];     //ArrayIndexOutOFBoundsException : 9
     V.Pv.N = V.Pv.N - Miss.M[IExplo][1];
   }
-
   for (int j=0; j<=7; j++) {
     if (V.Equi.N >=0 && V.Michel.Salle == j) {
       V.Salle[j].PV++;
     }
   }
-
   V.Bouclier.N--;
   V.Pv.N = V.Pv.N - Miss.M[IExplo][1];
 }
