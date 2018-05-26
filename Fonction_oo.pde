@@ -61,16 +61,35 @@ void reparer()
 
   if (IA.VIA.Salle[2].PV <= IA.VIA.Salle[2].PVMax || IA.VIA.Salle[5].PV <= IA.VIA.Salle[5].PVMax || IA.VIA.Salle[6].PV <= IA.VIA.Salle[6].PVMax)  //salle qui nécessite des réparations
   {
-    //if (((frameCount - F[2]) / (frameRate)) == 8)
-    //  {
-    //    F[2]=frameCount;
-    //    V.Salle[2].PV++;
-    //  }
+    if (((frameCount - F[2]) / (frameRate)) >= 8) {
+      F[2]=frameCount;
+      V.Salle[2].PV++;
+    } else if (((frameCount - F[2]) / (frameRate)) >= 8) {
+      F[2]=frameCount;
+      V.Salle[5].PV++;
+    } else if (((frameCount - F[2]) / (frameRate)) >= 8) {
+      F[2]=frameCount;
+      V.Salle[6].PV++;
+    }
   } else if (IA.VIA.Salle[0].PV <= IA.VIA.Salle[0].PVMax || IA.VIA.Salle[3].PV <= IA.VIA.Salle[3].PVMax) {
-    //Homme va en direction de la salle
-
+    if (((frameCount - F[2]) / (frameRate)) >= 8) {
+      F[2]=frameCount;
+      V.Salle[0].PV++;
+    } else if (((frameCount - F[2]) / (frameRate)) >= 8) {
+      F[2]=frameCount;
+      V.Salle[3].PV++;
+    }
   } else if (IA.VIA.Salle[1].PV <= IA.VIA.Salle[1].PVMax || IA.VIA.Salle[4].PV <= IA.VIA.Salle[4].PVMax || IA.VIA.Salle[7].PV <= IA.VIA.Salle[7].PVMax) {
-    //Homme va en direction de la salle
+    if (((frameCount - F[2]) / (frameRate)) >= 8) {
+      F[1]=frameCount;
+      V.Salle[2].PV++;
+    } else if (((frameCount - F[2]) / (frameRate)) >= 8) {
+      F[4]=frameCount;
+      V.Salle[5].PV++;
+    } else if (((frameCount - F[2]) / (frameRate)) >= 8) {
+      F[7]=frameCount;
+      V.Salle[2].PV++;
+    }
   }
 }
 
@@ -94,22 +113,22 @@ void recharger()
     }
   }
 
-    for (int i=0; i<=1; i++) {
-      if (VMRe <= Miss.M[i][2] && V.MEquiper == Miss.M[i][0]) {
-        VMRe = int((frameCount - F[4]) / (frameRate)) - Miss.M[i][2];
-        if (F[4] == Miss.M[i][2]) {
-          F[4]=frameCount;
-        }
-        V.MRTer = true;
+  for (int i=0; i<=1; i++) {
+    if (VMRe <= Miss.M[i][2] && V.MEquiper == Miss.M[i][0]) {
+      VMRe = int((frameCount - F[4]) / (frameRate)) - Miss.M[i][2];
+      if (F[4] == Miss.M[i][2]) {
+        F[4]=frameCount;
       }
-    }  
-    for (int i=0; i<=1; i++) {
-      if (IAMRe >= Miss.M[i][2] && IA.MEquiper == Miss.M[i][0]) {
-        IAMRe = int((frameCount - F[11]) / (frameRate)) - Miss.M[i][2];
-        F[11]=frameCount;
-        IA.MRTer = true;
-      }
-    } 
+      V.MRTer = true;
+    }
+  }  
+  for (int i=0; i<=1; i++) {
+    if (IAMRe >= Miss.M[i][2] && IA.MEquiper == Miss.M[i][0]) {
+      IAMRe = int((frameCount - F[11]) / (frameRate)) - Miss.M[i][2];
+      F[11]=frameCount;
+      IA.MRTer = true;
+    }
+  }
 }
 
 
