@@ -1,12 +1,9 @@
 void animBoomV ()
 {
   imageMode(CENTER);
-  println("F11 "+F[11]+" FramC "+frameCount);
-  println(int(((frameCount - F[11]) / (frameRate))));
-    copy(Tex.Ico[14], 24*int(15*((frameCount - F[11]) / (frameRate))), IExplo*300, 300, 300, int(IA.VIA.AvPos(Viser).x), int(IA.VIA.AvPos(Viser).y), 100, 100);   
+    copy(Tex.Ico[14], 300*int(15*((frameCount - F[11]) / (frameRate))), IExplo*300, 300, 300, int(Missile[0].Pos.x), int(Missile[0].Pos.y), 30, 30);   
     stroke(255);
     noFill();
-    //Missile[0].AnimVisible =false;              //la visibilité de l'animation est maintenant terminé
     if (IA.VIA.Bouclier.N>0) {
       IA.VIA.Bouclier.N--;
     } else if (IA.VIA.Bouclier.N<=0) {
@@ -21,12 +18,16 @@ void animBoomV ()
         }
       }
     }
+    if (300*int(15*((frameCount - F[11]) / (frameRate)))>=3000)
+    {
+      Missile[0].AnimVisible =false;
+    }
 }
 
 void animBoomIA ()
 {
   imageMode(CENTER);
-    copy(Tex.Ico[14], 300*int((frameCount - F[12]) / (frameRate *10000)), IExplo*300, 300, 300, int( Missile[0].Pos.x), int( Missile[0].Pos.y), 30, 30); //copy(image, sourceXdsImage, sourceYdsImage, dimSourceX, dimSourceY, posEcranX, posEcranY, tailleX, tailleY);
+    copy(Tex.Ico[14], 300*int(15*((frameCount - F[12]) / (frameRate))), IExplo*300, 300, 300, int(Missile[0].Pos.x), int(Missile[0].Pos.y), 30, 30); 
     stroke(255);
     noFill();       
     Missile[1].AnimVisible =false;
@@ -43,4 +44,8 @@ void animBoomIA ()
   }
   V.Bouclier.N--;
   V.Pv.N = V.Pv.N - Miss.M[IExplo][1];
+    if (300*int(15*((frameCount - F[12]) / (frameRate)))>=3000)
+    {
+      Missile[1].AnimVisible =false;
+    }
 }
