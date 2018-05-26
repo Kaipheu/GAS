@@ -94,8 +94,6 @@ void recharger()
     }
   }
 
-  if (V.Salle[5].PV>0) {
-
     for (int i=0; i<=1; i++) {
       if (VMRe <= Miss.M[i][2] && V.MEquiper == Miss.M[i][0]) {
         VMRe = int((frameCount - F[4]) / (frameRate)) - Miss.M[i][2];
@@ -105,15 +103,13 @@ void recharger()
         V.MRTer = true;
       }
     }  
-
     for (int i=0; i<=1; i++) {
       if (IAMRe >= Miss.M[i][2] && IA.MEquiper == Miss.M[i][0]) {
         IAMRe = int((frameCount - F[11]) / (frameRate)) - Miss.M[i][2];
         F[11]=frameCount;
         IA.MRTer = true;
       }
-    }
-  }
+    } 
 }
 
 
