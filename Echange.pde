@@ -73,26 +73,25 @@ class Echange
 
   void mousePressed ()
   {
-    for (Bouton B : Fen.B) {
       if (Fen.B[1].Aff && Lune>= C[1][0] && (V.Missile.N + V.Carbu.N)<=30) {  //si le bouton 1 est activé, que le joueur a assez d'argent, que son nombre de missile et de carburant ne dépasse pas les 30
         Lune = Lune - C[1][0];  //il pert l'argent dépenser
         V.Missile.N++;  //il gagne un missile
       }
-      if (Fen.B[2].Activ && Lune>= C[1][1] && (V.Missile.N + V.Carbu.N)<=30) { //pareil pour le carburant
+      if (Fen.B[2].Aff && Lune>= C[1][1] && (V.Missile.N + V.Carbu.N)<=30) { //pareil pour le carburant
         Lune = Lune - C[1][1];
         V.Carbu.N++;
       }
-      if (Fen.B[3].Activ && Lune>= C[1][2] && V.Pv.N<D[1][2] && V.Pv.N <= D[1][2]) { //si le bouton 1 est activé, que le joueur a assez d'argent, et que son nombre de point de vie ne dépasse pas le dispositif max
+      if (Fen.B[3].Aff && Lune>= C[1][2] && V.Pv.N<D[1][2] && V.Pv.N <= D[1][2]) { //si le bouton 1 est activé, que le joueur a assez d'argent, et que son nombre de point de vie ne dépasse pas le dispositif max
         Lune = Lune - C[1][2];         //il pert l'argent dépenser
         V.Pv.N++;                      //les PV du Joueur augmentent  
         V.PVmax++;                     //les PV max du Joueur augmentent
       }
-      if (Fen.B[4].Activ && Lune>= C[2][0]) {
+      if (Fen.B[4].Aff && Lune>= C[2][0]) {
         Lune = Lune - C[2][0];        //il pert l'argent dépenser
         V.MEquiper = Miss.M[0][0];    //il s'équipe de l'arme 0
         V.MR = Miss.M[0][2];          //la recharge de son Missile change
       }
-      if (Fen.B[5].Activ && Lune>= C[2][1]) {
+      if (Fen.B[5].Aff && Lune>= C[2][1]) {
         Lune = Lune - C[2][1];        //il pert l'argent dépenser
         V.MEquiper = Miss.M[1][0];    //il s'équipe de l'arme 1
         V.MR = Miss.M[1][2];          //la recharge de son Missile change
@@ -106,7 +105,7 @@ class Echange
       }
       if (Fen.B[14].Activ) {
         IA.Visible = true;
-      }
+      
     }
   }
 }

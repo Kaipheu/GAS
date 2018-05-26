@@ -16,7 +16,7 @@ class Enemie
     int L=T/10, l=T/5;
     short[][] PosS = new short[8][2];
     Image = loadImage("Texture/PNG/IA_500x500.png");
-    Pv = new Barr(Pos.x-150, Pos.y-l, PV, 150, 150, "Point de vie");
+    Pv = new Barr(Pos.x-L, Pos.y-l, PV, 150, 150, "Point de vie");
     Bouclier = new Barr(150, 150-3*150, 3, 150, 150, "Bouclier");
     Michel = new Homme(Pos.x+32, Pos.y+27, T);
     Equi = new Barr(x, y + Image.width + l*2, 3, L, l, "");// Création d'une instance de Barr pour les point de vie de Michel
