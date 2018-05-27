@@ -86,11 +86,13 @@ void draw() {
       IA.draw();
     }
     imageMode(CENTER);
+    if (IA.Visible == true) {
     dommage();
     reparer();
     recharger();
     actionIA();
     combat();
+    }
     if (Boutique[0].Activ && IA.Visible==false) {
       E.draw();
     } else {
