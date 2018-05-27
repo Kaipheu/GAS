@@ -15,7 +15,7 @@ class Ennemie{
     int L=T/10, l=T/5;
     short[][] PosS = new short[8][2];
     Image = loadImage("Texture/PNG/IA_500x500.png");
-    Pv = new Barr(500, Pos.y-l, PV, 0, 0, "Point de vie");
+    Pv = new Barr(Pos.x-150, Pos.y-l, PV, L, l, "Point de vie");
     Bouclier = new Barr(150, 150-3*150, 3, 10, 10, "Bouclier");
     Michel = new Homme(Pos.x+32, Pos.y+27, T);
     Equi = new Barr(x, y + Image.width + l*2, 3, L, l, "");// Création d'une instance de Barr pour les point de vie de Michel
@@ -78,10 +78,14 @@ class Ennemie{
     return Salle[ID].PV;
   }
   int DefPv(int PV){
+    Float X = Pv.Pos.x;
+    Float Y = Pv.Pos.y;
+    int li = Pv.Larg;
+    int L = Pv.Long;
     Pv = null;
     this.PV = PV;
     int l=Salle[0].Larg/5;
-    Pv = new Barr(Pos.x-150, Pos.y-l, PV, 150, 150, "Point de vie");
+    Pv = new Barr(X, Y, PV, L, li, "Point de vie");
     return PV;
   }
   
