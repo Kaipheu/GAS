@@ -1,3 +1,14 @@
+/*********************************************************************************************************
+ Titre du Programme : Gestion d'Attaque Spatiale (GAS)
+ **********************************************************************************************************
+ Date de création du programme : 23/01/2018
+ **********************************************************************************************************
+ Auteurs : Berenger Florian, Said Djambae
+ 
+ Lycée : Pierre Termier
+ **********************************************************************************************************
+ Nom du fichier : Explosion
+ *********************************************************************************************************/
 void animBoomV ()
 {
   copy(Tex.Ico[14], 300*int(15*((frameCount - F[11]) / (frameRate))), IExplo*300, 300, 300, int(Missile[0].Pos.x), int(Missile[0].Pos.y), 50, 50);    //animation de l'explosion
@@ -12,7 +23,8 @@ void animBoomV ()
         IA.VIA.Bouclier.N--;                                                 //il perd ce dernier
       } else if (IA.VIA.Bouclier.N<=0) {                                     //sinon
         IA.VIA.Salle[Viser].PV = IA.VIA.Salle[Viser].PV - Miss.M[0][1];      //la salle perd des PV
-        IA.VIA.PV = IA.VIA.PV - Miss.M[0][1];                                //l'IA perd des PV
+        IA.VIA.PV -= Miss.M[0][1];
+        println(-1);//l'IA perd des PV
       }
     }
   }

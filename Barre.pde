@@ -1,3 +1,14 @@
+/*********************************************************************************************************
+ Titre du Programme : Gestion d'Attaque Spatiale (GAS)
+ **********************************************************************************************************
+ Date de création du programme : 23/01/2018
+ **********************************************************************************************************
+ Auteurs : Berenger Florian, Said Djambae
+ 
+ Lycée : Pierre Termier
+ **********************************************************************************************************
+ Nom du fichier : Barre
+ *********************************************************************************************************/
 class Barr extends Unite {
   int N;
   Unite[] Unite;
@@ -6,16 +17,16 @@ class Barr extends Unite {
   short TPolice= 15;
   color C_Txt = color(255,0,0);
   void draw() {
-   if(N>=Unite.length){
+   if(N>Unite.length){
     N =Unite.length-1;
     }
-    for (int i = 0; i<=N; i++) {
+    for (int i = 0; i<N; i++) {
       Unite[i].draw();
     }
     fill(C_Txt);
     textAlign(TOP, LEFT);
     textSize(TPolice);
-    text(Nom, Pos.x, Pos.y+TPolice);
+    text(Nom+" "+N, Pos.x, Pos.y+TPolice);
   }
 
   Barr(float x, float y, int N, int Log, int Lar, String Nom) {

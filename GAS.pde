@@ -1,4 +1,4 @@
-/********************************************************************************************************* //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>//
+/********************************************************************************************************* //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>//
  Titre du Programme : Gestion d'Attaque Spatiale (GAS)
  **********************************************************************************************************
  Date de création du programme : 23/01/2018
@@ -73,22 +73,22 @@ void draw() {
       E.Deplacement();
       E.Pos();
     }
-    if(IA != null)  //si l'IA est non nul
+    if (IA != null)  //si l'IA est non nul
     {
-      IA.draw();    //elle est dessinée 
+      IA.draw();    //elle est dessinée
     }
     V.draw();  //dessiner le Vaisseau
     if (IA.Visible == true) {     //si l'IA est visible la phase de combat est activé
-    dommage();
-    reparer();
-    recharger();
-    actionIA();
-    combat();
+      dommage();
+      reparer();
+      recharger();
+      actionIA();
+      combat();
     }
     if (Boutique[0].Activ /*&& IA.Visible==false*/) { //si l'IA n'est plus visible et que le Joueur appuie sur le bouton de la boutique
       E.draw();  //la classe Echange(boutique) est dessinéé
     } else {
-      Boutique[0].draw();       
+      Boutique[0].draw();
     }
     if (Missile[0].AnimVisible == true) {      //si l'Animation du Misssile 0, soit du Joueur est activé 
       animBoomV();                             //la fonction associée s'affiche
@@ -106,6 +106,7 @@ void keyPressed() {
     Missile[0].Pos.set(V.Pos.x+500, V.Pos.y +250);         //le Missile prend la position initiale du Vaisseau adverse  
     Missile[0].Vst.set(0, 0);
   }
+  V.Bouclier.N--;
 }
 
 void keyReleased() {
@@ -120,7 +121,7 @@ void mousePressed() {
     IA.VIA.mousePressed();
     Viser = IA.VIA.ArrivMissile();    //la variable viser prend la valeur de l'identifiant de la salle visée
     if (Viser<=7 && Missile[0].Pos.x == V.Pos.x+500) {  //si la salle existe et que la position du Missile est vérifiée
-      Missile[0].Vst.set(PVector.sub(IA.VIA.AvPos(Viser), Missile[0].Pos).add(IA.VIA.Salle[Viser].Long/2, IA.VIA.Salle[Viser].Larg/2).setMag(15));      //le Missile prend tel coordonnées en fonction du temps   
+      Missile[0].Vst.set(PVector.sub(IA.VIA.AvPos(Viser), Missile[0].Pos).add(IA.VIA.Salle[Viser].Long/2, IA.VIA.Salle[Viser].Larg/2).setMag(15));      //le Missile prend tel coordonnées en fonction du temps
     }
     if (IA.VIA.Pv.N<=0 || Boutique[0].Activ) {
       E.mousePressed();

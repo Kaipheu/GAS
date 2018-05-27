@@ -1,3 +1,14 @@
+/*********************************************************************************************************
+ Titre du Programme : Gestion d'Attaque Spatiale (GAS)
+ **********************************************************************************************************
+ Date de création du programme : 23/01/2018
+ **********************************************************************************************************
+ Auteurs : Berenger Florian, Said Djambae
+ 
+ Lycée : Pierre Termier
+ **********************************************************************************************************
+ Nom du fichier : Enemie 
+ *********************************************************************************************************/
 class Ennemie{
   Salle[] Salle = new Salle[8]; // Tableau des Salles du vaiseaux
   Barr Pv;    // Point de vie du Vaiseaux
@@ -52,8 +63,7 @@ class Ennemie{
       S.draw();                              //et de ses salles
     } 
     Pv.N = PV; 
-    Pv.draw();                               //dessiner la barre de ses PV
-    println(Pv.Long);
+    Pv.draw();//dessiner la barre de ses PV
   }
 
   void mousePressed()

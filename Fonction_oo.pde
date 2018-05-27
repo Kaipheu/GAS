@@ -1,3 +1,14 @@
+/*********************************************************************************************************
+ Titre du Programme : Gestion d'Attaque Spatiale (GAS)
+ **********************************************************************************************************
+ Date de création du programme : 23/01/2018
+ **********************************************************************************************************
+ Auteurs : Berenger Florian, Said Djambae
+ 
+ Lycée : Pierre Termier
+ **********************************************************************************************************
+ Nom du fichier : Fonction_oo
+ *********************************************************************************************************/
 void dommage()
 {
   if (V.Salle[0].PV<=0) {         //si la salle "Oxygène" est touchée
@@ -82,12 +93,11 @@ void reparer()
 
 void recharger()
 {
-  if (V.Salle[6].PV>0) {
-    if (V.Bouclier.N <= V.Boucliermax && V.Salle[6].PV>0) {
-      F[3]=0;
-      if ((frameCount - F[3])/( frameRate) == 6) {
-        F[3]=frameCount;
-      }
+
+  if (V.Bouclier.N <= V.Boucliermax && V.Salle[6].PV>0) {
+    if ((frameCount - F[3])/( frameRate) >= 6) {
+      F[3]=frameCount;
+      println(V.Bouclier.N);
       V.Bouclier.N++;
     }
   }
