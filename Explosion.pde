@@ -6,13 +6,16 @@ void animBoomV ()
     if (300*int(15*((frameCount - F[11]) / (frameRate)))>=3000)            //si l'animation atteint la fin de l'image soit 3000 alors :
     {
       Missile[0].AnimVisible =false;                                       //l'animation du Missile n'est plus disponible
+      if (Missile[0].AnimVisible ==false)
+      {
+        V.Missile.N--;                                             //le Joueur perd un Missile
+      }
     }
     if (IA.VIA.Bouclier.N>0) {                                             //si l'IA possède un bouclier
       IA.VIA.Bouclier.N--;                                                 //il perd ce dernier
     } else if (IA.VIA.Bouclier.N<=0) {                                     //sinon
       IA.VIA.Salle[Viser].PV = IA.VIA.Salle[Viser].PV - Miss.M[0][1];      //la salle perd des PV
       IA.VIA.PV = IA.VIA.PV - Miss.M[0][1];                                //l'IA perd des PV
-      V.Missile.N--;                                                       //le Joueur perd un Missile
     }
 }
 

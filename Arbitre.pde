@@ -6,7 +6,7 @@ void combat()
   if (((V.Pv.N >0) || (IA.VIA.PV > 0)) && Viser<=7)     //si un des vaisseaux n'est pas encore détruit
   {
     for (int m=0; m<=1; m++) {      //pareil pour le Joueur  //////////////////////////////////////////////////////////////////////////////////////////////////
-      if ((V.MEquiper == Miss.M[m][0]) && (V.MRTer== true)/* && (IA.VIA.Salle[0].Pos.x==7)*/) {
+      if ((V.MEquiper == Miss.M[m][0]) && (V.MRTer== true) && (V.Missile.N>=0)) {
         V.MRTer = false;
         imgMissile = Tex.Ico[15+m];
         Missile[0].Deplacement();

@@ -1,5 +1,5 @@
 class Bouton extends Unite {
-  Boolean Activ = false, Aff = true,Texture=false;   //initialisation des variables
+  Boolean Activ = false, Aff = true, Texture=false;   //initialisation des variables
   String Nom;
   color C_Tx = 255;
   int ID;
@@ -54,7 +54,7 @@ class Bouton extends Unite {
     C_Tx = Ch;
   }
   
-  boolean AuDessu(){              //permet de cliquer dessus
+  boolean AuDessu(){              //permet de montrer si l'on est dessus
     if (mouseX<=Pos.x+Long && mouseX>=Pos.x && mouseY<=Pos.y+Larg && mouseY>=Pos.y) {
   return true;
     }else{

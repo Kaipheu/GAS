@@ -85,7 +85,7 @@ void draw() {
     actionIA();
     combat();
     }
-    if (Boutique[0].Activ && IA.Visible==false) { //si l'IA n'est plus visible et que le Joueur appuie sur le bouton de la boutique
+    if (Boutique[0].Activ /*&& IA.Visible==false*/) { //si l'IA n'est plus visible et que le Joueur appuie sur le bouton de la boutique
       E.draw();  //la classe Echange(boutique) est dessinéé
     } else {
       Boutique[0].draw();       
@@ -118,10 +118,9 @@ void mousePressed() {
   } else {
     V.mousePressed();
     IA.VIA.mousePressed();
-    Viser = IA.VIA.ArrivMissile();
-    if (Viser<=7 && Missile[0].Pos.x == V.Pos.x+500) {
-      Missile[0].Vst.set(PVector.sub(IA.VIA.AvPos(Viser), Missile[0].Pos).add(IA.VIA.Salle[Viser].Long/2, IA.VIA.Salle[Viser].Larg/2).setMag(15));
-      //Missile[0].Vst.x = Missile[0].Vst.x);
+    Viser = IA.VIA.ArrivMissile();    //la variable viser prend la valeur de l'identifiant de la salle visée
+    if (Viser<=7 && Missile[0].Pos.x == V.Pos.x+500) {  //si la salle existe et que la position du Missile est vérifiée
+      Missile[0].Vst.set(PVector.sub(IA.VIA.AvPos(Viser), Missile[0].Pos).add(IA.VIA.Salle[Viser].Long/2, IA.VIA.Salle[Viser].Larg/2).setMag(15));      //le Missile prend tel coordonnées en fonction du temps   
     }
     if (IA.VIA.PV<=0) {
       E.mousePressed();
