@@ -84,11 +84,11 @@ class Echange
 
   void mousePressed ()
   {
-    if (Fen.B[1].Activ==true && Lune>= C[1][0] && (V.Missile.N + V.Carbu.N)<=30) {  //si le bouton 1 est activé, que le joueur a assez d'argent, que son nombre de missile et de carburant ne dépasse pas les 30
+    if (Fen.B[1].Activ==true && Lune>= C[1][0]) {  //si le bouton 1 est activé, que le joueur a assez d'argent
       Lune = Lune - C[1][0];  //il pert l'argent dépenser
       V.Missile.N++;  //il gagne un missile
     }
-    if (Fen.B[2].Activ==true && Lune>= C[1][1] && (V.Missile.N + V.Carbu.N)<=30) { //pareil pour le carburant
+    if (Fen.B[2].Activ==true && Lune>= C[1][1]) { //pareil pour le carburant
       Lune = Lune - C[1][1];
       V.Carbu.N++;
     }
