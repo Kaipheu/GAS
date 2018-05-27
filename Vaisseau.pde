@@ -31,7 +31,7 @@ class Vaisseau extends Ennemie {
     Bouclier = new Barr(x, y-3*L, 2, L, l, "Bouclier");// Création de l'instance de Barr pour les Point de bouclier                       
     Oxy = new Barr(x, y+Image.width+l*0.5, 10, L, l, "O2");// Création de l'instance de Barr pour le niveau d'Oxgène
     Missile = new Barr(x*3, y-1.5*l, 13, L, l, "Missiles");// Création d'une instance de Barr pour les missile restant
-    Carbu = new Barr(x+150, y+(l*0.5+Image.width), 13, L, l, "Carburant");// Création d'une instance de Barr pour le caburant restant
+    Carbu = new Barr(x+150, y+(l*0.5+Image.width), 5, L, l, "Carburant");// Création d'une instance de Barr pour le caburant restant
     Equi = new Barr(x, y+Image.width+l*2, 3, L, l, "Michel");// Création d'une instance de Barr pour les point de vie de Michel
     Michel = new Homme(Pos.x+32, Pos.y+27, T);
     }
