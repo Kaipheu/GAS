@@ -33,7 +33,7 @@ class IA
       switch(N)
       {
       case 0: 
-        VIA.DefPv(15);                                                    //son nombre de PV
+        VIA.PV=5;                                                    //son nombre de PV
         MEquiper = Miss.M[0][0];                                          //son type de Missile
         MR = Miss.M[0][2];                                                //la recharge de son Missile
         MR = 0;
@@ -42,14 +42,14 @@ class IA
         }
         break;
       case 1:                                                             //pareil
-        VIA.DefPv(25);
+        VIA.PV=10;
         MEquiper = Miss.M[0][0];
         MR = Miss.M[0][2];
         for (int i=0; i<=7; i++) {
           VIA.Salle[i].PV = 1;
         }
       case 2:                                                             //pareil
-        VIA.DefPv(20+int(random(5)));
+        VIA.PV=10+int(random(5));
         MEquiper = Miss.M[int(random(1))][0];
         for (int i=0; i<=1; i++) { 
           for (int j=0; j<=1; j++) {
@@ -59,18 +59,18 @@ class IA
           }
         }
         for (int i=0; i<=7; i++) {
-          VIA.Salle[i].PV = 2;
+          VIA.Salle[i].PV = 1;
         }
       case 3:                                                             //pareil 
-        VIA.DefPv(15);
+        VIA.PV=15;
         MEquiper = Miss.M[1][0];
         MR = Miss.M[1][2];
         for (int i=0; i<=7; i++) {
-          VIA.Salle[i].PV = 3;
+          VIA.Salle[i].PV = 2;
         }
         break;
       default:                                                             //pareil
-        VIA.DefPv(15);
+        VIA.PV=5;
         MEquiper = Miss.M[0][0];
         MR = Miss.M[0][2];
         for (int i=0; i<=7; i++) {

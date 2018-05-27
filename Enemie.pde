@@ -13,6 +13,7 @@ class Ennemie{
     Pos = new PVector(x, y);  
     
     int L=T/10, l=T/5;
+    PV=5;
     short[][] PosS = new short[8][2];
     Image = loadImage("Texture/PNG/IA_500x500.png");
     Pv = new Barr(Pos.x-150, Pos.y-l, PV, L, l, "Point de vie");  //création des Barres

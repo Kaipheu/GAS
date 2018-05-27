@@ -14,7 +14,7 @@ class Vaisseau extends Ennemie {
 
   Vaisseau(int x, int y, int T) {
     super(x, y, T);
-    PV = 20;
+    Pv.N = 20;
     Image = loadImage("Texture/PNG/Vaisseau500.png");// Chargement de l'image du vaiseaux
     int L=T/10, l=T/5;//Variable de Taille pour les salle
     Pos = new PVector(x, y);// Création  du vecteur position 
@@ -57,7 +57,7 @@ class Vaisseau extends Ennemie {
 
   void Dommage(int ID, int Pts) { // Methode retirant de point de vie au Salle 
     Salle[ID].Dommage(Pts); 
-    PV-=Pts;
+    Pv.N-=Pts;
   }
   void mousePressed() {
     super.mousePressed();

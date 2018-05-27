@@ -3,7 +3,7 @@ void combat()
   PImage imgMissile;
   imgMissile = Tex.Ico[15];  //image du type de missile
 
-  if (((V.Pv.N >0) || (IA.VIA.PV > 0)) && Viser<=7)     //si un des vaisseaux n'est pas encore détruit
+  if (((V.Pv.N >0) || (IA.VIA.Pv.N > 0)) && Viser<=7)     //si un des vaisseaux n'est pas encore détruit
   {
     for (int m=0; m<=1; m++) {      //pareil pour le Joueur  //////////////////////////////////////////////////////////////////////////////////////////////////
       if ((V.MEquiper == Miss.M[m][0]) && (V.MRTer== true) && (V.Missile.N>=0)) {
@@ -38,18 +38,18 @@ void combat()
       }
     }
 
-    if (IA.VIA.PV <=0) {        //si les PV de l'IA sont inférieurs à 0
+    if (IA.VIA.Pv.N <=0) {        //si les PV de l'IA sont inférieurs à 0
       fill(#BE2292);
       textSize(35);
       text("Vous avez réussi le niveau n°" + str(IA.NE), width/2, height/8);     //le joueur réussi le niveau
       IA.Visible = false;
     }
 
-    if (V.PV <=0) {            //si les PV du Joueur sont inférieurs à 0
+    if (V.Pv.N <=0) {            //si les PV du Joueur sont inférieurs à 0
       fill(#BE2292);
       textSize(35);
       text("Vous avez perdu ...", width/2, height/2);         //le joueur perd
-      M.Aff=true;          //il revient donc au menu
+       M.Aff=true;          //il revient donc au menu
     }
 
     if (IA.NE == 11) {        //si le joueur atteint le niveau 11 (soit après le boss de fin)
