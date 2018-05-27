@@ -15,7 +15,6 @@ Menu M; // Objet Menu  //<>// //<>// //<>// //<>// //<>// //<>//
 // Objet vaisseaux Joueur et ennemi
 
 Texture Tex;
-//Geste G;
 Missile Miss;
 Echange E;
 IA IA;
@@ -26,11 +25,10 @@ Etoiles[] Et = new Etoiles[100];
 Etoiles[] Missile = new Etoiles[2];
 Credit C;
 char KEY ='0';
-int[] F = new int[51];
+int[] F = new int[51];  //tableau permettant des tempos
 int Viser;     //identifiant de la salle viser
-int  L0 =0, IExplo=0;
-boolean Foi = false;
-int []EExplosion = new int[2];   //frame of explosion
+int  IExplo=0, k=1;      //IExplo : missile de l'explosion ; k : permettant une autre tempo
+boolean Foi = false; 
 
 void settings () {
   fullScreen();
@@ -40,25 +38,20 @@ void settings () {
 void setup() {
   smooth(9);
   textSize(20);
-  M = new Menu();// Créeation d'une instance Menu.
+  M = new Menu(); // Création des instances
   Miss = new Missile(200, 200);
-  V = new Vaisseau(width/10, height/10, 104);// Instance Vaiseau Joueur
+  V = new Vaisseau(width/10, height/10, 104);
   E = new Echange();
   IA = new IA (100, 100);
   C = new Credit();
-  Boutique[0] = new Bouton(width -200, height - 70, 180, 70, 0);
-  Boutique[0].Def_Ch(" La cosmo boutique " ); 
-  Boutique[0].C_Rp = color(#BFB3B3);
   Missile[0] = new Etoiles(V.Pos.x+500, V.Pos.y +250, 1, true);
   Missile[1] = new Etoiles(IA.VIA.Pos.x-500, IA.VIA.Pos.y+250, 1, true);
-  println(IA.VIA.Pos.x-500+" "+IA.VIA.Pos.y+250);
-  for (int i =0; i<=1; i++)
-  {
-    EExplosion[i] = -1;
-  }
+  Boutique[0] = new Bouton(width -200, height - 70, 180, 70, 0);
+  Boutique[0].Def_Ch(" La cosmo boutique " );                         //afficher le bouton boutique
+  Boutique[0].C_Rp = color(#BFB3B3);
   for (int l =0; l<=50; l++)
   {
-    F[l] = 0;
+    F[l] = 0;  //les valeurs du tableau F (pour les temporisations) prennent la valeur 0.
   }
 }
 
@@ -80,54 +73,43 @@ void draw() {
       E.Deplacement();
       E.Pos();
     }
-    V.draw();
-    if (IA != null)
+    if(IA != null)  //si l'IA est non nul
     {
-      IA.draw();
+      IA.draw();    //elle est dessinée 
     }
-    imageMode(CENTER);
-    if (IA.Visible == true) {
+    V.draw();  //dessiner le Vaisseau
+    if (IA.Visible == true) {     //si l'IA est visible la phase de combat est activé
     dommage();
     reparer();
     recharger();
     actionIA();
     combat();
     }
-    if (Boutique[0].Activ && IA.Visible==false) {
-      E.draw();
+    if (Boutique[0].Activ && IA.Visible==false) { //si l'IA n'est plus visible et que le Joueur appuie sur le bouton de la boutique
+      E.draw();  //la classe Echange(boutique) est dessinéé
     } else {
-      Boutique[0].draw();
+      Boutique[0].draw();       
     }
-    if (Missile[0].AnimVisible == true) {
-      animBoomV();
-    } /*else if (Missile[0].LO == false) {
-      Missile[0] = null;
-      Missile[0] = new Etoiles(V.Pos.x+500, V.Pos.y +250, 1, true);
-    }*/
-    if (Missile[1].AnimVisible == true) {
-      animBoomIA();
-    } /*else if (Missile[1].LO == false) {
-      Missile[1] = null;
-      Missile[1] = new Etoiles(IA.VIA.Pos.x-500, IA.VIA.Pos.y +250, 1, true);
-    }*/
-    imageMode(CORNER);
+    if (Missile[0].AnimVisible == true) {      //si l'Animation du Misssile 0, soit du Joueur est activé 
+      animBoomV();                             //la fonction associée s'affiche
+    } 
+    if (Missile[1].AnimVisible == true) {      //si l'Animation du Misssile 1, soit de l'IA est activé 
+      animBoomIA();                            //la fonction associée s'affiche
+    }
   }
-  //IA.VIA.Pv.Pos.set(mouseX,mouseY);
 }
 
 void keyPressed() {
   KEY = key;
   M.keyPressed();
-  if (key==' ') {
-    Missile[0].Pos.set(V.Pos.x+500, V.Pos.y +250);
+  if (key==' ') {            //si la touche espace est pressée
+    Missile[0].Pos.set(V.Pos.x+500, V.Pos.y +250);         //le Missile prend la position initiale du Vaisseau adverse  
     Missile[0].Vst.set(0, 0);
   }
 }
 
 void keyReleased() {
   KEY = '0';
-}
-void mouseMoved() {
 }
 
 void mousePressed() {

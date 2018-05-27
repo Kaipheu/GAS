@@ -5,8 +5,8 @@ class Missile
     yposMiss = 0;
     xposMiss = 0;
 
-    //missile coup/coup
-    //missile rafale 3 tirs
+    //missile 0
+    //missile 1
 
     M[0][0]=10;                 //variable pour montrer quel missile est équipé 
     M[0][1]=1;                  //dégats par missile

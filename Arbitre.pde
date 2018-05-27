@@ -45,7 +45,7 @@ void combat()
       IA.Visible = false;
     }
 
-    if (V.PV <=0) {            //si les PV du Joueur sont inférieur à0
+    if (V.PV <=0) {            //si les PV du Joueur sont inférieurs à 0
       fill(#BE2292);
       textSize(35);
       text("Vous avez perdu ...", width/2, height/2);         //le joueur perd

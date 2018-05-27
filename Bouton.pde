@@ -1,9 +1,10 @@
 class Bouton extends Unite {
-  Boolean Activ = false, Aff = true,Texture=false;
+  Boolean Activ = false, Aff = true,Texture=false;   //initialisation des variables
   String Nom;
   color C_Tx = 255;
   int ID;
-  Bouton(float x, float y, int Long, int Larg, int Id) {
+  
+  Bouton(float x, float y, int Long, int Larg, int Id) {  //constructeur
     super(x,y,Long,Larg);
     Nom = str(Id);
     ID=Id;
@@ -16,14 +17,14 @@ class Bouton extends Unite {
     Arrondie = 50;
   }
 
-  void draw() {
+  void draw() {          //dessiner le bouton
     if(!Texture){
      fill(C_Rp);
     stroke(C_Tr);
     rect(Pos.x, Pos.y, Long, Larg,Arrondie);
     textAlign(CENTER, CENTER);
     fill(C_Tx);
-    text(Nom, Pos.x+Long/2, Pos.y+Larg/2);
+    text(Nom, Pos.x+Long/2, Pos.y+Larg/2);        //et le texte
     }else{
       
     }
@@ -32,28 +33,28 @@ class Bouton extends Unite {
       rect(Pos.x, Pos.y, Long, Larg,50);
     }
   }
-    void Position(int x, int y) {
+    void Position(int x, int y) {        //marquer sa position en vecteur
     Pos.set(x, y);
   }
   
-  PVector Av_Position() {
+  PVector Av_Position() {           //fonction qui donne sa position
     return Pos;
   }
 
-  void Def_Ch(String Ch) {
+  void Def_Ch(String Ch) {         //définition de la couleur
     this.Nom = Ch;
   }
-  void Def_CStroke(color Ch) {
+  void Def_CStroke(color Ch) {     
     C_Tr = Ch;
   }
-  void Def_CReplisage(color Ch) {
+  void Def_CReplisage(color Ch) { //définition du remplissage
     C_Rp = Ch;
   }
-  void Def_CTexte(color Ch) {
+  void Def_CTexte(color Ch) {     //définition du texte
     C_Tx = Ch;
   }
   
-  boolean AuDessu(){
+  boolean AuDessu(){              //permet de cliquer dessus
     if (mouseX<=Pos.x+Long && mouseX>=Pos.x && mouseY<=Pos.y+Larg && mouseY>=Pos.y) {
   return true;
     }else{
@@ -61,12 +62,12 @@ class Bouton extends Unite {
     }
   }
   
-  void mousePressed() {
+  void mousePressed() {          //si on presse la souris 
     if (AuDessu()) {
-        Activ = true;
+        Activ = true;            //le bouton est activé
     }
   }
   void mouseReleased(){
-  Activ = false;
+  Activ = false;                 //si on la relâche, le bouton est désactivé
   }
 }
