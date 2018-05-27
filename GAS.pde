@@ -51,7 +51,7 @@ void setup() {
   Boutique[0].C_Rp = color(#BFB3B3);
   Missile[0] = new Etoiles(V.Pos.x+500, V.Pos.y +250, 1, true);
   Missile[1] = new Etoiles(IA.VIA.Pos.x-500, IA.VIA.Pos.y+250, 1, true);
-
+  println(IA.VIA.Pos.x-500+" "+IA.VIA.Pos.y+250);
   for (int i =0; i<=1; i++)
   {
     EExplosion[i] = -1;
@@ -110,6 +110,7 @@ void draw() {
     }*/
     imageMode(CORNER);
   }
+  //IA.VIA.Pv.Pos.set(mouseX,mouseY);
 }
 
 void keyPressed() {

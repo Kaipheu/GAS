@@ -1,4 +1,4 @@
-class Vaisseau extends Enemie {
+class Vaisseau extends Ennemie {
   Barr Carbu;// Carburant restant
   Barr Equi;// Point de l'équipage 
   Barr Missile; // Missile restants
@@ -9,12 +9,11 @@ class Vaisseau extends Enemie {
   int MR = 0;        //Variable pour l'Arbitre
   int MEquiper = Miss.M[0][0];  //Variable pour l'Arbitre
   int Boucliermax=2;            //Variable pour l'Arbitre
-  int PVmax;
+  int PVmax=20;
   //float[][] Viser = new float[1][2];
 
   Vaisseau(int x, int y, int T) {
     super(x, y, T);
-    PVmax = 20;
     PV = 20;
     Image = loadImage("Texture/PNG/Vaisseau500.png");// Chargement de l'image du vaiseaux
     int L=T/10, l=T/5;//Variable de Taille pour les salle
@@ -27,6 +26,7 @@ class Vaisseau extends Enemie {
     Salle[5].Pos.set(198, 95).add(Pos);  //-
     Salle[6].Pos.set(32, 370).add(Pos);//-
     Salle[7].Pos.set(198, 325).add(Pos); //--------------------
+    Pv = null;
     Pv = new Barr(x, y-(5*L)-5, 20, L, l, "Vaisseau Point de Vie");// Création de l'instance de Barr pour les points de Vie
     Bouclier = new Barr(x, y-3*L, 2, L, l, "Bouclier");// Création de l'instance de Barr pour les Point de bouclier                       
     Oxy = new Barr(x, y+Image.width+l*0.5, 10, L, l, "O2");// Création de l'instance de Barr pour le niveau d'Oxgène
@@ -34,9 +34,7 @@ class Vaisseau extends Enemie {
     Carbu = new Barr(x+150, y+(l*0.5+Image.width), 13, L, l, "Carburant");// Création d'une instance de Barr pour le caburant restant
     Equi = new Barr(x, y+Image.width+l*2, 3, L, l, "Michel");// Création d'une instance de Barr pour les point de vie de Michel
     Michel = new Homme(Pos.x+32, Pos.y+27, T);
-    //Viser[0][0]=Pos.x+T/2;
-    //Viser[0][1]=Pos.y+T/2;
-  }
+    }
 
 
   void draw() { 

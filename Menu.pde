@@ -48,6 +48,7 @@ class Menu {
       if (B.Aff) B.draw();
     }
   }
+  
   void mousePressed() {
     for ( Bouton B : B) {
       B.mousePressed();

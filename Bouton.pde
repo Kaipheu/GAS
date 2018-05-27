@@ -35,12 +35,10 @@ class Bouton extends Unite {
     void Position(int x, int y) {
     Pos.set(x, y);
   }
+  
   PVector Av_Position() {
     return Pos;
   }
-  //int Av_T_Text() {
-  //  return T_Tx;
-  //}
 
   void Def_Ch(String Ch) {
     this.Nom = Ch;

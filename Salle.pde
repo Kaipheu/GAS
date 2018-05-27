@@ -4,6 +4,25 @@ public class Salle extends Bouton {
 
   int PV = 1, PVMax = 1;
   
+  Salle(float X, float Y) {
+    super(X,Y,0,0,0);
+    Nom = "";
+  }
+  Salle(float X, float Y, int Long, int Larg) {
+    super(int(X),int(Y),Long,Larg,0);
+    this.Long = Long;
+    this.Larg = Larg;
+    Nom = "";
+    Arrondie = 0;
+  }
+  Salle(float X,float Y, int T){
+    super(int(X),int(Y),T,T,0);
+    this.Long = T;
+    this.Larg = T;
+    Nom = "";
+    Arrondie= 0;
+  }
+  
   void draw() {  
     stroke(0, 120, 120);
     strokeWeight(2);
@@ -37,28 +56,7 @@ public class Salle extends Bouton {
    6 = Reverve
    7 = Arme
    */
-  //Salle(int X, int Y) {
-  //  super(X,Y);
-  //  Nom = "";
-  //}
-  //Salle(float X, float Y) {
-  //  super(X,Y);
-  //  Nom = "";
-  //}
-  Salle(float X, float Y, int Long, int Larg) {
-    super(int(X),int(Y),Long,Larg,0);
-    this.Long = Long;
-    this.Larg = Larg;
-    Nom = "";
-    Arrondie = 0;
-  }
-  Salle(float X,float Y, int T){
-    super(int(X),int(Y),T,T,0);
-    this.Long = T;
-    this.Larg = T;
-    Nom = "";
-    Arrondie= 0;
-  }
+  
   void DefType(int Type) {
     this.Type = Type;
   }
@@ -67,8 +65,7 @@ public class Salle extends Bouton {
     this.Nom = Nom;
   }
 
-  void DefTex() {
-  }
+  
   void Dommage(int N) {
     PV-=N;
   }

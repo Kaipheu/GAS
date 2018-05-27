@@ -43,6 +43,6 @@ class UniteT extends Unite { // Classe unite mais avec une Texture
   }
   
   void draw(){
-    Tex.TexU(this);
+    Tex.Texture(this);
   }
 }
