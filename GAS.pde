@@ -123,6 +123,7 @@ void mousePressed() {
     if (Viser<=7 && Missile[0].Pos.x == V.Pos.x+500) {  //si la salle existe et que la position du Missile est vérifiée
       Missile[0].Vst.set(PVector.sub(IA.VIA.AvPos(Viser), Missile[0].Pos).add(IA.VIA.Salle[Viser].Long/2, IA.VIA.Salle[Viser].Larg/2).setMag(15));      //le Missile prend tel coordonnées en fonction du temps
     }
+    
     if (IA.VIA.Pv.N<=0 || Boutique[0].Activ) {
       E.mousePressed();
     }
