@@ -118,7 +118,7 @@ void draw() {
 void keyPressed() {
   KEY = key;
   M.keyPressed();
-  if (key=='e') {
+  if (key==' ') {
     Missile[0].Pos.set(V.Pos.x+500, V.Pos.y +250);
     Missile[0].Vst.set(0, 0);
   }

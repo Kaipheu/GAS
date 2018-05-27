@@ -103,17 +103,13 @@ void recharger()
   }
 
   for (int i=0; i<=1; i++) {
-    if (VMRe <= Miss.M[i][2] && V.MEquiper == Miss.M[i][0]) {
-      VMRe = int((frameCount - F[4]) / (frameRate)) - Miss.M[i][2];
-      if (F[4] == Miss.M[i][2]) {
-        F[4]=frameCount;
-      }
-      V.MRTer = true;
+    if (int((frameCount - F[4]) / (frameRate)) <= Miss.M[i][2] && V.MEquiper == Miss.M[i][0]) {
+      F[4]=frameCount;
     }
+    V.MRTer = true;
   }  
   for (int i=0; i<=1; i++) {
-    if (IAMRe >= Miss.M[i][2] && IA.MEquiper == Miss.M[i][0]) {
-      IAMRe = int((frameCount - F[11]) / (frameRate)) - Miss.M[i][2];
+    if (int((frameCount - F[11]) / (frameRate)) >= Miss.M[i][2] && IA.MEquiper == Miss.M[i][0]) {
       F[11]=frameCount;
       IA.MRTer = true;
     }
