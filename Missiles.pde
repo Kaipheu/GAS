@@ -11,9 +11,9 @@
  *********************************************************************************************************/
 class Missile
 {
-  public int[][] M = new int[2][3];
-  Missile(float xposMiss, float yposMiss) { 
-    yposMiss = 0;
+  public int[][] M = new int[2][3]; //tableau portant les caractéristiques des missiles
+  Missile(float xposMiss, float yposMiss) { //constructeur de Missile 
+    yposMiss = 0; //position
     xposMiss = 0;
 
     //missile 0

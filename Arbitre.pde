@@ -20,16 +20,17 @@ void combat()
     for (int m=0; m<=1; m++) {      //pareil pour le Joueur  //////////////////////////////////////////////////////////////////////////////////////////////////
       if ((V.MEquiper == Miss.M[m][0]) && (V.MRTer== true) && (V.Missile.N>=0)) {
         V.MRTer = false;
-        imgMissile = Tex.Ico[15+m];
-        Missile[0].Deplacement();
+        imgMissile = Tex.Ico[15+m];                                    //en fonction du type de missile l'image change
+        Missile[0].Deplacement();                                      //le missile se déplace
         image(imgMissile, Missile[0].Pos.x, Missile[0].Pos.y, 50, 50); //affichage de l'image 
         stroke(255);   
         noFill();
+        /*si la distance comparé entre la position du missile et la position touchée est la même, et que le missile est visible et n'est pas à ses coordonnées de départ*/
         if (Missile[0].Pos.dist(PVector.add(IA.VIA.AvPos(Viser),new PVector(IA.VIA.Salle[Viser].Long/2,IA.VIA.Salle[Viser].Larg/2)))<=(IA.VIA.Salle[Viser].Long)/2 &&  !Missile[0].AnimVisible && Missile[0].Pos.x != V.Pos.x+500) {
-          Missile[0].Vst.set(0,0);
-          Missile[0].AnimVisible =true;
-          F[11] = frameCount;
-          IExplo =300*m;
+          Missile[0].Vst.set(0,0);    //la vitesse du missile est définie à 0
+          Missile[0].AnimVisible =true;  //l'animation du visible est vraie
+          F[11] = frameCount;            //tempo
+          IExplo =300*m;                 //choix du décalage pour la fonction copy()
         }
       }
     }
@@ -67,7 +68,7 @@ void combat()
     if (IA.NE == 11) {        //si le joueur atteint le niveau 11 (soit après le boss de fin)
       fill(#BE2292);
       textSize(35);
-      text("Vous avez réussi le jeu", width/2, height/2);           //il réussi le jeu
+      text("Vous avez réussi le jeu", width/2, height/2);           //il réussit le jeu
       M.Aff=true;        //il revient donc au menu
     }
   }

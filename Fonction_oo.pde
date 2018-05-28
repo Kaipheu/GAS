@@ -55,35 +55,36 @@ void reparer()
       }
     }
   }
+  
   /*Preférence de salle à viser pour l'IA sur le Joueur*/
-  if (IA.VIA.Salle[2].PV <= IA.VIA.Salle[2].PVMax || IA.VIA.Salle[5].PV <= IA.VIA.Salle[5].PVMax || IA.VIA.Salle[6].PV <= IA.VIA.Salle[6].PVMax)  //salle qui nécessite des réparations
+  if (IA.VIA.Salle[2].PV <= IA.VIA.Salle[2].PVMax || IA.VIA.Salle[5].PV <= IA.VIA.Salle[5].PVMax || IA.VIA.Salle[6].PV <= IA.VIA.Salle[6].PVMax)  //si une de ses salle nécessitent des réparations
   {
-    if (((frameCount - F[2]) / (frameRate)) >= 8) {
+    if (((frameCount - F[2]) / (frameRate)) >= 8) {  //une tempo se fait pour cette ordre de priorité
       F[2]=frameCount;
-      IA.VIA.Salle[2].PV++;
-    } else if (((frameCount - F[2]) / (frameRate)) >= 8) {
+      IA.VIA.Salle[2].PV++;                          //puis la salle regagne des PV
+    } else if (((frameCount - F[2]) / (frameRate)) >= 8) {//pareil
       F[2]=frameCount;
       IA.VIA.Salle[5].PV++;
-    } else if (((frameCount - F[2]) / (frameRate)) >= 8) {
+    } else if (((frameCount - F[2]) / (frameRate)) >= 8) {//pareil
       F[2]=frameCount;
       IA.VIA.Salle[6].PV++;
     }
-  } else if (IA.VIA.Salle[0].PV <= IA.VIA.Salle[0].PVMax || IA.VIA.Salle[3].PV <= IA.VIA.Salle[3].PVMax) {
-    if (((frameCount - F[2]) / (frameRate)) >= 8) {
+  } else if (IA.VIA.Salle[0].PV <= IA.VIA.Salle[0].PVMax || IA.VIA.Salle[3].PV <= IA.VIA.Salle[3].PVMax) {   //si une de ses salles moins importantes nécessitent des réparations
+    if (((frameCount - F[2]) / (frameRate)) >= 8) { //une tempo se fait pour cette ordre de priorité
       F[2]=frameCount;
-      IA.VIA.Salle[0].PV++;
-    } else if (((frameCount - F[2]) / (frameRate)) >= 8) {
+      IA.VIA.Salle[0].PV++;                         //puis la salle regagne es PV
+    } else if (((frameCount - F[2]) / (frameRate)) >= 8) {//pareil
       F[2]=frameCount;
       IA.VIA.Salle[3].PV++;
     }
-  } else if (IA.VIA.Salle[1].PV <= IA.VIA.Salle[1].PVMax || IA.VIA.Salle[4].PV <= IA.VIA.Salle[4].PVMax || IA.VIA.Salle[7].PV <= IA.VIA.Salle[7].PVMax) {
-    if (((frameCount - F[2]) / (frameRate)) >= 8) {
+  } else if (IA.VIA.Salle[1].PV <= IA.VIA.Salle[1].PVMax || IA.VIA.Salle[4].PV <= IA.VIA.Salle[4].PVMax || IA.VIA.Salle[7].PV <= IA.VIA.Salle[7].PVMax) { //etc
+    if (((frameCount - F[2]) / (frameRate)) >= 8) {//pareil
       F[1]=frameCount;
       IA.VIA.Salle[2].PV++;
-    } else if (((frameCount - F[2]) / (frameRate)) >= 8) {
+    } else if (((frameCount - F[2]) / (frameRate)) >= 8) {//pareil
       F[4]=frameCount;
       IA.VIA.Salle[5].PV++;
-    } else if (((frameCount - F[2]) / (frameRate)) >= 8) {
+    } else if (((frameCount - F[2]) / (frameRate)) >= 8) {//pareil
       F[7]=frameCount;
       IA.VIA.Salle[2].PV++;
     }
@@ -122,23 +123,11 @@ void actionIA()
 {
   if (((frameCount - F[7])/( frameRate))>=Miss.M[0][2]) {  //si la tempo est supérieur à la recharge minimale du Missile
     for (int i =0; i<7; i++) {     //salle de préférence à viser
-      if ((V.Salle[i+1].PV <= V.Salle[i].PVMax) && (IA.P[i+1] >= IA.P[i])) {
+      if ((V.Salle[i+1].PV <= V.Salle[i].PVMax) && (IA.P[i+1] >= IA.P[i])) {//en fonction des priorités de destruction de salle, des PV de la salle
         IA.P[i] = IA.P[i+1];
         IA.Vise=i;     //la variable Vise prend la valeur de l'identifiant de la salle
       }
     }
     F[7]=frameCount;
   }
-
-  /*if ((frameCount / frameRate)== 6*k) 
-  {
-    k++;
-    V.Salle[int(random(8))].PV--;
-    if (V.Bouclier.N>0) {
-      V.Bouclier.N--;
-    } else if (V.Bouclier.N<=0) {
-      V.Salle[Viser].PV--;
-      V.Pv.N = V.Pv.N--;
-    }
-  }*/
 }

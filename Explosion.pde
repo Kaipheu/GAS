@@ -9,14 +9,14 @@
  **********************************************************************************************************
  Nom du fichier : Explosion
  *********************************************************************************************************/
-void animBoomV ()
+void animBoomV () //animation de l'explosion du Vaisseau Joueur
 {
-  copy(Tex.Ico[14], 300*int(15*((frameCount - F[11]) / (frameRate))), IExplo*300, 300, 300, int(Missile[0].Pos.x), int(Missile[0].Pos.y), 50, 50);    //animation de l'explosion
-  stroke(255);
+  copy(Tex.Ico[14], 300*int(15*((frameCount - F[11]) / (frameRate))), IExplo*300, 300, 300, int(Missile[0].Pos.x), int(Missile[0].Pos.y), 50, 50);    //prendre l'image et la décaler
+  stroke(255);  //contours blancs
   noFill();  //ne pas remplir
   if (300*int(15*((frameCount - F[11]) / (frameRate)))>=3000)            //si l'animation atteint la fin de l'image soit 3000 alors :
   {
-    F[11]=frameCount;
+    F[11]=frameCount;                                                    //tempo
     Missile[0].AnimVisible =false;                                       //l'animation du Missile n'est plus disponible
     if (Missile[0].AnimVisible ==false) {
       V.Missile.N--;                                             //le Joueur perd un Missile1
@@ -24,8 +24,7 @@ void animBoomV ()
         IA.VIA.Bouclier.N--;                                                 //il perd ce dernier
       } else if (IA.VIA.Bouclier.N<=0) {                                     //sinon
         IA.VIA.Salle[Viser].PV = IA.VIA.Salle[Viser].PV - Miss.M[0][1];      //la salle perd des PV
-        IA.VIA.PV -= Miss.M[0][1];
-        println(-1);//l'IA perd des PV
+        IA.VIA.PV -= Miss.M[0][1];                                           //l'IA perde des PV
       }
     }
   }

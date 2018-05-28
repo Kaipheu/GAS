@@ -26,7 +26,7 @@ Credit C;                           // Credit
 char KEY ='0';                      // Garder en mémoire la touche pressé        
 int[] F = new int[51];  //tableau permettant des tempos  
 int Viser;     //identifiant de la salle viser
-int  IExplo=0, k=1;      //IExplo : missile de l'explosion ; k : permettant une autre tempo
+int  IExplo=0, k=1;      //IExplo : type de missile de l'explosion ; k : permettant une autre tempo
 
 
 void settings () {
@@ -83,7 +83,7 @@ void draw() {
       actionIA();
       combat();
     }
-    if (Boutique[0].Activ /*&& IA.Visible==false*/) { //si l'IA n'est plus visible et que le Joueur appuie sur le bouton de la boutique
+    if (Boutique[0].Activ && IA.Visible==false) { //si l'IA n'est plus visible et que le Joueur appuie sur le bouton de la boutique
       E.draw();  //la classe Echange(boutique) est dessinéé
     } else {
       Boutique[0].draw();// Dessine le bouton

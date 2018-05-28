@@ -7,19 +7,19 @@
  
  Lycée : Pierre Termier
  **********************************************************************************************************
- Nom du fichier : Textuer
+ Nom du fichier : Texture
  *********************************************************************************************************/
 class Texture {
   PImage Salle;
   PImage[] Ico = new PImage[18]; 
   //PImage[] Texture = new PImage[5];
   Texture() {
-    Salle = requestImage("Texture/PNG/Salle.png");
+    Salle = requestImage("Texture/PNG/Salle.png");          //charger les images des salles
   for (int i = 0; i<8;i++){
-    Ico[i] = requestImage("Texture/PNG/Ico"+i+".png");
+    Ico[i] = requestImage("Texture/PNG/Ico"+i+".png");      
   }
   
-    Ico[8] = requestImage("Texture/PNG/Couloir_.png");
+    Ico[8] = requestImage("Texture/PNG/Couloir_.png");             //charger le reste
     Ico[9] = requestImage("Texture/PNG/CouloirSPF_.png");
     Ico[10] = requestImage("Texture/PNG/CouloirSPO_.png");
     Ico[11] = requestImage("Texture/PNG/Couloir_.png");
@@ -28,7 +28,7 @@ class Texture {
     Ico[14] = requestImage("Texture/PNG/Assemblage_missile.png");
     Ico[15] = requestImage("Texture/PNG/Missile0.png");
     Ico[16] = requestImage("Texture/PNG/Missile1.png");
-    Ico[17] = requestImage("Texture/PNG/Homme_1000x1000.png");
+    Ico[17] = requestImage("Texture/PNG/Homme_1000x1000.png");        
 }
   void Texture(Bouton B){
     image(Ico[B.ID],B.Pos.x,B.Pos.y,B.Long,B.Larg);

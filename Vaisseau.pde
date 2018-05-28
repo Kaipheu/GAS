@@ -63,6 +63,8 @@ class Vaisseau extends Ennemie {
     Equi.draw();// affichage des Points de vie de pierre 
     Missile.draw();//Affichage des Missile restant 
     Michel.draw();
+    fill(200,255,100);
+    text("Vous avez :" +str(E.Lune)+" lunes",width/4, height/9);   //afficher le nombre de lunes (argen) que possède le joueur
   }
 
 
@@ -72,9 +74,9 @@ class Vaisseau extends Ennemie {
   }
   void mousePressed() {
     super.mousePressed();
-    int Id = ArrivMissile();
+    int Id = ArrivMissile();       //l'identifiant prend la valeur de la salle où arrive le Missile
     if (Id<9) {
-      Michel.Tp(Salle[Id]);
+      Michel.Tp(Salle[Id]);        //michel se téléporte à la salle
     }
   }
 }

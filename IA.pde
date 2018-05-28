@@ -11,19 +11,19 @@
  *********************************************************************************************************/
 class IA
 {
-  Ennemie VIA;             //initialisation des variables 
-  int MEquiper = 0;
-  int MR = 0, Vise=0;
-  int[] P = new int[8];
-  int NE=1, N=0, M=0;
-  boolean Tir = false, Visible = true;
-  boolean MRTer = false;
-  PImage Image = loadImage("Texture/PNG/IA.png"); 
+  Ennemie VIA;             
+  int MEquiper = 0;               //le type de Missile équipé
+  int MR = 0, Vise=0;             //la recharge du missile; où vise l'IA
+  int[] P = new int[8];           //tableau des priorité d'ordre de réparation et destruction
+  int NE=1, N=0, M=0;             //NE : Numero Ennemi pour les niveaux ; N : pour le switch ; M : pour récupérer la variable N
+  boolean Tir = false, Visible = true;           //Tir : L'IA a tiré ; L'IA est visible
+  boolean MRTer = false;                         //la recharge du missile équipé est terminée
+  PImage Image = loadImage("Texture/PNG/IA.png");//charger l'Image de l'IA
 
   IA(float XposIA, float YposIA)  //constructeur de l'IA
   { 
     VIA =new Ennemie(width - 100, height/10, 104); // l larg et taille salle
-    XposIA = width -100;
+    XposIA = width -100;  //positions
     YposIA = height - 100;
 
     N = int(random(2));   //variable N déterminant le type d'Ennemi rencontré
@@ -32,7 +32,7 @@ class IA
     }
 
     P[0] = 1;
-    P[1] = 0;        //priorité par salles (viser IA)
+    P[1] = 0;        //priorité par salles
     P[2] = 2;
     P[3] = 1;
     P[4] = 0;
@@ -93,7 +93,7 @@ class IA
   }
   void draw()
   {
-    M=N;
+    M=N;   
     VIA.draw();     //dessiner la classe Ennemi
     if(M==0) {
       fill(#E31919);

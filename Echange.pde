@@ -8,16 +8,18 @@
  Lycée : Pierre Termier
  **********************************************************************************************************
  Nom du fichier : Echange
+ **********************************************************************************************************
+ Commentaire : Pour activer le système d'Echange il faut tuer l'IA précédent
  *********************************************************************************************************/
 /*
- Missile Carburant, PV
- M0; M1;
+ Missile(1,0), Carburant(1,1), PV(1,2)
+ M0(2,0); M1(2.1);
  Type :
- 0 = bouclier
- 1 = reacteur
- 2 = Poste de Pilotage
- 3 = Surveillance 
- 4 = Oxygene
+ 0 = bouclier (3,0)
+ 1 = reacteur (3,1)
+ 2 = Poste de Pilotage (3,2)
+ 3 = Surveillance ...
+ 4 = Oxygene ...
  5 = Soin
  6 = Reverve
  7 = Arme
@@ -30,16 +32,13 @@ class Echange
   int[][] C = new int[4][8];       //coût des dispositifs d'amélioration ou d'achat du joueur
   Fenetre Fen;                     //fenêtre de l'échange
   PImage Image;
-  boolean Affiche;                
+  boolean Affiche;                 //la fenêtre de l'échange est affichée                
 
   Echange() {
     D[1][2]= 30;        //nb max de dispositfs
     D[2][0]= 2;
     for (int i=0; i<=7; i++) {
-      D[3][i]= 3;
-    }
-    for (int i=0; i<=7; i++) {
-      V.Salle[i].PV = 1;
+      D[3][i]= 3;            //nb max de dispositfs par salles
     }
 
     C[1][0]=  4;         //coût de l'achat
@@ -48,14 +47,14 @@ class Echange
     C[3][0] = 15;
 
     Fen = new Fenetre(0, 0, 15, 15);                              //afficher la fenêtre avec les boutons
-    Fen.Long= width - 200;
+    Fen.Long= width - 200;                                        //définir sa longueur et sa largeur
     Fen.Larg = height - 200;
     for (int i=1; i<=5; i++) {
       Fen.InitBouton(i, 200, i*100, 265, 50);                          //initialisation des boutons, du prix et nom de l'achat
       if (i==5) { 
         for (int j=6; j<=13; j++) {
           Fen.InitBouton(j, j*165-(width/2), (i+1)*100, 160, 50);
-          Fen.B[j].Def_Ch(V.Salle[j-6].Nom + " "+ str(C[3][0]) + " Lunes");
+          Fen.B[j].Def_Ch(V.Salle[j-6].Nom + " "+ str(C[3][0]) + " Lunes");       //définir le nom et le coût d'une salle
         }
       }
     }
