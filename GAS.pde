@@ -1,4 +1,4 @@
-/********************************************************************************************************* //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>//
+/********************************************************************************************************* //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>//
  Titre du Programme : Gestion d'Attaque Spatiale (GAS)
  **********************************************************************************************************
  Date de création du programme : 23/01/2018
@@ -11,41 +11,41 @@
  *********************************************************************************************************/
 
 Menu M; // Objet Menu  //<>// //<>// //<>// //<>// //<>// //<>//
-
+ //<>//
 // Objet vaisseaux Joueur et ennemi
 
-Texture Tex;
-Missile Miss;
-Echange E;
-IA IA;
-Vaisseau V;
-Fenetre Fen;
-Bouton[] Boutique = new Bouton[1];
-Etoiles[] Et = new Etoiles[100];
-Etoiles[] Missile = new Etoiles[2];
-Credit C;
-char KEY ='0';
-int[] F = new int[51];  //tableau permettant des tempos
+Texture Tex;   // Objet qui stocke les texture
+Missile Miss; // Objet qui stocke les données sur les missile
+Echange E;    // Objet qui gère les interaction monaitaire
+IA IA;        // Ennemie
+Vaisseau V;  // Vaisseau du joueur
+Bouton[] Boutique = new Bouton[1];  // Boution pour apparaitre la boutique
+Etoiles[] Et = new Etoiles[100];    // Etoile du décore de fond
+Etoiles[] Missile = new Etoiles[2]; // Missiles graphisme et position et vitesse
+Credit C;                           // Credit
+char KEY ='0';                      // Garder en mémoire la touche pressé        
+int[] F = new int[51];  //tableau permettant des tempos  
 int Viser;     //identifiant de la salle viser
 int  IExplo=0, k=1;      //IExplo : missile de l'explosion ; k : permettant une autre tempo
-boolean Foi = false; 
+
 
 void settings () {
   fullScreen();
-  Tex = new Texture();
   //size(630, 380);
 }
 void setup() {
+  background(0);
+  Tex = new Texture(); // Initialisation de Texture : chargement de texture
   smooth(9);
   textSize(20);
-  M = new Menu(); // Création des instances
-  Miss = new Missile(200, 200);
-  V = new Vaisseau(width/10, height/10, 104);
-  E = new Echange();
-  IA = new IA (100, 100);
-  C = new Credit();
-  Missile[0] = new Etoiles(V.Pos.x+500, V.Pos.y +250, 1, true);
-  Missile[1] = new Etoiles(IA.VIA.Pos.x-500, IA.VIA.Pos.y+250, 1, true);
+  M = new Menu();                                                             // Création des instances
+  Miss = new Missile(200, 200);                                               //
+  V = new Vaisseau(width/10, height/10, 104);                                 //
+  E = new Echange();                                                          //
+  IA = new IA (100, 100);                                                     //
+  C = new Credit();                                                           //
+  Missile[0] = new Etoiles(V.Pos.x+500, V.Pos.y +250, 1, true);               //
+  Missile[1] = new Etoiles(IA.VIA.Pos.x-500, IA.VIA.Pos.y+250, 1, true);      //-------------------------
   Boutique[0] = new Bouton(width -200, height - 70, 180, 70, 0);
   Boutique[0].Def_Ch(" La cosmo boutique " );                         //afficher le bouton boutique
   Boutique[0].C_Rp = color(#BFB3B3);
@@ -56,8 +56,7 @@ void setup() {
 }
 
 void draw() {
-  println(300*int(15*((frameCount - F[11]) / (frameRate))));
-  background(120);
+  background(120);// 
   if (M.Aff) {
     M.draw();
     if (C.Affiche) {
