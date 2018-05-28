@@ -25,7 +25,7 @@ void combat()
         image(imgMissile, Missile[0].Pos.x, Missile[0].Pos.y, 50, 50); //affichage de l'image 
         stroke(255);   
         noFill();
-        if (Missile[0].Pos.dist(PVector.add(IA.VIA.AvPos(Viser),new PVector(IA.VIA.Salle[Viser].Long/2,IA.VIA.Salle[Viser].Larg/2)))<=(IA.VIA.Salle[Viser].Long)/2 &&  !Missile[0].AnimVisible) {
+        if (Missile[0].Pos.dist(PVector.add(IA.VIA.AvPos(Viser),new PVector(IA.VIA.Salle[Viser].Long/2,IA.VIA.Salle[Viser].Larg/2)))<=(IA.VIA.Salle[Viser].Long)/2 &&  !Missile[0].AnimVisible && Missile[0].Pos.x != V.Pos.x+500) {
           Missile[0].Vst.set(0,0);
           Missile[0].AnimVisible =true;
           F[11] = frameCount;

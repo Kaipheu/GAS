@@ -56,8 +56,7 @@ void setup() {
 }
 
 void draw() {
-  //println(EExplosion);
-  //println(F[7]);
+  println(300*int(15*((frameCount - F[11]) / (frameRate))));
   background(120);
   if (M.Aff) {
     M.draw();
