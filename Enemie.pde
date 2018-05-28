@@ -12,28 +12,28 @@
 class Ennemie{
   Salle[] Salle = new Salle[8]; // Tableau des Salles du vaiseaux
   Barr Pv;    // Point de vie du Vaiseaux
-  Homme Michel;
-  Barr Bouclier;
-  Barr Equi;
+  Homme Michel; // Homme abord
+  Barr Bouclier;  // Barre de bouclier
+  Barr Equi;      // Barre des point de vie de Michel
   
-  PImage Image;
+  PImage Image;  // Image ddu vaissau
   PVector Pos; // Position du vaiseau
-  int PV;
+  int PV;      //Points de vie du vaissau
 
-  Ennemie(int x, int y, int T) {
+  Ennemie(int x, int y, int T) {// constructeur : position x,y taille
     Pos = new PVector(x, y);  
     
     int L=T/10, l=T/5;
     PV=5;
     short[][] PosS = new short[8][2];
-    Image = loadImage("Texture/PNG/IA_500x500.png");
+    Image = loadImage("Texture/PNG/IA_500x500.png");    // Chargment de l'image 
     Pv = new Barr(Pos.x-150, Pos.y-l, PV, L, l, "Point de vie");  //création des Barres
     Bouclier = new Barr(150, 150-3*150, 3, 10, 10, "Bouclier");
     Michel = new Homme(Pos.x+32, Pos.y+27, T);
     Equi = new Barr(x, y + Image.width + l*2, 3, L, l, "");// Création d'une instance de Barr pour les point de vie de Michel
  
-    PosS[0][0] = -469 ;        //définition des positions de l'IA
-    PosS[0][1] = 186 ;
+    PosS[0][0] = -469 ;        //définition des positions des salle de l'IA
+    PosS[0][1] = 186 ;      
     PosS[1][0] = -137 ;
     PosS[1][1] = 27 ;
     PosS[2][0] = - 137;
@@ -47,8 +47,8 @@ class Ennemie{
     PosS[6][0] =- 303;
     PosS[6][1] = 187;
     PosS[7][0] =- 303;
-    PosS[7][1] = 299;
-    Pv.C_Txt = color(#72A8C9);
+    PosS[7][1] = 299;          //---------------------
+    Pv.C_Txt = color(#72A8C9); // Changement de la couleure de texte de la Barr de Points de vie
     PlacementSalle(T, PosS);
     for (Salle S : Salle) {
       PV += S.PV;                       //définition des PV des Salles
@@ -58,9 +58,9 @@ class Ennemie{
 
   void draw()
   {
-    image(Image, Pos.x-Image.width, Pos.y);  //dessiner l'image de l'IA
+    image(Image, Pos.x-Image.width, Pos.y);  //dessine l'image de l'IA
     for (Salle S : Salle) { 
-      S.draw();                              //et de ses salles
+      S.draw();                              //Dessine de ses salles
     } 
     Pv.N = PV; 
     Pv.draw();//dessiner la barre de ses PV
@@ -74,10 +74,10 @@ class Ennemie{
   }
 
   boolean Air (int ID) {
-    return Salle[ID].AuDessu();              //Air de la Salle
+    return Salle[ID].AuDessu();              //Vérife si la sourie est audesus de la Salle
   }
 
-  PVector AvPos(int ID) {
+  PVector AvPos(int ID) {        // avoir la position de la Salle
     try{
     return Salle[ID].Pos;                       //afficher la position de la Salle du Vaisseau
     }catch(ArrayIndexOutOfBoundsException e){   //afficher pb si salle inexistante
@@ -108,7 +108,7 @@ class Ennemie{
     return 9;
   } 
 
-  void PlacementSalle(int T, short[][] PosS) {  
+  void PlacementSalle(int T, short[][] PosS) {  // Création des salle 
  
     Salle[0] =new Salle(Pos.x+PosS[2][0], Pos.y+PosS[2][1], T);   //position des Salles 
     Salle[0].DefType(0);                                          //de leur identifiant

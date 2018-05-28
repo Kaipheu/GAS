@@ -56,20 +56,20 @@ void setup() {
 }
 
 void draw() {
-  background(120);// 
+  background(120);// Fond gris
   if (M.Aff) {
-    M.draw();
+    M.draw();//Dessine le  menu
     if (C.Affiche) {
-      C.draw();
+      C.draw();// Dessine les credits
     }
   } else {
-    background(0);
+    background(0);// Fond gris
     for (Etoiles E : Et) {
-      pushMatrix();    
-      E.draw();
-      popMatrix();
-      E.Deplacement();
-      E.Pos();
+      pushMatrix();    // Sauvvegarde position actuelle 
+      E.draw();// Desine le étoiles
+      popMatrix();// remise en place des position actelle
+      E.Deplacement();// deplacement des étoile
+      E.Pos();//Vérification des position des étoiles
     }
     if (IA != null)  //si l'IA est non nul
     {
@@ -86,7 +86,7 @@ void draw() {
     if (Boutique[0].Activ /*&& IA.Visible==false*/) { //si l'IA n'est plus visible et que le Joueur appuie sur le bouton de la boutique
       E.draw();  //la classe Echange(boutique) est dessinéé
     } else {
-      Boutique[0].draw();
+      Boutique[0].draw();// Dessine le bouton
     }
     if (Missile[0].AnimVisible == true) {      //si l'Animation du Misssile 0, soit du Joueur est activé 
       animBoomV();                             //la fonction associée s'affiche
@@ -98,13 +98,12 @@ void draw() {
 }
 
 void keyPressed() {
-  KEY = key;
+  KEY = key; // sauvegarde de la touche pressé
   M.keyPressed();
   if (key==' ') {            //si la touche espace est pressée
     Missile[0].Pos.set(V.Pos.x+500, V.Pos.y +250);         //le Missile prend la position initiale du Vaisseau adverse  
     Missile[0].Vst.set(0, 0);
   }
-  V.Bouclier.N--;
 }
 
 void keyReleased() {
@@ -113,7 +112,7 @@ void keyReleased() {
 
 void mousePressed() {
   if (M.Aff) {
-    M.mousePressed();
+    M.mousePressed(); // Verification des pression lorsque le menu est affiché
   } else {
     V.mousePressed();
     IA.VIA.mousePressed();
@@ -126,5 +125,5 @@ void mousePressed() {
       E.mousePressed();
     }
   }
-  Boutique[0].mousePressed();
+  Boutique[0].mousePressed(); // Vérification de pression sur la bouton
 }

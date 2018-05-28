@@ -10,12 +10,12 @@
  Nom du fichier : Crédit
  *********************************************************************************************************/
 class Credit {
-  PVector Pos;
-  PVector Vst;
-  boolean Affiche = false;
-  PFont[] Police = new PFont[2];
-  PImage[] Image = new PImage[6];
-  Credit() {
+  PVector Pos; // Vecteur position 
+  PVector Vst; //Vecteur vitesse
+  boolean Affiche = false;// Si on daoit l'afficher 
+  PFont[] Police = new PFont[2];  // Police d'écriture
+  PImage[] Image = new PImage[6];// Image a dessiner
+  Credit() {    // constructeur definition de la postion initiale et chargemet des images
     Pos = new PVector(width/2, height+10);
     Vst = new PVector(0, 5);  
     Police[0] = loadFont("Ubuntu-Bold-48.vlw");
@@ -27,7 +27,7 @@ class Credit {
     Image[4] = loadImage("Ubuntu.png");
     Image[5] = loadImage("PierreTermier.png");
   }
-  void draw() {
+  void draw() {// Dessine le crédit
     background(0);
     textAlign(CENTER, CENTER);
     imageMode(CENTER);
@@ -54,7 +54,7 @@ class Credit {
     image(Image[5], Pos.x, Pos.y+550+width/20, width/20, width/20);
     Deplacement();
   }
-  void Deplacement() {
+  void Deplacement() {// Déplace les crédit
     Pos.sub(Vst);
     if (Pos.y+650<0)
     {

@@ -10,10 +10,10 @@
  Nom du fichier : Bouton
  *********************************************************************************************************/
 class Bouton extends Unite {
-  Boolean Activ = false, Aff = true, Texture=false;   //initialisation des variables
-  String Nom;
-  color C_Tx = 255;
-  int ID;
+  Boolean Activ = false, Aff = true, Texture=false;   //initialisation des variables, si on a puiyer la bouton, si on doit l'affiché, si il est texté.
+  String Nom;  // Nom du bouton
+  color C_Tx = 255;  // couleur du texte
+  int ID;            // idetifiant
   
   Bouton(float x, float y, int Long, int Larg, int Id) {  //constructeur
     super(x,y,Long,Larg);
@@ -30,8 +30,8 @@ class Bouton extends Unite {
 
   void draw() {          //dessiner le bouton
     if(!Texture){
-     fill(C_Rp);
-    stroke(C_Tr);
+     fill(C_Rp);  // Changement de couleur de remplisage
+    stroke(C_Tr);// Changement de couleur de contoure
     rect(Pos.x, Pos.y, Long, Larg,Arrondie);
     textAlign(CENTER, CENTER);
     fill(C_Tx);

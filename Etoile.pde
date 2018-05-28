@@ -10,19 +10,19 @@
  Nom du fichier : Etoile
  *********************************************************************************************************/
 class Etoiles {
-  PVector Pos= new PVector(), Post = new PVector();
-  PVector Vst = new PVector();
-  PVector Acc = new PVector();
-  int R=255, G=255, B=255, A=255;
-  boolean AnimVisible = false;
-  float Taille = 5;
-  boolean E  = false;
-  Etoiles(float x, float y, float T, Boolean Et) {
+  PVector Pos= new PVector(), Post = new PVector(); // Vecteur position
+  PVector Vst = new PVector();  // Vecteur vitesse 
+  PVector Acc = new PVector(); // vecteur acceleration
+  int R=255, G=255, B=255, A=255;  // Variable de couleur
+  boolean AnimVisible = false;  // Varible d'afiche de l'animation
+  float Taille = 5;// Taille de l'étoile
+  boolean E  = false; // choix d'affichage des etoilt.
+  Etoiles(float x, float y, float T, Boolean Et) {// constructeur : position x,y, taile , mode d'affichage
     Pos.set(x, y);
     Taille = T;
     E = Et;
   }
-  void draw() {
+  void draw() { // desinne l'étoile
     stroke(R, G, B, A);
     strokeWeight(1);
     if (!E)line(Pos.x, Pos.y, Post.x, Post.y);
@@ -35,14 +35,14 @@ class Etoiles {
       }
     }
   }
-  void DefAcc(float x, float y) {
+  void DefAcc(float x, float y) { //deffinier dl'acceleration
     Acc.set(x, y);
   }
-  void Acc() {
+  void Acc() {// Aplique une accelération
     Vst.add(Acc);
   }
   void Deplacement() {
-    Post.set(Pos);
+    Post.set(Pos);//déplacel'étoile
     Pos.add(Vst);
     if (!E) {
       Acc(); 
