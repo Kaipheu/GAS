@@ -21,7 +21,7 @@ class Bouton extends Unite {
     ID=Id;
     Arrondie = 50;
   }
-   Bouton(int x, int y, int Long, int Larg, int Id) {
+   Bouton(int x, int y, int Long, int Larg, int Id) { //constructeur sans float
     super(x,y,Long,Larg);
     Nom = str(Id);
     ID=Id;

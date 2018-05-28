@@ -94,23 +94,23 @@ void reparer()
 void recharger()
 {
   if (V.Salle[6].PV>0) {
-    if (V.Bouclier.N <= V.Boucliermax && V.Salle[6].PV>0) {
+    if (V.Bouclier.N <= V.Boucliermax && V.Salle[6].PV>0) {      //si le bouclier est inférieur au bouclier maximal
       F[3]=0;
-      if ((frameCount - F[3])/( frameRate) == 6) {
+      if ((frameCount - F[3])/( frameRate) == 6) {               //la tempo commence
+        V.Bouclier.N++;                                          //le bouclier se recharge de 1
         F[3]=frameCount;
       }
-      V.Bouclier.N++;
     }
   }
 
-  for (int i=0; i<=1; i++) {
-    if (int((frameCount - F[4]) / (frameRate)) <= Miss.M[i][2] && V.MEquiper == Miss.M[i][0]) {
+  for (int i=0; i<=1; i++) {                                                                      
+    if (int((frameCount - F[4]) / (frameRate)) <= Miss.M[i][2] && V.MEquiper == Miss.M[i][0]) {  //si la recharge du missila est terminé et que le Joueur en est équipé alors
       F[4]=frameCount;
-    }
-    V.MRTer = true;
+    V.MRTer = true;          //la recharge du missile est maintenant vraie
+    }           //
   }  
   for (int i=0; i<=1; i++) {
-    if (int((frameCount - F[11]) / (frameRate)) >= Miss.M[i][2] && IA.MEquiper == Miss.M[i][0]) {
+    if (int((frameCount - F[11]) / (frameRate)) >= Miss.M[i][2] && IA.MEquiper == Miss.M[i][0]) {   //pareil pour l'IA
       F[11]=frameCount;
       IA.MRTer = true;
     }
@@ -124,13 +124,13 @@ void actionIA()
     for (int i =0; i<7; i++) {     //salle de préférence à viser
       if ((V.Salle[i+1].PV <= V.Salle[i].PVMax) && (IA.P[i+1] >= IA.P[i])) {
         IA.P[i] = IA.P[i+1];
-        IA.Vise=i;
+        IA.Vise=i;     //la variable Vise prend la valeur de l'identifiant de la salle
       }
     }
     F[7]=frameCount;
   }
 
-  if ((frameCount / frameRate)== 6*k)
+  /*if ((frameCount / frameRate)== 6*k) 
   {
     k++;
     V.Salle[int(random(8))].PV--;
@@ -140,5 +140,5 @@ void actionIA()
       V.Salle[Viser].PV--;
       V.Pv.N = V.Pv.N--;
     }
-  }
+  }*/
 }
